@@ -10,6 +10,6 @@ use App\Company;
 class Test extends Controller
 {
   public function test(User $user){
-    return $user->company();
+    return $user->company;
   }
 }

@@ -1,0 +1,23 @@
+#author{
+  .img-box{
+    overflow:hidden;
+    margin-bottom:20px;
+    img{
+      width:100%;
+    }
+  }
+  a{
+    display:block;
+    color:$heading-color;
+  }
+  p{
+    margin:0;
+  }
+  .button-custom{
+    color:white;
+    margin-bottom:10px;
+    display:block;
+    text-align: center;
+  }
+
+}

@@ -1,0 +1,26 @@
+@import 'partials/_fonts.scss';
+@import 'partials/_example.scss';
+@import 'partials/_variables.scss';
+@import 'partials/_commonClasses.scss';
+@import 'partials/_mixins.scss';
+@import 'partials/_navbar.scss';
+@import 'partials/_footer.scss';
+@import 'partials/_category.scss';
+@import 'partials/_postItemGrid.scss';
+@import 'partials/_company.scss';
+@import 'partials/_post.scss';
+@import 'partials/_content.scss';
+@import 'partials/_right_bar.scss';
+@import 'partials/_top_bar.scss';
+@import 'partials/_navbar_collapse.scss';
+@import 'partials/_post_right_bar.scss';
+@import 'partials/_company-posts.scss';
+
+.testp{
+  background-color: $green;
+}
+
+body{
+  overflow-x:hidden;
+  position:relative;
+}

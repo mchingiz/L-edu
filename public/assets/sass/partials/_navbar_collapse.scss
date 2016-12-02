@@ -1,0 +1,120 @@
+#top-collapse{
+  background:white;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  padding:10px 0;
+  z-index: 10;
+  border-bottom:1px solid lightgray;
+  #collapse-button{
+    background:white;
+    border:none;
+    padding:0;
+    i{
+      padding:0;
+    }
+  }
+  a{
+    color:$heading-color;
+    padding:4px 0;
+  }
+}
+
+@media screen and (min-width: 995px) {
+  #top-collapse{
+    display: none;
+  }
+}
+
+
+#navbar-collapse{
+  height:100vh;
+  left:-200px;
+  top:0px;
+  background:white;
+  box-shadow: inset -4px 0px 15px -5px rgba(122,110,104,1);;
+  border-radius: 0;
+  border-right: 1px solid lightgray;
+  padding-left:10px;
+  a{
+    color:$heading-color;
+  }
+  width:200px;
+  .container{
+    padding-left:0;
+    width:100%;
+    .navbar-header{
+      float:none;
+      a{
+        margin-left:0px;
+        color:white !important;
+      }
+    }
+    ul{
+      float:none !important;
+      li{
+        float:none;
+        .dropdown-menu{
+          border-radius: 0;
+          position:relative;
+          border:none;
+          padding:0;
+          background: none;
+          box-shadow: none;
+          a{
+            margin-left:10px;
+          }
+        }
+        a:hover{
+          color:$primaryColor;
+          font-weight: bold;
+          background: none;
+        }
+        a:focus{
+          background:none;
+        }
+      }
+      .divider{
+        background: lighten($footer-color, 20%);
+        height:1px;
+      }
+    }
+
+  }
+  .full-nav-only{
+    display: none;
+  }
+  #collapse-search{
+    margin:10px;
+    input{
+      border:1px solid $primaryColor;
+      border-right:none;
+      padding:6px;
+      font-size:1em;
+      height:40px;
+      border-radius: 3px 0px 0px 3px;
+    }
+    button{
+      background: white;
+      border:1px solid $primaryColor;
+      border-left:none;
+      padding:6px;
+      height:40px;
+      border-radius: 0px 3px 3px 0px;
+      i{
+        color:$primaryColor;
+      }
+
+    }
+    input:focus, button:focus{
+      box-shadow: none;
+    }
+  }
+}
+.dropdown-menu-open{
+  display:block;
+}
+.dropdown-menu-close{
+  display:none;
+}

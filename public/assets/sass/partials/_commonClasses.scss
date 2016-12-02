@@ -1,0 +1,111 @@
+body{
+  background-color: $background-color;
+}
+a,p,h1,h2,h3,h4,h5,h6,span{
+  font-family: 'Lato', sans-serif;
+}
+h3{
+  font-size:1.2em;
+}
+h4{
+  font-size:1.3em;
+  padding-bottom:$padding-vertical-in;
+}
+p{
+  font-size: 0.9em;
+  letter-spacing: 1px;
+}
+ul{
+  font-family:'Lato',sans-serif;
+}
+input[type="text"],input[type="password"],input[type="submit"],input[type="email"]{
+  font-family: 'Lato', sans-serif;
+}
+.button-custom{
+  background-color:$primaryColor;
+  color:white;
+  padding:4px 8px;
+  transition: all 0.4s ease;
+  border-radius:2px;
+  font-size: 0.9em;
+
+  &:hover{
+    text-decoration: none;
+    color:white;
+    background-color: $primaryColor3;
+  }
+
+}
+
+.vertical-div{
+  height:$padding-vertical-out;
+}
+
+
+.green-border-bottom{
+  border-bottom:4px solid $green;
+}
+
+.red-border-bottom{
+  border-bottom:4px solid $red;
+}
+
+.add-reminder i{ // Item containing this class should be in relative position
+  color:darkgray;
+  cursor:pointer;
+}
+
+i.material-icons{
+  vertical-align:bottom;
+}
+
+#popUp{
+  z-index:999;
+  display:none;
+  padding:50px;
+  width:30%;
+  height:30%;
+  top:35%;
+  left:35%;
+  position:fixed;
+  background-color: lightgray;
+}
+.border{
+  height:1px;
+  background: $background-color;
+  margin:$padding-vertical-in 0;
+}
+#content{
+  margin-top:50px;
+}
+
+.custom-badge{
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: super;
+  background-color: lighten(#777,10%);
+  border-radius: 10px;
+}
+
+.no-padding{
+  padding:0 !important
+}
+
+.big-post, .small-post, #rightBarPosts .row ,.post-item{
+  &:hover{
+    .img-box{
+       img{
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+  }
+}

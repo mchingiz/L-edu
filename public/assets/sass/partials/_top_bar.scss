@@ -1,0 +1,19 @@
+#top-bar{
+  background-color: $footer-color;
+  margin:0;
+//  height:35px !important;
+  min-height:40px;
+  a{
+    padding:10px 15px;
+    font-size:0.9em;
+    font-weight: normal;
+    color:lighten($footer-color, 50%);
+  }
+  li{
+    a:hover{
+      background:$footer-color;
+      color:lighten($footer-color, 80%);
+
+    }
+  }
+}

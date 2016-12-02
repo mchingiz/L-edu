@@ -1,0 +1,33 @@
+#company{
+
+  margin-top:70px;
+  #company-info{
+    .img-box{
+      img{
+        max-width:100%;
+        max-height: 200px;
+      }
+    }
+    h4{
+      letter-spacing: 1px;
+      font-size:1.4em;
+    }
+    table{
+      tr{
+        td{
+          text-align:left;
+          padding-top:10px;
+        }
+        .icon{
+
+        }
+        .detail{
+          padding-left:10px;
+          a, span{
+            font-size:16px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+#post{
+  margin-top:80px;
+  margin-bottom:30px;
+  .col-md-8{
+    padding-left:0;
+    @media screen and (max-width: 960px) {
+      margin-left: 15px;
+    }
+    .single-post{
+      background-color: white;
+      padding-bottom: 10px;
+      div{
+        padding:0 $padding-vertical-in; // all divs except .single-post-image
+      }
+      .single-post-image{
+        padding: 0;
+        img{
+          max-width:100%;
+        }
+      }
+      .single-post-desc{
+        padding-bottom:15px;
+        h2{
+          font-size:25px;
+          line-height: 35px;
+        }
+        ul{
+          padding-top:5px;
+          li{
+            i{
+              font-size:13px;
+              color:darken(lightgray,10%);
+            }
+            span{
+              font-size:13px;
+              color:$heading-color;
+              color:darken(lightgray,10%);
+            }
+            a{
+              text-decoration: none;
+              color:$heading-color;
+              font-size:13px;
+              color:darken(lightgray,10%);
+              i{
+                margin-right: 4px;
+              }
+            }
+            &:hover{
+              i,span,a{color:darken(lightgray,40%);}
+            }
+          }
+        }
+      }
+      .single-post-body{
+        padding-bottom:10px;
+        p{
+          padding:8px 0;
+        }
+      }
+      .single-post-extra{
+        font-size:12px;
+        padding-bottom:15px;
+        ul.tags{
+          margin:0;
+          li{
+            padding:0;
+            a{
+              background-color: darken($background-color,20%);
+              padding:5px 3px;
+              color:white;
+              border-radius: 2px;
+              text-decoration: none;
+            }
+            &:hover a{
+              background-color:darken($background-color,35%);
+            }
+          }
+        }
+      }
+    }
+    .company-posts{
+
+    }
+  }
+  .col-md-4{
+  }
+}

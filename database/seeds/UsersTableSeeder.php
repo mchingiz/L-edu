@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
 
       DB::table('users')->insert([
           'id' => '2',
-          'name' => 'Chingiz',
+          'name' => 'Senem',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'user',
       ]);
@@ -43,7 +43,7 @@ class UsersTableSeeder extends Seeder
 
       DB::table('users')->insert([
           'id' => '5',
-          'name' => 'Samir',
+          'name' => 'Code Academy',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'company',
       ]);
@@ -53,6 +53,19 @@ class UsersTableSeeder extends Seeder
           'name' => 'BBF',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'company',
+
+      DB::table('users')->insert([
+          'id' => '7',
+          'name' => 'Azercell',
+          'email' => str_random(10).'@gmail.com',
+          'user_type' => 'company',
+      ]);
+
+      DB::table('users')->insert([
+          'id' => '8',
+          'name' => 'Ulvi',
+          'email' => str_random(10).'@gmail.com',
+          'user_type' => 'user',
       ]);
     }
 }

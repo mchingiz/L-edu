@@ -22,5 +22,10 @@ class TagsTableSeeder extends Seeder
           'id' => '2',
           'name' => 'Business',
       ]);
+
+      DB::table('tags')->insert([
+          'id' => '3',
+          'name' => 'Time Management',
+      ]);
     }
 }

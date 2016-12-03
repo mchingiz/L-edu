@@ -312,7 +312,8 @@ i.material-icons {
       #post .col-md-8 .single-post .single-post-body {
         padding-bottom: 10px; }
         #post .col-md-8 .single-post .single-post-body p {
-          padding: 8px 0; }
+          padding: 8px 0;
+          font-family: 'Raleway'; }
       #post .col-md-8 .single-post .single-post-extra {
         font-size: 12px;
         padding-bottom: 15px; }

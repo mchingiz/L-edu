@@ -55,9 +55,9 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" class="active">Home</a></li>
+              <li><a href="#" class={{Request::is('home')  ? 'active' : ''}}>Home</a></li>
               <li class="dropdown">
-                <a href="https://getbootstrap.com/examples/navbar/">Vacancies <span class="caret"></span></a>
+                <a href="https://getbootstrap.com/examples/navbar/" class={{Request::is('jobs' , 'vacancies')  ? 'active' : ''}}>Vacancies <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="https://getbootstrap.com/examples/navbar/">Internship</a></li>
                   <li><a href="#">Jobs</a></li>

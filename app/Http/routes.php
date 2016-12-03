@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('index');});
 Route::get('/post', function () {
     return view('post');});
 Route::get('/category', function () {
+    return view('category');});
+Route::get('/jobs', function () {
     return view('category');});
 Route::get('/company', function () {
     return view('company');});

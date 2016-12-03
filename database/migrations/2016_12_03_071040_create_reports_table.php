@@ -13,14 +13,14 @@ class CreateReportsTable extends Migration
     public function up()
     {
         Schema::create('reports', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('report_type_id');
-            $table->text('text');
-            $table->string('email')->nullable();
-            $table->integer('user_id')->nullable();
-            $table->integer('post_id')->nullable();
-            $table->integer('company_id')->nullable();
-            $table->timestamps();
+          $table->increments('id');
+          $table->integer('report_type_id');
+          $table->text('text');
+          $table->string('email')->nullable();
+          $table->integer('user_id')->default(0);
+          $table->integer('post_id')->nullable();
+          $table->integer('company_id')->nullable();
+          $table->timestamps();
         });
     }
 

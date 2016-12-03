@@ -21,4 +21,4 @@ Route::get('/company', function () {
     return view('company');});
 
 
-Route::get('/test/{user}', 'Test@test');
+Route::get('/test/{test}', 'Test@test');

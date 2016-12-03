@@ -6,5 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    //
+    public function user(){
+      return $this->belongsTo('App\User');
+    }
+
+    public function posts(){
+      return $this->hasMany('App\Post');
+    }
+
+    public function followers(){
+      return $this->belongsToMany('App\User', 'followers', 'company_id', 'user_id');
+    }
+
+    public function reports(){
+      return $this->hasMany('App\Report');
+    }
+
 }

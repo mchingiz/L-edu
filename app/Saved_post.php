@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Report_Type extends Model
+class Saved_post extends Model
 {
     //
 }

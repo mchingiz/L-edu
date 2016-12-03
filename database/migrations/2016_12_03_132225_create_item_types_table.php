@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLogTypesTable extends Migration
+class CreateItemTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,9 @@ class CreateLogTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('log__types', function (Blueprint $table) {
+        Schema::create('item_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ class CreateLogTypesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('log__types');
+        Schema::drop('item_types');
     }
 }

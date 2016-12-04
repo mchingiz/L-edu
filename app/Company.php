@@ -22,4 +22,7 @@ class Company extends Model
       return $this->hasMany('App\Report');
     }
 
+    public function logs(){
+      return $this->morphMany('App\Log','loggable');
+    }
 }

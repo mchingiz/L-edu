@@ -17,8 +17,8 @@ class CreateLogsTable extends Migration
           $table->integer('user_id');
           $table->string('user_type');
           $table->integer('action_type_id');
-          $table->integer('item_type_id');
-          $table->integer('item_id');
+          $table->string('loggable_type');
+          $table->integer('loggable_id');
           $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@
         </h1>
         </div>
         <div class="col-md-6 col-sm-4 col-xs-12">
-        <a href="#" class="button-custom" >Follow</a>
+        <a href="#" ><button class="button-custom">Follow</button></a>
         @yield('href')
         </div>
       </div>

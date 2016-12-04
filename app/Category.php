@@ -12,4 +12,8 @@ class Category extends Model
   public function subcategories(){
     return $this->hasMany('App\Subcategory');
   }
+
+  public function logs(){
+    return $this->morphMany('App\Log','loggable');
+  }
 }

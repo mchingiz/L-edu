@@ -20,31 +20,31 @@ class FollowersTableSeeder extends Seeder
       ]);
 
       DB::table('followers')->insert([
-          'id' => '1',
+          'id' => '2',
           'user_id' => '1', // Chingiz
           'company_id' => '6', // BBf
       ]);
 
       DB::table('followers')->insert([
-          'id' => '1',
+          'id' => '3',
           'user_id' => '2', // Senem
           'company_id' => '5', // Code Academy
       ]);
 
       DB::table('followers')->insert([
-          'id' => '1',
+          'id' => '4',
           'user_id' => '8', // Ulvi
           'company_id' => '7', // Azercell
       ]);
 
       DB::table('followers')->insert([
-          'id' => '1',
+          'id' => '5',
           'user_id' => '8', // Ulvi
           'company_id' => '5', // Code Academy
       ]);
 
       DB::table('followers')->insert([
-          'id' => '1',
+          'id' => '6',
           'user_id' => '8', // Ulvi
           'company_id' => '6', // BBF
       ]);

@@ -21,14 +21,14 @@ class RemindersTableSeeder extends Seeder
       ]);
 
       DB::table('reminders')->insert([
-          'id' => '1',
+          'id' => '2',
           'user_id' => '1',
           'post_id' => '3',
           'reminder_time' => '2016-14-08 12:35:21',
       ]);
 
       DB::table('reminders')->insert([
-          'id' => '1',
+          'id' => '3',
           'user_id' => '8',
           'post_id' => '5',
           'reminder_time' => '2016-14-10 11:12:42',

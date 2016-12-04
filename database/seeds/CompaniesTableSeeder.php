@@ -32,7 +32,7 @@ class CompaniesTableSeeder extends Seeder
       ]);
 
       DB::table('companies')->insert([
-          'id' => '1',
+          'id' => '2',
           'user_id' => '6', // Code Academy
           'info' => 'BBf info falan',
           'logo' => 'link',

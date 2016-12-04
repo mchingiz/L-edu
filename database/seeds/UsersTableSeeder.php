@@ -53,6 +53,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'BBF',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'company',
+      ]);
 
       DB::table('users')->insert([
           'id' => '7',

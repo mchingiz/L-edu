@@ -16,10 +16,12 @@ use App\Report;
 use App\ReportType;
 use App\Log;
 use App\LogType;
+use App\Menu;
+use App\Search;
 
 class Test extends Controller
 {
-  public function test(User $user){
-    return $user->company;
+  public function test(Log $test){
+    return $test->loggable;
   }
 }

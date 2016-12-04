@@ -16,25 +16,28 @@ class CategoriesTableSeeder extends Seeder
       DB::table('categories')->insert([
           'id' => '1',
           'name' => 'Vacancies',
-          'link' => 'asdfg',
+          'menu_id' => '3',
       ]);
 
       DB::table('categories')->insert([
           'id' => '2',
           'name' => 'Events',
-          'link' => 'asdfg',
+          'menu_id' => '2',
+
       ]);
 
       DB::table('categories')->insert([
           'id' => '3',
           'name' => 'Sholarship',
-          'link' => 'asdfg',
+          'menu_id' => '4'
+
       ]);
 
       DB::table('categories')->insert([
           'id' => '4',
           'name' => 'Grants',
-          'link' => 'asdfg',
+          'menu_id' => '5'
+
       ]);
     }
 }

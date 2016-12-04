@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->integer('view')->default(0);
             $table->string('slug');
+            $table->string('lang');
             $table->integer('category_id');
             $table->integer('subcategory_id');
             $table->boolean('published')->default(0);

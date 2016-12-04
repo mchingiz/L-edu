@@ -21,6 +21,10 @@ Route::get('/jobs', function () {
     return view('category');});
 Route::get('/company', function () {
     return view('company');});
+Route::get('/company/posts', function () {
+    return view('companyposts');});
+Route::get('/company/info', function () {
+    return view('companyinfo');});
 
 
 Route::get('/test/{test}', 'Test@test');

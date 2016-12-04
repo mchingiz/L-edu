@@ -192,65 +192,68 @@ i.material-icons {
         #footer #copyright > div .col-xs-12 {
           text-align: center; } }
 
-#category, #company {
+#category, #company-profile, #company {
+  padding-left: 0px;
+  padding-right: 0px;
   font-family: Lato; }
-  #category .col-md-12, #company .col-md-12 {
+  #category .col-md-12, #company-profile .col-md-12, #company .col-md-12 {
     padding: 20px 15px; }
-    #category .col-md-12 h2, #company .col-md-12 h2 {
+    #category .col-md-12 h2, #company-profile .col-md-12 h2, #company .col-md-12 h2 {
       font-size: 30px; }
-  #category .col-md-4, #category .col-md-6, #company .col-md-4, #company .col-md-6 {
+  #category .col-md-4, #category .col-md-6, #company-profile .col-md-4, #company-profile .col-md-6, #company .col-md-4, #company .col-md-6 {
     padding: 15px; }
-    #category .col-md-4 .post-item, #category .col-md-6 .post-item, #company .col-md-4 .post-item, #company .col-md-6 .post-item {
+    #category .col-md-4 .post-item, #category .col-md-6 .post-item, #company-profile .col-md-4 .post-item, #company-profile .col-md-6 .post-item, #company .col-md-4 .post-item, #company .col-md-6 .post-item {
       position: relative;
       background-color: white;
       padding: 15px;
-      -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
-      box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
       box-shadow: 1px 1px 3px 0px #cfd7e0; }
-      #category .col-md-4 .post-item .img-box, #category .col-md-6 .post-item .img-box, #company .col-md-4 .post-item .img-box, #company .col-md-6 .post-item .img-box {
+      #category .col-md-4 .post-item .img-box, #category .col-md-6 .post-item .img-box, #company-profile .col-md-4 .post-item .img-box, #company-profile .col-md-6 .post-item .img-box, #company .col-md-4 .post-item .img-box, #company .col-md-6 .post-item .img-box {
         width: 100%;
         max-height: 165px;
         position: relative;
         overflow: hidden; }
-        #category .col-md-4 .post-item .img-box .post-item-actions, #category .col-md-6 .post-item .img-box .post-item-actions, #company .col-md-4 .post-item .img-box .post-item-actions, #company .col-md-6 .post-item .img-box .post-item-actions {
+        #category .col-md-4 .post-item .img-box .post-item-actions, #category .col-md-6 .post-item .img-box .post-item-actions, #company-profile .col-md-4 .post-item .img-box .post-item-actions, #company-profile .col-md-6 .post-item .img-box .post-item-actions, #company .col-md-4 .post-item .img-box .post-item-actions, #company .col-md-6 .post-item .img-box .post-item-actions {
           padding-top: 65px;
           width: 100%;
           height: 165px;
           position: relative;
           background-color: white; }
-          #category .col-md-4 .post-item .img-box .post-item-actions ul, #category .col-md-6 .post-item .img-box .post-item-actions ul, #company .col-md-4 .post-item .img-box .post-item-actions ul, #company .col-md-6 .post-item .img-box .post-item-actions ul {
+          #category .col-md-4 .post-item .img-box .post-item-actions ul, #category .col-md-6 .post-item .img-box .post-item-actions ul, #company-profile .col-md-4 .post-item .img-box .post-item-actions ul, #company-profile .col-md-6 .post-item .img-box .post-item-actions ul, #company .col-md-4 .post-item .img-box .post-item-actions ul, #company .col-md-6 .post-item .img-box .post-item-actions ul {
             text-align: center; }
-            #category .col-md-4 .post-item .img-box .post-item-actions ul li, #category .col-md-6 .post-item .img-box .post-item-actions ul li, #company .col-md-4 .post-item .img-box .post-item-actions ul li, #company .col-md-6 .post-item .img-box .post-item-actions ul li {
+            #category .col-md-4 .post-item .img-box .post-item-actions ul li, #category .col-md-6 .post-item .img-box .post-item-actions ul li, #company-profile .col-md-4 .post-item .img-box .post-item-actions ul li, #company-profile .col-md-6 .post-item .img-box .post-item-actions ul li, #company .col-md-4 .post-item .img-box .post-item-actions ul li, #company .col-md-6 .post-item .img-box .post-item-actions ul li {
               cursor: pointer; }
-        #category .col-md-4 .post-item .img-box img, #category .col-md-6 .post-item .img-box img, #company .col-md-4 .post-item .img-box img, #company .col-md-6 .post-item .img-box img {
+        #category .col-md-4 .post-item .img-box img, #category .col-md-6 .post-item .img-box img, #company-profile .col-md-4 .post-item .img-box img, #company-profile .col-md-6 .post-item .img-box img, #company .col-md-4 .post-item .img-box img, #company .col-md-6 .post-item .img-box img {
           top: 0px;
           position: relative;
           width: 100%;
           transition-duration: 0.4s; }
-      #category .col-md-4 .post-item .post-item-desc, #category .col-md-6 .post-item .post-item-desc, #company .col-md-4 .post-item .post-item-desc, #company .col-md-6 .post-item .post-item-desc {
+      #category .col-md-4 .post-item .post-item-desc, #category .col-md-6 .post-item .post-item-desc, #company-profile .col-md-4 .post-item .post-item-desc, #company-profile .col-md-6 .post-item .post-item-desc, #company .col-md-4 .post-item .post-item-desc, #company .col-md-6 .post-item .post-item-desc {
         padding: 15px 0 30px 0; }
-        #category .col-md-4 .post-item .post-item-desc a, #category .col-md-6 .post-item .post-item-desc a, #company .col-md-4 .post-item .post-item-desc a, #company .col-md-6 .post-item .post-item-desc a {
+        #category .col-md-4 .post-item .post-item-desc a, #category .col-md-6 .post-item .post-item-desc a, #company-profile .col-md-4 .post-item .post-item-desc a, #company-profile .col-md-6 .post-item .post-item-desc a, #company .col-md-4 .post-item .post-item-desc a, #company .col-md-6 .post-item .post-item-desc a {
+          color: #263241;
           text-decoration: none;
           font-size: 16px;
+          font-weight: bold;
           line-height: 22px; }
-      #category .col-md-4 .post-item .post-item-details, #category .col-md-6 .post-item .post-item-details, #company .col-md-4 .post-item .post-item-details, #company .col-md-6 .post-item .post-item-details {
+          #category .col-md-4 .post-item .post-item-desc a:hover, #category .col-md-6 .post-item .post-item-desc a:hover, #company-profile .col-md-4 .post-item .post-item-desc a:hover, #company-profile .col-md-6 .post-item .post-item-desc a:hover, #company .col-md-4 .post-item .post-item-desc a:hover, #company .col-md-6 .post-item .post-item-desc a:hover {
+            color: #425771; }
+      #category .col-md-4 .post-item .post-item-details, #category .col-md-6 .post-item .post-item-details, #company-profile .col-md-4 .post-item .post-item-details, #company-profile .col-md-6 .post-item .post-item-details, #company .col-md-4 .post-item .post-item-details, #company .col-md-6 .post-item .post-item-details {
         position: absolute;
         bottom: 10px;
         left: 15px; }
-        #category .col-md-4 .post-item .post-item-details li, #category .col-md-6 .post-item .post-item-details li, #company .col-md-4 .post-item .post-item-details li, #company .col-md-6 .post-item .post-item-details li {
+        #category .col-md-4 .post-item .post-item-details li, #category .col-md-6 .post-item .post-item-details li, #company-profile .col-md-4 .post-item .post-item-details li, #company-profile .col-md-6 .post-item .post-item-details li, #company .col-md-4 .post-item .post-item-details li, #company .col-md-6 .post-item .post-item-details li {
           opacity: .5;
           transition-duration: .4s; }
-          #category .col-md-4 .post-item .post-item-details li i, #category .col-md-6 .post-item .post-item-details li i, #company .col-md-4 .post-item .post-item-details li i, #company .col-md-6 .post-item .post-item-details li i {
+          #category .col-md-4 .post-item .post-item-details li i, #category .col-md-6 .post-item .post-item-details li i, #company-profile .col-md-4 .post-item .post-item-details li i, #company-profile .col-md-6 .post-item .post-item-details li i, #company .col-md-4 .post-item .post-item-details li i, #company .col-md-6 .post-item .post-item-details li i {
             font-size: 16px; }
-          #category .col-md-4 .post-item .post-item-details li span, #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li span, #category .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li span, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li span, #company .col-md-6 .post-item .post-item-details li a {
+          #category .col-md-4 .post-item .post-item-details li span, #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li span, #category .col-md-6 .post-item .post-item-details li a, #company-profile .col-md-4 .post-item .post-item-details li span, #company-profile .col-md-4 .post-item .post-item-details li a, #company-profile .col-md-6 .post-item .post-item-details li span, #company-profile .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li span, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li span, #company .col-md-6 .post-item .post-item-details li a {
             font-size: 12px; }
-          #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li a {
+          #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li a, #company-profile .col-md-4 .post-item .post-item-details li a, #company-profile .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li a {
             text-decoration: none;
             color: black; }
-            #category .col-md-4 .post-item .post-item-details li a i, #category .col-md-6 .post-item .post-item-details li a i, #company .col-md-4 .post-item .post-item-details li a i, #company .col-md-6 .post-item .post-item-details li a i {
+            #category .col-md-4 .post-item .post-item-details li a i, #category .col-md-6 .post-item .post-item-details li a i, #company-profile .col-md-4 .post-item .post-item-details li a i, #company-profile .col-md-6 .post-item .post-item-details li a i, #company .col-md-4 .post-item .post-item-details li a i, #company .col-md-6 .post-item .post-item-details li a i {
               margin-right: 4px; }
-        #category .col-md-4 .post-item .post-item-details li:hover, #category .col-md-6 .post-item .post-item-details li:hover, #company .col-md-4 .post-item .post-item-details li:hover, #company .col-md-6 .post-item .post-item-details li:hover {
+        #category .col-md-4 .post-item .post-item-details li:hover, #category .col-md-6 .post-item .post-item-details li:hover, #company-profile .col-md-4 .post-item .post-item-details li:hover, #company-profile .col-md-6 .post-item .post-item-details li:hover, #company .col-md-4 .post-item .post-item-details li:hover, #company .col-md-6 .post-item .post-item-details li:hover {
           opacity: 1; }
 
 #company {
@@ -626,6 +629,77 @@ i.material-icons {
   #company-posts .col-md-12 .h-post-desc i, #company-posts .col-md-12 .h-post-desc span {
     font-size: 13px;
     margin-top: 10px; }
+
+#company-profile #company #background {
+  background: url("../images/laptop.jpg");
+  height: 250px;
+  background-position: center; }
+  @media screen and (max-width: 576px) {
+    #company-profile #company #background {
+      height: 170px; } }
+#company-profile #company .info-bar {
+  padding-bottom: 10px;
+  background: white;
+  margin-top: 4px; }
+  #company-profile #company .info-bar .col-md-6 {
+    padding: 0px 15px; }
+    #company-profile #company .info-bar .col-md-6 img {
+      height: 120px;
+      margin-top: -64px !important;
+      border-radius: 50%;
+      border: 4px solid #EEF1F4;
+      margin-right: 10px; }
+    #company-profile #company .info-bar .col-md-6 h1 {
+      position: relative;
+      display: inline-block;
+      font-size: 1.7em;
+      font-weight: lighter;
+      margin-bottom: 10px; }
+      #company-profile #company .info-bar .col-md-6 h1 span {
+        font-size: 0.55em;
+        color: #5f7ca1; }
+    #company-profile #company .info-bar .col-md-6 .button-custom {
+      border: none;
+      padding: 6px 10px;
+      width: 75px !important;
+      text-align: center;
+      font-size: 1em;
+      margin-top: 15px;
+      margin-left: 15px;
+      float: right; }
+    @media screen and (max-width: 576px) {
+      #company-profile #company .info-bar .col-md-6 {
+        text-align: center; }
+        #company-profile #company .info-bar .col-md-6 h1 {
+          margin-top: 20px;
+          display: block; }
+        #company-profile #company .info-bar .col-md-6 .button-custom {
+          float: none; } }
+#company-profile #info > div {
+  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  background: white; }
+  #company-profile #info > div div {
+    padding: 15px;
+    text-align: justify; }
+    #company-profile #info > div div i {
+      color: #91a4b8;
+      margin: 5px 5px 5px 0;
+      border-radius: 3px;
+      width: 20px;
+      font-size: 0.9em; }
+    #company-profile #info > div div span {
+      margin: 5px 5px 5px 0;
+      display: inline-block; }
+    #company-profile #info > div div h2 {
+      font-size: 0.8em;
+      padding-bottom: 10px;
+      margin: 35px 0 15px;
+      border-bottom: 2px solid #EEF1F4;
+      color: #91a4b8;
+      font-weight: bold;
+      text-transform: uppercase; }
+      #company-profile #info > div div h2:first-child {
+        margin-top: 0; }
 
 .testp {
   background-color: #4CAF50; }

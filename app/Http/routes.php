@@ -25,6 +25,8 @@ Route::get('/company/posts', function () {
     return view('companyposts');});
 Route::get('/company/info', function () {
     return view('companyinfo');});
+Route::get('/add', 'PostController@addPost');
+Route::post('/add', 'PostController@storePost');
 
 
 Route::get('/test/{test}', 'Test@test');

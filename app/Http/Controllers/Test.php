@@ -21,7 +21,5 @@ use App\Search;
 
 class Test extends Controller
 {
-  public function test(Log $test){
-    return $test->loggable;
-  }
+  
 }

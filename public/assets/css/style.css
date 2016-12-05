@@ -15,7 +15,7 @@
 body {
   background-color: #EEF1F4; }
 
-a, p, h1, h2, h3, h4, h5, h6, span {
+a, p, h1, h2, h3, h4, h5, h6, span, label {
   font-family: 'Lato', sans-serif; }
 
 h3 {
@@ -63,24 +63,13 @@ input[type="text"], input[type="password"], input[type="submit"], input[type="em
 i.material-icons {
   vertical-align: bottom; }
 
-#popUp {
-  z-index: 999;
-  display: none;
-  padding: 50px;
-  width: 30%;
-  height: 30%;
-  top: 35%;
-  left: 35%;
-  position: fixed;
-  background-color: lightgray; }
-
 .border {
   height: 1px;
   background: #EEF1F4;
   margin: 15px 0; }
 
-#content {
-  margin-top: 50px; }
+#content, #category {
+  margin-top: 85px; }
 
 .custom-badge {
   display: inline-block;
@@ -256,22 +245,6 @@ i.material-icons {
         #category .col-md-4 .post-item .post-item-details li:hover, #category .col-md-6 .post-item .post-item-details li:hover, #company-profile .col-md-4 .post-item .post-item-details li:hover, #company-profile .col-md-6 .post-item .post-item-details li:hover, #company .col-md-4 .post-item .post-item-details li:hover, #company .col-md-6 .post-item .post-item-details li:hover {
           opacity: 1; }
 
-#company {
-  margin-top: 70px; }
-  #company #company-info .img-box img {
-    max-width: 100%;
-    max-height: 200px; }
-  #company #company-info h4 {
-    letter-spacing: 1px;
-    font-size: 1.4em; }
-  #company #company-info table tr td {
-    text-align: left;
-    padding-top: 10px; }
-  #company #company-info table tr .detail {
-    padding-left: 10px; }
-    #company #company-info table tr .detail a, #company #company-info table tr .detail span {
-      font-size: 16px; }
-
 #post {
   margin-top: 80px;
   margin-bottom: 30px; }
@@ -415,6 +388,8 @@ i.material-icons {
   margin-top: 10px;
   display: inline-block;
   font-size: 0.9em; }
+#login label {
+  font-size: 0.9em; }
 
 .advertisement-md-4 {
   background: white;
@@ -484,10 +459,10 @@ i.material-icons {
 #top-bar {
   background-color: #222222;
   margin: 0;
-  min-height: 40px; }
+  min-height: 35px; }
   #top-bar a {
-    padding: 10px 15px;
-    font-size: 0.9em;
+    padding: 5px 15px;
+    font-size: 0.8em;
     font-weight: normal;
     color: #a2a2a2; }
   #top-bar li a:hover {
@@ -659,20 +634,31 @@ i.material-icons {
         font-size: 0.55em;
         color: #5f7ca1; }
     #company-profile #company .info-bar .col-md-6 .button-custom {
-      border: none;
+      border: 1px solid #03A9F4;
       padding: 6px 10px;
-      width: 75px !important;
       text-align: center;
       font-size: 1em;
       margin-top: 15px;
       margin-left: 15px;
       float: right; }
+      #company-profile #company .info-bar .col-md-6 .button-custom i {
+        padding: 0 3px; }
+    #company-profile #company .info-bar .col-md-6 .button-follow {
+      background: white;
+      color: #03A9F4; }
+    #company-profile #company .info-bar .col-md-6 .button-unfollow {
+      border-color: #d9534f;
+      background-color: #d9534f; }
+      #company-profile #company .info-bar .col-md-6 .button-unfollow:hover {
+        background-color: #c9302c; }
     @media screen and (max-width: 576px) {
       #company-profile #company .info-bar .col-md-6 {
         text-align: center; }
         #company-profile #company .info-bar .col-md-6 h1 {
           margin-top: 20px;
-          display: block; } }
+          display: block; }
+        #company-profile #company .info-bar .col-md-6 a {
+          float: none !important; } }
 #company-profile #info > div {
   box-shadow: 1px 1px 3px 0px #cfd7e0;
   background: white; }
@@ -698,6 +684,52 @@ i.material-icons {
       text-transform: uppercase; }
       #company-profile #info > div div h2:first-child {
         margin-top: 0; }
+
+#register .user-type {
+  padding: 20px 0;
+  background: white;
+  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  transition: box-shadow 1s ease; }
+  #register .user-type h2 {
+    font-size: 1.5em;
+    color: #263241;
+    border-bottom: 2px solid #EEF1F4;
+    padding: 15px;
+    letter-spacing: 2px;
+    margin: 0 20px 20px;
+    transition: border 1s ease; }
+  #register .user-type ul {
+    margin: 0 20px; }
+    #register .user-type ul li {
+      font-size: 1.1em;
+      border-bottom: 1px solid #EEF1F4;
+      color: #557091;
+      padding: 15px; }
+      #register .user-type ul li:last-child {
+        border: none; }
+  #register .user-type a {
+    display: block;
+    margin: 20px;
+    border: 1px solid #03A9F4;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: #03A9F4;
+    transition: all 1s ease; }
+  #register .user-type:hover {
+    box-shadow: 4px 6px 41px 0px #91a4b8; }
+    #register .user-type:hover h2 {
+      border-color: #03A9F4; }
+    #register .user-type:hover a {
+      color: white;
+      background-color: #03A9F4; }
+#register .question {
+  background: white;
+  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  padding: 20px; }
+  #register .question h3 {
+    color: #263241;
+    letter-spacing: 1px;
+    font-size: 1.2em; }
 
 .testp {
   background-color: #4CAF50; }

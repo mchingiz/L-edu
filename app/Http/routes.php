@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/home', function () {
+Route::get('/index', function () {
     return view('index');});
 Route::get('/post', function () {
     return view('post');});
@@ -25,6 +25,15 @@ Route::get('/company/posts', function () {
     return view('companyposts');});
 Route::get('/company/info', function () {
     return view('companyinfo');});
+Route::get('/company/info', function () {
+    return view('companyinfo');});
 
 
 Route::get('/test/{test}', 'Test@test');
+//Register
+Route::auth();
+Route::get('/register/company', 'Auth\AuthController@registerCompany');
+Route::get('/register/user', 'Auth\AuthController@registerUser');
+
+
+Route::get('/home', 'HomeController@index');

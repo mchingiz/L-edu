@@ -20,29 +20,6 @@
     </head>
     <body>
     <div class="main-wrapper">
-      @if(!(Request::url() === 'index'&& Auth::guest() ) )
-      <nav id="top-bar" class="navbar navbar-fixed-top">
-        <div class="container">
-          <div>
-            <ul class="nav navbar-nav navbar-left">
-              @if (!Auth::guest())
-              <li style="margin-left:-15px;"><a href="#" >Name</a></li>
-              <li><a href="#">Add New Post</a></li>
-              <li><a href="#">View Your Posts</a></li>
-              @endif
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              @if (Auth::guest())
-              <li><a href="{{ url('/login') }}">Login</a></li>
-              <li><a href="{{ url('/register') }}">Sign Up</a></li>
-              @else
-              <li><a href="{{ url('/logout') }}">Log out</a></li>
-              @endif
-            </ul>
-          </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-      </nav>
-      @endif
       <div id="top-collapse" class="collapse-only container-fluid">
         <div class="container">
           <div class="row">
@@ -56,7 +33,7 @@
         </div>
         </div>
       </div>
-      <nav id="navbar" class="navbar navbar-fixed-top" style="{{(Request::is('index')&& Auth::guest() )  ? '' : 'top:35px'}}">
+      <nav id="navbar" class="navbar navbar-fixed-top" style="">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand full-nav-only" href="#" style="color:black">Educive.com</a>
@@ -77,40 +54,9 @@
           </div>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" class={{Request::is('home')  ? 'active' : ''}}>Home</a></li>
-              <li class="dropdown">
-                <a href="https://getbootstrap.com/examples/navbar/" class={{Request::is('jobs' , 'vacancies')  ? 'active' : ''}}>Vacancies <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="https://getbootstrap.com/examples/navbar/">Internship</a></li>
-                  <li><a href="#">Jobs</a></li>
-                  <li><a href="#">Volunteering</a></li>
-                  <li class="collapse-only"><a href="#">View All</a></li>
-
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#">Events <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Conference</a></li>
-                  <li><a href="#">Trainings</a></li>
-                  <li><a href="#">Seminar</a></li>
-                  <li class="collapse-only"><a href="#">View All</a></li>
-
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#">Scholarship <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Bachelor</a></li>
-                  <li><a href="#">PhD</a></li>
-                  <li><a href="#">Fellowship</a></li>
-                  <li><a href="#">Master</a></li>
-                  <li class="collapse-only"><a href="#">View All</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Grants</a></li>
-              <li><a href="https://getbootstrap.com/examples/navbar/">Contact Us</a></li>
+            <ul  class="nav navbar-nav navbar-right">
+              <li><a href="https://getbootstrap.com/examples/navbar/">Login</a></li>
+              <li><a href="https://getbootstrap.com/examples/navbar/">Sign Up</a></li>
             </ul>
 
           </div><!-- /.navbar-collapse -->

@@ -6,7 +6,7 @@
 
 @section('content')
 
-<section id="company-profile" class="container-fluid" style="padding-top:50px">
+<section id="company-profile" class="container-fluid" style="padding-top:85px">
 
   <section id="company">
     <div id="background"></div>
@@ -16,11 +16,12 @@
           <img src="../assets/images/azercell.jpg">
           <h1>Young Business Factory<br>
           <span> 92 followers | 22 posts</span>
-        </h1>
+          </h1>
         </div>
         <div class="col-md-6 col-sm-4 col-xs-12">
-        <a href="#" ><button class="button-custom">Follow</button></a>
-        @yield('href')
+          <a href="#" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+          <!-- <a href="#" class="button-custom button-unfollow" >Unfollow</a> -->
+          @yield('href')
         </div>
       </div>
     </div>

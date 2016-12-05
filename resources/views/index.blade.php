@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div id="content" class="container">
+<div id="content" class="container" style="{{ Auth::guest()  ? 'margin-top:50px' : ''}}">
   <div class="row">
     <section id="left-side" class="col-md-8 col-xs-12 col-sm-12">
       <div class="vertical-div"></div>
@@ -505,24 +505,41 @@
     <section id="right-side" class="col-md-4 col-sm-12 col-xs-12 ">
 
       <div class="vertical-div hidden-xs hidden-sm row"></div>
-
+      @if (Auth::guest())
       <section id="login" class="right-bar row hidden-xs hidden-sm">
         <div class="heading col-md-12">
             <h3>Login</h3>
         </div>
-        <div class="body col-md-12 text-center">
-          <form>
-            <input class="col-md-12" type="email" placeholder="Email">
-            <input class="col-md-12" type="password" placeholder="Password">
+        <div class="body col-md-12">
+          <form role="form" method="POST" action="{{ url('/login') }}">
+            {{ csrf_field() }}
+            <input id="email" type="email" class="col-md-12" name="email" value="{{ old('email') }}">
+            @if ($errors->has('email'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
+            <input id="password" type="password" class="col-md-12" name="password">
+
+            @if ($errors->has('password'))
+                <span class="help-block">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
+            @endif
+            <label>
+                <input type="checkbox" name="remember"> Remember Me
+            </label>
+            <a href="{{ url('/password/reset') }}" class="pull-right"> Forgot Password?  </a>
             <input class="col-md-12 button-custom" type="submit" value="Login">
           </form>
+
           <div class="border"></div>
-          <span >Don't  have an account? </span> <a href="#">Sign Up!</a>
+          <span >Don't  have an account? </span> <a href="{{ url('/register') }}">Sign Up!</a>
         </div>
       </section>
 
       <div class="vertical-div hidden-xs hidden-sm row"></div>
-
+      @endif
       <section class="right-bar row">
         <div class="advertisement-md-4 col-md-12 hidden-sm hidden-xs">
           <img src="/assets/images/advert2.jpg">

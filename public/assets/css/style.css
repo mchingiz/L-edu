@@ -699,6 +699,16 @@ i.material-icons {
       #company-profile #info > div div h2:first-child {
         margin-top: 0; }
 
+#addPost {
+  padding-top: 20px; }
+  #addPost .row .previousImage {
+    overflow: hidden;
+    width: 512px;
+    background-color: red;
+    height: 250px; }
+    #addPost .row .previousImage img {
+      width: 100%; }
+
 .testp {
   background-color: #4CAF50; }
 

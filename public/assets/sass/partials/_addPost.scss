@@ -1,0 +1,14 @@
+#addPost{
+  padding-top:20px;
+  .row{
+    .previousImage{
+      overflow:hidden;
+      width:512px;
+      background-color: red;
+      height:250px;
+      img{
+        width:100%;
+      }
+    }
+  }
+}

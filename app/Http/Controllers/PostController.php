@@ -34,7 +34,7 @@ class PostController extends Controller
     $this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:50',
-			'profile' => 'required|mimes:jpeg,bmp,png|max:2000',
+			'photo' => 'required|mimes:jpeg,bmp,png|max:2000',
 			'cover' => 'required|mimes:jpeg,bmp,png|max:2000',
 			'category' => 'required',
 			'tags' => 'required|min:1|max:5'

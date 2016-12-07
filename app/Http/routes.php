@@ -30,10 +30,11 @@ Route::get('/company/info', function () {
 
 
 Route::get('/test/{test}', 'Test@test');
+Route::get('/test', 'Test@url');
 //Register
 Route::auth();
-Route::get('/register/company', 'Auth\AuthController@registerCompany');
-Route::get('/register/user', 'Auth\AuthController@registerUser');
+Route::get('/register/company', 'Auth\AuthController@registerform');
+Route::get('/register/user', 'Auth\AuthController@registerform');
 
 
 Route::get('/home', 'HomeController@index');

@@ -15,7 +15,7 @@
 body {
   background-color: #EEF1F4; }
 
-a, p, h1, h2, h3, h4, h5, h6, span, label {
+a, p, h1, h2, h3, h4, h5, h6, span, label, button {
   font-family: 'Lato', sans-serif; }
 
 h3 {
@@ -730,6 +730,61 @@ i.material-icons {
     color: #263241;
     letter-spacing: 1px;
     font-size: 1.2em; }
+
+#registerForm #form, #loginForm #form {
+  background: white;
+  box-shadow: 1px 1px 3px 0px #cfd7e0; }
+  #registerForm #form .panel-heading, #loginForm #form .panel-heading {
+    background: #FCFCFB;
+    padding: 20px 0; }
+    #registerForm #form .panel-heading span, #loginForm #form .panel-heading span {
+      color: dimgray;
+      font-size: 1em; }
+    #registerForm #form .panel-heading a, #loginForm #form .panel-heading a {
+      font-weight: bold;
+      color: #0286c2; }
+  #registerForm #form a, #registerForm #form label, #loginForm #form a, #loginForm #form label {
+    padding: 0;
+    font-size: 0.9em; }
+  #registerForm #form h1, #loginForm #form h1 {
+    padding: 30px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: lighter;
+    color: #394b61; }
+  #registerForm #form input, #loginForm #form input {
+    border-radius: 3px;
+    font-size: 1em;
+    height: auto;
+    padding: 10px;
+    box-shadow: none !important; }
+  #registerForm #form button, #loginForm #form button {
+    background-color: #34BF49;
+    color: white;
+    font-style: bold;
+    font-size: 1.1em;
+    padding: 6px 12px;
+    margin-top: 15px; }
+    #registerForm #form button:hover, #loginForm #form button:hover {
+      background: #41cb56; }
+  #registerForm #form #or, #loginForm #form #or {
+    color: gray;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+    margin: 25px 0; }
+  #registerForm #form #facebook, #loginForm #form #facebook {
+    background: #3b5998 !important; }
+    #registerForm #form #facebook:hover, #loginForm #form #facebook:hover {
+      background: #4264aa !important; }
+  #registerForm #form #google, #loginForm #form #google {
+    background: #d64a2d !important; }
+    #registerForm #form #google:hover, #loginForm #form #google:hover {
+      background: #da5c42 !important; }
+  #registerForm #form #facebook, #registerForm #form #google, #loginForm #form #facebook, #loginForm #form #google {
+    margin: 0 0 15px; }
+    #registerForm #form #facebook i, #registerForm #form #google i, #loginForm #form #facebook i, #loginForm #form #google i {
+      margin-right: 10px; }
 
 .testp {
   background-color: #4CAF50; }

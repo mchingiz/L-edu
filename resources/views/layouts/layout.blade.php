@@ -25,10 +25,14 @@
         <div class="container">
           <div>
             <ul class="nav navbar-nav navbar-left">
-              @if (!Auth::guest())
+              @if ( !Auth::guest() && Auth::user()->user_type=="company")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
               <li><a href="#">Add New Post</a></li>
               <li><a href="#">View Your Posts</a></li>
+              @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
+              <li style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li><a href="#">Saved Posts</a></li>
+              <li><a href="#">Reminders</a></li>
               @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">

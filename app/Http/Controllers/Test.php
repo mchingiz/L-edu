@@ -18,10 +18,13 @@ use App\Log;
 use App\LogType;
 use App\Menu;
 use App\Search;
+use URL;
 
 class Test extends Controller
 {
   public function test(Log $test){
     return $test->loggable;
   }
+
+
 }

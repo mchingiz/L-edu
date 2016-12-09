@@ -27,8 +27,7 @@
             <ul class="nav navbar-nav navbar-left">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
-              <li><a href="#">Add New Post</a></li>
-              <li><a href="#">View Your Posts</a></li>
+              <li><a href="#">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
               <li><a href="#">Saved Posts</a></li>
@@ -56,7 +55,11 @@
             </button>
           </div>
           <div class="col-sm-4 col-xs-4 text-center"><a  href="#" >Educive.com</a></div>
-          <div class="col-sm-4 col-xs-4 text-right"><a href="#">Login</a></div>
+          @if(Auth::guest())
+          <div class="col-sm-4 col-xs-4 text-right"><a href="#">Log in</a></div>
+          @else
+          <div class="col-sm-4 col-xs-4 text-right"><a href="{{ url('/logout') }}">Log out</a></div>
+          @endif
         </div>
         </div>
       </div>
@@ -82,6 +85,20 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div>
             <ul class="nav navbar-nav navbar-right">
+              @if ( !Auth::guest() && Auth::user()->user_type=="company")
+              <li class="collapse-only" ><a href="#" >Name</a></li>
+              <li class="collapse-only" ><a href="#">Add Post</a></li>
+              @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
+              <li class="collapse-only"  style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="collapse-only" ><a href="#">Saved Posts</a></li>
+              <li class="collapse-only" ><a href="#">Reminders</a></li>
+              @endif
+
+              @if (Auth::guest())
+              <li class="collapse-only" ><a href="{{ url('/login') }}">Login</a></li>
+              <li class="collapse-only" ><a href="{{ url('/register') }}">Sign Up</a></li>
+              @endif
+              <li class="divider"></li>
               <li><a href="#" class={{Request::is('home')  ? 'active' : ''}}>Home</a></li>
               <li class="dropdown">
                 <a href="https://getbootstrap.com/examples/navbar/" class={{Request::is('jobs' , 'vacancies')  ? 'active' : ''}}>Vacancies <span class="caret"></span></a>
@@ -117,7 +134,6 @@
               <li><a href="https://getbootstrap.com/examples/navbar/">Contact Us</a></li>
 
             </ul>
-
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>

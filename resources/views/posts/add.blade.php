@@ -50,9 +50,9 @@
           </div>
 
           <div class="form-group row">
-            <label for="category" class="col-md-2">Category<span>*</span></label>
+            <label for="categoryInput" class="col-md-2">Category<span>*</span></label>
             <div class="col-md-10">
-              <select class="form-control" name="category" id="category" required>
+              <select class="form-control" name="category" id="categoryInput" required>
                 @foreach ($categories as $category)
                   <optgroup label="{{ $category->name }}">
                     @foreach ( $category->subcategories as $subcategory )
@@ -108,7 +108,7 @@
       <div class="col-md-6">
         <div class="row">
           <div class="previousImage">
-            
+
           </div>
         </div>
         <div class="row">

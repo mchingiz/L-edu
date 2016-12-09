@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = [
-        'user_id'
-    ];
+  protected $fillable = [
+      'info', 'logo', 'email','facebook','twitter','linkedin','instagram','phone1','phone2','fax','address','website'
+  ];
     public function user(){
       return $this->belongsTo('App\User');
     }

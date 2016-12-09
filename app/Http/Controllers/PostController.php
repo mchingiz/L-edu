@@ -18,9 +18,12 @@ use App\Post;
 use App\ActionType;
 use App\Log;
 
+use App\Http\Traits\LoggingTrait;
 
 class PostController extends Controller
 {
+  use LoggingTrait;
+
   private $user;
 
   public function __construct(){
@@ -34,14 +37,13 @@ class PostController extends Controller
   }
 
   public function storePost(Request $request){
-    $this->validate($request,[
-			'title' => 'required|min:10|max:150',
-			'body' => 'required|min:50',
-			'photo' => 'required|mimes:jpeg,bmp,png|max:2000',
-			'cover' => 'required|mimes:jpeg,bmp,png|max:2000',
-			'category' => 'required',
-			'tags' => 'required|min:1|max:5'
-		]);
+    // $this->validate($request,[
+		// 	'title' => 'required|min:10|max:150',
+		// 	'body' => 'required|min:50',
+		// 	'photo' => 'required|mimes:jpeg,bmp,png|max:2000',
+		// 	'category' => 'required',
+		// 	'tags' => 'required|min:1|max:5'
+		// ]);
 
     $title = $request->input('title');
     $body = $request->input('body');
@@ -80,16 +82,6 @@ class PostController extends Controller
     }
 
     //Logging
-    $this->logger(3,$currentPostID);
-  }
-
-  public function logger($actionTypeID,$loggableID){
-    Log::create([
-      'user_id' => $this->user->id,
-      'user_type' => $this->user->user_type,
-      'action_type_id' => $actionTypeID,
-      'loggable_id' => $loggableID,
-      'loggable_type' => 'post',
-    ]);
+    $this->log(3,$currentPostID,'posts');
   }
 }

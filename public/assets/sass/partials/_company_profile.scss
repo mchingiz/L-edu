@@ -37,14 +37,27 @@
 
 
         .button-custom{
-          border:none;
+          border:1px solid $primaryColor;
           padding:6px 10px;
-          width:75px !important;
           text-align: center;
           font-size:1em;
           margin-top:15px;
           margin-left:15px;
           float:right;
+          i{
+            padding:0 3px;
+          }
+        }
+        .button-follow{
+          background: white;
+          color:$primaryColor;
+        }
+        .button-unfollow{
+          border-color:#d9534f;
+          background-color: #d9534f;
+          &:hover{
+          background-color:  #c9302c
+          }
         }
 
         @media screen and (max-width: 576px) {
@@ -54,7 +67,7 @@
             display: block;
           }
           a{
-            //float:none !important;
+            float:none !important;
           }
         }
       }

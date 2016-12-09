@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Company;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use URL;
 
 class AuthController extends Controller
 {
@@ -28,8 +30,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
-
+    protected $redirectTo = '/index';
+    protected $redirectAfterLogout = '/index';
     /**
      * Create a new authentication controller instance.
      *
@@ -63,10 +65,29 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+      if( URL::previous() == "http://localhost:8000/register/company"){
+        $type="company";
+      }
+      if(URL::previous() =="http://localhost:8000/register/user"){
+        $type="user";
+      }
+
+        $user=User::create([
+              'name' => $data['name'],
+              'email' => $data['email'],
+              'user_type'=> $type,
+              'password' => bcrypt($data['password']),
+            ]);
+        if($type=="company"){
+          Company::create([
+            'user_id' => $user->id,
+          ]);
+        }
+
+        return $user;
+    }
+
+    public function registerForm(){
+      return view('auth/registerform');
     }
 }

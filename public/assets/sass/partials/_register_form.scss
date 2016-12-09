@@ -1,0 +1,80 @@
+#registerForm,#loginForm{
+  #form{
+    background: white;
+    box-shadow: 1px 1px 3px 0px darken($background-color,10%);
+
+    .panel-heading{
+      background: #FCFCFB;
+      padding:20px 0;
+      span{
+        color:darken(darkgray,25%);
+        font-size: 1em;
+      }
+      a{
+        font-weight: bold;
+        color:darken($primaryColor, 10%);
+      }
+    }
+    a,label{
+      padding:0;
+      font-size: 0.9em;
+    }
+
+    h1{
+      padding:30px;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight:lighter;
+      color:lighten($heading-color, 10%);
+    }
+    input{
+      border-radius:3px;
+      font-size: 1em;
+      height:auto;
+      padding:10px;
+      box-shadow: none !important;
+    }
+    button{
+      background-color: #34BF49;
+      color:white;
+      font-style: bold;
+      font-size: 1.1em;
+      padding:6px 12px;
+      margin-top:15px;
+      &:hover{
+          background: #41cb56;
+      }
+    }
+
+    #or{
+      color:gray;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+      margin:25px 0;
+    }
+
+
+    #facebook{
+      background: #3b5998 !important;
+      &:hover{
+        background: #4264aa !important;
+      }
+    }
+    #google{
+      background: #d64a2d !important;
+      &:hover{
+        background: #da5c42 !important;
+      }
+    }
+    #facebook, #google{
+      margin: 0 0 15px;
+      i{
+        margin-right:10px;
+      }
+    }
+  }
+
+
+
+}

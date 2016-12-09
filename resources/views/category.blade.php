@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<section id="category" class="container" style="padding-top:50px">
+<section id="category" class="container">
 
   <div class="col-md-12">
     <h2>

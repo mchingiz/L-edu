@@ -1,7 +1,7 @@
 body{
   background-color: $background-color;
 }
-a,p,h1,h2,h3,h4,h5,h6,span{
+a,p,h1,h2,h3,h4,h5,h6,span,label,button{
   font-family: 'Lato', sans-serif;
 }
 h3{
@@ -59,24 +59,13 @@ i.material-icons{
   vertical-align:bottom;
 }
 
-#popUp{
-  z-index:999;
-  display:none;
-  padding:50px;
-  width:30%;
-  height:30%;
-  top:35%;
-  left:35%;
-  position:fixed;
-  background-color: lightgray;
-}
 .border{
   height:1px;
   background: $background-color;
   margin:$padding-vertical-in 0;
 }
-#content{
-  margin-top:50px;
+#content,#category{
+  margin-top:85px;
 }
 
 .custom-badge{

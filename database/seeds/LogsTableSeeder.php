@@ -18,7 +18,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '1', // Chingiz
           'user_type' => 'user',
           'action_type_id' => '1', //view
-          'loggable_type' => 'App\Post', //post
+          'loggable_type' => 'posts', //post
           'loggable_id' => '4',
       ]);
 
@@ -27,7 +27,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '2', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Company', // company
+          'loggable_type' => 'companies', // company
           'loggable_id' => '2', // BBF
       ]);
 
@@ -36,16 +36,16 @@ class LogsTableSeeder extends Seeder
           'user_id' => '1', // Chingiz
           'user_type' => 'user',
           'action_type_id' => '13', // report
-          'loggable_type' => 'App\Company', // company
+          'loggable_type' => 'companies', // company
           'loggable_id' => '1', // Code Academy
       ]);
 
       DB::table('logs')->insert([
           'id' => '4',
           'user_id' => '5', // Code Academy
-          'user_type' => 'App\Company',
+          'user_type' => 'companies',
           'action_type_id' => '3', // report
-          'loggable_type' => 'App\Post', // post
+          'loggable_type' => 'posts', // post
           'loggable_id' => '5',
       ]);
 
@@ -54,7 +54,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '3', // Mehdi
           'user_type' => 'moderator',
           'action_type_id' => '5', // approve
-          'loggable_type' => 'App\Post', // post
+          'loggable_type' => 'posts', // post
           'loggable_id' => '3',
       ]);
 
@@ -63,7 +63,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '3', // Mehdi
           'user_type' => 'moderator',
           'action_type_id' => '6', // refuse
-          'loggable_type' => 'App\Post', // post
+          'loggable_type' => 'posts', // post
           'loggable_id' => '3',
       ]);
 
@@ -72,7 +72,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '8', // Ulvi
           'user_type' => 'user',
           'action_type_id' => '7', // save
-          'loggable_type' => 'App\Post', // post
+          'loggable_type' => 'posts', // post
           'loggable_id' => '3',
       ]);
 
@@ -81,7 +81,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '1', // Chingiz
           'user_type' => 'user',
           'action_type_id' => '7', // save
-          'loggable_type' => 'App\Post', // post
+          'loggable_type' => 'posts', // post
           'loggable_id' => '4',
       ]);
 
@@ -90,7 +90,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '2', // Senem
           'user_type' => 'user',
           'action_type_id' => '10', // follow
-          'loggable_type' => 'App\Company', // company
+          'loggable_type' => 'companies', // company
           'loggable_id' => '2', // BBF
       ]);
 
@@ -99,7 +99,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '8', // Ulvi
           'user_type' => 'user',
           'action_type_id' => '10', // follow
-          'loggable_type' => 'App\Company', // company
+          'loggable_type' => 'companies', // company
           'loggable_id' => '2', // BBF
       ]);
 
@@ -108,7 +108,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '2', // Senem
           'user_type' => 'user',
           'action_type_id' => '11', // unfollow
-          'loggable_type' => 'App\Company', // company
+          'loggable_type' => 'companies', // company
           'loggable_id' => '2', // BBF
       ]);
 
@@ -117,7 +117,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '2', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Category', // category
+          'loggable_type' => 'categories', // category
           'loggable_id' => '3',
       ]);
       DB::table('logs')->insert([
@@ -125,7 +125,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '2', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Subcategory', // category
+          'loggable_type' => 'categories', // category
           'loggable_id' => '3',
       ]);
       DB::table('logs')->insert([
@@ -133,7 +133,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '2', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Search', // category
+          'loggable_type' => 'searches', // category
           'loggable_id' => '1',
       ]);
       DB::table('logs')->insert([
@@ -141,7 +141,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '3', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Search', // category
+          'loggable_type' => 'searches', // category
           'loggable_id' => '1',
       ]);
       DB::table('logs')->insert([
@@ -149,7 +149,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '3', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Tag', // category
+          'loggable_type' => 'tags', // category
           'loggable_id' => '2',
       ]);
       DB::table('logs')->insert([
@@ -157,7 +157,7 @@ class LogsTableSeeder extends Seeder
           'user_id' => '3', // Senem
           'user_type' => 'user',
           'action_type_id' => '1', // view
-          'loggable_type' => 'App\Tag', // category
+          'loggable_type' => 'tags', // category
           'loggable_id' => '2',
       ]);
     }

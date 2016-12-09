@@ -1,11 +1,10 @@
 #top-bar{
   background-color: $footer-color;
   margin:0;
-//  height:35px !important;
-  min-height:40px;
+  min-height:35px;
   a{
-    padding:10px 15px;
-    font-size:0.9em;
+    padding:5px 15px;
+    font-size:0.8em;
     font-weight: normal;
     color:lighten($footer-color, 50%);
   }

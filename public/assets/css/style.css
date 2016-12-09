@@ -534,8 +534,9 @@ i.material-icons {
         #navbar-collapse .container ul li a:focus {
           background: none; }
       #navbar-collapse .container ul .divider {
-        background: #555555;
-        height: 1px; }
+        background: #bbbbbb;
+        height: 1px;
+        margin: 5px 15px; }
   #navbar-collapse .full-nav-only {
     display: none; }
   #navbar-collapse #collapse-search {

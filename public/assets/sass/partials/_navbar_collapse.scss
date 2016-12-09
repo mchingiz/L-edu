@@ -29,7 +29,6 @@
 
 
 #navbar-collapse{
-  //top:35px !important;
   height:100vh;
   left:-200px;
   top:0px;
@@ -77,8 +76,9 @@
         }
       }
       .divider{
-        background: lighten($footer-color, 20%);
+        background: lighten($footer-color, 60%);
         height:1px;
+        margin:5px 15px;
       }
     }
 

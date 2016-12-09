@@ -685,7 +685,6 @@ i.material-icons {
       #company-profile #info > div div h2:first-child {
         margin-top: 0; }
 
-<<<<<<< HEAD
 #addPost {
   padding-top: 20px; }
   #addPost .row .previousImage {
@@ -695,7 +694,7 @@ i.material-icons {
     height: 250px; }
     #addPost .row .previousImage img {
       width: 100%; }
-=======
+
 #register .user-type {
   padding: 20px 0;
   background: white;
@@ -796,7 +795,6 @@ i.material-icons {
     margin: 0 0 15px; }
     #registerForm #form #facebook i, #registerForm #form #google i, #loginForm #form #facebook i, #loginForm #form #google i {
       margin-right: 10px; }
->>>>>>> bf1b340732a754db6e40ab3069a48fe75a8d4a06
 
 .testp {
   background-color: #4CAF50; }

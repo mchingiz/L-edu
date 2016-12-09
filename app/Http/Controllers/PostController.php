@@ -8,12 +8,15 @@ use Illuminate\Http\uploadedFile;
 use App\Http\Requests;
 use Carbon\Carbon;
 use DB;
+use Auth;
 
 use App\Category;
 use App\Subcategory;
 use App\Tag;
 use App\User;
 use App\Post;
+use App\ActionType;
+use App\Log;
 
 
 class PostController extends Controller
@@ -21,8 +24,9 @@ class PostController extends Controller
   private $user;
 
   public function __construct(){
-    //$this->user = Auth::user();
+    $this->user = Auth::user();
   }
+
   public function addPost(){
     $categories = Category::get();
     $tags = Tag::get();
@@ -30,7 +34,6 @@ class PostController extends Controller
   }
 
   public function storePost(Request $request){
-
     $this->validate($request,[
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:50',
@@ -63,17 +66,30 @@ class PostController extends Controller
       'category_id' => $category_id,
       'subcategory_id' => $subcategory_id,
       'published' => 1,
+      'company_id' => $this->user->company->id,
 			]);
 
     // Tags
-    $lastPostID = Post::orderBy('id', 'desc')->first()->id;
+    $currentPostID = Post::orderBy('id', 'desc')->first()->id;
     foreach($tags as $tag){
       DB::table('post_tag')->insert([
-        'post_id' => $lastPostID,
+        'post_id' => $currentPostID,
         'tag_id' => $tag,
         'created_at' => Carbon::now(),
       ]);
     }
 
+    //Logging
+    $this->logger(3,$currentPostID);
+  }
+
+  public function logger($actionTypeID,$loggableID){
+    Log::create([
+      'user_id' => $this->user->id,
+      'user_type' => $this->user->user_type,
+      'action_type_id' => $actionTypeID,
+      'loggable_id' => $loggableID,
+      'loggable_type' => 'post',
+    ]);
   }
 }

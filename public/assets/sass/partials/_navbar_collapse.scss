@@ -29,6 +29,7 @@
 
 
 #navbar-collapse{
+  //top:35px !important;
   height:100vh;
   left:-200px;
   top:0px;
@@ -117,4 +118,7 @@
 }
 .dropdown-menu-close{
   display:none;
+}
+.top-margin{
+  top:35px;
 }

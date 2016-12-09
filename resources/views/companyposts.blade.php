@@ -1,4 +1,4 @@
-@extends('layouts/company')
+@extends('layouts/companyProfile')
 @section('href')
   <a class="button-custom" href="/company/info">Info</a>
 @endsection

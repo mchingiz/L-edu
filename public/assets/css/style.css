@@ -468,6 +468,9 @@ i.material-icons {
   #top-bar li a:hover {
     background: #222222;
     color: #eeeeee; }
+  @media screen and (max-width: 995px) {
+    #top-bar {
+      display: none; } }
 
 #top-collapse {
   background: white;
@@ -561,6 +564,9 @@ i.material-icons {
 
 .dropdown-menu-close {
   display: none; }
+
+.top-margin {
+  top: 35px; }
 
 #author .img-box {
   overflow: hidden;
@@ -785,6 +791,20 @@ i.material-icons {
     margin: 0 0 15px; }
     #registerForm #form #facebook i, #registerForm #form #google i, #loginForm #form #facebook i, #loginForm #form #google i {
       margin-right: 10px; }
+
+#editProfile {
+  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  background: white;
+  padding: 30px; }
+  #editProfile .form-group:last-child {
+    margin-bottom: 0px; }
+  #editProfile input, #editProfile label {
+    box-shadow: none !important;
+    margin: 5px 0; }
+  #editProfile .button-custom {
+    width: 80px; }
+  #editProfile strong {
+    color: #ef260f; }
 
 .testp {
   background-color: #4CAF50; }

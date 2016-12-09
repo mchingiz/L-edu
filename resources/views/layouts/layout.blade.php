@@ -60,7 +60,7 @@
         </div>
         </div>
       </div>
-      <nav id="navbar" class="navbar navbar-fixed-top" style="{{(Request::is('index')&& Auth::guest() )  ? '' : 'top:35px'}}">
+      <nav id="navbar" class="navbar navbar-fixed-top {{(Request::is('index')&& Auth::guest() )  ? '' : 'top-margin'}}">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand full-nav-only" href="#" style="color:black">Educive.com</a>
@@ -115,6 +115,7 @@
               </li>
               <li><a href="#">Grants</a></li>
               <li><a href="https://getbootstrap.com/examples/navbar/">Contact Us</a></li>
+
             </ul>
 
           </div><!-- /.navbar-collapse -->

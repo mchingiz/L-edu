@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Add post</title>
+    <title>Edit post</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="{{url('/assets/css/reset.css')}}"> -->
     <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
@@ -28,14 +28,14 @@
           <div class="form-group row">
             <label for="title" class="col-md-2">Title<span>*</span></label>
             <div class="col-md-10">
-              <input class="form-control" type="text" name="title" id="title" value="{{old('title')}}" required>
+              <input class="form-control" type="text" name="title" id="title" value="{{old('title',$post->title)}}" required>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="editor1" class="col-md-2">Body<span>*</span></label>
             <div class="col-md-10">
-              <textarea class="form-control" name="body" id="editor1" rows="10" cols="80" required>{{old('body')}}</textarea>
+              <textarea class="form-control" name="body" id="editor1" rows="10" cols="80" required>{{old('body',$post->body)}}</textarea>
               <script>
               CKEDITOR.replace('editor1');
               </script>
@@ -45,7 +45,7 @@
           <div class="form-group row">
             <label for="photo" class="col-md-2">Image<span>*</span></label>
             <div class="col-md-10">
-              <input type="file" class="form-control-file" name="photo" id="photo" required>
+              <input type="file" class="form-control-file" name="photo" id="photo">
             </div>
           </div>
 
@@ -55,12 +55,8 @@
               <select class="form-control" name="category" id="categoryInput" required>
                 @foreach ($categories as $category)
                   <optgroup label="{{ $category->name }}">
-                    @if($category->subcategories)
-                      <option value="{{ $category->id }}" >{{ $category->name}}</option>
-                    @endif
-
                     @foreach ( $category->subcategories as $subcategory )
-                      <option value="{{ $subcategory->id }}" >{{ $subcategory->name }}</option>
+                      <option value="{{ $subcategory->id }}" {{ ($post->subcategory->id == $subcategory->id) ? 'selected':' ' }} >{{ $subcategory->name }}</option>
                     @endforeach
                   </optgroup>
                 @endforeach
@@ -73,7 +69,7 @@
       			<div class="col-md-10">
               <select class="js-example-basic-multiple col-md-10" multiple="multiple" name="tags[]" id='selectTag' style="width:235px" required>
         				@foreach( $tags as $tag )
-        					<option value="{{$tag->id}}" >{{ $tag->name }}</option>
+        					<option value="{{$tag->id}}" {{ ( collect($post->tags)->contains('id',$tag->id) ) ? 'selected':' ' }} >{{ $tag->name }}</option>
         				@endforeach
         			</select>
 
@@ -87,10 +83,14 @@
             <label for='deadline' class="col-md-2">Deadline</label>
             <div class="col-md-10">
               <label class="form-check-label">
-                <input class="form-check-input" id="hasDeadline" name="hasDeadline" type="checkbox" value="{{old('hasDeadline')}}" >
+                <input class="form-check-input" id="hasDeadline" name="hasDeadline" type="checkbox" value="{{old('hasDeadline')}}" {{ ($deadline == null) ? ' ':'checked' }} >
                 This announcement has deadline
               </label>
-              <input class="form-control" type="datetime-local" name="deadline" id="deadline" value="{{old('deadline',date('Y-m-d').'T00:00')}}" disabled>
+              @if($deadline != null)
+                <input class="form-control" type="datetime-local" name="deadline" id="deadline" value="{{old('deadline',$deadline,date('Y-m-d').'T00:00')}}" {{ ($deadline == null) ? 'disabled':' ' }}>
+              @else
+                <input class="form-control" type="datetime-local" name="deadline" id="deadline" value="{{old('deadline',date('Y-m-d').'T00:00')}}" {{ ($deadline == null) ? 'disabled':' ' }}>
+              @endif
             </div>
           </div>
 
@@ -99,7 +99,7 @@
           </div>
 
           @if (count($errors) > 0)
-              <div class="alert alert-danger clear-both">
+              <div class="alert alert-danger">
                   <ul>
                       <li>{{ $errors->all()[0] }}</li>
                   </ul>

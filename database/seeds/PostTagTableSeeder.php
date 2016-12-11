@@ -17,6 +17,7 @@ class PostTagTableSeeder extends Seeder
           'id' => '1',
           'post_id' => '1',
           'tag_id' => '1', // Technology
+          
       ]);
 
       DB::table('post_tag')->insert([

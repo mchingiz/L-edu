@@ -5,22 +5,24 @@
 @endsection
 
 @section('content')
+<div class="margin-top-div"></div>
+
 <section id="post" class="container">
     <div class="col-md-8">
         <div class="single-post">
           <div class="single-post-image">
-            <img src="/assets/images/wallpaper.jpg">
+            <img src="/assets/postPhotos/{{$post->image}}">
           </div>
           <div class="single-post-desc">
             <h2>
-              Another internship opportunity from Google has been announced for 2017
+              {{$post->title}}
             </h2>
             <ul class="list-unstyled list-inline">
               <li>
-                <a href=""><i class="material-icons">business</i>Code Academy</a>
+                <a href=""><i class="material-icons">business</i>{{$post->company->user->name}}</a>
               </li>
               <li>
-                <a href=""><i class="material-icons">folder</i>Scholarship</a>
+                <a href="{{$post->category->link}}"><i class="material-icons">folder</i>{{$post->category->name}}</a> <a href="{{$post->subcategory->link}}">/ {{$post->subcategory->name}}</a>
               </li>
               <li>
                 <i class="material-icons">date_range</i>
@@ -31,6 +33,10 @@
                 <span>246</span>
               </li>
             </ul>
+          </div>
+          <div class="buttons">
+            <a href="#" class="button-custom"><i class="material-icons">alarm_add</i> Add Reminder</a>
+            <a href="#" class="button-custom"><i class="material-icons">bookmark_border</i> Save Post</a>
           </div>
           <div class="single-post-body">
             <p>Lorem ipsum dolor sit amet, vel ea rebum maiestatis. Possim meliore dolores ut usu. Sit ex case iuvaret. Te eum ponderum probatus petentium. Ex animal eruditi vis, ius ad percipit expetendis.</p>
@@ -113,9 +119,11 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 text-center">
             <a href="#"><h4>Azercell</h4></a>
-            <a class="button-custom" href="#">Follow</a>
-            <p>Lorem ipsum dolor sit amet, vel ea rebum maiestatis. Possim meliore dolores ut usu. Sit ex case iuvaret. Te eum ponderum probatus petentium. Ex animal eruditi vis, ius ad percipit expetendis.
+            <a class="button-custom col-md-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 col-md-offset-4" href="#">Follow</a>
+            <div class="row" style="clear:both">
+              <p>Lorem ipsum dolor sit amet, vel ea rebum maiestatis. Possim meliore dolores ut usu. Sit ex case iuvaret. Te eum ponderum probatus petentium. Ex animal eruditi vis, ius ad percipit expetendis.
               At has mazim dolorum postulant. Everti maiorum ei cum, ad vocent hendrerit mea. Brute illum denique pri ex, malis labitur consectetuer quns, integre iudicabit has et, sed ad dolore intellegat.</p>
+            </div>
           </div>
         </div>
       </section>

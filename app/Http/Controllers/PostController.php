@@ -84,4 +84,11 @@ class PostController extends Controller
     //Logging
     $this->log(3,$currentPostID,'posts');
   }
+
+  public function View($slug){
+    $post=Post::where('slug','=',$slug)->limit(1)->get();
+    $post=$post[0];
+    return view('post',compact('post'));
+
+  }
 }

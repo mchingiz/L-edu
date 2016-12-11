@@ -1,5 +1,4 @@
 #post{
-  margin-top:80px;
   margin-bottom:30px;
   .col-md-8{
     padding-left:0;
@@ -56,22 +55,24 @@
         padding-bottom:10px;
         p{
           padding:8px 0;
-          font-family:'Raleway';
+          //font-family:'Raleway';
         }
       }
       .single-post-extra{
         font-size:12px;
         padding-bottom:15px;
         ul.tags{
-          margin:0;
+          margin-top:15px;
           li{
-            padding:0;
+            padding-left: 0;
             a{
+              font-size: 1.1em;
               background-color: darken($background-color,20%);
-              padding:5px 3px;
+              padding:5px 6px;
               color:white;
               border-radius: 2px;
               text-decoration: none;
+              transition: all 0.3s ease;
             }
             &:hover a{
               background-color:darken($background-color,35%);
@@ -85,5 +86,17 @@
     }
   }
   .col-md-4{
+  }
+  .buttons{
+    margin:10px 10px 10px 0;
+    a{
+      padding:7px 10px;
+      font-size: 1em;
+      i{
+        vertical-align: sub;
+        margin-top:5px;
+       //padding-top:20px;
+      }
+    }
   }
 }

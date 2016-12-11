@@ -64,9 +64,7 @@ i.material-icons{
   background: $background-color;
   margin:$padding-vertical-in 0;
 }
-#content,#category{
-  margin-top:85px;
-}
+
 
 .custom-badge{
   display: inline-block;
@@ -96,5 +94,12 @@ i.material-icons{
         transform: scale(1.1);
       }
     }
+  }
+}
+
+.margin-top-div{
+  height:120px;
+  @media screen and (max-width: 995px) {
+      height:75px;
   }
 }

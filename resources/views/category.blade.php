@@ -5,9 +5,12 @@
 @endsection
 
 @section('content')
+<div class="margin-top-div"></div>
+
+
 <section id="category" class="container">
 
-  <div class="col-md-12">
+  <div class="col-md-12" >
     <h2>
       Internships
       <span class="custom-badge">20</span>

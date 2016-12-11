@@ -17,18 +17,21 @@ class SubcategoriesTableSeeder extends Seeder
           'id' => '1',
           'category_id' => '1',
           'name' => 'Internship',
+          'link'=>'/Internship'
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '2',
           'category_id' => '1',
           'name' => 'Jobs',
+          'link'=>'/jobs'
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '3',
           'category_id' => '1',
           'name' => 'Volunteering',
+          'link'=>'/Volunteering'
       ]);
 
       DB::table('subcategories')->insert([

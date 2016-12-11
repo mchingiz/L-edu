@@ -43,6 +43,9 @@ Route::get('/register/user', 'Auth\AuthController@registerform');
 Route::get('/company/editprofile', 'CompanyController@EditProfile');
 Route::post('/company/editprofile', 'CompanyController@Update');
 
+//Posts
+Route::get('/post/{slug}', 'PostController@View');
+
 
 
 Route::get('/home', 'HomeController@index');

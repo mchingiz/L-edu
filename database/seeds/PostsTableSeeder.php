@@ -18,6 +18,12 @@ class PostsTableSeeder extends Seeder
           'company_id' => '4',
           'title' => 'headline 1',
           'body' => 'post body',
+          'image'=>'14812660026443.png',
+          'view'=>'30',
+          'slug'=>'test-post-slug',
+          'lang'=>'aze',
+          'deadline'=>'2016-12-18',
+          'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
       ]);
@@ -26,9 +32,15 @@ class PostsTableSeeder extends Seeder
           'id' => '2',
           'company_id' => '4',
           'title' => 'headline 2',
-          'body' => 'post body',
-          'category_id' => '3',
-          'subcategory_id' => '2',
+          'body' => 'post body 1',
+          'image'=>'14812660026443.png',
+          'view'=>'30',
+          'slug'=>'test-post-slug-2',
+          'lang'=>'aze',
+          'deadline'=>'2016-12-18',
+          'approved'=>'0',
+          'category_id' => '4',
+          'subcategory_id' => '1',
       ]);
 
       DB::table('posts')->insert([

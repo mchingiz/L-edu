@@ -48,6 +48,7 @@ class CompanyController extends Controller
         'email' => $request->email,
      ]);
 
+
     return redirect()->back();
 
 

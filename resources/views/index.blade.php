@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div id="content" class="container" style="{{ Auth::guest()  ? 'margin-top:50px' : ''}}">
+<div id="content" class="container" style="{{ Auth::guest()  ? 'margin-top:50px' : 'margin-top:85px'}}">
   <div class="row">
     <section id="left-side" class="col-md-8 col-xs-12 col-sm-12">
       <div class="vertical-div"></div>

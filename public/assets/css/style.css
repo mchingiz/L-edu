@@ -13,7 +13,7 @@
   font-size: 50px; }
 
 body {
-  background-color: #EEF1F4; }
+  background-color: #F7F8FA; }
 
 a, p, h1, h2, h3, h4, h5, h6, span, label, button {
   font-family: 'Lato', sans-serif; }
@@ -65,11 +65,8 @@ i.material-icons {
 
 .border {
   height: 1px;
-  background: #EEF1F4;
+  background: #F7F8FA;
   margin: 15px 0; }
-
-#content, #category {
-  margin-top: 85px; }
 
 .custom-badge {
   display: inline-block;
@@ -92,6 +89,12 @@ i.material-icons {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1); }
+
+.margin-top-div {
+  height: 120px; }
+  @media screen and (max-width: 995px) {
+    .margin-top-div {
+      height: 75px; } }
 
 #navbar {
   background: white;
@@ -186,7 +189,7 @@ i.material-icons {
   padding-right: 0px;
   font-family: Lato; }
   #category .col-md-12, #company-profile .col-md-12, #company .col-md-12 {
-    padding: 20px 15px; }
+    padding: 0 15px 20px; }
     #category .col-md-12 h2, #company-profile .col-md-12 h2, #company .col-md-12 h2 {
       font-size: 30px; }
   #category .col-md-4, #category .col-md-6, #company-profile .col-md-4, #company-profile .col-md-6, #company .col-md-4, #company .col-md-6 {
@@ -195,7 +198,7 @@ i.material-icons {
       position: relative;
       background-color: white;
       padding: 15px;
-      box-shadow: 1px 1px 3px 0px #cfd7e0; }
+      box-shadow: 1px 1px 3px 0px #d8dde6; }
       #category .col-md-4 .post-item .img-box, #category .col-md-6 .post-item .img-box, #company-profile .col-md-4 .post-item .img-box, #company-profile .col-md-6 .post-item .img-box, #company .col-md-4 .post-item .img-box, #company .col-md-6 .post-item .img-box {
         width: 100%;
         max-height: 165px;
@@ -246,7 +249,6 @@ i.material-icons {
           opacity: 1; }
 
 #post {
-  margin-top: 80px;
   margin-bottom: 30px; }
   #post .col-md-8 {
     padding-left: 0; }
@@ -288,34 +290,43 @@ i.material-icons {
       #post .col-md-8 .single-post .single-post-body {
         padding-bottom: 10px; }
         #post .col-md-8 .single-post .single-post-body p {
-          padding: 8px 0;
-          font-family: 'Raleway'; }
+          padding: 8px 0; }
       #post .col-md-8 .single-post .single-post-extra {
         font-size: 12px;
         padding-bottom: 15px; }
         #post .col-md-8 .single-post .single-post-extra ul.tags {
-          margin: 0; }
+          margin-top: 15px; }
           #post .col-md-8 .single-post .single-post-extra ul.tags li {
-            padding: 0; }
+            padding-left: 0; }
             #post .col-md-8 .single-post .single-post-extra ul.tags li a {
-              background-color: #b0becc;
-              padding: 5px 3px;
+              font-size: 1.1em;
+              background-color: #b8c1d3;
+              padding: 5px 6px;
               color: white;
               border-radius: 2px;
-              text-decoration: none; }
+              text-decoration: none;
+              transition: all 0.3s ease; }
             #post .col-md-8 .single-post .single-post-extra ul.tags li:hover a {
-              background-color: #8298ae; }
+              background-color: #8998b5; }
+  #post .buttons {
+    margin: 10px 10px 10px 0; }
+    #post .buttons a {
+      padding: 7px 10px;
+      font-size: 1em; }
+      #post .buttons a i {
+        vertical-align: sub;
+        margin-top: 5px; }
 
 .category-section, .right-bar {
   margin-right: 0px;
   background-color: white;
   border-radius: 2px;
-  box-shadow: 1px 1px 3px 0px #cfd7e0; }
+  box-shadow: 1px 1px 3px 0px #d8dde6; }
   @media screen and (max-width: 960px) {
     .category-section, .right-bar {
       margin-left: 0px; } }
   .category-section .heading, .right-bar .heading {
-    border-bottom: 2px solid #EEF1F4;
+    border-bottom: 2px solid #F7F8FA;
     padding-top: 15px;
     padding-bottom: 15px; }
     .category-section .heading h3, .right-bar .heading h3 {
@@ -383,7 +394,7 @@ i.material-icons {
 #login form input {
   padding: 7px 10px;
   margin: 7.5px 0;
-  border: 1px solid #EEF1F4; }
+  border: 1px solid #F7F8FA; }
 #login span, #login a {
   margin-top: 10px;
   display: inline-block;
@@ -455,6 +466,9 @@ i.material-icons {
   color: #5f7ca1; }
 #rightBarPosts i {
   font-size: 0.8em; }
+
+#author p {
+  display: block; }
 
 #top-bar {
   background-color: #222222;
@@ -592,7 +606,7 @@ i.material-icons {
 #company-posts .col-md-12 {
   background-color: white;
   padding: 15px;
-  border-bottom: 1px solid #EEF1F4; }
+  border-bottom: 5px solid #F7F8FA; }
   #company-posts .col-md-12 .h-post-image img {
     width: 100%;
     transition-duration: 0.4s; }
@@ -629,7 +643,7 @@ i.material-icons {
       height: 120px;
       margin-top: -64px !important;
       border-radius: 50%;
-      border: 4px solid #EEF1F4;
+      border: 4px solid #F7F8FA;
       margin-right: 10px; }
     #company-profile #company .info-bar .col-md-6 h1 {
       position: relative;
@@ -667,13 +681,13 @@ i.material-icons {
         #company-profile #company .info-bar .col-md-6 a {
           float: none !important; } }
 #company-profile #info > div {
-  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  box-shadow: 1px 1px 3px 0px #d8dde6;
   background: white; }
   #company-profile #info > div div {
     padding: 15px;
     text-align: justify; }
     #company-profile #info > div div i {
-      color: #91a4b8;
+      color: #99a6bf;
       margin: 5px 5px 5px 0;
       border-radius: 3px;
       width: 20px;
@@ -685,8 +699,8 @@ i.material-icons {
       font-size: 0.8em;
       padding-bottom: 10px;
       margin: 35px 0 15px;
-      border-bottom: 2px solid #EEF1F4;
-      color: #91a4b8;
+      border-bottom: 2px solid #F7F8FA;
+      color: #99a6bf;
       font-weight: bold;
       text-transform: uppercase; }
       #company-profile #info > div div h2:first-child {
@@ -705,12 +719,12 @@ i.material-icons {
 #register .user-type {
   padding: 20px 0;
   background: white;
-  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  box-shadow: 1px 1px 3px 0px #d8dde6;
   transition: box-shadow 1s ease; }
   #register .user-type h2 {
     font-size: 1.5em;
     color: #263241;
-    border-bottom: 2px solid #EEF1F4;
+    border-bottom: 2px solid #F7F8FA;
     padding: 15px;
     letter-spacing: 2px;
     margin: 0 20px 20px;
@@ -719,7 +733,7 @@ i.material-icons {
     margin: 0 20px; }
     #register .user-type ul li {
       font-size: 1.1em;
-      border-bottom: 1px solid #EEF1F4;
+      border-bottom: 1px solid #F7F8FA;
       color: #557091;
       padding: 15px; }
       #register .user-type ul li:last-child {
@@ -733,7 +747,7 @@ i.material-icons {
     color: #03A9F4;
     transition: all 1s ease; }
   #register .user-type:hover {
-    box-shadow: 4px 6px 41px 0px #91a4b8; }
+    box-shadow: 4px 6px 41px 0px #99a6bf; }
     #register .user-type:hover h2 {
       border-color: #03A9F4; }
     #register .user-type:hover a {
@@ -741,7 +755,7 @@ i.material-icons {
       background-color: #03A9F4; }
 #register .question {
   background: white;
-  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  box-shadow: 1px 1px 3px 0px #d8dde6;
   padding: 20px; }
   #register .question h3 {
     color: #263241;
@@ -750,7 +764,7 @@ i.material-icons {
 
 #registerForm #form, #loginForm #form {
   background: white;
-  box-shadow: 1px 1px 3px 0px #cfd7e0; }
+  box-shadow: 1px 1px 3px 0px #d8dde6; }
   #registerForm #form .panel-heading, #loginForm #form .panel-heading {
     background: #FCFCFB;
     padding: 20px 0; }
@@ -804,7 +818,7 @@ i.material-icons {
       margin-right: 10px; }
 
 #editProfile {
-  box-shadow: 1px 1px 3px 0px #cfd7e0;
+  box-shadow: 1px 1px 3px 0px #d8dde6;
   background: white;
   padding: 30px; }
   #editProfile .form-group:last-child {

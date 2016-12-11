@@ -85,13 +85,9 @@ function CloseCollapseNavbar(){
 
 function ToggleDropdownMenu(){
 
-  console.log("Toggle")
   $("#navbar-collapse .navbar-nav li a").click(function(){
-
-    console.log("Click")
     //check if dropdown menu is open or closed
     var check= $(this).parent().find(".dropdown-menu").css("display")!="block"
-    console.log(check)
     $("#navbar-collapse .navbar-nav li .dropdown-menu").removeClass("dropdown-menu-open").addClass("dropdown-menu-close")
     if(check)
       $(this).parent().find(".dropdown-menu").removeClass("dropdown-menu-close").addClass("dropdown-menu-open");
@@ -126,12 +122,10 @@ function PreventHref(){
   for(var i=1;i<=10;i++){
     if( $("#navbar-collapse .navbar-nav li:nth-child("+i+")").find(".dropdown-menu").length){
       $("#navbar-collapse .navbar-nav li:nth-child("+i+")>a").attr("onclick","return false;")
-      console.log("onclick")
     }
   }
 }
 
   function ActivateHref(){
     $("#navbar .navbar-nav li a").attr("onclick","return true;")
-    console.log("activated")
   }

@@ -42,6 +42,9 @@ Route::post('/company/editprofile', 'CompanyController@Update');
 
 //Posts
 Route::get('/post/{slug}', 'PostController@View');
+Route::get('/post/save/{id}', 'PostController@SavePost');
+
+
 
 
 

@@ -13,6 +13,10 @@ class Category extends Model
     return $this->hasMany('App\Subcategory');
   }
 
+  public function menu(){
+    return $this->belongsTo('App\Menu');
+  }
+
   public function logs(){
     return $this->morphMany('App\Log','loggable');
   }

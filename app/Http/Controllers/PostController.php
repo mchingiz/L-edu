@@ -18,6 +18,7 @@ use App\Post;
 use App\ActionType;
 use App\Log;
 
+
 use App\Http\Traits\LoggingTrait;
 
 class PostController extends Controller
@@ -28,6 +29,7 @@ class PostController extends Controller
 
   public function __construct(){
     $this->user = Auth::user();
+    view()->share('user', $this->user);
   }
 
   public function addPost(){
@@ -35,6 +37,7 @@ class PostController extends Controller
     $tags = Tag::get();
     return view('posts.add',compact('categories','tags'));
   }
+
 
   public function storePost(Request $request){
     // $this->validate($request,[
@@ -86,9 +89,43 @@ class PostController extends Controller
   }
 
   public function View($slug){
-    $post=Post::where('slug','=',$slug)->limit(1)->get();
-    $post=$post[0];
-    return view('post',compact('post'));
 
+    $post=Post::where('slug','=',$slug)->first();
+    if($post->approved==0 || $post->deleted==1)
+      return 404;
+
+    $OtherPosts=Post::orderBy('id', 'desc')
+                      ->where([
+                        ['category_id', '=', $post->category_id],
+                        ['subcategory_id', '=', $post->subcategory_id],
+                        ['approved', '=', '1'],
+                        ['id','!=',$post->id]
+                        ])
+                      ->limit(3)
+                      ->get();
+
+
+    //Logging
+    if(!empty($this->user) && $this->user->user_type=="user")
+      $this->log(1,$post->id,'posts');
+
+
+    $post->update([
+        'view' => $post->view+1,
+    ]);
+
+    return view('post', compact('post','OtherPosts'));
+  }
+
+  public function savePost($id){
+
+    DB::table('saved_posts')
+            ->insert([
+              'user_id' => $this->user->id,
+              'post_id' => $id,
+              'created_at'=>Carbon::now()
+              ]);
+
+      return 55;
   }
 }

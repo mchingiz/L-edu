@@ -285,12 +285,22 @@ i.material-icons {
             color: #b9b9b9; }
             #post .col-md-8 .single-post .single-post-desc ul li a i {
               margin-right: 4px; }
-          #post .col-md-8 .single-post .single-post-desc ul li:hover i, #post .col-md-8 .single-post .single-post-desc ul li:hover span, #post .col-md-8 .single-post .single-post-desc ul li:hover a {
-            color: #6d6d6d; }
+            #post .col-md-8 .single-post .single-post-desc ul li a:hover {
+              color: #6d6d6d; }
       #post .col-md-8 .single-post .single-post-body {
         padding-bottom: 10px; }
         #post .col-md-8 .single-post .single-post-body p {
-          padding: 8px 0; }
+          padding: 8px 0;
+          margin-bottom: 20px;
+          font-family: 'Open Sans', sans-serif;
+          line-height: 1.8; }
+        #post .col-md-8 .single-post .single-post-body #deadline {
+          color: #C31926;
+          font-weight: bold;
+          font-size: 1em;
+          display: inline-block; }
+          #post .col-md-8 .single-post .single-post-body #deadline i {
+            vertical-align: sub; }
       #post .col-md-8 .single-post .single-post-extra {
         font-size: 12px;
         padding-bottom: 15px; }
@@ -309,9 +319,9 @@ i.material-icons {
             #post .col-md-8 .single-post .single-post-extra ul.tags li:hover a {
               background-color: #8998b5; }
   #post .buttons {
-    margin: 10px 10px 10px 0; }
+    padding: 10px 15px;
+    margin: 10px 0; }
     #post .buttons a {
-      padding: 7px 10px;
       font-size: 1em; }
       #post .buttons a i {
         vertical-align: sub;

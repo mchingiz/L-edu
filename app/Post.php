@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
   protected $fillable=['company_id','title','body','image',
-    'view','slug','category_id','subcategory_id','published','deadline'];
+    'view','slug','lang','category_id','subcategory_id','published','deadline'];
 
     public function company(){
       return $this->belongsTo('App\Company');

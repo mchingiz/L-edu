@@ -45,7 +45,8 @@
           <div class="form-group row">
             <label for="photo" class="col-md-2">Image<span>*</span></label>
             <div class="col-md-10">
-              <input type="file" class="form-control-file" name="photo" id="photo">
+              <input type="file" class="form-control-file" name="photo" id="photo" aria-describedby="imageHelp">
+              <small id="imageHelp" class="form-text text-muted">If you don't want previous image to be changed, leave this field empty</small>
             </div>
           </div>
 
@@ -71,9 +72,13 @@
               <select class="form-control" name="category" id="categoryInput" required>
                 @foreach ($categories as $category)
                   <optgroup label="{{ $category->name }}">
-                    @foreach ( $category->subcategories as $subcategory )
-                      <option value="{{ $subcategory->id }}" {{ ($post->subcategory->id == $subcategory->id) ? 'selected':' ' }} >{{ $subcategory->name }}</option>
-                    @endforeach
+                    @if( collect($category->subcategories)->isEmpty() )
+                      <option value="c{{ $category->id }}" {{ ($post->category_id == $category->id) ? 'selected':' ' }} >{{ $category->name}}</option>
+                    @else
+                      @foreach ( $category->subcategories as $subcategory )
+                        <option value="{{ $subcategory->id }}" {{ ($post->subcategory_id == $subcategory->id) ? 'selected':' ' }} >{{ $subcategory->name }}</option>
+                      @endforeach
+                    @endif
                   </optgroup>
                 @endforeach
               </select>
@@ -110,8 +115,8 @@
             </div>
           </div>
 
-          <div class="float-xs-right">
-            <button tpye="submit" class="btn btn-success" >Publish</button>
+          <div class="clearfix">
+            <button tpye="submit" class="btn btn-success float-xs-right" >Update</button>
           </div>
 
           @if (count($errors) > 0)

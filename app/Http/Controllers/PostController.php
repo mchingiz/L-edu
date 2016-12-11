@@ -48,13 +48,6 @@ class PostController extends Controller
       'deadline' => 'after:today'
 		]);
 
-    $title = $request->input('title');
-    $body = $request->input('body');
-    $tags = $request->tags;
-    $subcategory_id = $request->input('category');
-    $category_id = Subcategory::where('id',$subcategory_id)->value('category_id');
-    $deadline = str_replace('T',' ',$request->input('deadline'));
-
     // Photo
     $photo = $request->file('photo');
     $targetLocation = base_path().'/public/assets/postPhotos/';
@@ -62,21 +55,31 @@ class PostController extends Controller
     $photo->move($targetLocation, $targetName);
     $photoPath = $targetName;
 
+    if(substr($request->input('category'),0,1) == 'c'){
+      // Then this category has no sub
+      $category_id = substr($request->input('category'),1);
+      $subcategory_id = '0';
+    }else{
+      $category_id = Subcategory::where('id',$request->input('category'))->value('category_id');
+      $subcategory_id = $request->input('category');
+    }
+
     Post::create([
-			'title' => $title,
-			'body' => $body,
-      'deadline' => $deadline,
+			'title' => $request->input('title'),
+			'body' => $request->input('body'),
+      'deadline' => str_replace('T',' ',$request->input('deadline')),
       'company_id' => 1,
       'image' => $photoPath,
+      'lang' => $request->input('language'),
+      'slug' => $this->slugCreator( $request->input('title') ),
       'category_id' => $category_id,
       'subcategory_id' => $subcategory_id,
-      'published' => 1,
       'company_id' => $this->user->company->id,
 			]);
 
     // Tags
     $currentPostID = Post::orderBy('id', 'desc')->first()->id;
-    foreach($tags as $tag){
+    foreach($request->input('tags') as $tag){
       DB::table('post_tag')->insert([
         'post_id' => $currentPostID,
         'tag_id' => $tag,
@@ -107,6 +110,7 @@ class PostController extends Controller
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:50',
 			'photo' => 'mimes:jpeg,bmp,png|max:2000',
+      'language' => 'required',
 			'category' => 'required',
 			'tags' => 'required|min:1|max:5',
       'deadline' => 'after:today'
@@ -114,9 +118,17 @@ class PostController extends Controller
 
     $post->title = $request->input('title');
     $post->body = $request->input('body');
-    $post->subcategory_id = $request->input('category');
-    $post->category_id = Subcategory::where('id',$request->input('category'))->value('category_id');
     $post->deadline = str_replace('T',' ',$request->input('deadline'));
+    $post->lang = $request->input('language');
+
+    if(substr($request->input('category'),0,1) == 'c'){
+      // Then it is category without sub
+      $post->category_id = substr($request->input('category'),1);
+      $post->subcategory_id = '0';
+    }else{
+      $post->category_id = Subcategory::where('id',$request->input('category'))->value('category_id');
+      $post->subcategory_id = $request->input('category');
+    }
 
     // Photo
     if($request->file('photo')){
@@ -149,4 +161,16 @@ class PostController extends Controller
     $post=Post::where('slug','=',$slug)->limit(1)->get();
     $post=$post[0];
     return view('post',compact('post'));
+  }
+
+  public function slugCreator($title){
+    $title = str_ireplace(' ','-',$title);
+    $title = str_ireplace('ə','e',$title);
+    $title = str_ireplace('ü','u',$title);
+    $title = str_ireplace('ş','s',$title);
+    $title = str_ireplace('ç','c',$title);
+    $title = str_ireplace('ı','i',$title);
+    $title = str_ireplace('ö','o',$title);
+    return $title;
+  }
 }

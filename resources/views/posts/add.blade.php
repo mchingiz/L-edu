@@ -71,13 +71,13 @@
               <select class="form-control" name="category" id="categoryInput" required>
                 @foreach ($categories as $category)
                   <optgroup label="{{ $category->name }}">
-                    @if($category->subcategories)
-                      <option value="{{ $category->id }}" >{{ $category->name}}</option>
-                    @endif
-
-                    @foreach ( $category->subcategories as $subcategory )
+                    @if( collect($category->subcategories)->isEmpty() )
+                      <option value="c{{ $category->id }}" >{{ $category->name}}</option>
+                    @else
+                      @foreach ( $category->subcategories as $subcategory )
                       <option value="{{ $subcategory->id }}" >{{ $subcategory->name }}</option>
-                    @endforeach
+                      @endforeach
+                    @endif
                   </optgroup>
                 @endforeach
               </select>
@@ -110,12 +110,12 @@
             </div>
           </div>
 
-          <div class="float-xs-right">
-            <button tpye="submit" class="btn btn-success" >Publish</button>
+          <div class="clearfix">
+            <button tpye="submit" class="btn btn-success float-xs-right" >Publish</button>
           </div>
 
           @if (count($errors) > 0)
-              <div class="alert alert-danger clear-both">
+              <div class="alert alert-danger">
                   <ul>
                       <li>{{ $errors->all()[0] }}</li>
                   </ul>

@@ -19,12 +19,16 @@ use App\Log;
 
 trait LoggingTrait{
   public function log($actionTypeID,$loggableID,$loggableType){
-    Log::create([
-      'user_id' => Auth::user()->id,
-      'user_type' => Auth::user()->user_type,
-      'action_type_id' => $actionTypeID,
-      'loggable_id' => $loggableID,
-      'loggable_type' => $loggableType,
-    ]);
+
+    if( Auth::check() ){
+      Log::create([
+        'user_id' => Auth::user()->id,
+        'user_type' => Auth::user()->user_type,
+        'action_type_id' => $actionTypeID,
+        'loggable_id' => $loggableID,
+        'loggable_type' => $loggableType,
+      ]);
+    }
+
   }
 }

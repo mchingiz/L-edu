@@ -50,6 +50,22 @@
           </div>
 
           <div class="form-group row">
+            <label for="language" class="col-md-2">Language<span>*</span></label>
+            <div class="col-md-10">
+              <label class="custom-control custom-radio">
+                <input id="az" value="az" name="language" type="radio" class="custom-control-input" {{ ( (old('language')=='en') || ($post->language=='en') ) ? 'checked':' ' }}>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Azərbaycanca</span>
+              </label>
+              <label class="custom-control custom-radio">
+                <input id="en" value="en" name="language" type="radio" class="custom-control-input" {{ ( (old('language')=='az') || ($post->language=='az') ) ? 'checked':' ' }}>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">English</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group row">
             <label for="categoryInput" class="col-md-2">Category<span>*</span></label>
             <div class="col-md-10">
               <select class="form-control" name="category" id="categoryInput" required>

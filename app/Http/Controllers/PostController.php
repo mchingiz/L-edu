@@ -42,6 +42,7 @@ class PostController extends Controller
 			'title' => 'required|min:10|max:150',
 			'body' => 'required|min:50',
 			'photo' => 'required|mimes:jpeg,bmp,png|max:2000',
+      'language' => 'required',
 			'category' => 'required',
 			'tags' => 'required|min:1|max:5',
       'deadline' => 'after:today'
@@ -49,8 +50,8 @@ class PostController extends Controller
 
     $title = $request->input('title');
     $body = $request->input('body');
-    $subcategory_id = $request->input('category');
     $tags = $request->tags;
+    $subcategory_id = $request->input('category');
     $category_id = Subcategory::where('id',$subcategory_id)->value('category_id');
     $deadline = str_replace('T',' ',$request->input('deadline'));
 
@@ -59,7 +60,7 @@ class PostController extends Controller
     $targetLocation = base_path().'/public/assets/postPhotos/';
     $targetName=microtime(true)*10000 . '.' . $photo->getClientOriginalExtension();
     $photo->move($targetLocation, $targetName);
-    $photoPath = '/assets/postPhotos/'.$targetName;
+    $photoPath = $targetName;
 
     Post::create([
 			'title' => $title,
@@ -119,13 +120,12 @@ class PostController extends Controller
 
     // Photo
     if($request->file('photo')){
-      // return base_path();
       unlink( base_path().'\public'.$post->image );
       $photo = $request->file('photo');
       $targetLocation = base_path().'/public/assets/postPhotos/';
       $targetName=microtime(true)*10000 . '.' . $photo->getClientOriginalExtension();
       $photo->move($targetLocation, $targetName);
-      $post->image = '/assets/postPhotos/'.$targetName;
+      $post->image = $targetName;
     }
 
     $post->save();

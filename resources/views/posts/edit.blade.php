@@ -54,12 +54,12 @@
             <label for="language" class="col-md-2">Language<span>*</span></label>
             <div class="col-md-10">
               <label class="custom-control custom-radio">
-                <input id="az" value="az" name="language" type="radio" class="custom-control-input" {{ ( (old('language')=='en') || ($post->language=='en') ) ? 'checked':' ' }}>
+                <input id="az" value="az" name="language" type="radio" class="custom-control-input" {{ ( (old('language')=='en') || ($post->lang=='az') ) ? 'checked':' ' }}>
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">Azərbaycanca</span>
               </label>
               <label class="custom-control custom-radio">
-                <input id="en" value="en" name="language" type="radio" class="custom-control-input" {{ ( (old('language')=='az') || ($post->language=='az') ) ? 'checked':' ' }}>
+                <input id="en" value="en" name="language" type="radio" class="custom-control-input" {{ ( (old('language')=='az') || ($post->lang=='en') ) ? 'checked':' ' }}>
                 <span class="custom-control-indicator"></span>
                 <span class="custom-control-description">English</span>
               </label>
@@ -120,7 +120,7 @@
           </div>
 
           @if (count($errors) > 0)
-              <div class="alert alert-danger">
+              <div class="alert alert-danger error col-md-10 offset-md-2">
                   <ul>
                       <li>{{ $errors->all()[0] }}</li>
                   </ul>

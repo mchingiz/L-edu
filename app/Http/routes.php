@@ -26,14 +26,11 @@ Route::get('/company/posts', function () {
 Route::get('/company/info', function () {
     return view('companyinfo');});
 
-Route::get('/add', 'PostController@addPost');
-Route::post('/add', 'PostController@storePost');
-Route::get('/edit/{post}', 'PostController@editPost');
-Route::post('/edit/{post}', 'PostController@updatePost');
 
 
 Route::get('/test/{test}', 'Test@test');
 Route::get('/test', 'Test@url');
+
 //Register
 Route::auth();
 Route::get('/register/company', 'Auth\AuthController@registerform');
@@ -45,7 +42,13 @@ Route::post('/company/editprofile', 'CompanyController@Update');
 
 //Posts
 Route::get('/post/{slug}', 'PostController@View');
+Route::get('/edit/{post}', 'PostController@editPost');
+Route::post('/edit/{post}', 'PostController@updatePost');
+Route::get('/add', 'PostController@addPost');
+Route::post('/add', 'PostController@storePost');
+
 
 
 
 Route::get('/home', 'HomeController@index');
+Route::get('/adminPanel', 'HomeController@adminPanel');

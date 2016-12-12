@@ -20,10 +20,12 @@ use App\ActionType;
 use App\Log;
 
 use App\Http\Traits\LoggingTrait;
+use App\Http\Traits\SlugTrait;
 
 class PostController extends Controller
 {
   use LoggingTrait;
+  use SlugTrait;
 
   private $user;
 
@@ -161,16 +163,5 @@ class PostController extends Controller
     $post=Post::where('slug','=',$slug)->limit(1)->get();
     $post=$post[0];
     return view('post',compact('post'));
-  }
-
-  public function slugCreator($title){
-    $title = str_ireplace(' ','-',$title);
-    $title = str_ireplace('ə','e',$title);
-    $title = str_ireplace('ü','u',$title);
-    $title = str_ireplace('ş','s',$title);
-    $title = str_ireplace('ç','c',$title);
-    $title = str_ireplace('ı','i',$title);
-    $title = str_ireplace('ö','o',$title);
-    return $title;
   }
 }

@@ -55,9 +55,9 @@
             <a href="/login" class="btn btn-success"> Add Reminder</a>
             <a href="/login" class="btn btn-success"> Save Post</a>
             @elseif ( $user->user_type=="user")
-            <a href="#" class="btn btn-success">  Add Reminder</a>
-            <button id="save-post" value="{{$post->id}}">Save Post</button>
-            <a href="/post/{{$post->id}}/save" class="btn btn-success"> Save Post</a>
+
+            <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
+            <button id="add-reminder"  class="btn btn-success">Add Reminder</button>
             @endif
             <a href="#" class="btn btn-danger pull-right"> Report</a>
           </div>
@@ -182,5 +182,6 @@
 </section>
 @endsection
 @section('script')
-  <script src="{{url('/assets/js/ajax.js')}}"></script>
+  <script src="{{url('/assets/js/Postajax.js')}}"></script>
+  <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
 @endsection

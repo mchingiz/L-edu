@@ -17,6 +17,7 @@ use App\User;
 use App\Post;
 use App\ActionType;
 use App\Log;
+use App\Saved_post;
 
 
 use App\Http\Traits\LoggingTrait;
@@ -106,26 +107,43 @@ class PostController extends Controller
 
 
     //Logging
-    if(!empty($this->user) && $this->user->user_type=="user")
+    if(!empty($this->user) && $this->user->user_type=="user"){
       $this->log(1,$post->id,'posts');
+      $isSaved=Saved_post::where([
+        ['user_id', '=', $this->user->id],
+        ['post_id', '=', $post->id],
+      ])
+      ->first();
+    }
 
 
     $post->update([
         'view' => $post->view+1,
     ]);
 
-    return view('post', compact('post','OtherPosts'));
+    return view('post', compact('post','OtherPosts','isSaved'));
   }
 
-  public function savePost($id){
+  public function SavePost($id){
+    $this->log(8,$id,'posts');
 
-    DB::table('saved_posts')
-            ->insert([
-              'user_id' => $this->user->id,
-              'post_id' => $id,
-              'created_at'=>Carbon::now()
-              ]);
+    $savepost=Saved_Post::create([
+      'user_id' => $this->user->id,
+      'post_id' => $id,
+      ]);
 
-      return 55;
+      return $savepost->id;
+  }
+
+  public function UnSavePost(Saved_Post $saved_post){
+    $this->log(9,$saved_post->post_id,'posts');
+    $post_id=$saved_post->post_id;
+    $saved_post->delete();
+
+      return $post_id ;
+  }
+  public function savedposts(Post $post){
+
+    return $post;
   }
 }

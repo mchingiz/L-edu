@@ -164,4 +164,10 @@ class PostController extends Controller
     $post=$post[0];
     return view('post',compact('post'));
   }
+
+  public function approvalPending(){
+    $posts = Post::where('approved',0)->where('deleted',0)->get();
+    // return $posts[0]->company->user->name;
+    return view('adminPanel.posts',compact('posts'));
+  }
 }

@@ -46,6 +46,7 @@ Route::get('/edit/{post}', 'PostController@editPost');
 Route::post('/edit/{post}', 'PostController@updatePost');
 Route::get('/add', 'PostController@addPost');
 Route::post('/add', 'PostController@storePost');
+Route::get('/approvalPending', 'PostController@approvalPending');
 
 
 

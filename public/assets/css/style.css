@@ -184,68 +184,68 @@ i.material-icons {
         #footer #copyright > div .col-xs-12 {
           text-align: center; } }
 
-#category, #company-profile, #company {
+#category, #company-profile, #company, #savedposts {
   padding-left: 0px;
   padding-right: 0px;
   font-family: Lato; }
-  #category .col-md-12, #company-profile .col-md-12, #company .col-md-12 {
+  #category .col-md-12, #company-profile .col-md-12, #company .col-md-12, #savedposts .col-md-12 {
     padding: 0 15px 20px; }
-    #category .col-md-12 h2, #company-profile .col-md-12 h2, #company .col-md-12 h2 {
+    #category .col-md-12 h2, #company-profile .col-md-12 h2, #company .col-md-12 h2, #savedposts .col-md-12 h2 {
       font-size: 30px; }
-  #category .col-md-4, #category .col-md-6, #company-profile .col-md-4, #company-profile .col-md-6, #company .col-md-4, #company .col-md-6 {
+  #category .col-md-4, #category .col-md-6, #company-profile .col-md-4, #company-profile .col-md-6, #company .col-md-4, #company .col-md-6, #savedposts .col-md-4, #savedposts .col-md-6 {
     padding: 15px; }
-    #category .col-md-4 .post-item, #category .col-md-6 .post-item, #company-profile .col-md-4 .post-item, #company-profile .col-md-6 .post-item, #company .col-md-4 .post-item, #company .col-md-6 .post-item {
+    #category .col-md-4 .post-item, #category .col-md-6 .post-item, #company-profile .col-md-4 .post-item, #company-profile .col-md-6 .post-item, #company .col-md-4 .post-item, #company .col-md-6 .post-item, #savedposts .col-md-4 .post-item, #savedposts .col-md-6 .post-item {
       position: relative;
       background-color: white;
       padding: 15px;
       box-shadow: 1px 1px 3px 0px #d8dde6; }
-      #category .col-md-4 .post-item .img-box, #category .col-md-6 .post-item .img-box, #company-profile .col-md-4 .post-item .img-box, #company-profile .col-md-6 .post-item .img-box, #company .col-md-4 .post-item .img-box, #company .col-md-6 .post-item .img-box {
+      #category .col-md-4 .post-item .img-box, #category .col-md-6 .post-item .img-box, #company-profile .col-md-4 .post-item .img-box, #company-profile .col-md-6 .post-item .img-box, #company .col-md-4 .post-item .img-box, #company .col-md-6 .post-item .img-box, #savedposts .col-md-4 .post-item .img-box, #savedposts .col-md-6 .post-item .img-box {
         width: 100%;
         max-height: 165px;
         position: relative;
         overflow: hidden; }
-        #category .col-md-4 .post-item .img-box .post-item-actions, #category .col-md-6 .post-item .img-box .post-item-actions, #company-profile .col-md-4 .post-item .img-box .post-item-actions, #company-profile .col-md-6 .post-item .img-box .post-item-actions, #company .col-md-4 .post-item .img-box .post-item-actions, #company .col-md-6 .post-item .img-box .post-item-actions {
+        #category .col-md-4 .post-item .img-box .post-item-actions, #category .col-md-6 .post-item .img-box .post-item-actions, #company-profile .col-md-4 .post-item .img-box .post-item-actions, #company-profile .col-md-6 .post-item .img-box .post-item-actions, #company .col-md-4 .post-item .img-box .post-item-actions, #company .col-md-6 .post-item .img-box .post-item-actions, #savedposts .col-md-4 .post-item .img-box .post-item-actions, #savedposts .col-md-6 .post-item .img-box .post-item-actions {
           padding-top: 65px;
           width: 100%;
           height: 165px;
           position: relative;
           background-color: white; }
-          #category .col-md-4 .post-item .img-box .post-item-actions ul, #category .col-md-6 .post-item .img-box .post-item-actions ul, #company-profile .col-md-4 .post-item .img-box .post-item-actions ul, #company-profile .col-md-6 .post-item .img-box .post-item-actions ul, #company .col-md-4 .post-item .img-box .post-item-actions ul, #company .col-md-6 .post-item .img-box .post-item-actions ul {
+          #category .col-md-4 .post-item .img-box .post-item-actions ul, #category .col-md-6 .post-item .img-box .post-item-actions ul, #company-profile .col-md-4 .post-item .img-box .post-item-actions ul, #company-profile .col-md-6 .post-item .img-box .post-item-actions ul, #company .col-md-4 .post-item .img-box .post-item-actions ul, #company .col-md-6 .post-item .img-box .post-item-actions ul, #savedposts .col-md-4 .post-item .img-box .post-item-actions ul, #savedposts .col-md-6 .post-item .img-box .post-item-actions ul {
             text-align: center; }
-            #category .col-md-4 .post-item .img-box .post-item-actions ul li, #category .col-md-6 .post-item .img-box .post-item-actions ul li, #company-profile .col-md-4 .post-item .img-box .post-item-actions ul li, #company-profile .col-md-6 .post-item .img-box .post-item-actions ul li, #company .col-md-4 .post-item .img-box .post-item-actions ul li, #company .col-md-6 .post-item .img-box .post-item-actions ul li {
+            #category .col-md-4 .post-item .img-box .post-item-actions ul li, #category .col-md-6 .post-item .img-box .post-item-actions ul li, #company-profile .col-md-4 .post-item .img-box .post-item-actions ul li, #company-profile .col-md-6 .post-item .img-box .post-item-actions ul li, #company .col-md-4 .post-item .img-box .post-item-actions ul li, #company .col-md-6 .post-item .img-box .post-item-actions ul li, #savedposts .col-md-4 .post-item .img-box .post-item-actions ul li, #savedposts .col-md-6 .post-item .img-box .post-item-actions ul li {
               cursor: pointer; }
-        #category .col-md-4 .post-item .img-box img, #category .col-md-6 .post-item .img-box img, #company-profile .col-md-4 .post-item .img-box img, #company-profile .col-md-6 .post-item .img-box img, #company .col-md-4 .post-item .img-box img, #company .col-md-6 .post-item .img-box img {
+        #category .col-md-4 .post-item .img-box img, #category .col-md-6 .post-item .img-box img, #company-profile .col-md-4 .post-item .img-box img, #company-profile .col-md-6 .post-item .img-box img, #company .col-md-4 .post-item .img-box img, #company .col-md-6 .post-item .img-box img, #savedposts .col-md-4 .post-item .img-box img, #savedposts .col-md-6 .post-item .img-box img {
           top: 0px;
           position: relative;
           width: 100%;
           transition-duration: 0.4s; }
-      #category .col-md-4 .post-item .post-item-desc, #category .col-md-6 .post-item .post-item-desc, #company-profile .col-md-4 .post-item .post-item-desc, #company-profile .col-md-6 .post-item .post-item-desc, #company .col-md-4 .post-item .post-item-desc, #company .col-md-6 .post-item .post-item-desc {
+      #category .col-md-4 .post-item .post-item-desc, #category .col-md-6 .post-item .post-item-desc, #company-profile .col-md-4 .post-item .post-item-desc, #company-profile .col-md-6 .post-item .post-item-desc, #company .col-md-4 .post-item .post-item-desc, #company .col-md-6 .post-item .post-item-desc, #savedposts .col-md-4 .post-item .post-item-desc, #savedposts .col-md-6 .post-item .post-item-desc {
         padding: 15px 0 30px 0; }
-        #category .col-md-4 .post-item .post-item-desc a, #category .col-md-6 .post-item .post-item-desc a, #company-profile .col-md-4 .post-item .post-item-desc a, #company-profile .col-md-6 .post-item .post-item-desc a, #company .col-md-4 .post-item .post-item-desc a, #company .col-md-6 .post-item .post-item-desc a {
+        #category .col-md-4 .post-item .post-item-desc a, #category .col-md-6 .post-item .post-item-desc a, #company-profile .col-md-4 .post-item .post-item-desc a, #company-profile .col-md-6 .post-item .post-item-desc a, #company .col-md-4 .post-item .post-item-desc a, #company .col-md-6 .post-item .post-item-desc a, #savedposts .col-md-4 .post-item .post-item-desc a, #savedposts .col-md-6 .post-item .post-item-desc a {
           color: #263241;
           text-decoration: none;
           font-size: 16px;
           font-weight: bold;
           line-height: 22px; }
-          #category .col-md-4 .post-item .post-item-desc a:hover, #category .col-md-6 .post-item .post-item-desc a:hover, #company-profile .col-md-4 .post-item .post-item-desc a:hover, #company-profile .col-md-6 .post-item .post-item-desc a:hover, #company .col-md-4 .post-item .post-item-desc a:hover, #company .col-md-6 .post-item .post-item-desc a:hover {
+          #category .col-md-4 .post-item .post-item-desc a:hover, #category .col-md-6 .post-item .post-item-desc a:hover, #company-profile .col-md-4 .post-item .post-item-desc a:hover, #company-profile .col-md-6 .post-item .post-item-desc a:hover, #company .col-md-4 .post-item .post-item-desc a:hover, #company .col-md-6 .post-item .post-item-desc a:hover, #savedposts .col-md-4 .post-item .post-item-desc a:hover, #savedposts .col-md-6 .post-item .post-item-desc a:hover {
             color: #425771; }
-      #category .col-md-4 .post-item .post-item-details, #category .col-md-6 .post-item .post-item-details, #company-profile .col-md-4 .post-item .post-item-details, #company-profile .col-md-6 .post-item .post-item-details, #company .col-md-4 .post-item .post-item-details, #company .col-md-6 .post-item .post-item-details {
+      #category .col-md-4 .post-item .post-item-details, #category .col-md-6 .post-item .post-item-details, #company-profile .col-md-4 .post-item .post-item-details, #company-profile .col-md-6 .post-item .post-item-details, #company .col-md-4 .post-item .post-item-details, #company .col-md-6 .post-item .post-item-details, #savedposts .col-md-4 .post-item .post-item-details, #savedposts .col-md-6 .post-item .post-item-details {
         position: absolute;
         bottom: 10px;
         left: 15px; }
-        #category .col-md-4 .post-item .post-item-details li, #category .col-md-6 .post-item .post-item-details li, #company-profile .col-md-4 .post-item .post-item-details li, #company-profile .col-md-6 .post-item .post-item-details li, #company .col-md-4 .post-item .post-item-details li, #company .col-md-6 .post-item .post-item-details li {
+        #category .col-md-4 .post-item .post-item-details li, #category .col-md-6 .post-item .post-item-details li, #company-profile .col-md-4 .post-item .post-item-details li, #company-profile .col-md-6 .post-item .post-item-details li, #company .col-md-4 .post-item .post-item-details li, #company .col-md-6 .post-item .post-item-details li, #savedposts .col-md-4 .post-item .post-item-details li, #savedposts .col-md-6 .post-item .post-item-details li {
           opacity: .5;
           transition-duration: .4s; }
-          #category .col-md-4 .post-item .post-item-details li i, #category .col-md-6 .post-item .post-item-details li i, #company-profile .col-md-4 .post-item .post-item-details li i, #company-profile .col-md-6 .post-item .post-item-details li i, #company .col-md-4 .post-item .post-item-details li i, #company .col-md-6 .post-item .post-item-details li i {
+          #category .col-md-4 .post-item .post-item-details li i, #category .col-md-6 .post-item .post-item-details li i, #company-profile .col-md-4 .post-item .post-item-details li i, #company-profile .col-md-6 .post-item .post-item-details li i, #company .col-md-4 .post-item .post-item-details li i, #company .col-md-6 .post-item .post-item-details li i, #savedposts .col-md-4 .post-item .post-item-details li i, #savedposts .col-md-6 .post-item .post-item-details li i {
             font-size: 16px; }
-          #category .col-md-4 .post-item .post-item-details li span, #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li span, #category .col-md-6 .post-item .post-item-details li a, #company-profile .col-md-4 .post-item .post-item-details li span, #company-profile .col-md-4 .post-item .post-item-details li a, #company-profile .col-md-6 .post-item .post-item-details li span, #company-profile .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li span, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li span, #company .col-md-6 .post-item .post-item-details li a {
+          #category .col-md-4 .post-item .post-item-details li span, #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li span, #category .col-md-6 .post-item .post-item-details li a, #company-profile .col-md-4 .post-item .post-item-details li span, #company-profile .col-md-4 .post-item .post-item-details li a, #company-profile .col-md-6 .post-item .post-item-details li span, #company-profile .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li span, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li span, #company .col-md-6 .post-item .post-item-details li a, #savedposts .col-md-4 .post-item .post-item-details li span, #savedposts .col-md-4 .post-item .post-item-details li a, #savedposts .col-md-6 .post-item .post-item-details li span, #savedposts .col-md-6 .post-item .post-item-details li a {
             font-size: 12px; }
-          #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li a, #company-profile .col-md-4 .post-item .post-item-details li a, #company-profile .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li a {
+          #category .col-md-4 .post-item .post-item-details li a, #category .col-md-6 .post-item .post-item-details li a, #company-profile .col-md-4 .post-item .post-item-details li a, #company-profile .col-md-6 .post-item .post-item-details li a, #company .col-md-4 .post-item .post-item-details li a, #company .col-md-6 .post-item .post-item-details li a, #savedposts .col-md-4 .post-item .post-item-details li a, #savedposts .col-md-6 .post-item .post-item-details li a {
             text-decoration: none;
             color: black; }
-            #category .col-md-4 .post-item .post-item-details li a i, #category .col-md-6 .post-item .post-item-details li a i, #company-profile .col-md-4 .post-item .post-item-details li a i, #company-profile .col-md-6 .post-item .post-item-details li a i, #company .col-md-4 .post-item .post-item-details li a i, #company .col-md-6 .post-item .post-item-details li a i {
+            #category .col-md-4 .post-item .post-item-details li a i, #category .col-md-6 .post-item .post-item-details li a i, #company-profile .col-md-4 .post-item .post-item-details li a i, #company-profile .col-md-6 .post-item .post-item-details li a i, #company .col-md-4 .post-item .post-item-details li a i, #company .col-md-6 .post-item .post-item-details li a i, #savedposts .col-md-4 .post-item .post-item-details li a i, #savedposts .col-md-6 .post-item .post-item-details li a i {
               margin-right: 4px; }
-        #category .col-md-4 .post-item .post-item-details li:hover, #category .col-md-6 .post-item .post-item-details li:hover, #company-profile .col-md-4 .post-item .post-item-details li:hover, #company-profile .col-md-6 .post-item .post-item-details li:hover, #company .col-md-4 .post-item .post-item-details li:hover, #company .col-md-6 .post-item .post-item-details li:hover {
+        #category .col-md-4 .post-item .post-item-details li:hover, #category .col-md-6 .post-item .post-item-details li:hover, #company-profile .col-md-4 .post-item .post-item-details li:hover, #company-profile .col-md-6 .post-item .post-item-details li:hover, #company .col-md-4 .post-item .post-item-details li:hover, #company .col-md-6 .post-item .post-item-details li:hover, #savedposts .col-md-4 .post-item .post-item-details li:hover, #savedposts .col-md-6 .post-item .post-item-details li:hover {
           opacity: 1; }
 
 #post {
@@ -395,7 +395,8 @@ i.material-icons {
   margin-left: 0; }
   .right-bar .heading {
     border: none;
-    padding-bottom: 0; }
+    padding-bottom: 0;
+    padding-top: 15px !important; }
     .right-bar .heading h3 {
       display: inline-block;
       border-bottom: 2px solid #03A9F4;

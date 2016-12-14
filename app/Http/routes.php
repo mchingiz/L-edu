@@ -42,9 +42,13 @@ Route::post('/company/editprofile', 'CompanyController@Update');
 
 //Posts
 Route::get('/post/{slug}', 'PostController@View');
-Route::get('/post/save/{id}', 'PostController@SavePost');
-Route::delete('/post/unsave/{saved_post}', 'PostController@UnSavePost');
-Route::get('/savedposts/{post}', 'PostController@savedposts');
+
+
+//Saved posts
+Route::get('/post/save/{id}', 'SavedPostController@SavePost');
+Route::delete('/post/unsave/{saved_post}', 'SavedPostController@UnSavePost');
+Route::get('/savedposts', 'SavedPostController@View');
+
 
 
 

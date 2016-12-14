@@ -92,7 +92,7 @@ class PostController extends Controller
   public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
-    if($post->approved==0 || $post->deleted==1)
+    if($post->approved==0)
       return 404;
 
     $OtherPosts=Post::orderBy('id', 'desc')
@@ -124,26 +124,5 @@ class PostController extends Controller
     return view('post', compact('post','OtherPosts','isSaved'));
   }
 
-  public function SavePost($id){
-    $this->log(8,$id,'posts');
 
-    $savepost=Saved_Post::create([
-      'user_id' => $this->user->id,
-      'post_id' => $id,
-      ]);
-
-      return $savepost->id;
-  }
-
-  public function UnSavePost(Saved_Post $saved_post){
-    $this->log(9,$saved_post->post_id,'posts');
-    $post_id=$saved_post->post_id;
-    $saved_post->delete();
-
-      return $post_id ;
-  }
-  public function savedposts(Post $post){
-
-    return $post;
-  }
 }

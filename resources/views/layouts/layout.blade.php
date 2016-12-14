@@ -40,7 +40,7 @@
               <li><a href="{{ url('/login') }}">Login</a></li>
               <li><a href="{{ url('/register') }}">Sign Up</a></li>
               @else
-              <li><a href="{{ url('/logout') }}">Log out</a></li>
+              <li ><a href="{{ url('/logout') }}">Log out</a></li>
               @endif
             </ul>
           </div><!-- /.navbar-collapse -->

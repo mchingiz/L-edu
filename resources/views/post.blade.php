@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('title')
-  Post
+  {{$post->title}}
 @endsection
 
 @section('content')
@@ -36,7 +36,7 @@
             </ul>
           </div>
           <div class="single-post-body">
-            <p>{{$post->body}}</p>
+            <p>{!!$post->body!!}</p>
             @if(!empty( $post->deadline))
                <span id="deadline"> <i class="material-icons ">error_outline</i> Deadline : </span><span>{{ $post->deadline->format('d F Y H:i') }}</span>
             @endif

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Carbon\Carbon;
+
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -32,6 +34,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -58,6 +62,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'0',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -80,6 +86,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -102,6 +110,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -124,8 +134,10 @@ class PostsTableSeeder extends Seeder
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
-      
+
       DB::table('posts')->insert([
           'id' => '6',
           'company_id' => '1',
@@ -146,8 +158,10 @@ class PostsTableSeeder extends Seeder
           'approved'=>'0',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
-      
+
       DB::table('posts')->insert([
           'id' => '7',
           'company_id' => '1',
@@ -168,6 +182,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
     }
 }

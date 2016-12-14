@@ -3,11 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Post extends Model
 {
+  use SoftDeletes;
+
   protected $fillable=['company_id','title','body','image',
-    'view','slug','lang','category_id','subcategory_id','published','deadline'];
+    'view','slug','category_id','subcategory_id','published','deadline'];
+  protected $dates = ['created_at', 'updated_at','deadline','deleted_at'];
 
     public function company(){
       return $this->belongsTo('App\Company');

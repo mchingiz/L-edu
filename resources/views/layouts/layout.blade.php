@@ -8,6 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>@yield('title')</title>
         <meta name="description" content="">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap-theme.min.css')}}">
@@ -39,7 +40,7 @@
               <li><a href="{{ url('/login') }}">Login</a></li>
               <li><a href="{{ url('/register') }}">Sign Up</a></li>
               @else
-              <li><a href="{{ url('/logout') }}">Log out</a></li>
+              <li ><a href="{{ url('/logout') }}">Log out</a></li>
               @endif
             </ul>
           </div><!-- /.navbar-collapse -->

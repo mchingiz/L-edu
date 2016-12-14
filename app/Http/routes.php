@@ -60,5 +60,17 @@ Route::get('/adminPanel', 'HomeController@adminPanel');
 
 
 
+//Saved posts
+Route::get('/post/save/{id}', 'SavedPostController@SavePost');
+Route::delete('/post/unsave/{saved_post}', 'SavedPostController@UnSavePost');
+Route::get('/savedposts', 'SavedPostController@View');
+
+
+
+
+
+
+
+
 
 Route::get('/home', 'HomeController@index');

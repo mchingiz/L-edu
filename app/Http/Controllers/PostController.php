@@ -18,6 +18,8 @@ use App\User;
 use App\Post;
 use App\ActionType;
 use App\Log;
+use App\Saved_post;
+
 
 use App\Http\Traits\LoggingTrait;
 use App\Http\Traits\SlugTrait;
@@ -31,6 +33,7 @@ class PostController extends Controller
 
   public function __construct(){
     $this->user = Auth::user();
+    view()->share('user', $this->user);
   }
 
   public function addPost(){
@@ -38,6 +41,7 @@ class PostController extends Controller
     $tags = Tag::get();
     return view('posts.add',compact('categories','tags'));
   }
+
 
   public function storePost(Request $request){
     $this->validate($request,[
@@ -159,9 +163,38 @@ class PostController extends Controller
   }
 
   public function View($slug){
-    $post=Post::where('slug','=',$slug)->limit(1)->get();
-    $post=$post[0];
-    return view('post',compact('post'));
+
+    $post=Post::where('slug','=',$slug)->first();
+    if($post->approved==0)
+      return 404;
+
+    $OtherPosts=Post::orderBy('id', 'desc')
+                      ->where([
+                        ['category_id', '=', $post->category_id],
+                        ['subcategory_id', '=', $post->subcategory_id],
+                        ['approved', '=', '1'],
+                        ['id','!=',$post->id]
+                        ])
+                      ->limit(3)
+                      ->get();
+
+
+    //Logging
+    if(!empty($this->user) && $this->user->user_type=="user"){
+      $this->log(1,$post->id,'posts');
+      $isSaved=Saved_post::where([
+        ['user_id', '=', $this->user->id],
+        ['post_id', '=', $post->id],
+      ])
+      ->first();
+    }
+
+
+    $post->update([
+        'view' => $post->view+1,
+    ]);
+
+    return view('post', compact('post','OtherPosts','isSaved'));
   }
 
   public function waitList(){
@@ -173,4 +206,6 @@ class PostController extends Controller
     $posts = Post::where('approved',1)->where('deleted',0)->get();
     return view('adminPanel.posts',compact('posts'));
   }
+
+
 }

@@ -24,7 +24,7 @@ class CreatePostsTable extends Migration
             $table->integer('category_id');
             $table->integer('subcategory_id');
             $table->boolean('approved')->default(0);
-            $table->boolean('deleted')->default(0);
+            $table->softDeletes();
             $table->DateTime('deadline')->nullable();
             $table->timestamps();
         });

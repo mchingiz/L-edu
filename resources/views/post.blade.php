@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
 <div class="margin-top-div"></div>
 
 <section id="post" class="container">
@@ -22,38 +23,43 @@
                 <a href=""><i class="material-icons">business</i>{{$post->company->user->name}}</a>
               </li>
               <li>
-                <a href="{{$post->category->link}}"><i class="material-icons">folder</i>{{$post->category->name}}</a> <a href="{{$post->subcategory->link}}">/ {{$post->subcategory->name}}</a>
+                <a href="{{$post->category->menu->link}}"><i class="material-icons">folder</i>{{$post->category->name}}</a><span> / </span><a href="{{$post->subcategory->link}}"> {{$post->subcategory->name}} </a>
               </li>
               <li>
                 <i class="material-icons">date_range</i>
-                <span>24 Dec, 2016</span>
+                <span>{{ $post->created_at->format('d F Y') }}</span>
               </li>
               <li>
                 <i class="material-icons">remove_red_eye</i>
-                <span>246</span>
+                <span>{{$post->view}}</span>
               </li>
             </ul>
           </div>
-          <div class="buttons">
-            <a href="#" class="button-custom"><i class="material-icons">alarm_add</i> Add Reminder</a>
-            <a href="#" class="button-custom"><i class="material-icons">bookmark_border</i> Save Post</a>
-          </div>
           <div class="single-post-body">
-            <p>Lorem ipsum dolor sit amet, vel ea rebum maiestatis. Possim meliore dolores ut usu. Sit ex case iuvaret. Te eum ponderum probatus petentium. Ex animal eruditi vis, ius ad percipit expetendis.</p>
-            <p>At has mazim dolorum postulant. Everti maiorum ei cum, ad vocent hendrerit mea. Brute illum denique pri ex, malis labitur consectetuer quo et. Et tale detracto expetendis mea. Eam vitae inimicus id, habemus nostrum eu pri. Ut melius graecis ius, vim ad propriae senserit.</p>
-            <p>Eos audire sadipscing delicatissimi ne, duo eu dico tempor mediocritatem. Id regione abhorreant necessitatibus eum, eam quis commodo maiorum cu. Percipit quaestio mea ei, ut modus munere has. Ex sed primis reformidans, integre iudicabit has et, sed ad dolore intellegat.</p>
-            <p>Usu ex quem primis. Quas recteque maiestatis ad ius. In hinc clita libris nec. In natum tibique mentitum sit, eam unum persius definiebas no.</p>
-            <p>Enim novum per ad, at quod discere facilis eam, has possit blandit omnesque te. Mel errem elitr audire ut. Id usu magna error pertinacia, an civibus deserunt ullamcorper ius. Tota impedit cu quo, an quo nulla vivendo, sumo scripta civibus eum ne. Qui in modus nullam, cu facilisi mediocritatem qui. Everti delenit maiorum mea cu, recusabo posidonium usu ne, ei mel habemus gubergren.</p>
-            <p>At has mazim dolorum postulant. Everti maiorum ei cum, ad vocent hendrerit mea. Brute illum denique pri ex, malis labitur consectetuer quo et. Et tale detracto expetendis mea. Eam vitae inimicus id, habemus nostrum eu pri. Ut melius graecis ius, vim ad propriae senserit.</p>
-            <p>Eos audire sadipscing delicatissimi ne, duo eu dico tempor mediocritatem. Id regione abhorreant necessitatibus eum, eam quis commodo maiorum cu. Percipit quaestio mea ei, ut modus munere has. Ex sed primis reformidans, integre iudicabit has et, sed ad dolore intellegat.</p>
-            <p>Usu ex quem primis. Quas recteque maiestatis ad ius. In hinc clita libris nec. In natum tibique mentitum sit, eam unum persius definiebas no.</p>
+            <p>{{$post->body}}</p>
+            @if(!empty( $post->deadline))
+               <span id="deadline"> <i class="material-icons ">error_outline</i> Deadline : </span><span>{{ $post->deadline->format('d F Y H:i') }}</span>
+            @endif
+
           </div>
           <div class="single-post-extra">
               <ul class="list-unstyled list-inline tags">
-                <li><a href="">Design</a></li>
-                <li><a href="">Internship</a></li>
-                <li><a href="">Marketing</a></li>
+                @foreach( $post->tags as $tag)
+                <li><a href="">{{$tag->name}}</a></li>
+                @endforeach
               </ul>
+          </div>
+
+          <div class="buttons">
+            @if ( Auth::guest())
+            <a href="/login" class="btn btn-success"> Add Reminder</a>
+            <a href="/login" class="btn btn-success"> Save Post</a>
+            @elseif ( $user->user_type=="user")
+
+            <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
+            <button id="add-reminder"  class="btn btn-success">Add Reminder</button>
+            @endif
+            <a href="#" class="btn btn-danger pull-right"> Report</a>
           </div>
         </div>
 
@@ -62,48 +68,24 @@
       <div id="company-posts">
 
         <h2>
-          Azercell's other posts
+          Related posts
         </h2>
-
+        @foreach($OtherPosts as $post)
         <div class="h-post-item col-md-12">
           <div class="col-md-3 h-post-image">
             <img src="/assets/images/image2.jpg">
           </div>
           <div class="col-md-9 h-post-desc">
-            <a href="#">Lorem ipsum dolor sit amet falan filan lorem falan ipsum filan</a>
-            <p>Lorem ipsum dolor sit amet, consul laudem explicari ei duo, id est recteque prodesset,
-              per pertinax rationibus honestatis ad. </p>
+            <a href="/post/{{$post->slug}}">{{$post->title}}</a>
+            <p>{{str_limit($post->body, $limit = 250, $end = '...')}}</p>
+            @if( !empty($post->deadline ))
             <i class="material-icons">date_range</i>
-            <span>25 Jul, 2016</span>
+            <span>Deadline: {{ $post->deadline->format('d F Y') }}</span>
+            @endif
           </div>
         </div>
+        @endforeach
 
-        <div class="h-post-item col-md-12">
-          <div class="col-md-3 h-post-image">
-            <img src="/assets/images/image1.jpg">
-          </div>
-          <div class="col-md-9 h-post-desc">
-            <a href="#">Lorem ipsum dolor sit amet falan filan lorem falan ipsum filan</a>
-            <p>Lorem ipsum dolor sit amet, consul laudem explicari ei duo, id est recteque prodesset,
-              per pertinax rationibus honestatis ad. </p>
-            <i class="material-icons">date_range</i>
-            <span>25 Jul, 2016</span>
-          </div>
-        </div>
-
-
-        <div class="h-post-item col-md-12">
-          <div class="col-md-3 h-post-image">
-            <img src="/assets/images/image3.jpg">
-          </div>
-          <div class="col-md-9 h-post-desc">
-            <a href="#">Lorem ipsum dolor sit amet falan filan lorem falan ipsum filan</a>
-            <p>Lorem ipsum dolor sit amet, consul laudem explicari ei duo, id est recteque prodesset,
-              per pertinax rationibus honestatis ad. </p>
-            <i class="material-icons">date_range</i>
-            <span>25 Jul, 2016</span>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -118,11 +100,10 @@
             <img src="/assets/images/azercell.jpg">
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 text-center">
-            <a href="#"><h4>Azercell</h4></a>
+            <a href="#"><h4>{{$post->company->user->name}}</h4></a>
             <a class="button-custom col-md-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 col-md-offset-4" href="#">Follow</a>
             <div class="row" style="clear:both">
-              <p>Lorem ipsum dolor sit amet, vel ea rebum maiestatis. Possim meliore dolores ut usu. Sit ex case iuvaret. Te eum ponderum probatus petentium. Ex animal eruditi vis, ius ad percipit expetendis.
-              At has mazim dolorum postulant. Everti maiorum ei cum, ad vocent hendrerit mea. Brute illum denique pri ex, malis labitur consectetuer quns, integre iudicabit has et, sed ad dolore intellegat.</p>
+              <p>{{$post->company->info}}</p>
             </div>
           </div>
         </div>
@@ -132,7 +113,7 @@
 
       <section id= "rightBarPosts" class="right-bar row">
         <div class="heading col-md-12 col-sm-12 col-xs-12">
-            <h3>Related Posts</h3>
+            <h3>Most viewed posts</h3>
         </div>
         <div class="body col-md-12 col-sm-12 col-xs-12">
           <div class="row">
@@ -199,4 +180,8 @@
       </section>
     </div>
 </section>
+@endsection
+@section('script')
+  <script src="{{url('/assets/js/Postajax.js')}}"></script>
+  <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
 @endsection

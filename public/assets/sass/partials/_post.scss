@@ -44,9 +44,9 @@
               i{
                 margin-right: 4px;
               }
-            }
-            &:hover{
-              i,span,a{color:darken(lightgray,40%);}
+              &:hover{
+              color:darken(lightgray,40%);
+              }
             }
           }
         }
@@ -55,7 +55,19 @@
         padding-bottom:10px;
         p{
           padding:8px 0;
-          //font-family:'Raleway';
+          margin-bottom:20px;
+          font-family:'Open Sans', sans-serif;
+          line-height: 1.8;
+        }
+
+        #deadline{
+          color:#C31926;
+          font-weight: bold;
+          font-size: 1em;
+          display: inline-block;
+          i{
+            vertical-align: sub;
+          }
         }
       }
       .single-post-extra{
@@ -88,10 +100,14 @@
   .col-md-4{
   }
   .buttons{
-    margin:10px 10px 10px 0;
+    padding:10px 15px;
+    //box-shadow: 1px 1px 3px 0px darken($background-color,10%);
+    //background-color: white;
+    margin:10px 0;
     a{
-      padding:7px 10px;
+      //padding:7px 10px;
       font-size: 1em;
+      //background-color: darken($background-color, 30%);
       i{
         vertical-align: sub;
         margin-top:5px;

@@ -25,20 +25,24 @@ class MenusTableSeeder extends Seeder
           'name' => 'Events',
           'link' => '/contact',
       ]);
+      
       DB::table('menus')->insert([
           'id' => '3',
           'name' => 'Vacancy',
           'link' => '/vacancy',
       ]);
+      
       DB::table('menus')->insert([
           'id' => '4',
           'name' => 'Scholarship',
           'link' => '/scholarship',
       ]);
+      
       DB::table('menus')->insert([
           'id' => '5',
           'name' => 'Grants',
           'link' => '/grants',
       ]);
+      
     }
 }

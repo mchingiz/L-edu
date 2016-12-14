@@ -28,14 +28,14 @@
           <div class="form-group row">
             <label for="title" class="col-md-2">Title<span>*</span></label>
             <div class="col-md-10">
-              <input class="form-control" type="text" name="title" id="title" value="{{old('title')}}" >
+              <input class="form-control" type="text" name="title" id="title" value="{{old('title')}}" required>
             </div>
           </div>
 
           <div class="form-group row">
             <label for="editor1" class="col-md-2">Body<span>*</span></label>
             <div class="col-md-10">
-              <textarea class="form-control" name="body" id="editor1" rows="10" cols="80" >{{old('body')}}</textarea>
+              <textarea class="form-control" name="body" id="editor1" rows="10" cols="80" required>{{old('body')}}</textarea>
               <script>
               CKEDITOR.replace('editor1');
               </script>
@@ -45,7 +45,7 @@
           <div class="form-group row">
             <label for="photo" class="col-md-2">Image<span>*</span></label>
             <div class="col-md-10">
-              <input type="file" class="form-control-file" name="photo" id="photo" >
+              <input type="file" class="form-control-file" name="photo" id="photo" required>
             </div>
           </div>
 
@@ -68,7 +68,7 @@
           <div class="form-group row">
             <label for="categoryInput" class="col-md-2">Category<span>*</span></label>
             <div class="col-md-10">
-              <select class="form-control" name="category" id="categoryInput" >
+              <select class="form-control" name="category" id="categoryInput" required>
                 @foreach ($categories as $category)
                   <optgroup label="{{ $category->name }}">
                     @if( collect($category->subcategories)->isEmpty() )
@@ -87,7 +87,7 @@
           <div class="form-group row">
       			<label for='selectTag' class="col-md-2">Tags<span>*</span></label>
       			<div class="col-md-10">
-              <select class="js-example-basic-multiple col-md-10" multiple="multiple" name="tags[]" id='selectTag' style="width:235px" >
+              <select class="js-example-basic-multiple col-md-10" multiple="multiple" name="tags[]" id='selectTag' style="width:235px" required>
         				@foreach( $tags as $tag )
         					<option value="{{$tag->id}}" >{{ $tag->name }}</option>
         				@endforeach

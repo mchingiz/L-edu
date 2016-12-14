@@ -66,7 +66,7 @@ class PostController extends Controller
       $subcategory_id = $request->input('category');
     }
 
-    Post::create([
+    $currentPostID = Post::insertGetId([
 			'title' => $request->input('title'),
 			'body' => $request->input('body'),
       'deadline' => str_replace('T',' ',$request->input('deadline')),
@@ -80,7 +80,6 @@ class PostController extends Controller
 			]);
 
     // Tags
-    $currentPostID = Post::orderBy('id', 'desc')->first()->id;
     foreach($request->input('tags') as $tag){
       DB::table('post_tag')->insert([
         'post_id' => $currentPostID,
@@ -165,9 +164,13 @@ class PostController extends Controller
     return view('post',compact('post'));
   }
 
-  public function approvalPending(){
+  public function waitList(){
     $posts = Post::where('approved',0)->where('deleted',0)->get();
-    // return $posts[0]->company->user->name;
+    return view('adminPanel.posts',compact('posts'));
+  }
+
+  public function approvedList(){
+    $posts = Post::where('approved',1)->where('deleted',0)->get();
     return view('adminPanel.posts',compact('posts'));
   }
 }

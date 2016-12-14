@@ -12,6 +12,9 @@
   </div>
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
+      @if( collect($posts)->isEmpty() )
+        <h4>There is nothing to show</h4>
+      @else
       <table class="table" id="table">
       <thead>
           <tr>
@@ -23,6 +26,9 @@
               <th class="text-center">Lang</th>
               <th class="text-center">Subcategory</th>
               <th class="text-center">Deadline</th>
+              <th class="text-center">Views</th>
+              <th class="text-center">Reminder+</th>
+              <th class="text-center">Saved+</th>
               <th class="text-center"></th>
               <th class="text-center"></th>
               <th class="text-center"></th>
@@ -41,6 +47,9 @@
                 <td class="text-center">{{$post->lang}}</td>
                 <td class="text-center">{{$post->subcategory->name}}</td>
                 <td class="text-center">{{$post->deadline}}</td>
+                <td class="text-center">{{$post->views}}</td>
+                <td class="text-center">{{$post->views}}</td>
+                <td class="text-center">{{$post->views}}</td>
                 <td class="text-center">
                   <a href="{{url('/editPost/'.$post->id)}}">
                     <span class="glyphicon glyphicon-edit"></span>
@@ -60,6 +69,7 @@
           @endforeach
       </tbody>
       </table>
+      @endif
     </div>
   </div>
 @endsection

@@ -28,9 +28,8 @@ class Post extends Model
     public function reports(){
       return $this->hasMany('App\Report');
     }
+
     public function logs(){
       return $this->morphMany('App\Log','loggable');
     }
-
-
 }

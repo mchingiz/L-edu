@@ -22,7 +22,7 @@ use URL;
 
 class Test extends Controller
 {
-  public function test(Log $test){
-    return $test->loggable;
+  public function test(Post $id){
+    return $id->reminders;
   }
 }

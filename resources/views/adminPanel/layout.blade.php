@@ -348,30 +348,27 @@
           <a href="#">
             <i class="fa fa-file-text-o"></i>
             <span>Posts</span>
-
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>
+            <li><a href="{{url('/waitList')}}"><i class="fa fa-circle-o"></i>
               Approval Pending
               <span class="pull-right-container">
                 <span class="label label-primary pull-right">4</span>
               </span>
             </a></li>
-            <li><a href="pages/layout/boxed.html"><i class="fa fa-check"></i> Approved</a></li>
-            <li><a href="pages/layout/fixed.html"><i class="fa fa-close"></i> Refused</a></li>
+            <li><a href="{{url('/approvedList')}}"><i class="fa fa-check"></i> Approved</a></li>
+            <li><a href="{{url('/refusedList')}}"><i class="fa fa-close"></i> Refused</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-edit"></i> <span>Forms</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+            <i class="fa fa-users"></i>
+            <span>Users</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-            <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-            <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+            <li><a href="{{url('/users')}}"><i class="fa fa-user"></i> Users</a></li>
+            <li><a href="{{url('/companies')}}"><i class="fa fa-building"></i> Companies</a></li>
+            <li><a href="{{url('/companyWaitList')}}"><i class="fa fa-question"></i> Company Waitlist</a></li>
           </ul>
         </li>
         <li>

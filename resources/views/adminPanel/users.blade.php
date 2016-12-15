@@ -34,16 +34,13 @@
                   <?php
                   switch($user->user_type){
                     case "user":
-                      echo '<small class="label pull-right bg-red">user</small>';
-                      break;
-                    case 'company':
-                      echo '<small class="label pull-right bg-blue">company</small>';
+                      echo '<small class="label text-center bg-blue">user</small>';
                       break;
                     case 'moderator':
-                      echo '<small class="label pull-right bg-yellow">moderator</small>';
+                      echo '<small class="label text-center bg-yellow">moderator</small>';
                       break;
                     case 'admin':
-                      echo '<small class="label pull-right bg-red">admin</small>';
+                      echo '<small class="label text-center bg-red">admin</small>';
                       break;
                   }
                   ?>

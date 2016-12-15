@@ -42,17 +42,19 @@ Route::post('/company/editprofile', 'CompanyController@Update');
 
 // Posts
 Route::get('/post/{slug}', 'PostController@View');
-Route::get('/edit/{post}', 'PostController@editPost');
-Route::post('/edit/{post}', 'PostController@updatePost');
+Route::get('/editPost/{post}', 'PostController@editPost');
+Route::post('/editPost/{post}', 'PostController@updatePost');
 Route::get('/add', 'PostController@addPost');
 Route::post('/add', 'PostController@storePost');
 
 // Admin Panel
 Route::get('/adminPanel', 'HomeController@adminPanel');
-// Posts
+  // Posts
   Route::get('/waitList', 'PostController@waitList');
   Route::get('/approvedList', 'PostController@approvedList');
-// Users
+    //Actions
+    Route::post('/approvePost/{post}','PostController@approvePost');
+  // Users
   Route::get('/users', 'UserController@userList');
   Route::get('/companies', 'UserController@companyList');
   Route::get('/companyWaitList', 'UserController@companyWaitList');

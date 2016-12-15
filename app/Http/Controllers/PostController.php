@@ -162,13 +162,13 @@ class PostController extends Controller
     }
 
     //Logging
-    $this->log(14,$post->id,'posts');
+    $this->log(15,$post->id,'posts');
   }
 
   public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
-    if($post->approved==0)
+    if($post->approved==0 && $this->user->user_type != 'admin' && $this->user->user_type != 'moderator')
       return 404;
 
     $OtherPosts=Post::orderBy('id', 'desc')
@@ -210,5 +210,10 @@ class PostController extends Controller
     return view('adminPanel.posts',compact('posts'));
   }
 
+  public function approvePost(Post $post){
+    $post->approved = 1;
+    $post->save();
 
+    return back();
+  }
 }

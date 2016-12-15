@@ -213,7 +213,6 @@ class PostController extends Controller
   public function approvePost(Post $post){
     $post->approved = 1;
     $post->save();
-
     return back();
   }
 }

@@ -16,7 +16,7 @@
                   <img src="/assets/postPhotos/{{$post->image}}">
                 </div>
                 <div class="post-item-desc">
-                  <a href="">{{$post->title}}</a>
+                  <a href="{{ url('/post/'.$post->slug) }}">{{$post->title}}</a>
                 </div>
                 <div class="post-item-details">
                   <ul class="list-unstyled list-inline">
@@ -39,55 +39,20 @@
                   <h3>Companies</h3>
               </div>
               <div class="body col-md-12 col-xs-12 col-sm-12">
+                @foreach($companies as $company)
                 <div class="row">
                   <div class=" img-box col-md-3 col-sm-3 col-xs-3">
                     <img src="/assets/images/azercell.jpg">
                   </div>
                   <div class="col-md-9 col-xs-9 col-sm-9">
-                    <a href="#">Azercell</a>
+                    <a href="#">{{$company->user->name}}</a>
                     <a href="#" class="button-custom">Follow</a>
                   </div>
                 </div>
+                @if($company!=$companies->last())
                 <div class="border"></div>
-                <div class="row">
-                  <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-                    <img src="/assets/images/azelab.jpg">
-                  </div>
-                  <div class="col-md-9 col-sm-9 col-xs-9">
-                    <a href="#">Azelab</a>
-                    <a href="#" class="button-custom">Follow</a>
-                  </div>
-                </div>
-                <div class="border"></div>
-                <div class="row">
-                  <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-                    <img src="/assets/images/nar.jpg">
-                  </div>
-                  <div class="col-md-9 col-sm-9 col-xs-9">
-                    <a href="#">Nar Mobile</a>
-                    <a href="#" class="button-custom">Follow</a>
-                  </div>
-                </div>
-                <div class="border"></div>
-                <div class="row">
-                  <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-                    <img src="/assets/images/code.png">
-                  </div>
-                  <div class="col-md-9 col-sm-9 col-xs-9">
-                    <a href="#">Code Academy</a>
-                    <a href="#" class="button-custom">Follow</a>
-                  </div>
-                </div>
-                <div class="border"></div>
-                <div class="row">
-                  <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-                    <img src="/assets/images/bbf.jpg">
-                  </div>
-                  <div class="col-md-9 col-sm-9 col-xs-9">
-                    <a href="#">Baku Business Factory</a>
-                    <a href="#" class="button-custom">Follow</a>
-                  </div>
-                </div>
+                @endif
+                @endforeach
               </div>
             </section>
 

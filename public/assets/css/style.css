@@ -726,6 +726,10 @@ i.material-icons {
     height: 250px; }
     #addPost .row .previousImage img {
       width: 100%; }
+  #addPost div.error {
+    margin-top: 20px; }
+    #addPost div.error ul {
+      margin: 0; }
 
 #register .user-type {
   padding: 20px 0;

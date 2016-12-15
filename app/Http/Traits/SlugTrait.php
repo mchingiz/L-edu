@@ -37,7 +37,7 @@ trait SlugTrait{
     $text = preg_replace('~[^-\w]+~', '', $text);
 
     // // trim
-    // $text = trim($text, '-');
+    $text = trim($text, '-');
 
     // remove duplicate -
     $text = preg_replace('~-+~', '-', $text);

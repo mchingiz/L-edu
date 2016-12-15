@@ -50,7 +50,9 @@ class CompanyController extends Controller
 
 
     return redirect()->back();
+  }
 
-
+  public function approveCompany(){
+    
   }
 }

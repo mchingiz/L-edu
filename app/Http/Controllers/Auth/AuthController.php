@@ -10,8 +10,12 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use URL;
 
+use App\Http\Traits\SlugTrait;
+
 class AuthController extends Controller
 {
+    use SlugTrait;
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -81,6 +85,7 @@ class AuthController extends Controller
         if($type=="company"){
           Company::create([
             'user_id' => $user->id,
+            'slug' => $this->slugCreator($data['name']),
           ]);
         }
 

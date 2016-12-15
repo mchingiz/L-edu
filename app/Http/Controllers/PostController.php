@@ -81,6 +81,8 @@ class PostController extends Controller
       'category_id' => $category_id,
       'subcategory_id' => $subcategory_id,
       'company_id' => $this->user->company->id,
+      'created_at' => Carbon::now(),
+      'updated_at' => Carbon::now(),
 			]);
 
     // Tags
@@ -125,6 +127,7 @@ class PostController extends Controller
     $post->body = $request->input('body');
     $post->deadline = str_replace('T',' ',$request->input('deadline'));
     $post->lang = $request->input('language');
+    $post->updated_at = Carbon::now();
 
     if(substr($request->input('category'),0,1) == 'c'){
       // Then it is category without sub
@@ -159,13 +162,13 @@ class PostController extends Controller
     }
 
     //Logging
-    $this->log(14,$post->id,'posts');
+    $this->log(15,$post->id,'posts');
   }
 
   public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
-    if($post->approved==0)
+    if($post->approved==0 && $this->user->user_type != 'admin' && $this->user->user_type != 'moderator')
       return 404;
 
     $OtherPosts=Post::orderBy('id', 'desc')
@@ -198,15 +201,18 @@ class PostController extends Controller
   }
 
   public function waitList(){
-    $posts = Post::where('approved',0)->where('deleted',0)->get();
+    $posts = Post::where('approved',0)->get();
     return view('adminPanel.posts',compact('posts'));
   }
 
   public function approvedList(){
-    $posts = Post::where('approved',1)->where('deleted',0)->get();
+    $posts = Post::where('approved',1)->get();
     return view('adminPanel.posts',compact('posts'));
   }
 
-
-
+  public function approvePost(Post $post){
+    $post->approved = 1;
+    $post->save();
+    return back();
+  }
 }

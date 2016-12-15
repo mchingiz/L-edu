@@ -12,6 +12,7 @@ use Auth;
 
 use App\Post;
 use App\Log;
+use App\Company;
 use App\Saved_post;
 
 
@@ -48,7 +49,10 @@ class SavedPostController extends Controller
 
   public function view(){
     $countPosts= Saved_Post::where('user_id','=',$this->user->id)->count();
-    
-    return view('savedposts');
+    $numberOfCompanies= ceil($countPosts/2)*2; //There are 2 post each row, 1 row height=2 company height
+    if($numberOfCompanies<5)
+        $numberOfCompanies=5;// minimum number is 5
+    $companies=Company::inRandomOrder()->limit($numberOfCompanies)->get();
+    return view('savedposts',compact ('companies'));
   }
 }

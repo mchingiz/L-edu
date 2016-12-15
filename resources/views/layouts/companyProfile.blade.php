@@ -9,13 +9,13 @@
 <section id="company-profile" class="container-fluid" style="padding-top:85px">
 
   <section id="company">
-    <div id="background"></div>
+    <div id="background" style="background-image:@yield('CoverPhoto')"></div>
     <div class="info-bar">
       <div class="container">
         <div class="col-md-6 col-sm-8 col-xs-12">
-          <img src="../assets/images/azercell.jpg">
-          <h1>Young Business Factory<br>
-          <span> 92 followers | 22 posts</span>
+          <img src=@yield('ProfilePicture')>
+          <h1>@yield('name')<br>
+          <span> @yield('FollowerCount') followers | @yield('PostCount') posts</span>
           </h1>
         </div>
         <div class="col-md-6 col-sm-4 col-xs-12">

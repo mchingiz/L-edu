@@ -638,7 +638,6 @@ i.material-icons {
     margin-top: 10px; }
 
 #company-profile #company #background {
-  background: url("../images/laptop.jpg");
   height: 250px;
   background-position: center; }
   @media screen and (max-width: 576px) {

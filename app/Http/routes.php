@@ -39,6 +39,8 @@ Route::get('/register/user', 'Auth\AuthController@registerform');
 // company
 Route::get('/company/editprofile', 'CompanyController@EditProfile');
 Route::post('/company/editprofile', 'CompanyController@Update');
+Route::get('/company/{slug}/info', 'CompanyController@ViewInfo');
+Route::get('/company/{slug}/posts', 'CompanyController@ViewPosts');
 
 // Posts
 Route::get('/post/{slug}', 'PostController@View');

@@ -16,16 +16,19 @@ class TagsTableSeeder extends Seeder
       DB::table('tags')->insert([
           'id' => '1',
           'name' => 'Technology',
+          'slug' => 'technology',
       ]);
 
       DB::table('tags')->insert([
           'id' => '2',
           'name' => 'Business',
+          'name' => 'business',
       ]);
 
       DB::table('tags')->insert([
           'id' => '3',
           'name' => 'Time Management',
+          'name' => 'time-management',
       ]);
     }
 }

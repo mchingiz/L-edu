@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Carbon\Carbon;
+
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -32,6 +34,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -58,6 +62,8 @@ class PostsTableSeeder extends Seeder
           'approved'=>'0',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -75,11 +81,13 @@ class PostsTableSeeder extends Seeder
           'image'=>'12345.png',
           'view'=>'30',
           'slug'=>'test-post-slug-3',
-          'lang'=>'aze',
+          'lang'=>'az',
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -97,11 +105,13 @@ class PostsTableSeeder extends Seeder
           'image'=>'12345.png',
           'view'=>'30',
           'slug'=>'test-post-slug-4',
-          'lang'=>'aze',
+          'lang'=>'az',
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
 
       DB::table('posts')->insert([
@@ -119,13 +129,15 @@ class PostsTableSeeder extends Seeder
           'image'=>'12345.png',
           'view'=>'30',
           'slug'=>'test-post-slug-5',
-          'lang'=>'aze',
+          'lang'=>'az',
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
-      
+
       DB::table('posts')->insert([
           'id' => '6',
           'company_id' => '1',
@@ -141,13 +153,15 @@ class PostsTableSeeder extends Seeder
           'image'=>'12345.png',
           'view'=>'30',
           'slug'=>'test-post-slug-6',
-          'lang'=>'aze',
+          'lang'=>'az',
           'deadline'=>'2016-12-18',
           'approved'=>'0',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
-      
+
       DB::table('posts')->insert([
           'id' => '7',
           'company_id' => '1',
@@ -163,11 +177,13 @@ class PostsTableSeeder extends Seeder
           'image'=>'12345.png',
           'view'=>'30',
           'slug'=>'test-post-slug-6',
-          'lang'=>'aze',
+          'lang'=>'az',
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',
           'subcategory_id' => '1',
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
       ]);
     }
 }

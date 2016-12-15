@@ -1,7 +1,7 @@
 @extends('layouts/layout')
 
 @section('title')
-  Post
+  {{$post->title}}
 @endsection
 
 @section('content')
@@ -36,7 +36,7 @@
             </ul>
           </div>
           <div class="single-post-body">
-            <p>{{$post->body}}</p>
+            <p>{!!$post->body!!}</p>
             @if(!empty( $post->deadline))
                <span id="deadline"> <i class="material-icons ">error_outline</i> Deadline : </span><span>{{ $post->deadline->format('d F Y H:i') }}</span>
             @endif
@@ -52,14 +52,24 @@
 
           <div class="buttons">
             @if ( Auth::guest())
-            <a href="/login" class="btn btn-success"> Add Reminder</a>
-            <a href="/login" class="btn btn-success"> Save Post</a>
+              <a href="/login" class="btn btn-success"> Add Reminder</a>
+              <a href="/login" class="btn btn-success"> Save Post</a>
             @elseif ( $user->user_type=="user")
-
-            <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
-            <button id="add-reminder"  class="btn btn-success">Add Reminder</button>
+              <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
+              <button id="add-reminder"  class="btn btn-success">Add Reminder</button>
+            @elseif ( $user->user_type=="admin" || $user->user_type=="moderator")
+              @if($post->approved)
+                <form class="" action="{{ url('/refusePost/'.$post->id )}}" method="post">{{ csrf_field() }}
+                  <input class="btn btn-warning" type="submit" name="refuse" value="Refuse">
+                </form>
+              @else
+                <form class="" action="{{ url('/approvePost/'.$post->id )}}" method="post">{{ csrf_field() }}
+                  <input class="btn btn-success" type="submit" name="approve" value="Approve">
+                </form>
+              @endif
+              <a class="btn btn-info" href="{{ url('/editPost/'.$post->id )}}">Edit</a>
             @endif
-            <a href="#" class="btn btn-danger pull-right"> Report</a>
+              <a href="#" class="btn btn-danger pull-right"> Report</a>
           </div>
         </div>
 

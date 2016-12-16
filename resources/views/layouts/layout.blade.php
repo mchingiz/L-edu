@@ -16,8 +16,8 @@
         <link href="{{url('/assets/fonts/material-design-icons/iconfont/material-icons.css')}}" rel="stylesheet">
         <link href="{{url('/assets/fonts/font-awesome-4.7.0/css/font-awesome.css')}}" rel="stylesheet">
         <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
-        @yield('css')
         <script src="{{url('/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+        @yield('head')
     </head>
     <body>
     <div class="main-wrapper">

@@ -22,13 +22,13 @@ class TagsTableSeeder extends Seeder
       DB::table('tags')->insert([
           'id' => '2',
           'name' => 'Business',
-          'name' => 'business',
+          'slug' => 'business',
       ]);
 
       DB::table('tags')->insert([
           'id' => '3',
           'name' => 'Time Management',
-          'name' => 'time-management',
+          'slug' => 'time-management',
       ]);
     }
 }

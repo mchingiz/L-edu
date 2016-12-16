@@ -4,6 +4,10 @@
   {{$post->title}}
 @endsection
 
+@section('head')
+  <script src="//cdn.ckeditor.com/4.6.0/standard/ckeditor.js"></script>
+@endsection
+
 @section('content')
 
 <div class="margin-top-div"></div>
@@ -23,7 +27,11 @@
                 <a href=""><i class="material-icons">business</i>{{$post->company->user->name}}</a>
               </li>
               <li>
-                <a href="{{$post->category->menu->link}}"><i class="material-icons">folder</i>{{$post->category->name}}</a><span> / </span><a href="{{$post->subcategory->link}}"> {{$post->subcategory->name}} </a>
+                <a href="{{$post->category->menu->link}}"><i class="material-icons">folder</i>{{$post->category->name}}</a><span>
+                @if($post->subcategory_id != '0')
+                  /
+                  </span><a href="{{$post->subcategory->link}}"> {{$post->subcategory->name}} </a>
+                @endif
               </li>
               <li>
                 <i class="material-icons">date_range</i>
@@ -50,7 +58,16 @@
               </ul>
           </div>
 
-          <div class="buttons">
+          @if( $post->approved == 0 && $post->refused == 1) <!-- It means post is refused and company has not made any change yet-->
+            <div class="refuseReason">
+              <div class="alert alert-info">
+                <span style="font-weight:bold">Post has been refused. Because:</span>
+                {!! $post->refuse_reason !!}
+              </div>
+            </div>
+          @endif
+
+          <div class="buttons clearfix">
             @if ( Auth::guest())
               <a href="/login" class="btn btn-success"> Add Reminder</a>
               <a href="/login" class="btn btn-success"> Save Post</a>
@@ -58,19 +75,34 @@
               <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
               <button id="add-reminder"  class="btn btn-success">Add Reminder</button>
             @elseif ( $user->user_type=="admin" || $user->user_type=="moderator")
-              @if($post->approved)
-                <form class="" action="{{ url('/refusePost/'.$post->id )}}" method="post">{{ csrf_field() }}
-                  <input class="btn btn-warning" type="submit" name="refuse" value="Refuse">
-                </form>
-              @else
-                <form class="" action="{{ url('/approvePost/'.$post->id )}}" method="post">{{ csrf_field() }}
-                  <input class="btn btn-success" type="submit" name="approve" value="Approve">
-                </form>
+              @if( $post->refused == 0)
+                @if( $post->approved == 0)
+                  <form class="" action="{{ url('/approvePost/'.$post->id )}}" method="post">{{ csrf_field() }}
+                    <input class="btn btn-success" type="submit" name="approve" value="Approve">
+                  </form>
+                @endif
+                  <button class="btn btn-warning" name="refuse">Refuse</button>
               @endif
-              <a class="btn btn-info" href="{{ url('/editPost/'.$post->id )}}">Edit</a>
             @endif
               <a href="#" class="btn btn-danger pull-right"> Report</a>
           </div>
+
+            <div class="refuse">
+              <form class="" action="{{url('/refusePost/'.$post->id)}}" method="post">{{csrf_field()}}
+                <div class="form-group">
+                  <p>What is the problem,man?</p>
+                  <textarea class="form-control" name="refuse_reason" id="editor1" rows="10" cols="80" required></textarea>
+                  <script>
+                  CKEDITOR.replace('editor1');
+                  </script>
+                </div>
+
+                <div class="form-group clearfix">
+                  <button type="submit" name="submit" class="btn btn-default pull-right">Submit</button>
+                </div>
+
+              </form>
+            </div>
         </div>
 
       <div class="vertical-div"></div>
@@ -194,4 +226,5 @@
 @section('script')
   <script src="{{url('/assets/js/Postajax.js')}}"></script>
   <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
+  <script src="{{url('/assets/js/refuse.js')}}"></script>
 @endsection

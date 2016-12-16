@@ -69,6 +69,9 @@ Route::get('/post/save/{id}', 'SavedPostController@SavePost');
 Route::delete('/post/unsave/{saved_post}', 'SavedPostController@UnSavePost');
 Route::get('/savedposts', 'SavedPostController@View');
 
+//reminder
+Route::post('/post/addreminder/{id}', 'ReminderController@AddReminder');
+
 
 
 

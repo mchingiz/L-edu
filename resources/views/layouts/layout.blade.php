@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
         @yield('css')
         <script src="{{url('/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
+        @yield('script-top')
     </head>
     <body>
     <div class="main-wrapper">
@@ -171,7 +172,7 @@
       </footer>
 
     </div>
-
+    @yield('pop-up')
 
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  -->
     <script>window.jQuery || document.write('<script src="{{url('/assets/js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>

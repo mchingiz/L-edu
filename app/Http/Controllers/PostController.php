@@ -246,7 +246,7 @@ class PostController extends Controller
     $post->save();
 
     $this->log(6,$post->id,'posts'); // Refuse
-
+    
     return back();
   }
 }

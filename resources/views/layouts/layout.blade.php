@@ -31,7 +31,7 @@
               <li><a href="#">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
-              <li><a href="#">Saved Posts</a></li>
+              <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
               <li><a href="#">Reminders</a></li>
               @endif
             </ul>

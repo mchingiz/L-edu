@@ -53,4 +53,9 @@ $( function () {
       } )
     ;
   } );
+
+  $("input:file").change(function (){
+    var crop = $( 'img.crop' ).data( 'crop' );
+    console.log(crop);
+  });
 } );

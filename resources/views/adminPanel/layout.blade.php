@@ -350,8 +350,8 @@
             <span>Posts</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{url('/waitList')}}"><i class="fa fa-circle-o"></i>
-              Approval Pending
+            <li><a href="{{url('/waitList')}}"><i class="fa fa-question"></i>
+              Pending
               <span class="pull-right-container">
                 <span class="label label-primary pull-right">4</span>
               </span>

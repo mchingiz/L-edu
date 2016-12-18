@@ -30,6 +30,9 @@ class PostsTableSeeder extends Seeder
           'view'=>'30',
           'slug'=>'test-post-slug-1',
           'lang'=>'az',
+          'refused'=>'0',
+          'moderator_id'=>'3', // Mehdi
+          'refuse_reason'=>'',
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',
@@ -58,6 +61,9 @@ class PostsTableSeeder extends Seeder
           'view'=>'30',
           'slug'=>'test-post-slug-2',
           'lang'=>'az',
+          'refused'=>'1',
+          'moderator_id'=>'3', // Mehdi
+          'refuse_reason'=>'Post lezzet elemedi', // Mehdi
           'deadline'=>'2016-12-18',
           'approved'=>'0',
           'category_id' => '4',
@@ -82,6 +88,9 @@ class PostsTableSeeder extends Seeder
           'view'=>'30',
           'slug'=>'test-post-slug-3',
           'lang'=>'az',
+          'refused'=>'1',
+          'moderator_id'=>'3', // Mehdi
+          'refuse_reason'=>'Post lezzet elemedi', // Mehdi
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',
@@ -130,6 +139,9 @@ class PostsTableSeeder extends Seeder
           'view'=>'30',
           'slug'=>'test-post-slug-5',
           'lang'=>'az',
+          'refused'=>'0', // Refused, but company chamged
+          'moderator_id'=>'3', // Mehdi
+          'refuse_reason'=>'Post lezzet elemir',
           'deadline'=>'2016-12-18',
           'approved'=>'1',
           'category_id' => '4',

@@ -54,8 +54,10 @@ Route::get('/adminPanel', 'HomeController@adminPanel');
   // Posts
   Route::get('/waitList', 'PostController@waitList');
   Route::get('/approvedList', 'PostController@approvedList');
+  Route::get('/refusedList', 'PostController@refusedList');
     //Actions
     Route::post('/approvePost/{post}','PostController@approvePost');
+    Route::post('/refusePost/{post}','PostController@refusePost');
   // Users
   Route::get('/users', 'UserController@userList');
   Route::get('/companies', 'UserController@companyList');

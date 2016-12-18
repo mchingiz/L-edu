@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Chingiz',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'user',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -25,6 +26,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Senem',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'user',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -32,6 +34,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Mehdi',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'moderator',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -39,6 +42,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Nigar',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'admin',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -46,6 +50,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Code Academy',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'company',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -53,6 +58,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'BBF',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'company',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -60,6 +66,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Azercell',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'company',
+          'password' => bcrypt('qwerty'),
       ]);
 
       DB::table('users')->insert([
@@ -67,6 +74,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Ulvi',
           'email' => str_random(10).'@gmail.com',
           'user_type' => 'user',
+          'password' => bcrypt('qwerty'),
       ]);
     }
 }

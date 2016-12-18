@@ -19,11 +19,14 @@ class CreatePostsTable extends Migration
             $table->text('body');
             $table->string('image');
             $table->integer('view')->default(0);
+            $table->boolean('approved')->default(0);
+            $table->boolean('refused')->default(0);
+            $table->integer('moderator_id');
+            $table->text('refuse_reason')->nullable();
+            $table->integer('subcategory_id');
+            $table->integer('category_id');
             $table->string('slug');
             $table->string('lang');
-            $table->integer('category_id');
-            $table->integer('subcategory_id');
-            $table->boolean('approved')->default(0);
             $table->softDeletes();
             $table->DateTime('deadline')->nullable();
             $table->timestamps();

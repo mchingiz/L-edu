@@ -647,7 +647,6 @@ i.material-icons {
     margin-top: 10px; }
 
 #company-profile #company #background {
-  background: url("../images/laptop.jpg");
   height: 250px;
   background-position: center; }
   @media screen and (max-width: 576px) {
@@ -854,6 +853,47 @@ i.material-icons {
     width: 80px; }
   #editProfile strong {
     color: #ef260f; }
+
+#reminder-form {
+  position: fixed;
+  padding: 40px;
+  background: white;
+  text-align: center;
+  top: 100px;
+  opacity: 1 !important;
+  z-index: 3;
+  display: none; }
+  #reminder-form h1 {
+    font-size: 1.9em;
+    margin: 20px;
+    font-weight: lighter; }
+  #reminder-form input {
+    margin: 20px 0; }
+  #reminder-form button {
+    background: #03A9F4;
+    color: white; }
+    #reminder-form button:hover {
+      background: #0288D1; }
+  #reminder-form p {
+    padding-left: 0;
+    font-size: 1em; }
+  #reminder-form i {
+    color: #5cb85c;
+    vertical-align: sub;
+    padding-right: 5px; }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+  z-index: 2;
+  display: none; }
 
 .testp {
   background-color: #4CAF50; }

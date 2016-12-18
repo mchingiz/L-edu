@@ -22,7 +22,7 @@
                   <ul class="list-unstyled list-inline">
                     <li>
                       <i class="material-icons">date_range</i>
-                      <span>14 Jul, 2015</span>
+                      <span>$post->created_at->format('d F Y')</span>
                     </li>
                     <li>
                       <a href="#"><i class="material-icons">business</i>{{$post->company->user->name}}</a>

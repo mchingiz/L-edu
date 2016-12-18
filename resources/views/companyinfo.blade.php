@@ -1,35 +1,71 @@
 @extends('layouts/companyProfile')
+@section('CoverPhoto')
+url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
+@endsection
+@section('name')
+  {{$company->user->name}}
+@endsection
+@section('FollowerCount')
+  {{$company->followers->count()}}
+@endsection
+@section('PostCount')
+  {{$company->posts->count()}}
+@endsection
+@section('ProfilePicture')
+"/assets/companyProfilePictures/{{$company->logo}}"
+@endsection
 @section('href')
-  <a class="button-custom" href="/company/posts">Posts</a>
+  <a class="button-custom" href="/company/{{$company->slug}}/posts">Posts</a>
 @endsection
 @section('company-content')
 <section id="info" class="container">
   <div class="col-md-8 col-md-offset-2">
+    @if( !empty($company->info))
     <div class="col-md-12">
       <h2> About</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-         elit. Curabitur in dui diam. Sed mollis quam in commodo
-         egestas. Quisque sagittis nibh ac ultrices blandit. Donec
-         id felis sed ex mattis blandit id maximus mi. Nunc non
-         imperdiet nisi, sed tincidunt urna. Sed nunc est, feugiat
-         vel nunc sit amet, tempor congue dolor.</p>
-      </div>
-      <div class="col-md-6">
+      <p>{{$company->info}}</p>
+    </div>
+    @endif
+    @if(!empty($company->address||$company->email||$company->phone1||$company->phone2||$company->fax||$company->website))
+    <div class="col-md-6">
       <h2> Contact </h2>
-        <i class="fa fa-phone" aria-hidden="true"></i> <span>012-034-29-38</span><br>
-        <i class="fa fa-phone" aria-hidden="true"></i> <span>012-034-29-38</span><br>
-        <i class="fa fa-map-marker" aria-hidden="true"></i><span> Af business house</span><br>
-        <i class="fa fa-fax" aria-hidden="true"></i><span>727654826239</span></br>
-        <i class="fa fa-envelope" aria-hidden="true"></i><span>company@gmail.com</span></br>
-        <i class="fa fa-globe" aria-hidden="true"></i><a href="http://facebook.com" target="_blank">http://azercell.com</a>
-      </div>
-      <div class="col-md-6">
+        @if(!empty($company->phone1))
+        <i class="fa fa-phone" aria-hidden="true"></i> <span>{{$company->phone1}}</span><br>
+        @endif
+        @if(!empty($company->phone2))
+        <i class="fa fa-phone" aria-hidden="true"></i> <span>{{$company->phone2}}</span><br>
+        @endif
+        @if(!empty($company->address))
+        <i class="fa fa-map-marker" aria-hidden="true"></i><span>{{$company->address}}</span><br>
+        @endif
+        @if(!empty($company->fax))
+        <i class="fa fa-fax" aria-hidden="true"></i><span>{{$company->fax}}</span></br>
+        @endif
+        @if(!empty($company->email))
+        <i class="fa fa-envelope" aria-hidden="true"></i><span>{{$company->email}}</span></br>
+        @endif
+        @if(!empty($company->website))
+        <i class="fa fa-globe" aria-hidden="true"></i><a href="{{$company->website}}" target="_blank">{{$company->website}}</a>
+        @endif
+    </div>
+    @endif
+    @if(!empty($company->facebook||$company->twitter||$company->instagram||$company->linkedin))
+    <div class="col-md-6">
       <h2> Social Networks </h2>
-        <i class="fa fa-facebook" aria-hidden="true"></i> <a href="http://facebook.com" target="_blank">http://facebook.com</a><br>
-        <i class="fa fa-twitter" aria-hidden="true"></i>  <a href="http://facebook.com" target="_blank">http://twitter.com</a><br>
-        <i class="fa fa-linkedin" aria-hidden="true"></i> <a href="http://facebook.com" target="_blank">http://linkedin.com</a><br>
-        <i class="fa fa-instagram" aria-hidden="true"></i> <a href="http://facebook.com" target="_blank">http://intagram.com</a>
-      </div>
+        @if(!empty($company->facebook))
+        <i class="fa fa-facebook" aria-hidden="true"></i> <a href="{{$company->facebook}}" target="_blank">{{$company->facebook}}</a><br>
+        @endif
+        @if(!empty($company->twitter))
+        <i class="fa fa-twitter" aria-hidden="true"></i> <a href="{{$company->twitter}}" target="_blank">{{$company->twitter}}</a><br>
+        @endif
+        @if(!empty($company->linkedin))
+        <i class="fa fa-linkedin" aria-hidden="true"></i> <a href="{{$company->linkedin}}" target="_blank">{{$company->linkedin}}</a><br>
+        @endif
+        @if(!empty($company->instagram))
+        <i class="fa fa-instagram" aria-hidden="true"></i> <a href="{{$company->instagram}}" target="_blank">{{$company->instagram}}</a><br>
+        @endif
+    </div>
+    @endif
 
   </div>
 </section>

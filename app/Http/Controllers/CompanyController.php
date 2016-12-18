@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Auth;
+use App\Company;
 
 class CompanyController extends Controller
 {
@@ -53,6 +54,15 @@ class CompanyController extends Controller
   }
 
   public function approveCompany(){
-    
+
+  }
+
+  public function ViewInfo( $slug){
+    $company=Company::where('slug','=',$slug)->first();
+    return view('companyinfo',compact('company'));
+  }
+  public function ViewPosts( $slug){
+    $company=Company::where('slug','=',$slug)->first();
+    return view('companyposts',compact('company'));
   }
 }

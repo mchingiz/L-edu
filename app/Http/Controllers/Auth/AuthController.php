@@ -86,6 +86,8 @@ class AuthController extends Controller
           Company::create([
             'user_id' => $user->id,
             'slug' => $this->slugCreator($data['name']),
+            'logo'=>'default.png',
+            'cover_photo'=>'default1.jpg'
           ]);
         }
 

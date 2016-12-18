@@ -3,6 +3,18 @@
 @section('title')
   {{$post->title}}
 @endsection
+@section('script-top')
+<script src="{{url('/assets/js/vendor/jquery-1.11.2.min.js')}}"></script>
+<script src="{{url('/assets/js/PostAjax.js')}}"></script>
+<script src="{{url('/assets/js/reminder.js')}}"></script>
+<script src="{{url('/assets/js/vendor/moment.js')}}"></script>
+<script src="{{url('/assets/js/vendor/collapse.js')}}"></script>
+<script src="{{url('/assets/js/vendor/transition.js')}}"></script>
+<script src="{{url('/assets/js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
+@endsection
+@section('css')
+<link rel="stylesheet" href="{{url('/assets/css/bootstrap-datetimepicker.min.css')}}">
+@endsection
 
 @section('head')
   <script src="//cdn.ckeditor.com/4.6.0/standard/ckeditor.js"></script>
@@ -222,6 +234,31 @@
       </section>
     </div>
 </section>
+<div id="overlay"></div>
+@endsection
+@section('pop-up')
+<div  id="reminder-form" class="col-md-6 col-md-offset-3">
+  <h1>Select date and time:</h1>
+  <div class="col-md-8 col-md-offset-2 input-group">
+    <input type='text' class="form-control" id='datetimepicker4' name="datetime" />
+      <span class="input-group-btn">
+        <button class="btn btn-secondary" value="{{$post->id}}" type="button">Ok</button>
+      </span>
+      
+
+      <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker();
+        });
+
+          $('#datetimepicker4').datetimepicker({
+
+              format: 'YYYY-MM-DD HH:mm'
+        });
+
+      </script>
+  </div>
+</div>
 @endsection
 @section('script')
   <script src="{{url('/assets/js/Postajax.js')}}"></script>

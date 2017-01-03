@@ -40,8 +40,30 @@ class ReminderController extends Controller
       'reminder_time'=> $request->datetime,
     ]);
 
-    return 5;
+    $this->log(14,$id,'posts');
+
+    return 0;
+
 
   }
+
+  public function DeleteReminder(Reminder $reminder){
+    
+    $this->log(16,$reminder->post_id,'posts');
+    $reminder->delete();
+    return 0;
+
+  }
+
+  public function View(){
+    $countPosts= Reminder::where('user_id','=',$this->user->id)->count();
+    $numberOfCompanies= ceil($countPosts/2)*2; //There are 2 post each row, 1 row height=2 company height
+    if($numberOfCompanies<5)
+        $numberOfCompanies=5;// minimum number is 5
+    $companies=Company::inRandomOrder()->limit($numberOfCompanies)->get();
+    return view('reminders',compact ('companies','countPosts'));
+  }
+
+
 
 }

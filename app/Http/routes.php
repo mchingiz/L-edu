@@ -41,6 +41,8 @@ Route::get('/company/editprofile', 'CompanyController@EditProfile');
 Route::post('/company/editprofile', 'CompanyController@Update');
 Route::get('/company/{slug}/info', 'CompanyController@ViewInfo');
 Route::get('/company/{slug}/posts', 'CompanyController@ViewPosts');
+Route::post('/company/follow/{id}', 'CompanyController@Follow');
+Route::delete('/company/unfollow/{id}', 'CompanyController@Unfollow');
 
 // Posts
 Route::get('/post/{slug}', 'PostController@View');
@@ -71,6 +73,8 @@ Route::get('/savedposts', 'SavedPostController@View');
 
 //reminder
 Route::post('/post/addreminder/{id}', 'ReminderController@AddReminder');
+Route::post('/post/deletereminder/{reminder}', 'ReminderController@DeleteReminder');
+Route::get('/reminders', 'ReminderController@View');
 
 
 

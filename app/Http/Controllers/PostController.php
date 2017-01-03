@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use DB;
 use Auth;
 use File;
+use URL;
 
 use App\Category;
 use App\Subcategory;
@@ -19,6 +20,7 @@ use App\Post;
 use App\ActionType;
 use App\Log;
 use App\Saved_post;
+use App\Reminder;
 
 
 use App\Http\Traits\LoggingTrait;
@@ -182,22 +184,35 @@ class PostController extends Controller
                       ->get();
 
 
-    //Logging
+    
     if(!empty($this->user) && $this->user->user_type=="user"){
-      $this->log(1,$post->id,'posts');
+      //Logging
+      if(URL::previous()!="http://localhost:8000/post/".$slug){
+        $this->log(1,$post->id,'posts');
+      }
+
+      //Post saved or not
       $isSaved=Saved_post::where([
+        ['user_id', '=', $this->user->id],
+        ['post_id', '=', $post->id],
+      ])
+      ->first();
+
+      //Reminder added or not
+      $isReminderAdded=Reminder::where([
         ['user_id', '=', $this->user->id],
         ['post_id', '=', $post->id],
       ])
       ->first();
     }
 
-
-    $post->update([
+    if(URL::previous()!="http://localhost:8000/post/".$slug){
+      $post->update([
         'view' => $post->view+1,
-    ]);
-
-    return view('post', compact('post','OtherPosts','isSaved'));
+      ]);
+    }
+    
+    return view('post', compact('post','OtherPosts','isSaved','isReminderAdded'));
   }
 
   public function waitList(){

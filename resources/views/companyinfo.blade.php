@@ -70,3 +70,7 @@ url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
   </div>
 </section>
 @endsection
+
+@section('script')
+    <script src="{{url('/assets/js/follow.js')}}"></script>
+@endsection

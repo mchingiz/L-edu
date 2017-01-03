@@ -6,31 +6,37 @@
 
 @section('content')
 <div class="margin-top-div"></div>
-<section id="savedposts" class="container">
+<section id="reminders" class="container">
   @if($countPosts==0)
   <div id="empty" class="col-md-8 col-md-offset-2 col-xs-12 col-sm-12 text-center">
-      <h3> You have not saved any post </h3>
+      <h3> You don't have any reminders </h3>
   </div>
   @else
   <div class="row">
       <div class="col-md-8 col-sm-8 no-padding">
-        @foreach( Auth::user()->saved_posts as $post)
+        @foreach( Auth::user()->reminders as $reminder)
             <div class="col-md-6 col-xs-12 col-sm-12">
-              <div class="post-item {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
+              <div class="post-item {{$reminder->post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
+                <div class="reminder-time">
+                  <span>Remind Time </span>
+                  <span>{{$reminder->reminder_time->format('d M')}}
+                  </br>
+                   {{$reminder->reminder_time->format('H:i')}}</span>
+                </div>
                 <div class="img-box">
-                  <img src="/assets/postPhotos/{{$post->image}}">
+                  <img src="/assets/postPhotos/{{$reminder->post->image}}">
                 </div>
                 <div class="post-item-desc">
-                  <a href="{{ url('/post/'.$post->slug) }}">{{$post->title}}</a>
+                  <a href="{{ url('/post/'.$reminder->post->slug) }}">{{$reminder->post->title}}</a>
                 </div>
                 <div class="post-item-details">
                   <ul class="list-unstyled list-inline">
                     <li>
                       <i class="material-icons">date_range</i>
-                      <span>{{$post->created_at->format('d F Y')}}</span>
+                      <span>{{$reminder->post->created_at->format('d F Y')}}</span>
                     </li>
                     <li>
-                      <a href="#"><i class="material-icons">business</i>{{$post->company->user->name}}</a>
+                      <a href="#"><i class="material-icons">business</i>{{$reminder->post->company->user->name}}</a>
                     </li>
                   </ul>
                 </div>

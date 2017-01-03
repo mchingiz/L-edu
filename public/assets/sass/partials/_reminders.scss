@@ -1,0 +1,35 @@
+#reminders{
+	#empty{
+		background:white;
+		padding:30px;
+	}
+	.post-item{
+		.reminder-time{
+			position:absolute;
+			top:0;
+			left:0;
+			color:white;
+			z-index:2;
+			opacity:0.7;
+
+			span{
+				display:block;
+				background:red;
+				text-align:center;
+				&:first-child{
+					padding:8px;
+					background-color:$primaryColor2;
+					font-size:0.7em;
+				}
+				&:last-child{
+					padding:5px;
+					background:$primaryColor;
+					line-height:1.5em;
+					font-size:0.8em;
+
+				}
+			}
+		}
+	}
+
+}

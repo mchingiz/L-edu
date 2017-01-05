@@ -23,6 +23,14 @@
   <body>
     <div id="addPost">
       <div class="col-md-6">
+
+        @if($post->refused)
+        <div class="alert alert-warning" role="alert">
+          <b>This post has been refused because of the reasons below:</b>
+          {!! $post->refuse_reason !!}
+        </div>
+        @endif
+
         <form action="" method="post" enctype="multipart/form-data"> {{ csrf_field() }}
 
           <div class="form-group row">

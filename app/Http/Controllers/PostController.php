@@ -127,9 +127,9 @@ class PostController extends Controller
 
     $post->title = $request->input('title');
     $post->body = $request->input('body');
-    $post->deadline = str_replace('T',' ',$request->input('deadline'));
+    $post->deadline = strtotime( str_replace('T',' ',$request->input('deadline')) );
     $post->lang = $request->input('language');
-    $post->updated_at = Carbon::now();
+    $post->refused = 0;
 
     if(substr($request->input('category'),0,1) == 'c'){
       // Then it is category without sub
@@ -216,18 +216,52 @@ class PostController extends Controller
   }
 
   public function waitList(){
-    $posts = Post::where('approved',0)->get();
-    return view('adminPanel.posts',compact('posts'));
+    $posts = Post::where('approved',0)->where('refused',0)->get();
+    $title = "Approval Pending Posts";
+    return view('adminPanel.posts',compact('posts','title'));
   }
 
   public function approvedList(){
     $posts = Post::where('approved',1)->get();
-    return view('adminPanel.posts',compact('posts'));
+    $title = "Approved Posts";
+    return view('adminPanel.posts',compact('posts','title'));
+  }
+
+  public function refusedList(){
+    if($this->user->user_type == 'admin'){ // Return all refused posts
+      $posts = Post::where('approved',0)->where('refused',1)->get();
+    }else if($this->user->user_type == 'moderator'){
+      $posts = Post::where('moderator_id',$this->user->id)->where('approved',0)->where('refused',1)->get();
+    }else{
+      $error = "I'm really sorry but you don't have permission :(";
+      return view('errors.503',compact('error'));
+    }
+    $title = "Refused Posts";
+    return view('adminPanel.posts',compact('posts','title'));
   }
 
   public function approvePost(Post $post){
     $post->approved = 1;
+    $post->refused = 0;
+    $post->moderator_id = $this->user->id;
+    $post->refuse_reason = null;
     $post->save();
+
+    $this->log(5,$post->id,'posts'); // Approve
+
+    return back();
+  }
+
+  public function refusePost(Post $post,Request $request){
+    $post->approved = 0;
+    $post->refused = 1;
+    $post->moderator_id = $this->user->id;
+    $post->refuse_reason = $request->input('refuse_reason');
+
+    $post->save();
+
+    $this->log(6,$post->id,'posts'); // Refuse
+    
     return back();
   }
 }

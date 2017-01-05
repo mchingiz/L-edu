@@ -9,13 +9,14 @@
       background-color: white;
       padding-bottom: 10px;
 
-      div{
+      > div{
         padding:0 $padding-vertical-in; // all divs except .single-post-image
       }
       .single-post-image{
         padding: 0;
         img{
-          max-width:100%;
+          width:100%;
+
         }
       }
       .single-post-desc{
@@ -92,6 +93,15 @@
           }
         }
       }
+      .refuse{
+        padding:15px;
+        display:none;
+        border-top:2px solid lightgray;
+        p{
+          font-size:25px;
+          padding:20px 0;
+        }
+      }
     }
     .company-posts{
 
@@ -113,6 +123,9 @@
         margin-top:5px;
        //padding-top:20px;
       }
+    }
+    form{
+      display:inline-block;
     }
   }
 }

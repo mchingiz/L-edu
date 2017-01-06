@@ -36,6 +36,10 @@ class PostController extends Controller
   public function __construct(){
     $this->user = Auth::user();
     view()->share('user', $this->user);
+
+    $this->middleware('checkRole:admin,moderator')->only('waitList','approvedList','refusedList');
+    $this->middleware('checkRole:company')->only('addPost');
+    $this->middleware('CheckEditPrivilege')->only('editPost');
   }
 
   public function addPost(){
@@ -54,6 +58,7 @@ class PostController extends Controller
 			'category' => 'required',
 			'tags' => 'required|min:1|max:5',
       'deadline' => 'after:today'
+
 		]);
 
     // Photo
@@ -103,6 +108,11 @@ class PostController extends Controller
   // EDITING
 
   public function editPost(Post $post){
+    // if($this->user->company->id != $post->company_id && $this->user->user_type != "moderator" && $this->user->user_type != 'admin'){
+    //   $error = "You don't have permission to see this page";
+    //   return view('errors.error',compact('error'));
+    // }
+
     $categories = Category::get();
     $tags = Tag::get();
 
@@ -170,7 +180,8 @@ class PostController extends Controller
   public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
-    if($post->approved==0 && $this->user->user_type != 'admin' && $this->user->user_type != 'moderator')
+
+    if($post->approved==0 && ($this->user->id != $post->company->user_id) && $this->user->user_type != 'admin' && $this->user->user_type != 'moderator')
       return 404;
 
     $OtherPosts=Post::orderBy('id', 'desc')
@@ -184,7 +195,7 @@ class PostController extends Controller
                       ->get();
 
 
-    
+
     if(!empty($this->user) && $this->user->user_type=="user"){
       //Logging
       if(URL::previous()!="http://localhost:8000/post/".$slug){
@@ -211,7 +222,7 @@ class PostController extends Controller
         'view' => $post->view+1,
       ]);
     }
-    
+
     return view('post', compact('post','OtherPosts','isSaved','isReminderAdded'));
   }
 
@@ -261,7 +272,7 @@ class PostController extends Controller
     $post->save();
 
     $this->log(6,$post->id,'posts'); // Refuse
-    
+
     return back();
   }
 }

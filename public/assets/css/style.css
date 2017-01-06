@@ -96,6 +96,11 @@ i.material-icons {
     .margin-top-div {
       height: 75px; } }
 
+.alert {
+  font-family: 'Tahoma'; }
+  .alert .bold {
+    font-weight: bold; }
+
 #navbar {
   background: white;
   border-radius: 0;
@@ -272,21 +277,21 @@ i.material-icons {
         #post .col-md-8 .single-post .single-post-desc ul {
           padding-top: 5px; }
           #post .col-md-8 .single-post .single-post-desc ul li i {
-            font-size: 13px;
-            color: #b9b9b9; }
+            font-size: 13px; }
           #post .col-md-8 .single-post .single-post-desc ul li span {
             font-size: 13px;
-            color: #263241;
-            color: #b9b9b9; }
+            color: #263241; }
           #post .col-md-8 .single-post .single-post-desc ul li a {
             text-decoration: none;
             color: #263241;
             font-size: 13px;
-            color: #b9b9b9; }
+            transition-duration: 0.1s; }
             #post .col-md-8 .single-post .single-post-desc ul li a i {
               margin-right: 4px; }
             #post .col-md-8 .single-post .single-post-desc ul li a:hover {
               color: #6d6d6d; }
+          #post .col-md-8 .single-post .single-post-desc ul li span, #post .col-md-8 .single-post .single-post-desc ul li i, #post .col-md-8 .single-post .single-post-desc ul li a {
+            color: #b9b9b9; }
       #post .col-md-8 .single-post .single-post-body {
         padding-bottom: 10px; }
         #post .col-md-8 .single-post .single-post-body p {
@@ -305,7 +310,8 @@ i.material-icons {
         font-size: 12px;
         padding-bottom: 15px; }
         #post .col-md-8 .single-post .single-post-extra ul.tags {
-          margin-top: 15px; }
+          margin-top: 15px;
+          margin-left: 0px; }
           #post .col-md-8 .single-post .single-post-extra ul.tags li {
             padding-left: 0; }
             #post .col-md-8 .single-post .single-post-extra ul.tags li a {

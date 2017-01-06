@@ -22,7 +22,7 @@ use URL;
 
 class Test extends Controller
 {
-  public function test(Post $id){
-    return $id->reminders;
+  public function test(){
+    return base_path();
   }
 }

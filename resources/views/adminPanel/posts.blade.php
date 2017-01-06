@@ -37,33 +37,35 @@
       </thead>
       <tbody>
             @foreach($posts as $post)
-              <tr>
-                  <td class="text-center">{{$post->id}}</td>
-                  <td class="text-center">{{$post->company->user->name}}</td>
-                  <td class="text-center">
-                    <a href="{{url('/post/'.$post->slug)}}">{{$post->title}}</a>
-                  </td>
-                  <td class="text-center">
-                    <img src="{{url('/assets/postPhotos/'.$post->image)}}" alt="" height="80">
-                  </td>
-                  <td class="text-center">{{$post->lang}}</td>
-                  <td class="text-center">
-                    @if($post->subcategory_id != '0')
-                      <a href="{{url('/'.$post->subcategory->slug)}}">{{ $post->subcategory->name }}</a>
-                    @else
-                      <a href="{{url('/'.$post->category->menu->link)}}">{{ $post->category->name }}</a>
-                    @endif
-                  </td>
-                  <td class="text-center">{{$post->deadline->format('d/M/y - H:i')}}</td>
-                  <th class="text-center">
-                    @if($post->moderator_id != '0')
-                      {{ $post->moderator_id }}
-                    @endif
-                  </th>
-                  <td class="text-center">{{$post->view}}</td>
-                  <td class="text-center">{{$post->views}}</td>
-                  <td class="text-center">{{$post->views}}</td>
-              </tr>
+              @if($post->company->approved == 1)
+                <tr>
+                    <td class="text-center">{{$post->id}}</td>
+                    <td class="text-center">{{$post->company->user->name}}</td>
+                    <td class="text-center">
+                      <a href="{{url('/post/'.$post->slug)}}">{{$post->title}}</a>
+                    </td>
+                    <td class="text-center">
+                      <img src="{{url('/assets/postPhotos/'.$post->image)}}" alt="" height="80">
+                    </td>
+                    <td class="text-center">{{$post->lang}}</td>
+                    <td class="text-center">
+                      @if($post->subcategory_id != '0')
+                        <a href="{{url('/'.$post->subcategory->slug)}}">{{ $post->subcategory->name }}</a>
+                      @else
+                        <a href="{{url('/'.$post->category->menu->link)}}">{{ $post->category->name }}</a>
+                      @endif
+                    </td>
+                    <td class="text-center">{{$post->deadline->format('d/M/y - H:i')}}</td>
+                    <th class="text-center">
+                      @if($post->moderator_id != '0')
+                        {{ $post->moderator_id }}
+                      @endif
+                    </th>
+                    <td class="text-center">{{$post->view}}</td>
+                    <td class="text-center">{{$post->views}}</td>
+                    <td class="text-center">{{$post->views}}</td>
+                </tr>
+              @endif
             @endforeach
       </tbody>
       </table>

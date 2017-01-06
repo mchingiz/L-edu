@@ -53,6 +53,6 @@ class SavedPostController extends Controller
     if($numberOfCompanies<5)
         $numberOfCompanies=5;// minimum number is 5
     $companies=Company::inRandomOrder()->limit($numberOfCompanies)->get();
-    return view('savedposts',compact ('companies'));
+    return view('savedposts',compact ('companies','countPosts'));
   }
 }

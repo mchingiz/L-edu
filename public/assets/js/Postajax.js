@@ -6,7 +6,7 @@ $.ajaxSetup({
   }
 });
 ///////////////////////Save Post////////////////////////////////
-$('#save-post').click(function(){
+$('.buttons').on('click',"#save-post" ,function(){
 
     if($(this).text()=="Save Post"){
     console.log("save ")
@@ -15,7 +15,7 @@ $('#save-post').click(function(){
         type: "GET",
         url: url + '/save/' + post_id,
         success: function (data) {
-          $("#save-post").html('Unsave').attr('value', data);
+          $(".buttons").load(location.href + " .buttons>*","");
         },
         error: function (data) {
             console.log('Error:', data);
@@ -31,7 +31,8 @@ $('#save-post').click(function(){
         url: url + '/unsave/' + saved_post_id,
         success: function (data) {
           console.log(data);
-          $("#save-post").html('Save Post').attr('value',data);
+          //$("#save-post").html('Save Post').attr('value',data);
+          $(".buttons").load(location.href + " .buttons>*","");
         },
         error: function (data) {
             console.log('Error:', data);
@@ -41,7 +42,7 @@ $('#save-post').click(function(){
 });
 
 ////////////Add a reminder///////////////////////////////////
-$('#reminder-form button').click(function(){
+$('#reminder-form').on('click',"button",function(){
     var post_id = $(this).val();
 
     var formData = {
@@ -53,7 +54,9 @@ $('#reminder-form button').click(function(){
         data: formData,
         success: function (data) {
           console.log(data);
-          $("#reminder-form").html('<p><i class="material-icons">done</i>Reminder added. We will send mail to you about it</p>')
+          $("#success").show();
+          $("#reminder-form").hide()
+          $(".buttons").load(location.href + " .buttons>*","");
         },
         error: function (data) {
             $("#reminder-form ").append("<p class='text-danger col-md-8 col-md-offset-2 text-left'>The datetime must be after today</p>")
@@ -62,5 +65,21 @@ $('#reminder-form button').click(function(){
     });
 });
 
+////////Delete a reminder/////////////
+$('.buttons').on('click',"#delete-reminder",function(){
+    var reminder_id = $(this).val();
+
+    $.ajax({
+        type: "POST",
+        url: url + '/deletereminder/' + reminder_id,
+        success: function (data) {
+          console.log(data);
+          $(".buttons").load(location.href + " .buttons");
+        },
+        error: function (data) {
+            console.log('Error:', data);
+        }
+    });
+});
 
 })

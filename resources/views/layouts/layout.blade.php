@@ -33,7 +33,7 @@
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
               <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
-              <li><a href="#">Reminders</a></li>
+              <li><a href="{{ url('/reminders') }}">Reminders</a></li>
               @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -92,8 +92,8 @@
               <li class="collapse-only" ><a href="#">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li class="collapse-only"  style="margin-left:-15px;"><a href="#" >Name</a></li>
-              <li class="collapse-only" ><a href="#">Saved Posts</a></li>
-              <li class="collapse-only" ><a href="#">Reminders</a></li>
+              <li class="collapse-only" ><a href="{{ url('/savedposts') }}">Saved Posts</a></li>
+              <li class="collapse-only" ><a href="{{ url('/reminders') }}">Reminders</a></li>
               @endif
 
               @if (Auth::guest())

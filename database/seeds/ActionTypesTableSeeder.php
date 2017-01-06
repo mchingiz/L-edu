@@ -72,5 +72,9 @@ class ActionTypesTableSeeder extends Seeder
       DB::table('action_types')->insert([
           'id' => '15',
           'name' => 'edit',]);
+
+      DB::table('action_types')->insert([
+          'id' => '15',
+          'name' => 'delete reminder',]);
     }
 }

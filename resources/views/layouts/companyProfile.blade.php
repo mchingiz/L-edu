@@ -18,8 +18,14 @@
           <span> @yield('FollowerCount') followers | @yield('PostCount') posts</span>
           </h1>
         </div>
-        <div class="col-md-6 col-sm-4 col-xs-12">
-          <a href="#" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+        <div class="buttons col-md-6 col-sm-4 col-xs-12">
+          @if(Auth::guest())
+          <a href="{{ url('/login') }}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+          @elseif(Auth::user()->user_type=="user" && $isFollowed==null)
+          <button id="follow" value="{{$company->id}}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>
+          @elseif(Auth::user()->user_type=="user" && $isFollowed!=null)
+          <button id="unfollow" value="{{$company->id}}" class="button-custom button-unfollow" >Unfollow</button>
+          @endif
           <!-- <a href="#" class="button-custom button-unfollow" >Unfollow</a> -->
           @yield('href')
         </div>

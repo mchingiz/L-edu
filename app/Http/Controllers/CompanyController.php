@@ -7,9 +7,16 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use App\Company;
+use DB;
+use URL;
 
+use App\Http\Traits\LoggingTrait;
 class CompanyController extends Controller
 {
+  use LoggingTrait;
+
+  private $user;
+
   public function __construct(){
     $this->user = Auth::user();
     view()->share('user', $this->user);
@@ -59,10 +66,69 @@ class CompanyController extends Controller
 
   public function ViewInfo( $slug){
     $company=Company::where('slug','=',$slug)->first();
-    return view('companyinfo',compact('company'));
+
+    if(!empty($this->user) && $this->user->user_type=="user"){
+      //Logging
+      if(URL::previous()!="http://localhost:8000/company/".$slug."/info"){
+        $this->log(1,$company->id,'companies');
+      }
+
+      //User follow this company or not
+      $isFollowed=DB::table('followers')->where([
+        ['user_id', '=', $this->user->id],
+        ['company_id', '=', $company->id],
+      ])
+      ->first();
+    }
+
+    return view('companyinfo',compact('company','isFollowed'));
+
   }
-  public function ViewPosts( $slug){
+
+   public function ViewPosts( $slug){
     $company=Company::where('slug','=',$slug)->first();
-    return view('companyposts',compact('company'));
+
+    if(!empty($this->user) && $this->user->user_type=="user"){
+      //Logging
+      if(URL::previous()!="http://localhost:8000/company/".$slug."/posts"){
+        $this->log(1,$company->id,'companies');
+      }
+
+      //User follow this company or not
+      $isFollowed=DB::table('followers')->where([
+        ['user_id', '=', $this->user->id],
+        ['company_id', '=', $company->id],
+      ])
+      ->first();
+    }
+
+    return view('companyposts',compact('company','isFollowed'));
   }
+
+  
+
+  public function Follow($id){
+    $this->log(10,$id,'companies');
+
+    DB::table('followers')->insert(
+    ['user_id' => $this->user->id, 'company_id' => $id]
+    );
+
+      return 55;
+  } 
+
+  public function Unfollow($id){
+
+    $this->log(11,$id,'companies');
+
+    DB::table('followers')
+                ->where([
+                    ['user_id', '=', $this->user->id ],
+                    ['company_id', '=' , $id]
+                ])->delete();
+
+      return 55;
+  }
+
+
 }

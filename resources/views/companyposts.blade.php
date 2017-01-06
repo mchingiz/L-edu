@@ -20,7 +20,7 @@ url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
 @endsection
 @section('company-content')
 <section id="company-posts" class="container">
-  @if()
+  
   @foreach($company->posts as $post)
   @if($post->approved==1)
   <div class="col-md-4 col-xs-12 col-sm-6">
@@ -55,4 +55,5 @@ url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
 
 @section('script')
     <script src="{{url('/assets/js/alignItemsHeight-category.js')}}"></script>
+    <script src="{{url('/assets/js/follow.js')}}"></script>
 @endsection

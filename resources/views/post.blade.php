@@ -85,7 +85,11 @@
               <a href="/login" class="btn btn-success"> Save Post</a>
             @elseif ( $user->user_type=="user")
               <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
+              @if($isReminderAdded==null)
               <button id="add-reminder"  class="btn btn-success">Add Reminder</button>
+              @else
+              <button id="delete-reminder" value="{{$isReminderAdded->id}}" class="btn btn-success">Delete Reminder</button>
+              @endif
             @elseif ( $user->user_type=="admin" || $user->user_type=="moderator")
               @if( $post->refused == 0)
                 @if( $post->approved == 0)
@@ -124,17 +128,17 @@
         <h2>
           Related posts
         </h2>
-        @foreach($OtherPosts as $post)
+        @foreach($OtherPosts as $otherPost)
         <div class="h-post-item col-md-12">
           <div class="col-md-3 h-post-image">
             <img src="/assets/images/image2.jpg">
           </div>
           <div class="col-md-9 h-post-desc">
-            <a href="/post/{{$post->slug}}">{{$post->title}}</a>
-            <p>{{str_limit($post->body, $limit = 250, $end = '...')}}</p>
-            @if( !empty($post->deadline ))
+            <a href="/post/{{$otherPost->slug}}">{{$otherPost->title}}</a>
+            <p>{{str_limit($otherPost->body, $limit = 250, $end = '...')}}</p>
+            @if( !empty($otherPost->deadline ))
             <i class="material-icons">date_range</i>
-            <span>Deadline: {{ $post->deadline->format('d F Y') }}</span>
+            <span>Deadline: {{ $otherPost->deadline->format('d F Y') }}</span>
             @endif
           </div>
         </div>
@@ -253,11 +257,14 @@
 
           $('#datetimepicker4').datetimepicker({
 
-              format: 'YYYY-MM-DD HH:mm'
+              format: 'YYYY-MM-DD HH:mm:ss'
         });
 
       </script>
   </div>
+</div>
+<div id="success" class="col-md-6 col-md-offset-3">
+    <p><i class="material-icons">done</i>Reminder added. We will send mail to you about it</p>
 </div>
 @endsection
 @section('script')

@@ -23,8 +23,9 @@ Route::get('/company', function () {
     return view('company');});
 Route::get('/company/posts', function () {
     return view('companyposts');});
-Route::get('/company/info', function () {
-    return view('companyinfo');});
+
+Route::get('/tag', function () {
+    return view('tags');});
 
 
 
@@ -77,6 +78,9 @@ Route::get('/savedposts', 'SavedPostController@View');
 Route::post('/post/addreminder/{id}', 'ReminderController@AddReminder');
 Route::post('/post/deletereminder/{reminder}', 'ReminderController@DeleteReminder');
 Route::get('/reminders', 'ReminderController@View');
+
+//tags
+Route::get('/tag/{slug}', 'TagController@View');
 
 
 

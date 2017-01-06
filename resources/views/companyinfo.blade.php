@@ -73,4 +73,5 @@ url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
 
 @section('script')
     <script src="{{url('/assets/js/follow.js')}}"></script>
+    <script src="{{url('/assets/js/login-pop-up.js')}}"></script>
 @endsection

@@ -20,13 +20,12 @@
         </div>
         <div class="buttons col-md-6 col-sm-4 col-xs-12">
           @if(Auth::guest())
-          <a href="{{ url('/login') }}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+          <a href="#" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
           @elseif(Auth::user()->user_type=="user" && $isFollowed==null)
           <button id="follow" value="{{$company->id}}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>
           @elseif(Auth::user()->user_type=="user" && $isFollowed!=null)
           <button id="unfollow" value="{{$company->id}}" class="button-custom button-unfollow" >Unfollow</button>
           @endif
-          <!-- <a href="#" class="button-custom button-unfollow" >Unfollow</a> -->
           @yield('href')
         </div>
       </div>
@@ -37,7 +36,5 @@
   @yield('company-content')
   <div class="vertical-div"></div>
 </section>
-
-
-
 @endsection
+

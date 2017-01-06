@@ -29,6 +29,7 @@ Route::get('/tag', function () {
 
 
 
+
 Route::get('/test/{test}', 'Test@test');
 Route::get('/test', 'Test@url');
 
@@ -82,13 +83,11 @@ Route::get('/reminders', 'ReminderController@View');
 //tags
 Route::get('/tag/{slug}', 'TagController@View');
 
-
-
-
-
-
-
-
+//Menu
+Route::get('/{slug}', 'MenuController@View');
+  //Subcategory
+  Route::get('/{slug}/{subslug}', 'SubcategoryController@View');
+  
 
 
 

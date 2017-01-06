@@ -16,32 +16,32 @@ class MenusTableSeeder extends Seeder
       DB::table('menus')->insert([
           'id' => '1',
           'name' => 'Contact Us',
-          'link' => '/contact',
+          'slug' => 'contactus',
 
       ]);
 
       DB::table('menus')->insert([
           'id' => '2',
           'name' => 'Events',
-          'link' => '/contact',
+          'slug' => 'events',
       ]);
       
       DB::table('menus')->insert([
           'id' => '3',
           'name' => 'Vacancy',
-          'link' => '/vacancy',
+          'slug' => 'vacancy',
       ]);
       
       DB::table('menus')->insert([
           'id' => '4',
           'name' => 'Scholarship',
-          'link' => '/scholarship',
+          'slug' => 'scholarship',
       ]);
       
       DB::table('menus')->insert([
           'id' => '5',
           'name' => 'Grants',
-          'link' => '/grants',
+          'slug' => 'grants',
       ]);
       
     }

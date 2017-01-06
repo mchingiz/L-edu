@@ -34,7 +34,7 @@
             <span>{{$post->created_at->format('d F Y')}}</span>
           </li>
           <li>
-            <a href="#"><i class="material-icons">business</i>{{$post->company->user->name}}</a>
+            <a href="{{url('/company/'.$post->company->slug.'/posts')}}"><i class="material-icons">business</i>{{$post->company->user->name}}</a>
           </li>
         </ul>
       </div>

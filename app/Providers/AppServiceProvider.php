@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Providers;
+use App\Menu;
+use App\Providers\View;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->share('menus',Menu::get());
     }
 
     /**

@@ -21,6 +21,7 @@ use App\ActionType;
 use App\Log;
 use App\Saved_post;
 use App\Reminder;
+use App\Menu;
 
 
 use App\Http\Traits\LoggingTrait;
@@ -35,7 +36,9 @@ class PostController extends Controller
 
   public function __construct(){
     $this->user = Auth::user();
+    //$menus= Menu::get();
     view()->share('user', $this->user);
+
   }
 
   public function addPost(){

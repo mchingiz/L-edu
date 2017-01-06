@@ -268,7 +268,6 @@
 </div>
 @endsection
 @section('script')
-  <script src="{{url('/assets/js/Postajax.js')}}"></script>
   <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
   <script src="{{url('/assets/js/refuse.js')}}"></script>
 @endsection

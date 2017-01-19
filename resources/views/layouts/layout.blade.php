@@ -12,9 +12,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap-theme.min.css')}}">
-        <link rel="stylesheet" href="{{url('/assets/css/bootstrap-theme.min.css')}}">
+        <link rel="stylesheet" href="{{url('/assets/css/reset.css')}}">
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap-datetimepicker.min.css')}}">
-        <link rel="stylesheet" href="{{url('/assets/css/bootstrap-theme.min.css')}}">
         <link href="{{url('/assets/fonts/material-design-icons/iconfont/material-icons.css')}}" rel="stylesheet">
         <link href="{{url('/assets/fonts/font-awesome-4.7.0/css/font-awesome.css')}}" rel="stylesheet">
         <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
@@ -80,12 +79,13 @@
             </div>
           </div>
           <!-- Search form for full navbar -->
-          <div id="full-nav-search" class="input-group full-nav-only pull-right">
-            <input type="text" id="input-search" class="form-control  pull-right" placeholder="Search for...">
+          <form id="full-nav-search" class="input-group full-nav-only pull-right" method="POST" action="/search">
+             {{csrf_field()}}
+            <input type="text" id="input-search" name="key" class="form-control  pull-right" placeholder="Search for...">
             <span class="input-group-btn">
-              <a class="button-search" href="#"><i class="material-icons">search</i></a>
+              <button class="button-search" type="submit"><i class="material-icons">search</i></button>
             </span>
-          </div>
+          </form>
           <div>
             <ul class="nav navbar-nav navbar-right">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")

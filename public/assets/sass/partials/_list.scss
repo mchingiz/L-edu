@@ -1,0 +1,111 @@
+#list{
+	.list-post{
+		padding:0;
+		position:relative;
+		box-shadow: 1px 1px 3px 0px darken($background-color,10%);
+		background:white;
+		.img-box{
+			padding:0;
+			overflow:hidden;
+			height:185px;
+			img{
+			width:100%;
+			}
+		}
+		.post-info{
+			min-height:185px;
+			position:relative;
+			padding: 20px;
+			h1{
+				font-size:1.1em;
+				font-style:bold;
+				color:black;
+
+			}
+			ul{
+				margin:20px 0 0;
+				position:absolute;
+				bottom:20px;
+				li{
+			        opacity:.8;
+			        padding-left:0;
+			        transition-duration:.4s;
+			        i{
+			          font-size:0.9em;
+			        }
+			        span,a{
+			          font-size:0.8em;
+			        }
+			        a{
+			          i{
+			            margin-right:4px;
+			          }
+			          text-decoration: none;
+			          color:black;
+			        }
+			    }
+			}
+			p{
+				line-height:14px;
+				font-size:0.85em;
+				text-align:justify;
+				color:black;
+				margin:20px 0;
+			}
+		}
+		.category{
+			color:white;
+			background:$primaryColor;
+			padding:5px 10px;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:2;
+			font-size:0.9em;
+		}
+	}
+
+	.list-company{
+		padding:0;
+		position:relative;
+		box-shadow: 1px 1px 3px 0px darken($background-color,10%);
+		background:white;
+		.img-box{
+			padding:0;
+			overflow:hidden;
+			height:100px;
+			img{
+			width:100px;
+			}
+		}
+		.company-info{
+			min-height:100px;
+			position:relative;
+			padding: 25px;
+			h1{
+				font-size:1.2em;
+				font-style:bold;
+				color:black;
+				margin-bottom:10px;
+
+			}
+			span{
+				font-size:1em;
+				transition: all 1s ease;
+
+				&:hover{
+					color:$primaryColor2;
+				}
+
+			}
+			.follow{
+          		background: white !important;
+          		color:$primaryColor;
+          		position:absolute;
+          		left:10px;
+          		top:25px;
+        	}
+			
+		}
+	}
+}

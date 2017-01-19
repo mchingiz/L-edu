@@ -26,7 +26,7 @@ class MenuController extends Controller
     $category=$menu->category;
     //Logging
     $this->log(1,$category->id,'categories');
-    
+
     return view('category',compact('category'));
 
   }

@@ -24,8 +24,6 @@ Route::get('/company', function () {
 Route::get('/company/posts', function () {
     return view('companyposts');});
 
-Route::get('/tag', function () {
-    return view('tags');});
 
 
 
@@ -87,7 +85,10 @@ Route::get('/tag/{slug}', 'TagController@View');
 Route::get('/{slug}', 'MenuController@View');
   //Subcategory
   Route::get('/{slug}/{subslug}', 'SubcategoryController@View');
-  
+
+
+Route::post('/search', 'SearchController@View');
+
 
 
 

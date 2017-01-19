@@ -5,11 +5,18 @@
 @endsection
 @section('script-top')
 <script src="{{url('/assets/js/vendor/jquery-1.11.2.min.js')}}"></script>
+@if( !Auth::guest() && Auth::user()->user_type=="user")
 <script src="{{url('/assets/js/PostAjax.js')}}"></script>
 <script src="{{url('/assets/js/reminder.js')}}"></script>
+@endif
+@if(Auth::guest())
+<script src="{{url('/assets/js/login.js')}}"></script>
+<script src="{{url('/assets/js/login_ajax.js')}}"></script>
+@endif
 <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
 <script src="{{url('/assets/js/vendor/collapse.js')}}"></script>
 <script src="{{url('/assets/js/vendor/transition.js')}}"></script>
+<script src="{{url('/assets/js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
 <script src="{{url('/assets/js/vendor/bootstrap-datetimepicker.min.js')}}"></script>
 @endsection
 @section('css')
@@ -81,8 +88,8 @@
 
           <div class="buttons clearfix">
             @if ( Auth::guest())
-              <a href="/login" class="btn btn-success"> Add Reminder</a>
-              <a href="/login" class="btn btn-success"> Save Post</a>
+              <button  class="login btn btn-success"> Add Reminder</button>
+              <button   class="login btn btn-success"> Save Post</button>
             @elseif ( $user->user_type=="user")
               <button id="save-post" value="{{( $isSaved!=null )  ? $isSaved->id : $post->id}}" class="btn btn-success">{{( $isSaved!=null )  ? 'Unsave' : 'Save Post'}}</button>
               @if($isReminderAdded==null)
@@ -241,6 +248,7 @@
 <div id="overlay"></div>
 @endsection
 @section('pop-up')
+@if(!Auth::guest() && Auth::user()->user_type=="user")
 <div  id="reminder-form" class="col-md-6 col-md-offset-3">
   <h1>Select date and time:</h1>
   <div class="col-md-8 col-md-offset-2 input-group">
@@ -256,7 +264,6 @@
         });
 
           $('#datetimepicker4').datetimepicker({
-
               format: 'YYYY-MM-DD HH:mm:ss'
         });
 
@@ -266,6 +273,62 @@
 <div id="success" class="col-md-6 col-md-offset-3">
     <p><i class="material-icons">done</i>Reminder added. We will send mail to you about it</p>
 </div>
+@endif
+@if( Auth::guest())
+<div id="login-overlay" class="col-md-4 col-md-offset-4">
+    <div class="col-md-10 col-md-offset-1">
+      <h1> Login to your account</h1>
+      <form class="form-horizontal">
+        {{ csrf_field() }}
+        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+              <div class="col-md-12">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+              <div class="col-md-12">
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+
+                @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+
+              <label class="pull-left">
+                  <input type="checkbox" name="remember"> Remember Me
+                </label>
+                <a class="btn btn-link pull-right" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="login" onclick="return false;" class="btn col-md-12 col-sm-12 col-xs-12 ">Log in</button>
+            </div>
+        </div>
+      </form>
+      <span> Do not you have account? <a href="{{url('/register')}}">Sign Up!</a> </span>
+
+      <span id="or" class="col-md-12"> or </span>
+      <button id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 "><i class=" fa fa-facebook"></i>Continue with Facebook</button>
+      <button id="google" class="btn col-md-12 col-sm-12 col-xs-12 "><i class="fa fa-google-plus"></i>Continue with Google</button>
+  </div>
+</div>
+@endif
 @endsection
 @section('script')
   <script src="{{url('/assets/js/vendor/moment.js')}}"></script>

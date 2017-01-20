@@ -20,6 +20,8 @@ class CompanyController extends Controller
   public function __construct(){
     $this->user = Auth::user();
     view()->share('user', $this->user);
+
+    $this->middleware('checkRole:company')->only('editProfile');
   }
 
   public function EditProfile(){
@@ -105,7 +107,7 @@ class CompanyController extends Controller
     return view('companyposts',compact('company','isFollowed'));
   }
 
-  
+
 
   public function Follow($id){
     $this->log(10,$id,'companies');
@@ -115,7 +117,7 @@ class CompanyController extends Controller
     );
 
       return 55;
-  } 
+  }
 
   public function Unfollow($id){
 

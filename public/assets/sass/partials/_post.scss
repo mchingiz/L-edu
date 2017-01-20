@@ -30,24 +30,25 @@
           li{
             i{
               font-size:13px;
-              color:darken(lightgray,10%);
             }
             span{
               font-size:13px;
               color:$heading-color;
-              color:darken(lightgray,10%);
             }
             a{
               text-decoration: none;
               color:$heading-color;
               font-size:13px;
-              color:darken(lightgray,10%);
+              transition-duration: 0.1s;
               i{
                 margin-right: 4px;
               }
               &:hover{
-              color:darken(lightgray,40%);
+                color:darken(lightgray,40%);
               }
+            }
+            span,i,a{
+              color:darken(lightgray,10%);
             }
           }
         }
@@ -76,6 +77,7 @@
         padding-bottom:15px;
         ul.tags{
           margin-top:15px;
+          margin-left:0px;
           li{
             padding-left: 0;
             a{

@@ -64,17 +64,17 @@ class ActionTypesTableSeeder extends Seeder
       DB::table('action_types')->insert([
           'id' => '13',
           'name' => 'report',]);
-      
+
       DB::table('action_types')->insert([
           'id' => '14',
           'name' => 'add reminder',]);
-      
+
       DB::table('action_types')->insert([
           'id' => '15',
           'name' => 'edit',]);
 
       DB::table('action_types')->insert([
-          'id' => '15',
+          'id' => '16',
           'name' => 'delete reminder',]);
     }
 }

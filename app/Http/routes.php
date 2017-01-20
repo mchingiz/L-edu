@@ -29,7 +29,7 @@ Route::get('/company/posts', function () {
 
 
 Route::get('/test/{test}', 'Test@test');
-Route::get('/test', 'Test@url');
+Route::get('/test', 'Test@test');
 
 // Register
 Route::auth();

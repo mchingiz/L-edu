@@ -63,11 +63,17 @@
             </ul>
           </div>
           <div class="single-post-body">
+            @if($post->company->approved == 0)
+              <div class="alert alert-warning">
+                <span>
+                  This post is only visible to you, <span class="bold">not to users</span>. Because your company's account has not been approved yet
+                </span>
+              </div>
+            @endif
             <p>{!!$post->body!!}</p>
             @if(!empty( $post->deadline))
                <span id="deadline"> <i class="material-icons ">error_outline</i> Deadline : </span><span>{{ $post->deadline->format('d F Y H:i') }}</span>
             @endif
-
           </div>
           <div class="single-post-extra">
               <ul class="list-unstyled list-inline tags">
@@ -80,7 +86,7 @@
           @if( $post->approved == 0 && $post->refused == 1) <!-- It means post is refused and company has not made any change yet-->
             <div class="refuseReason">
               <div class="alert alert-info">
-                <span style="font-weight:bold">Post has been refused. Because:</span>
+                <span class="bold">Post has been refused. Because:</span>
                 {!! $post->refuse_reason !!}
               </div>
             </div>
@@ -256,7 +262,7 @@
       <span class="input-group-btn">
         <button class="btn btn-secondary" value="{{$post->id}}" type="button">Ok</button>
       </span>
-      
+
 
       <script type="text/javascript">
         $(function () {

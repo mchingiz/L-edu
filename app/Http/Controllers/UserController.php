@@ -11,6 +11,10 @@ use App\Company;
 
 class UserController extends Controller
 {
+
+  public function __construct(){
+    $this->middleware('checkRole:admin,moderator')->only('userList','companyList','companyWaitList');
+  }
   public function userList(){
     $users = User::where('user_type','!=','company')->get();
     return view('adminPanel.users',compact('users'));

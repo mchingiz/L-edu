@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\uploadedFile;
+// use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
 
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -60,14 +62,17 @@ class PostController extends Controller
 			'category' => 'required',
 			'tags' => 'required|min:1|max:5',
       'deadline' => 'after:today'
-
 		]);
 
     // Photo
     $photo = $request->file('photo');
     $targetLocation = base_path().'/public/assets/postPhotos/';
     $targetName=microtime(true)*10000 . '.' . $photo->getClientOriginalExtension();
-    $photo->move($targetLocation, $targetName);
+    $x = $request->input('x');
+    $y = $request->input('y');
+    $w = $request->input('w');
+    $h = $request->input('h');
+    $photo = Image::make($photo->getRealPath())->crop($x,$y,$w,$h)->save($targetLocation.$targetName);
     $photoPath = $targetName;
 
     if(substr($request->input('category'),0,1) == 'c'){
@@ -110,10 +115,6 @@ class PostController extends Controller
   // EDITING
 
   public function editPost(Post $post){
-    // if($this->user->company->id != $post->company_id && $this->user->user_type != "moderator" && $this->user->user_type != 'admin'){
-    //   $error = "You don't have permission to see this page";
-    //   return view('errors.error',compact('error'));
-    // }
 
     $categories = Category::get();
     $tags = Tag::get();

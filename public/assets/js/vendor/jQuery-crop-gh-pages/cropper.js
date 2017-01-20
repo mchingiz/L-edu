@@ -2,6 +2,10 @@ $( function () {
   $( 'img.crop' )
     .on( 'crop', function ( event ) {
         console.log( event.cropX, event.cropY, event.cropW, event.cropH, event.stretch );
+        $("input[name='x']").val(event.cropX);
+        $("input[name='y']").val(event.cropY);
+        $("input[name='w']").val(event.cropW);
+        $("input[name='h']").val(event.cropH);
     } );
 
   $( '.crop' ).each( function () {

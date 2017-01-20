@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{url('/assets/css/bootstrap-theme.min.css')}}">
         <link rel="stylesheet" href="{{url('/assets/css/reset.css')}}">
+        <link rel="stylesheet" href="{{url('/assets/css/bootstrap-datetimepicker.min.css')}}">
         <link href="{{url('/assets/fonts/material-design-icons/iconfont/material-icons.css')}}" rel="stylesheet">
         <link href="{{url('/assets/fonts/font-awesome-4.7.0/css/font-awesome.css')}}" rel="stylesheet">
         <link rel="stylesheet" href="{{url('/assets/css/style.css')}}">
@@ -78,13 +79,13 @@
             </div>
           </div>
           <!-- Search form for full navbar -->
-          <div id="full-nav-search" class="input-group full-nav-only pull-right">
-            <input type="text" id="input-search" class="form-control  pull-right" placeholder="Search for...">
+          <form id="full-nav-search" class="input-group full-nav-only pull-right" method="POST" action="/search">
+             {{csrf_field()}}
+            <input type="text" id="input-search" name="key" class="form-control  pull-right" placeholder="Search for...">
             <span class="input-group-btn">
-              <a class="button-search" href="#"><i class="material-icons">search</i></a>
+              <button class="button-search" type="submit"><i class="material-icons">search</i></button>
             </span>
-          </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
+          </form>
           <div>
             <ul class="nav navbar-nav navbar-right">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
@@ -100,41 +101,21 @@
               <li class="collapse-only" ><a href="{{ url('/login') }}">Login</a></li>
               <li class="collapse-only" ><a href="{{ url('/register') }}">Sign Up</a></li>
               @endif
-              <li class="divider"></li>
-              <li><a href="#" class={{Request::is('home')  ? 'active' : ''}}>Home</a></li>
-              <li class="dropdown">
-                <a href="https://getbootstrap.com/examples/navbar/" class={{Request::is('jobs' , 'vacancies')  ? 'active' : ''}}>Vacancies <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="https://getbootstrap.com/examples/navbar/">Internship</a></li>
-                  <li><a href="#">Jobs</a></li>
-                  <li><a href="#">Volunteering</a></li>
-                  <li class="collapse-only"><a href="#">View All</a></li>
-
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#">Events <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Conference</a></li>
-                  <li><a href="#">Trainings</a></li>
-                  <li><a href="#">Seminar</a></li>
-                  <li class="collapse-only"><a href="#">View All</a></li>
-
-                </ul>
-              </li>
-              <li class="dropdown">
-                <a href="#">Scholarship <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Bachelor</a></li>
-                  <li><a href="#">PhD</a></li>
-                  <li><a href="#">Fellowship</a></li>
-                  <li><a href="#">Master</a></li>
-                  <li class="collapse-only"><a href="#">View All</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Grants</a></li>
-              <li><a href="https://getbootstrap.com/examples/navbar/">Contact Us</a></li>
-
+              <li class="divider"></li> 
+               @foreach($menus as $menu)
+                @if( !collect($menu->category)->isEmpty() && !collect($menu->category->subcategories)->isEmpty())
+                <li class="dropdown">
+                  <a href="{{url('/'.$menu->slug)}}" class={{ (strpos(Request::url(), $menu->slug) !== false)  ? 'active' : ''}}>{{$menu->name }}<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    @foreach($menu->category->subcategories as $submenu)
+                    <li><a href="{{url('/'.$menu->slug.'/'.$submenu->slug)}}">{{$submenu->name}}</a></li>
+                    @endforeach
+                  </ul>
+                </li>
+                @else
+                <li><a href="{{url('/'.$menu->slug)}}" class={{Request::is('home')  ? 'active' : ''}}>{{$menu->name}}</a></li>
+                @endif
+              @endforeach       
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -145,6 +126,7 @@
      <footer id="footer" >
         <section id="info-footer" class="container-fluid">
           <div class="col-md-6 col-md-offset-3">
+
             <h4 class="text-center"> Educive.com </h4>
             <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing
                elit. Curabitur in dui diam. Sed mollis quam in commodo

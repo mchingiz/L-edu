@@ -44,7 +44,7 @@ $('.buttons').on('click',"#save-post" ,function(){
 ////////////Add a reminder///////////////////////////////////
 $('#reminder-form').on('click',"button",function(){
     var post_id = $(this).val();
-
+    console.log("add reminder")
     var formData = {
            datetime: $("#reminder-form input").val()
     }

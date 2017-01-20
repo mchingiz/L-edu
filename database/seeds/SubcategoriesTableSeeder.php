@@ -17,63 +17,74 @@ class SubcategoriesTableSeeder extends Seeder
           'id' => '1',
           'category_id' => '1',
           'name' => 'Internship',
-          'link'=>'/Internship'
+          'slug'=>'internship'
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '2',
           'category_id' => '1',
           'name' => 'Jobs',
-          'link'=>'/jobs'
+          'slug'=>'jobs'
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '3',
           'category_id' => '1',
           'name' => 'Volunteering',
-          'link'=>'/Volunteering'
+          'slug'=>'volunteering'
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '4',
           'category_id' => '2',
-          'name' => 'Conference',
+          'slug' => 'conference',
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '5',
           'category_id' => '2',
           'name' => 'Training',
+          'slug'=>'training'
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '6',
           'category_id' => '2',
           'name' => 'Seminar',
+          'slug'=>'seminar'
+
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '7',
           'category_id' => '3',
           'name' => 'Bachelor',
+          'slug'=>'bachelor'
+
       ]);
 
       DB::table('subcategories')->insert([
           'id' => '8',
           'category_id' => '3',
-          'name' => 'PhD',
-      ]);
+          'name' => 'Phd',
+          'slug'=>'phd'
+     ]);
 
       DB::table('subcategories')->insert([
           'id' => '9',
           'category_id' => '3',
           'name' => 'Fellowship',
+          'slug'=>'fellowship'
+
       ]);
+
 
       DB::table('subcategories')->insert([
           'id' => '10',
           'category_id' => '3',
           'name' => 'Master',
+          'slug'=>'master'
+
       ]);
     }
 }

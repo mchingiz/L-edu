@@ -9,13 +9,14 @@
 <section id="company-profile" class="container-fluid" style="padding-top:85px">
 
   <section id="company">
-    <div id="background" style="background-image:@yield('CoverPhoto')"></div>
+    <div id="background" style="background-image: url({{url('/assets/companyCoverPhotos/'.$company->cover_photo)}})"></div>
     <div class="info-bar">
       <div class="container">
-        <div class="col-md-6 col-sm-8 col-xs-12">
-          <img src=@yield('ProfilePicture')>
-          <h1>@yield('name')<br>
-          <span> @yield('FollowerCount') followers | @yield('PostCount') posts</span>
+        <div class="col-md-6 
+        col-sm-8 col-xs-12">
+          <img src="/assets/companyProfilePictures/{{$company->logo}}">
+          <h1> {{$company->user->name}}<br>
+          <span> {{$company->followers->count()}} followers | {{$company->posts->count()}} posts</span>
           </h1>
         </div>
         <div class="buttons col-md-6 col-sm-4 col-xs-12">
@@ -26,8 +27,8 @@
           @elseif(Auth::user()->user_type=="user" && $isFollowed!=null)
           <button id="unfollow" value="{{$company->id}}" class="button-custom button-unfollow" >Unfollow</button>
           @endif
-          @yield('href')
-        </div>
+          <a class="button-custom" href="/company/{{$company->slug}}/info">Info</a>
+      </div>
       </div>
     </div>
   </section>

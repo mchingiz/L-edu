@@ -35,6 +35,7 @@ $('.buttons').on('click',"#unfollow" ,function(){
         success: function (data) {
           console.log("Success"+data)
           $(".buttons").load(location.href + " .buttons>*","");
+
         },
         error: function (data) {
             console.log('Error:', data);

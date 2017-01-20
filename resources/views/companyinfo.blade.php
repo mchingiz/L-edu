@@ -1,22 +1,5 @@
 @extends('layouts/companyProfile')
-@section('CoverPhoto')
-url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
-@endsection
-@section('name')
-  {{$company->user->name}}
-@endsection
-@section('FollowerCount')
-  {{$company->followers->count()}}
-@endsection
-@section('PostCount')
-  {{$company->posts->count()}}
-@endsection
-@section('ProfilePicture')
-"/assets/companyProfilePictures/{{$company->logo}}"
-@endsection
-@section('href')
-  <a class="button-custom" href="/company/{{$company->slug}}/posts">Posts</a>
-@endsection
+
 @section('company-content')
 <section id="info" class="container">
   <div class="col-md-8 col-md-offset-2">

@@ -13,20 +13,29 @@
     <section id="left-side" class="col-md-8 col-xs-12 col-sm-12">
       @if(!collect($companies)->isEmpty() )
       @foreach($companies as $company)
+      <!-- Here $company is from user table , thus for getting properties we must write $company(users table)->company(companies table)->...-->
       <div class="list-company col-md-12 col-xs-12 col-sm-12">
         <div class="img-box col-md-2 col-xs-3 col-sm-2">
           <img src="/assets/companyProfilePictures/azercell.jpg">
         </div>
         <div class="company-info col-md-10 col-xs-9 col-sm-10">
-          <a href="#"><h1>{{$company->user->name}}</h1></a>
-          <span>26 followers</span><span> 12 posts</span>
+          <a href="{{url('/company/'.$company->company->slug.'/posts')}}"><h1>{{$company->name}}</h1></a>
+          <span>{{$company->company->followers->count()}} followers</span> |<span> {{$company->company->posts->count()}} posts</span>
         </div>
-        <button class="button-follow"><i class="fa fa-user-plus"></i>Follow</button>      
+        <div class="buttons">
+          @if(Auth::guest())
+          <a href="{{url('/login')}}" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+          @elseif(Auth::user()->user_type=="user" && !Auth::user()->followings->contains($company->company->id) )
+          <button id="follow" value="{{$company->company->id}}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>
+          @elseif(Auth::user()->user_type=="user" && Auth::user()->followings->contains($company->company->id)  )
+          <button id="unfollow" value="{{$company->company->id}}" class="button-custom button-unfollow" >Unfollow</button>
+          @endif
+        </div>        
       </div>
       <div class="vertical-div"></div>
       @endforeach
       @endif
-      @if(!collect($companies)->isEmpty() )
+      @if(!collect($posts)->isEmpty() )
       @foreach($posts as $post)
       <div class="list-post col-md-12 col-xs-12 col-sm-12">
         <a class="category" href="#">Internship</a>
@@ -35,14 +44,14 @@
         </div>
         <div class="post-info col-md-8 col-xs-12 col-sm-8">
           <a href="#"><h1>{{$post->title}}</h1></a>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <p>{{ substr( $post->body,0,strpos($post->body, ' ', 200) ) }}...</p>
           <ul class="list-unstyled list-inline">
             <li>
               <i class="material-icons">date_range</i>
-              <span>15 January 2016</span>
+              <span>{{ $post->created_at->format('d F Y') }}</span>
             </li>
             <li>
-              <a href="#"><i class="material-icons">business</i>Azercell</a>
+              <a href="#"><i class="material-icons">business</i>{{$post->company->user->name}}</a>
             </li>
           </ul>
         </div>
@@ -50,45 +59,6 @@
       <div class="vertical-div"></div>
       @endforeach
       @endif
-      <div class="list-post col-md-12 col-xs-12 col-sm-12">
-        <a class="category" href="#">Internship</a>
-        <div class="img-box col-md-4 col-xs-12 col-sm-4">
-          <img src="/assets/images/image56.jpg">
-        </div>
-        <div class="post-info col-md-8 col-xs-12 col-sm-8">
-          <a href="#"><h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore mag aliqua doler sit lorem upsum doler.</h1></a>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor  amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <ul class="list-unstyled list-inline">
-            <li>
-              <i class="material-icons">date_range</i>
-              <span>15 January 2016</span>
-            </li>
-            <li>
-              <a href="#"><i class="material-icons">business</i>Azercell</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="vertical-div"></div>
-      <div class="list-post col-md-12 col-xs-12 col-sm-12">
-        <a class="category" href="#">Internship</a>
-        <div class="img-box col-md-4 col-xs-12 col-sm-4">
-          <img src="/assets/images/image3.jpg">
-        </div>
-        <div class="post-info col-md-8 col-xs-12 col-sm-8">
-          <a href="#"><h1>Lorem olore mag aliqua doler sit lorem upsum doler.</h1></a>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <ul class="list-unstyled list-inline">
-            <li>
-              <i class="material-icons">date_range</i>
-              <span>15 January 2016</span>
-            </li>
-            <li>
-              <a href="#"><i class="material-icons">business</i>Azercell</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </section><!--left-side-->
     <section id="right-side" class="col-md-4 col-sm-12 col-xs-12 ">
 
@@ -287,5 +257,5 @@
 @endsection
 
 @section('script')
-  <!-- <script src="{{url('/assets/js/align-height.js')}}"></script> -->
+    <script src="{{url('/assets/js/follow.js')}}"></script>
 @endsection

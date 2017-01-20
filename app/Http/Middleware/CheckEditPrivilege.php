@@ -22,10 +22,14 @@ class CheckEditPrivilege
 
       if(Auth::check()){
         $user = Auth::user();
-        if($user->user_type == 'admin' || $user->user_type == 'moderator' || $user->company->id == $post->company_id){
-          return $next($request);
+        if($user->user_type != 'user'){
+          if($user->user_type == 'admin' || $user->user_type == 'moderator' || $user->company->id == $post->company_id){
+            return $next($request);
+          }
+          $error = "Sorry, but this post belongs to someone else :(";
+        }else{
+          $error = "Sorry, but you you aren't authorized to see this page";
         }
-        $error = "Sorry, but this post belongs to someone else :(";
       }else{
         $error = "Sorry, we would like to show you this page, but you need to log in :(";
       }

@@ -116,7 +116,7 @@
           </div>
 
           <div class="clearfix">
-            <button tpye="submit" class="btn btn-success float-xs-right" >Publish</button>
+            <button tpye="submit" class="btn btn-success float-xs-right">Publish</button>
           </div>
 
           @if (count($errors) > 0)
@@ -137,8 +137,8 @@
           </div>
         </div>
         <div class="row">
-          <div class="cropFrame" style="width: 512px; height: 250px;">
-            <img id="imagePreview"class="crop cropImage" alt="" src="{{url('/assets/images/wallpaper.jpg')}}" width="512" height="250" style="width: 512px; height: 250px; left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+          <div class="cropFrame" style="width: 512px; height: 250px;display:none;">
+            <img id="imagePreview" class="crop cropImage" alt="" src="" width="512" height="250" style="width: 512px; height: 250px; left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <div class="cropControls">
               <span class="cropText">Drag to move, scroll to zoom</span>
 

@@ -734,13 +734,6 @@ i.material-icons {
 
 #addPost {
   padding-top: 20px; }
-  #addPost .row .previousImage {
-    overflow: hidden;
-    width: 512px;
-    background-color: red;
-    height: 250px; }
-    #addPost .row .previousImage img {
-      width: 100%; }
   #addPost div.error {
     margin-top: 20px; }
     #addPost div.error ul {

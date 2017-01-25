@@ -72,7 +72,7 @@ class PostController extends Controller
     $y = $request->input('y');
     $w = $request->input('w');
     $h = $request->input('h');
-    $photo = Image::make($photo->getRealPath())->crop($x,$y,$w,$h)->save($targetLocation.$targetName);
+    $photo = Image::make($photo->getRealPath())->crop($w,$h,$x,$y)->save($targetLocation.$targetName);
     $photoPath = $targetName;
 
     if(substr($request->input('category'),0,1) == 'c'){
@@ -155,11 +155,18 @@ class PostController extends Controller
 
     // Photo
     if($request->file('photo')){
-      unlink( base_path().'\public'.$post->image );
+      unlink( base_path().'/public/assets/postPhotos/'.$post->image );
+
       $photo = $request->file('photo');
       $targetLocation = base_path().'/public/assets/postPhotos/';
       $targetName=microtime(true)*10000 . '.' . $photo->getClientOriginalExtension();
-      $photo->move($targetLocation, $targetName);
+
+      $x = $request->input('x');
+      $y = $request->input('y');
+      $w = $request->input('w');
+      $h = $request->input('h');
+      $photo = Image::make($photo->getRealPath())->crop($w,$h,$x,$y)->save($targetLocation.$targetName);
+
       $post->image = $targetName;
     }
 

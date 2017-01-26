@@ -128,8 +128,9 @@
             </div>
           </div>
 
-          <div class="clearfix">
-            <button tpye="submit" class="btn btn-success float-xs-right" >Update</button>
+          <div class="clearfix float-xs-right">
+            <small id="editHelp" class="form-text text-muted">Making changes will change 'approved' status of the post.</small>
+            <button tpye="submit" class="btn btn-success float-xs-right" aria-describedby="editHelp">Update</button>
           </div>
 
           @if (count($errors) > 0)

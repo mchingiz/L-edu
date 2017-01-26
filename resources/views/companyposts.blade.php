@@ -1,26 +1,10 @@
 @extends('layouts/companyProfile')
-@section('CoverPhoto')
-url('/assets/companyCoverPhotos/{{$company->cover_photo}}')
-
-@endsection
-@section('name')
-  {{$company->user->name}}
-@endsection
-@section('FollowerCount')
-  {{$company->followers->count()}}
-@endsection
-@section('PostCount')
-  {{$company->posts->count()}}
-@endsection
-@section('ProfilePicture')
-"/assets/companyProfilePictures/{{$company->logo}}"
-@endsection
 @section('href')
   <a class="button-custom" href="/company/{{$company->slug}}/info">Info</a>
 @endsection
 @section('company-content')
 <section id="company-posts" class="container">
-  
+
   @foreach($company->posts as $post)
   @if($post->approved==1)
   <div class="col-md-4 col-xs-12 col-sm-6">

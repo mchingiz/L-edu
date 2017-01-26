@@ -38,7 +38,6 @@ class PostController extends Controller
 
   public function __construct(){
     $this->user = Auth::user();
-    //$menus= Menu::get();
     view()->share('user', $this->user);
 
     $this->middleware('checkRole:admin,moderator')->only('waitList','approvedList','refusedList');
@@ -190,9 +189,29 @@ class PostController extends Controller
   public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
+    if($post == null){
+      return "Post doesn't exist";
+    }
 
-    if($post->approved==0 && ($this->user->id != $post->company->user_id) && $this->user->user_type != 'admin' && $this->user->user_type != 'moderator')
-      return 404;
+    // Company IS NOT approved -> then only owner sees the post
+    // Company is approved, post IS NOT approved -> owner,admin,moderator see the post
+    // Company is approved, post is approved -> everybody sees
+
+    if($post->company->approved){
+      if(!$post->approved){
+        if(Auth::check() && ( ($this->user->user_type == 'admin' || $this->user->user_type == 'moderator') || ($this->user->user_type == 'company' && $this->user->company->id == $post->company_id) ) ){
+          // Admin,moderator,owner will see the post
+        }else{
+          return 404;
+        }
+      }
+    }else{
+      if(Auth::check() && $this->user->user_type == 'company' && $this->user->company->id == $post->company_id){
+        // Owner will see the post
+      }else{
+        return 404;
+      }
+    }
 
     $OtherPosts=Post::orderBy('id', 'desc')
                       ->where([

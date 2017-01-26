@@ -55,8 +55,8 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div>
             <ul  class="nav navbar-nav navbar-right">
-              <li><a href="https://getbootstrap.com/examples/navbar/">Login</a></li>
-              <li><a href="https://getbootstrap.com/examples/navbar/">Sign Up</a></li>
+              <li><a href="{{url('/login')}}">Login</a></li>
+              <li><a href="{{url('/register')}}">Sign Up</a></li>
             </ul>
 
           </div><!-- /.navbar-collapse -->

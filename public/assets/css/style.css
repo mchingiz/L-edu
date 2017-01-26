@@ -300,6 +300,9 @@ i.material-icons {
           margin-bottom: 20px;
           font-family: 'Open Sans', sans-serif;
           line-height: 1.8; }
+        #post .col-md-8 .single-post .single-post-body #refuseReason .alert span:first-child {
+          display: block;
+          padding-bottom: 7px; }
         #post .col-md-8 .single-post .single-post-body #deadline {
           color: #C31926;
           font-weight: bold;

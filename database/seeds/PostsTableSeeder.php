@@ -188,7 +188,7 @@ class PostsTableSeeder extends Seeder
           Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
           'image'=>'12345.png',
           'view'=>'30',
-          'slug'=>'test-post-slug-6',
+          'slug'=>'test-post-slug-7',
           'lang'=>'az',
           'deadline'=>'2016-12-18',
           'approved'=>'1',

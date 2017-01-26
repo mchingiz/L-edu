@@ -63,13 +63,34 @@
             </ul>
           </div>
           <div class="single-post-body">
+
             @if($post->company->approved == 0)
               <div class="alert alert-warning">
                 <span>
-                  This post is only visible to you, <span class="bold">not to users</span>. Because your company's account has not been approved yet
+                  This post is only visible to you, <span class="bold">not to users</span>. Because your company's account has not been approved yet.
+                </span>
+              </div>
+            @elseif($post->approved==0 && $post->refused == 1)
+              <div id="refuseReason">
+                <div class="alert alert-danger">
+                  <span class="bold">Post has been refused. Because:<br></span>
+                  {!! $post->refuse_reason !!}
+                </div>
+              </div>
+            @elseif($post->approved==0 && $post->refused == 0 && $user->user_type == 'company' )
+              <div class="alert alert-warning">
+                <span>
+                  This post is only visible to you, <span class="bold">not to users</span>. Because your company's account has not been approved yet.
+                </span>
+              </div>
+            @elseif($post->approved==0 && $post->refused == 0 && ($user->user_type == 'admin' || $user->user_type == 'moderator'))
+              <div class="alert alert-warning">
+                <span>
+                  This post has not been approved yet.
                 </span>
               </div>
             @endif
+
             <p>{!!$post->body!!}</p>
             @if(!empty( $post->deadline))
                <span id="deadline"> <i class="material-icons ">error_outline</i> Deadline : </span><span>{{ $post->deadline->format('d F Y H:i') }}</span>
@@ -83,13 +104,12 @@
               </ul>
           </div>
 
-          @if( $post->approved == 0 && $post->refused == 1) <!-- It means post is refused and company has not made any change yet-->
-            <div class="refuseReason">
-              <div class="alert alert-info">
-                <span class="bold">Post has been refused. Because:</span>
-                {!! $post->refuse_reason !!}
-              </div>
-            </div>
+          @if( $post->approved == 0) <!-- It means post is refused and company has not made any change yet-->
+            @if($post->refused == 0)
+
+            @elseif($post->refused == 1)
+
+            @endif
           @endif
 
           <div class="buttons clearfix">

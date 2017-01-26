@@ -18,7 +18,7 @@ use App\ActionType;
 use App\Log;
 
 trait SlugTrait{
-  public function slugCreator($text){
+  public function slugCreator($text,$contentType){
     $text = str_ireplace(' ','-',$text);
     $text = str_ireplace('ə','e',$text);
     $text = str_ireplace('ü','u',$text);
@@ -47,6 +47,16 @@ trait SlugTrait{
 
     if (empty($text)) {
       return 'n-a';
+    }
+
+    if($contentType == 'company'){
+      if( Post::where('slug','=',$text)->first() != NULL ){
+        if( preg_match("[(]\d+[)]",$text) ){
+          $openP = strpos($text,"(");
+          $closeP = strpos($text,")");
+          $int = substr($text,$openP+1,$closeP-$openP-1);
+        }
+      }
     }
 
     return $text;

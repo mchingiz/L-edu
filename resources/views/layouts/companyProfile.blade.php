@@ -9,13 +9,13 @@
 <section id="company-profile" class="container-fluid" style="padding-top:85px">
 
   <section id="company">
-    <div id="background" style="background-image:@yield('CoverPhoto')"></div>
+    <div id="background" style="background-image:url('/assets/companyCoverPhotos/{{$company->cover_photo}}')"></div>
     <div class="info-bar">
       <div class="container">
         <div class="col-md-6 col-sm-8 col-xs-12">
-          <img src=@yield('ProfilePicture')>
-          <h1>@yield('name')<br>
-          <span> @yield('FollowerCount') followers | @yield('PostCount') posts</span>
+          <img src="{{url('/assets/companyProfilePictures/'.$company->logo)}}">
+          <h1>{{$company->user->name}}<br>
+          <span> {{$company->followers->count()}} followers | {{\App\Post::where('approved', '1')->where('company_id',$company->id)->count()}} posts</span>
           </h1>
         </div>
         <div class="buttons col-md-6 col-sm-4 col-xs-12">
@@ -37,4 +37,3 @@
   <div class="vertical-div"></div>
 </section>
 @endsection
-

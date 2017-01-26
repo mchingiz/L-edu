@@ -385,7 +385,7 @@ i.material-icons {
         margin: 15px 0;
         font-size: 1.1em; }
       .category-section .body .big-post .img-box, .right-bar .body .big-post .img-box {
-        height: 220px;
+        height: 165px;
         overflow: hidden; }
         .category-section .body .big-post .img-box img, .right-bar .body .big-post .img-box img {
           width: 100%;
@@ -397,7 +397,7 @@ i.material-icons {
         font-size: 0.9em; }
       .category-section .body .small-post .img-box, .right-bar .body .small-post .img-box {
         padding-right: 0;
-        height: 70px;
+        height: 53px;
         overflow: hidden; }
         .category-section .body .small-post .img-box img, .right-bar .body .small-post .img-box img {
           width: 100%;

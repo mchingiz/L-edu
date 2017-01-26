@@ -90,7 +90,7 @@ class PostController extends Controller
       'company_id' => 1,
       'image' => $photoPath,
       'lang' => $request->input('language'),
-      'slug' => $this->slugCreator( $request->input('title') ),
+      'slug' => $this->slugCreator($request->input('title'),'post'),
       'category_id' => $category_id,
       'subcategory_id' => $subcategory_id,
       'company_id' => $this->user->company->id,

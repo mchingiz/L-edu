@@ -16,6 +16,7 @@ use App\User;
 use App\Post;
 use App\ActionType;
 use App\Log;
+use App\Company;
 
 trait SlugTrait{
   public function slugCreator($text,$contentType){
@@ -49,14 +50,11 @@ trait SlugTrait{
       return 'n-a';
     }
 
-    if($contentType == 'company'){
-      if( Post::where('slug','=',$text)->first() != NULL ){
-        if( preg_match("[(]\d+[)]",$text) ){
-          $openP = strpos($text,"(");
-          $closeP = strpos($text,")");
-          $int = substr($text,$openP+1,$closeP-$openP-1);
-        }
-      }
+    if($contentType == 'post' && Post::where('slug','=',$text)->first() != NULL){
+      $text = $text.'-'.mt_rand(10,99);
+    }
+    else if($contentType == 'company' && Company::where('slug','=',$text)->first() != NULL){
+      $text = $text.'-'.mt_rand(10,99);
     }
 
     return $text;

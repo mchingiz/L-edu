@@ -18,7 +18,7 @@ class CompaniesTableSeeder extends Seeder
           'user_id' => '5', // Code Academy
           'info' => 'Code Academy info falan',
           'slug' => 'Code-Academy',
-          'logo' => 'azercell.jpg',
+          'logo' => 'default.jpg',
           'cover_photo'=>'default1.jpg',
           'address' => 'AF Business',
           'email' => 'code@code.edu.az',
@@ -58,7 +58,7 @@ class CompaniesTableSeeder extends Seeder
           'user_id' => '7', // Azercell
           'info' => 'Azercell info falan',
           'slug' => 'Azercell',
-          'logo' => 'bbf.jpg',
+          'logo' => 'azercell.jpg',
           'cover_photo'=>'default1.jpg',
           'address' => '20 Yanvar',
           'email' => 'azercell@azercell.com',

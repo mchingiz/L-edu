@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->integer('view')->default(0);
             $table->boolean('approved')->default(0);
             $table->boolean('refused')->default(0);
-            $table->integer('moderator_id');
+            $table->integer('moderator_id')->nullable();
             $table->text('refuse_reason')->nullable();
             $table->integer('subcategory_id');
             $table->integer('category_id');

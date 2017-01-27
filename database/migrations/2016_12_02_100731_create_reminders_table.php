@@ -28,6 +28,6 @@ class CreateRemindersTable extends Migration
      */
     public function down()
     {
-        //
+      Schema::drop('reminders');
     }
 }

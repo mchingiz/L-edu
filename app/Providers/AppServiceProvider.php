@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Providers;
-use App\Menu;
 use App\Providers\View;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->share('menus',Menu::get());
+      if(Schema::hasTable('menus')){
+        view()->share('menus',\App\Menu::get());
+      }
     }
 
     /**

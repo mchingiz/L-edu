@@ -56,11 +56,11 @@
                       @endif
                     </td>
                     <td class="text-center">{{$post->deadline->format('d/M/y - H:i')}}</td>
-                    <th class="text-center">
-                      @if($post->moderator_id != '0')
+                    <td class="text-center">
+                      @if($post->moderator_id != null)
                         {{\App\User::where('id', $post->moderator_id )->value('name')}}
                       @endif
-                    </th>
+                    </td>
                     <td class="text-center">{{$post->view}}</td>
                     <td class="text-center">{{$post->views}}</td>
                     <td class="text-center">{{$post->views}}</td>

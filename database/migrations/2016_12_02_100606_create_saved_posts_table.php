@@ -27,6 +27,6 @@ class CreateSavedPostsTable extends Migration
      */
     public function down()
     {
-        //
+      Schema::drop('saved_posts');
     }
 }

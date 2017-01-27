@@ -15,7 +15,7 @@
       @if( collect($posts)->isEmpty() )
         <h4>There is nothing to show</h4>
       @else
-      <table class="table" id="table">
+      <table class="table table-striped table-hover" id="table">
       <thead>
           <tr>
               <th class="text-center">#</th>
@@ -58,7 +58,7 @@
                     <td class="text-center">{{$post->deadline->format('d/M/y - H:i')}}</td>
                     <th class="text-center">
                       @if($post->moderator_id != '0')
-                        {{ $post->moderator_id }}
+                        {{\App\User::where('id', $post->moderator_id )->value('name')}}
                       @endif
                     </th>
                     <td class="text-center">{{$post->view}}</td>

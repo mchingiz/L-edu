@@ -1,7 +1,5 @@
 @extends('layouts/companyProfile')
-@section('href')
-  <a class="button-custom" href="/company/{{$company->slug}}/info">Info</a>
-@endsection
+
 @section('company-content')
 <section id="company-posts" class="container">
 

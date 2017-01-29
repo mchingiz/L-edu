@@ -1,4 +1,13 @@
+
 $(document).ready(function(){
+
+
+window.onpageshow = function(event) {
+if (event.persisted) {
+window.location.reload();
+}
+};
+
 var url="/company"
 $.ajaxSetup({
   headers: {
@@ -13,8 +22,8 @@ $('.buttons').on('click',"#follow" ,function(){
         type: "POST",
         url: url + '/follow/' + company_id,
         success: function (data) {
-          console.log("Success"+data)
-          $(".buttons").load(location.href + " .buttons>*","");
+          $(".buttons").empty()
+          .append('<button id="unfollow" value="'+data+'" class="button-custom button-unfollow" >Unfollow</button>');
         },
         error: function (data) {
             console.log('Error:', data);
@@ -32,7 +41,8 @@ $('.buttons').on('click',"#unfollow" ,function(){
         url: url + '/unfollow/' + company_id,
         success: function (data) {
           console.log("Success"+data)
-          $(".buttons").load(location.href + " .buttons>*","");
+          $(".buttons").empty()
+          .append('<button id="follow" value="'+data+'" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>')
 
         },
         error: function (data) {

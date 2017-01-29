@@ -66,8 +66,8 @@ class SubcategoriesTableSeeder extends Seeder
       DB::table('subcategories')->insert([
           'id' => '8',
           'category_id' => '3',
-          'name' => 'Phd',
-          'slug'=>'phd'
+          'name' => 'PhD',
+          'slug'=>'phD'
      ]);
 
       DB::table('subcategories')->insert([

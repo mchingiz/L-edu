@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/index', function () {
-    return view('index');});
+// Route::get('/index', function () {
+//     return view('index');});
 Route::get('/post', function () {
     return view('post');});
 Route::get('/category', function () {
@@ -26,9 +26,12 @@ Route::get('/company/posts', function () {
 
 
 
+// Index
+Route::get('/','HomeController@index');
 
-
-Route::get('/test/{test}', 'Test@test');
+Route::get('/index', function(){
+  return view('index');
+});
 Route::get('/test', 'Test@test');
 
 // Register

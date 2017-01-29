@@ -1,0 +1,81 @@
+-------- Categories ---------
+
+cat-1: Vacancies(menu_id: 3)
+  sub-1: Internship
+  sub-2: Jobs
+  sub-3: Volunteering
+cat-2: Events(menu_id: 2)
+  sub-4: Conference
+  sub-5: Training
+  sub-6: Seminar
+cat-3: Scholarship(menu_id: 4)
+  sub-7: Bachelor
+  sub-8: PhD
+  sub-9: Fellowship
+  sub-10: Master
+cat-4: Grants(menu_id: 5)
+
+---------- Users & Companies ----------
+
+3: moderator (Mehdi)
+4: admin (Nigar)
+5: company (Code / company_id:1 )
+6: company (BBF / company_id:2 )
+7: company (Azercell / company_id:3 )
+8: user (Ulvi)
+
+---------- Sample Images ----------
+
+image1.jpg
+image2.jpg
+image3.jpg
+image6.jpg
+image4.png
+image5.png
+image7.png
+
+---------- Posts ----------
+// Vacancy
+1: Internship - approved - Azercell
+2: Jobs - approved - Azercell
+3: Volunteering - approved - Azercell
+4: Internship - approved - Azercell
+5: Volunteering - approved - BBF
+6: Jobs - approved - Code
+7: Jobs - approved - BBF
+8: Internship - approved - BBF
+9: Volunteering - approved - BBF
+10: Jobs - approved - Azercell
+
+// Events
+11: Conference - approved - Azercell
+12: Training - approved - BBF
+13: Seminar - approved - Code
+14: Training - approved - BBF
+15: Conference - approved - Code
+16: Training - approved - Azercell
+17: Conference - approved - BBF
+18: Seminar - approved - Code
+
+// Scholarships
+19: Bachelor - approved - BBF
+20: PhD - approved - Azercell
+21: Fellowship - approved - Code
+22: Master - approved - BBF
+23: Bachelor - approved - Code
+24: PhD - approved - Azercell
+25: Fellowship - approved - Code
+26: Master - approved - BBF
+
+// Grants
+27: approved - Code
+28: approved - BBF
+29: approved - Azercell
+30: approved - Code
+31: approved - BBF
+32: approved - Azercell
+33: approved - Code
+34: approved - BBF
+
+
+Code / BBF / Azercell

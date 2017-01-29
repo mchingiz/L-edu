@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
       DB::table('users')->insert([
           'id' => '3',
           'name' => 'Mehdi',
-          'email' => 'mehdi@gmail.com',
+          'email' => 'moderator@gmail.com',
           'user_type' => 'moderator',
           'password' => bcrypt('qwerty'),
       ]);
@@ -40,7 +40,7 @@ class UsersTableSeeder extends Seeder
       DB::table('users')->insert([
           'id' => '4',
           'name' => 'Nigar',
-          'email' => 'nigar@gmail.com',
+          'email' => 'admin@gmail.com',
           'user_type' => 'admin',
           'password' => bcrypt('qwerty'),
       ]);
@@ -72,7 +72,7 @@ class UsersTableSeeder extends Seeder
       DB::table('users')->insert([
           'id' => '8',
           'name' => 'Ulvi',
-          'email' => 'ulvi@gmail.com',
+          'email' => 'user@gmail.com',
           'user_type' => 'user',
           'password' => bcrypt('qwerty'),
       ]);

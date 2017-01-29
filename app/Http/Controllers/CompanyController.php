@@ -116,7 +116,7 @@ class CompanyController extends Controller
     ['user_id' => $this->user->id, 'company_id' => $id]
     );
 
-      return 55;
+      return $id;
   }
 
   public function Unfollow($id){
@@ -129,7 +129,7 @@ class CompanyController extends Controller
                     ['company_id', '=' , $id]
                 ])->delete();
 
-      return 55;
+      return $id;
   }
 
 

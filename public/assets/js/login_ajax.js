@@ -17,16 +17,22 @@ var formData = {
     type: "POST",
     url: "/login",
     data: formData,
-    success: function (data) {
-      console.log("Success"+data)
-      var errors = data.responseJSON;
-      console.log(errors)
-      //location.reload();
+
+    dataType:'json',
+    success: function (response) {
+      console.log(response)
+       if(response.success) {
+         location.reload();
+       }
     },
-    error: function (data) {
-      console.log('Error:', data);
+    error: function (jqXHR) {
+      var response = $.parseJSON(jqXHR.responseText);
+      if(response.message) {
+        alert(response.message);
+      }
     }
-  });
+});
+
 });
 
 })

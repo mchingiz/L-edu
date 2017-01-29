@@ -13,7 +13,6 @@ use Auth;
 use App\Post;
 use App\Log;
 use App\Company;
-use App\Saved_post;
 use App\User;
 
 use App\Http\Traits\LoggingTrait;
@@ -30,6 +29,8 @@ class SearchController extends Controller
  
   public function view(Request $request){
    $search_key= $request->key;
+
+
    $companies= User::where([
                     ['user_type', '=', 'company'],
                     ['name', 'LIKE', '%'.$search_key.'%']

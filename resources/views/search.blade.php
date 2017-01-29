@@ -1,5 +1,7 @@
 @extends('layouts/layout')
+@section('head')
 
+@endsection
 @section('title')
   Educive
 @endsection
@@ -257,5 +259,5 @@
 @endsection
 
 @section('script')
-    <script src="{{url('/assets/js/follow.js')}}"></script>
+    <script src="{{url('/assets/js/follow2.js')}}"></script>
 @endsection

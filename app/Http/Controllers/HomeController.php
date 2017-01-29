@@ -33,6 +33,16 @@ class HomeController extends Controller
 
     public function index()
     {
+      //Companies
+      $allCompanies = Company::where('approved',1)->get();
+      if( Company::where('approved',1)->count() > 5 ){
+        $randomCompanies = $allCompanies->random(5);
+      }else{
+        $randomCompanies = $allCompanies;
+      }
+
+      // Posts
+
       $latestPosts = Post::where('approved',1)->take(5)->get();
       $eventPosts = Post::where('category_id',2)->where('approved',1)->get();
       $vacancyPosts = Post::where('category_id',1)->where('approved',1)->get();
@@ -57,65 +67,14 @@ class HomeController extends Controller
         }
       }
 
-      // foreach($latestPosts as $post){
-      //   // ***Formatting the deadline
-      //     $post->deadlineString = Carbon::createFromFormat('Y-m-d H:i:s', $post->deadline)->toFormattedDateString();
-      //
-      //   // ***Manipulation body of post for homepage
-      //     // Delete html tags from text
-      //     $str = strip_tags($post->body);
-      //     // Wrap texts to seperate lines w/o breaking words, explode to array, then take first line
-      //     $characterLimit = 80;
-      //     $str = explode("\n", wordwrap($post->body, $characterLimit))[0];
-      //     // Delete non-alphanumeric characters from end of the string
-      //     $post->body = preg_replace('/[^a-z0-9]+\Z/i', '', $str).'...';
-      // }
-      //
-      // foreach($vacancyPosts as $post){
-      //   // ***Formatting the deadline
-      //     $post->deadlineString = Carbon::createFromFormat('Y-m-d H:i:s', $post->deadline)->toFormattedDateString();
-      //
-      //   // ***Manipulation body of post for homepage
-      //     // Delete html tags from text
-      //     $str = strip_tags($post->body);
-      //     // Wrap texts to seperate lines w/o breaking words, explode to array, then take first line
-      //     $characterLimit = 80;
-      //     $str = explode("\n", wordwrap($post->body, $characterLimit))[0];
-      //     // Delete non-alphanumeric characters from end of the string
-      //     $post->body = preg_replace('/[^a-z0-9]+\Z/i', '', $str).'...';
-      // }
-      //
-      // foreach($eventPosts as $post){
-      //   // ***Formatting the deadline
-      //     $post->deadlineString = Carbon::createFromFormat('Y-m-d H:i:s', $post->deadline)->toFormattedDateString();
-      // }
-      //
-      // foreach($scholarshipPosts as $post){
-      //   // ***Formatting the deadline
-      //   $post->deadlineString = Carbon::createFromFormat('Y-m-d H:i:s', $post->deadline)->toFormattedDateString();
-      //
-      //   // ***Manipulation body of post for homepage
-      //   // Delete html tags from text
-      //   $str = strip_tags($post->body);
-      //   // Wrap texts to seperate lines w/o breaking words, explode to array, then take first line
-      //   $characterLimit = 80;
-      //   $str = explode("\n", wordwrap($post->body, $characterLimit))[0];
-      //   // Delete non-alphanumeric characters from end of the string
-      //   $post->body = preg_replace('/[^a-z0-9]+\Z/i', '', $str).'...';
-      // }
-      //
-      // foreach($grantPosts as $post){
-      //   // ***Formatting the deadline
-      //   $post->deadlineString = Carbon::createFromFormat('Y-m-d H:i:s', $post->deadline)->toFormattedDateString();
-      // }
-
       $latestPosts = $allPosts[0];
       $eventPosts = $allPosts[1];
       $vacancyPosts = $allPosts[2];
       $scholarshipPosts = $allPosts[3];
       $grantPosts = $allPosts[4];
+      $mostViewed = Post::where('approved',1)->orderBy('view')->take(8)->get();
 
-      return view('index',compact('vacancyPosts','eventPosts','scholarshipPosts','grantPosts','latestPosts'));
+      return view('index',compact('vacancyPosts','eventPosts','scholarshipPosts','grantPosts','latestPosts','mostViewed','randomCompanies'));
     }
 
     public function adminPanel(){

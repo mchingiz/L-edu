@@ -349,55 +349,24 @@
             <h3>Companies</h3>
         </div>
         <div class="body col-md-12 col-xs-12 col-sm-12">
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/azercell.jpg">
+          <?php $i=0 ?>
+          @foreach($randomCompanies as $company)
+            <?php $i++ ?>
+            <div class="row">
+              <div class=" img-box col-md-3 col-sm-3 col-xs-3">
+                <img src="{{ url('/assets/companyProfilePictures/'.$company->logo) }}">
+              </div>
+              <div class="col-md-9 col-xs-9 col-sm-9">
+                <a href="{{ url('/company/'.$company->slug.'/info') }}">{{ $company->user->name }}</a>
+                <form action="{{ url('/company/follow/'.$company->id) }}" method="post"> {{ csrf_field() }}
+                  <button type="submit" class="btn button-custom">Follow</button>
+                </form>
+              </div>
             </div>
-            <div class="col-md-9 col-xs-9 col-sm-9">
-              <a href="#">Azercell</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/azelab.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Azelab</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/nar.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Nar Mobile</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/code.png">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Code Academy</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/bbf.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Baku Business Factory</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
+            @if ($i != count($randomCompanies) )
+              <div class="border"></div>
+            @endif
+          @endforeach
         </div>
       </section>
 
@@ -408,93 +377,23 @@
             <h3>Most Viewed News</h3>
         </div>
         <div class="body col-md-12 col-sm-12 col-xs-12">
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image7.png">
+          <?php $i=0 ?>
+          @foreach($mostViewed as $post)
+            <?php $i++ ?>
+            <div class="row">
+              <div class=" img-box col-md-3 col-sm-3 col-xs-3">
+                <img src="{{ url('/assets/images/'.$post->image) }}">
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <a href="#" class="post-heading">{{ $post->title }}</a>
+                <i class="material-icons">business</i>
+                <a href="#" class="company">{{ $post->company->user->name}}</a>
+              </div>
             </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">The Graz International Summer School Seggau 2017</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Azercell</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">Internship with the United Nations in Almaty for graduate students!</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Azercell</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">"How has the European Film Festival changed my stereotypes about European culture?"</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">European Film Festival </a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image7.png">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">45 PhD Scholarships for International Students at University of Edinburgh in UK, 2017/2018</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">The University Of Edinburgh</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image1.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">Internship with the United Nations in Almaty for graduate students!</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Azercell</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">Join Baku 2017 Volunteering Program and Build a Successful Future!</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Baku 2017</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">"How has the European Film Festival changed my stereotypes about European culture?"</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">European Film Festival </a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image7.png">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">45 PhD Scholarships for International Students at University of Edinburgh in UK, 2017/2018</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">The University Of Edinburgh</a>
-            </div>
-          </div>
+            @if ($i != count($mostViewed) )
+              <div class="border"></div>
+            @endif
+          @endforeach
         </div>
       </section>
       <div class="vertical-div"></div>

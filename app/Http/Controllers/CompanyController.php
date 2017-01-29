@@ -116,7 +116,7 @@ class CompanyController extends Controller
     ['user_id' => $this->user->id, 'company_id' => $id]
     );
 
-      return $id;
+    return $id;
   }
 
   public function Unfollow($id){

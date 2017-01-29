@@ -268,14 +268,14 @@ class PostController extends Controller
   }
 
   public function refusedList(){
-    if($this->user->user_type == 'admin'){ // Return all refused posts
-      $posts = Post::where('approved',0)->where('refused',1)->get();
-    }else if($this->user->user_type == 'moderator'){
-      $posts = Post::where('moderator_id',$this->user->id)->where('approved',0)->where('refused',1)->get();
-    }else{
-      $error = "I'm really sorry but you don't have permission :(";
-      return view('errors.503',compact('error'));
-    }
+    // if($this->user->user_type == 'admin'){ // Return all refused posts
+    //   $posts = Post::where('approved',0)->where('refused',1)->get();
+    // }else if($this->user->user_type == 'moderator'){
+    //   $posts = Post::where('moderator_id',$this->user->id)->where('approved',0)->where('refused',1)->get();
+    // }else{
+    //   $error = "I'm really sorry but you don't have permission :(";
+    //   return view('errors.503',compact('error'));
+    // }
     $title = "Refused Posts";
     return view('adminPanel.posts',compact('posts','title'));
   }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\uploadedFile;
+// use Intervention\Image\ImageManager;
+use Intervention\Image\Facades\Image;
 
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -36,7 +38,6 @@ class PostController extends Controller
 
   public function __construct(){
     $this->user = Auth::user();
-    //$menus= Menu::get();
     view()->share('user', $this->user);
 
     $this->middleware('checkRole:admin,moderator')->only('waitList','approvedList','refusedList');
@@ -60,14 +61,17 @@ class PostController extends Controller
 			'category' => 'required',
 			'tags' => 'required|min:1|max:5',
       'deadline' => 'after:today'
-
 		]);
 
     // Photo
     $photo = $request->file('photo');
     $targetLocation = base_path().'/public/assets/postPhotos/';
     $targetName=microtime(true)*10000 . '.' . $photo->getClientOriginalExtension();
-    $photo->move($targetLocation, $targetName);
+    $x = $request->input('x');
+    $y = $request->input('y');
+    $w = $request->input('w');
+    $h = $request->input('h');
+    $photo = Image::make($photo->getRealPath())->crop($w,$h,$x,$y)->save($targetLocation.$targetName);
     $photoPath = $targetName;
 
     if(substr($request->input('category'),0,1) == 'c'){
@@ -86,7 +90,7 @@ class PostController extends Controller
       'company_id' => 1,
       'image' => $photoPath,
       'lang' => $request->input('language'),
-      'slug' => $this->slugCreator( $request->input('title') ),
+      'slug' => $this->slugCreator($request->input('title'),'post'),
       'category_id' => $category_id,
       'subcategory_id' => $subcategory_id,
       'company_id' => $this->user->company->id,
@@ -110,10 +114,6 @@ class PostController extends Controller
   // EDITING
 
   public function editPost(Post $post){
-    // if($this->user->company->id != $post->company_id && $this->user->user_type != "moderator" && $this->user->user_type != 'admin'){
-    //   $error = "You don't have permission to see this page";
-    //   return view('errors.error',compact('error'));
-    // }
 
     $categories = Category::get();
     $tags = Tag::get();
@@ -154,11 +154,18 @@ class PostController extends Controller
 
     // Photo
     if($request->file('photo')){
-      unlink( base_path().'\public'.$post->image );
+      unlink( base_path().'/public/assets/postPhotos/'.$post->image );
+
       $photo = $request->file('photo');
       $targetLocation = base_path().'/public/assets/postPhotos/';
       $targetName=microtime(true)*10000 . '.' . $photo->getClientOriginalExtension();
-      $photo->move($targetLocation, $targetName);
+
+      $x = $request->input('x');
+      $y = $request->input('y');
+      $w = $request->input('w');
+      $h = $request->input('h');
+      $photo = Image::make($photo->getRealPath())->crop($w,$h,$x,$y)->save($targetLocation.$targetName);
+
       $post->image = $targetName;
     }
 
@@ -182,9 +189,29 @@ class PostController extends Controller
   public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
+    if($post == null){
+      return "Post doesn't exist";
+    }
 
-    if($post->approved==0 && ($this->user->id != $post->company->user_id) && $this->user->user_type != 'admin' && $this->user->user_type != 'moderator')
-      return 404;
+    // Company IS NOT approved -> then only owner sees the post
+    // Company is approved, post IS NOT approved -> owner,admin,moderator see the post
+    // Company is approved, post is approved -> everybody sees
+
+    if($post->company->approved){
+      if(!$post->approved){
+        if(Auth::check() && ( ($this->user->user_type == 'admin' || $this->user->user_type == 'moderator') || ($this->user->user_type == 'company' && $this->user->company->id == $post->company_id) ) ){
+          // Admin,moderator,owner will see the post
+        }else{
+          return 404;
+        }
+      }
+    }else{
+      if(Auth::check() && $this->user->user_type == 'company' && $this->user->company->id == $post->company_id){
+        // Owner will see the post
+      }else{
+        return 404;
+      }
+    }
 
     $OtherPosts=Post::orderBy('id', 'desc')
                       ->where([

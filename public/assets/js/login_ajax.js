@@ -7,16 +7,17 @@ $.ajaxSetup({
 
 ///////////////////////Follow////////////////////////////////
 $('#login').on('click',function(e){
-e.preventDefault(); 
+e.preventDefault();
 
 var formData = {
-    email: $('#email').val(),
-    password: $('#password').val(),
+  email: $('#email').val(),
+  password: $('#password').val(),
 }
   $.ajax({
     type: "POST",
     url: "/login",
     data: formData,
+
     dataType:'json',
     success: function (response) {
       console.log(response)
@@ -31,7 +32,7 @@ var formData = {
       }
     }
 });
-    
+
 });
 
 })

@@ -67,8 +67,8 @@
 				this.$frame
 					.append( node( 'div', 'controls' )
 						.append( node( 'span', 'text' ).append( this.options.controls ) )
-						.append( node( 'a', 'zoomIn' ).on( 'click.' + namespace, $.proxy( this.zoomIn, this ) ) )
-						.append( node( 'a', 'zoomOut' ).on( 'click.' + namespace, $.proxy( this.zoomOut, this ) ) )
+						// .append( node( 'a', 'zoomIn' ).on( 'click.' + namespace, $.proxy( this.zoomIn, this ) ) )
+						// .append( node( 'a', 'zoomOut' ).on( 'click.' + namespace, $.proxy( this.zoomOut, this ) ) )
 					)
 				;
 			}
@@ -149,6 +149,6 @@
 		} );
 	};
 
-	
+
 
 } )( jQuery );

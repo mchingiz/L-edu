@@ -61,7 +61,14 @@
           font-family:'Open Sans', sans-serif;
           line-height: 1.8;
         }
-
+        #refuseReason{
+          .alert{
+            span:first-child{
+              display:block;
+              padding-bottom:7px;
+            }
+          }
+        }
         #deadline{
           color:#C31926;
           font-weight: bold;

@@ -300,6 +300,9 @@ i.material-icons {
           margin-bottom: 20px;
           font-family: 'Open Sans', sans-serif;
           line-height: 1.8; }
+        #post .col-md-8 .single-post .single-post-body #refuseReason .alert span:first-child {
+          display: block;
+          padding-bottom: 7px; }
         #post .col-md-8 .single-post .single-post-body #deadline {
           color: #C31926;
           font-weight: bold;
@@ -382,7 +385,7 @@ i.material-icons {
         margin: 15px 0;
         font-size: 1.1em; }
       .category-section .body .big-post .img-box, .right-bar .body .big-post .img-box {
-        height: 220px;
+        height: 165px;
         overflow: hidden; }
         .category-section .body .big-post .img-box img, .right-bar .body .big-post .img-box img {
           width: 100%;
@@ -394,7 +397,7 @@ i.material-icons {
         font-size: 0.9em; }
       .category-section .body .small-post .img-box, .right-bar .body .small-post .img-box {
         padding-right: 0;
-        height: 70px;
+        height: 53px;
         overflow: hidden; }
         .category-section .body .small-post .img-box img, .right-bar .body .small-post .img-box img {
           width: 100%;
@@ -734,13 +737,6 @@ i.material-icons {
 
 #addPost {
   padding-top: 20px; }
-  #addPost .row .previousImage {
-    overflow: hidden;
-    width: 512px;
-    background-color: red;
-    height: 250px; }
-    #addPost .row .previousImage img {
-      width: 100%; }
   #addPost div.error {
     margin-top: 20px; }
     #addPost div.error ul {

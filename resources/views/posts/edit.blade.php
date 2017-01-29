@@ -9,8 +9,8 @@
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha384-3ceskX3iaEnIogmQchP8opvBy3Mi7Ce34nWjpBIwVTHfGYWQS9jwHDVRnpKKHJg7" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.7/js/tether.min.js" integrity="sha384-XTs3FgkjiBgo8qjEjBk0tGmf3wPrWtA6coPfQDfFEY8AnYJwjalXCiosYRBIBZX8" crossorigin="anonymous"></script>
     <script src="//cdn.ckeditor.com/4.6.0/standard/ckeditor.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
     <link type="text/css" media="screen" rel="stylesheet" href="{{url('/assets/js/vendor/jQuery-crop-gh-pages/jquery.crop.css')}}">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.4/hammer.min.js"></script>
   	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
@@ -53,8 +53,13 @@
           <div class="form-group row">
             <label for="photo" class="col-md-2">Image<span>*</span></label>
             <div class="col-md-10">
-              <input type="file" class="form-control-file" name="photo" id="photo" aria-describedby="imageHelp">
+              <input type="file" accept="image/x-png,image/gif,image/jpeg" onchange="showImage(event)" class="form-control-file" name="photo" id="photo" aria-describedby="imageHelp">
               <small id="imageHelp" class="form-text text-muted">If you don't want previous image to be changed, leave this field empty</small>
+
+              <input type="hidden" name="x" id="x" value="">
+              <input type="hidden" name="y" id="y" value="">
+              <input type="hidden" name="w" id="w" value="">
+              <input type="hidden" name="h" id="h" value="">
             </div>
           </div>
 
@@ -123,8 +128,9 @@
             </div>
           </div>
 
-          <div class="clearfix">
-            <button tpye="submit" class="btn btn-success float-xs-right" >Update</button>
+          <div class="clearfix float-xs-right">
+            <small id="editHelp" class="form-text text-muted">Making changes will change 'approved' status of the post.</small>
+            <button tpye="submit" class="btn btn-success float-xs-right" aria-describedby="editHelp">Update</button>
           </div>
 
           @if (count($errors) > 0)
@@ -140,13 +146,10 @@
 
       <div class="col-md-6">
         <div class="row">
-          <div class="previousImage">
-
-          </div>
         </div>
         <div class="row">
-          <div class="cropFrame" style="width: 512px; height: 250px;">
-            <img class="crop cropImage" alt="" src="{{url('/assets/images/wallpaper.jpg')}}" width="512" height="250" style="width: 512px; height: 250px; left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+          <div class="cropFrame" style="width: 512px; height: 250px;display:block">
+            <img id="imagePreview" class="crop cropImage" alt="" src="{{url('assets/postPhotos/'.$post->image)}}" width="512" height="250" style="width: 512px; height: 250px; left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <div class="cropControls">
               <span class="cropText">Drag to move, scroll to zoom</span>
 

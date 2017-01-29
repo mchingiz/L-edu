@@ -21,12 +21,12 @@ class UserController extends Controller
   }
 
   public function companyList(){
-    $companies = Company::where('approved','==',1)->get();
+    $companies = Company::where('approved',1)->get();
     return view('adminPanel.companies',compact('companies'));
   }
 
   public function companyWaitList(){
-    $companies = Company::where('approved','==',0)->get();
+    $companies = Company::where('approved',0)->get();
     return view('adminPanel.companies',compact('companies'));
   }
 }

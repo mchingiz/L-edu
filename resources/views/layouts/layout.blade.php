@@ -30,7 +30,7 @@
             <ul class="nav navbar-nav navbar-left">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
-              <li><a href="#">Add Post</a></li>
+              <li><a href="{{url('/add')}}">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
               <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
@@ -101,7 +101,7 @@
               <li class="collapse-only" ><a href="{{ url('/login') }}">Login</a></li>
               <li class="collapse-only" ><a href="{{ url('/register') }}">Sign Up</a></li>
               @endif
-              <li class="divider"></li> 
+              <li class="divider"></li>
                @foreach($menus as $menu)
                 @if( !collect($menu->category)->isEmpty() && !collect($menu->category->subcategories)->isEmpty())
                 <li class="dropdown">
@@ -115,7 +115,7 @@
                 @else
                 <li><a href="{{url('/'.$menu->slug)}}" class={{Request::is('home')  ? 'active' : ''}}>{{$menu->name}}</a></li>
                 @endif
-              @endforeach       
+              @endforeach
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

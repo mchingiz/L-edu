@@ -2,7 +2,7 @@
 
 @extends('../layouts/auth')
 @section('title')
-  Sign Up
+  Login
 @endsection
 
 @section('content')

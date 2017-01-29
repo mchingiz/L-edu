@@ -2,7 +2,7 @@
 
 @section('company-content')
 <section id="company-posts" class="container">
-  
+
   @foreach($company->posts as $post)
   @if($post->approved==1)
   <div class="col-md-4 col-xs-12 col-sm-6">

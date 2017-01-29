@@ -30,7 +30,8 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{url('admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- Data Tables -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+  <!-- Data table - https://datatables.net/examples/styling/bootstrap.html -->
   @yield('style')
 
 
@@ -332,18 +333,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="active treeview">
-          <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-          </ul>
-        </li>
+        <li><a href="{{url('/adminPanel')}}"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-file-text-o"></i>
@@ -353,7 +343,7 @@
             <li><a href="{{url('/waitList')}}"><i class="fa fa-question"></i>
               Pending
               <span class="pull-right-container">
-                <span class="label label-primary pull-right">4</span>
+                <span class="label label-primary pull-right">44</span>
               </span>
             </a></li>
             <li><a href="{{url('/approvedList')}}"><i class="fa fa-check"></i> Approved</a></li>
@@ -654,7 +644,9 @@
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Data table -->
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+<!-- Data table - https://datatables.net/examples/styling/bootstrap.html -->
 <script>
   $(document).ready(function() {
     $('#table').DataTable();

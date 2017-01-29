@@ -35,13 +35,13 @@
               <td class="text-center">{{$company->id}}</td>
               <td class="text-center">{{$company->user->name}}</td>
               <td class="text-center">
-                <img src="{{url('/profilePhotos/'.$company->logo)}}" alt="{{$company->user->name}}">
+                <img src="{{url('/assets/companyProfilePictures/'.$company->logo)}}" alt="{{$company->user->name}}" style="height:50px">
               </td>
               <td class="text-center">{{$company->user->email}}</td>
               <td class="text-center">{{$company->posts->count()}}</td>
               <td class="text-center">{{$company->posts->sum('view')}}</td>
               <td class="text-center">
-                <a href="{{url('/editPost/'.$company->id)}}">
+                <a href="">
                   <span class="glyphicon glyphicon-edit"></span>
                 </a>
               </td>

@@ -19,6 +19,10 @@ class CreateCompaniesTable extends Migration
             $table->string('logo')->nullable();
             $table->string('cover_photo')->nullable();
             $table->string('slug');
+            $table->boolean('approved')->default(0);
+            $table->boolean('refused')->default(0);
+            $table->integer('moderator_id')->nullable();
+            $table->text('refuse_reason')->nullable();
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('phone1')->nullable();
@@ -29,7 +33,6 @@ class CreateCompaniesTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('website')->nullable();
-            $table->boolean('approved')->default(0);
             $table->timestamps();
         });
     }

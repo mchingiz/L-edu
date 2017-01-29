@@ -85,7 +85,7 @@ class AuthController extends Controller
         if($type=="company"){
           Company::create([
             'user_id' => $user->id,
-            'slug' => $this->slugCreator($data['name']),
+            'slug' => $this->slugCreator($data['name'],'company'),
             'logo'=>'default.png',
             'cover_photo'=>'default1.jpg'
           ]);

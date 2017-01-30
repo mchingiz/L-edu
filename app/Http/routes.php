@@ -24,9 +24,12 @@ Route::get('/company', function () {
 Route::get('/company/posts', function () {
     return view('companyposts');});
 
+Route::post('/user/login', 'UserController@LoginByAjax');
 
-
-
+//Delete
+Route::get('/account/delete', function () {
+    return view('delete');});
+Route::get('/delete', 'UserController@DeactivateAccount');
 
 Route::get('/test/{test}', 'Test@test');
 Route::get('/test', 'Test@test');

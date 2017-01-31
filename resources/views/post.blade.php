@@ -133,7 +133,12 @@
                   <button class="btn btn-warning" name="refuse">Refuse</button>
               @endif
             @endif
-              <a href="#" class="btn btn-danger pull-right"> Report</a>
+              @if(Auth::check() && Auth::user()->user_type=='company' && Auth::user()->company->id==$post->company_id)
+                <form class="pull-right" action="{{ url('/deletePost/'.$post->id )}}" method="post">{{ csrf_field() }}
+                  <input class="btn btn-danger" type="submit" name="delete" value="Delete">
+                </form>
+              @endif
+              <button href="#" class="btn btn-warning pull-right"> Report</button>
           </div>
 
             <div class="refuse">

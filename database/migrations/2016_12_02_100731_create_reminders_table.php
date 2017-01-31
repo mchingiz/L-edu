@@ -17,6 +17,7 @@ class CreateRemindersTable extends Migration
           $table->integer('user_id');
           $table->integer('post_id');
           $table->DateTime('reminder_time');
+          $table->softDeletes();
           $table->timestamps();
       });
     }

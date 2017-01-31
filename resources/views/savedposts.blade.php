@@ -14,7 +14,7 @@
   @else
   <div class="row">
       <div class="col-md-8 col-sm-8 no-padding">
-        @foreach( Auth::user()->saved_posts as $post)
+        @foreach( Auth::user()->saved_posts->reverse() as $post)
             <div class="col-md-6 col-xs-12 col-sm-12">
               <div class="post-item {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
                 <div class="img-box">

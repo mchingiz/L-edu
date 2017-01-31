@@ -32,7 +32,7 @@ Route::get('/','HomeController@index');
 Route::get('/index', function(){
   return view('index');
 });
-Route::get('/test', 'Test@test');
+Route::get('/test/{post}', 'Test@test');
 
 // Register
 Route::auth();
@@ -51,6 +51,8 @@ Route::delete('/company/unfollow/{id}', 'CompanyController@Unfollow');
 Route::get('/post/{slug}', 'PostController@View');
 Route::get('/editPost/{post}', 'PostController@editPost');
 Route::post('/editPost/{post}', 'PostController@updatePost');
+Route::post('/deletePost/{post}', 'PostController@deletePost');
+Route::get('/restorePost/{post}', 'PostController@restorePost');
 Route::get('/add', 'PostController@addPost');
 Route::post('/add', 'PostController@storePost');
 

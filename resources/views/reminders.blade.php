@@ -14,7 +14,7 @@
   @else
   <div class="row">
       <div class="col-md-8 col-sm-8 no-padding">
-        @foreach( Auth::user()->reminders as $reminder)
+        @foreach( Auth::user()->reminders->reverse() as $reminder)
             <div class="col-md-6 col-xs-12 col-sm-12">
               <div class="post-item {{$reminder->post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
                 <div class="reminder-time">

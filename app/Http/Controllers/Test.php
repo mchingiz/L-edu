@@ -22,7 +22,7 @@ use URL;
 
 class Test extends Controller
 {
-  public function test(){
-    return base_path();
+  public function test(Post $post){
+    
   }
 }

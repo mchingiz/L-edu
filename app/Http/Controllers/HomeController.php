@@ -36,9 +36,18 @@ class HomeController extends Controller
       //Companies
       $allCompanies = Company::where('approved',1)->get();
       if( Company::where('approved',1)->count() > 5 ){
-        $randomCompanies = $allCompanies->random(5);
+        $companies = $allCompanies->random(5);
       }else{
-        $randomCompanies = $allCompanies;
+        $companies = $allCompanies;
+      }
+
+      if(!Auth::guest()){
+        foreach($companies as $company){
+          $company->isFollowed = (boolean) DB::table('followers')->where([
+            ['user_id', Auth::user()->id],
+            ['company_id', $company->id],
+            ])->first();
+        }
       }
 
       // Posts
@@ -74,7 +83,7 @@ class HomeController extends Controller
       $grantPosts = $allPosts[4];
       $mostViewed = Post::where('approved',1)->orderBy('view')->take(8)->get();
 
-      return view('index',compact('vacancyPosts','eventPosts','scholarshipPosts','grantPosts','latestPosts','mostViewed','randomCompanies'));
+      return view('index',compact('vacancyPosts','eventPosts','scholarshipPosts','grantPosts','latestPosts','mostViewed','companies'));
     }
 
     public function adminPanel(){

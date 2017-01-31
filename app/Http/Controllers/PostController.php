@@ -268,14 +268,11 @@ class PostController extends Controller
   }
 
   public function refusedList(){
-    // if($this->user->user_type == 'admin'){ // Return all refused posts
-    //   $posts = Post::where('approved',0)->where('refused',1)->get();
-    // }else if($this->user->user_type == 'moderator'){
-    //   $posts = Post::where('moderator_id',$this->user->id)->where('approved',0)->where('refused',1)->get();
-    // }else{
-    //   $error = "I'm really sorry but you don't have permission :(";
-    //   return view('errors.503',compact('error'));
-    // }
+    if($this->user->user_type == 'admin'){ // Return all refused posts
+      $posts = Post::where('approved',0)->where('refused',1)->get();
+    }else if($this->user->user_type == 'moderator'){
+      $posts = Post::where('moderator_id',$this->user->id)->where('approved',0)->where('refused',1)->get();
+    }
     $title = "Refused Posts";
     return view('adminPanel.posts',compact('posts','title'));
   }
@@ -303,5 +300,17 @@ class PostController extends Controller
     $this->log(6,$post->id,'posts'); // Refuse
 
     return back();
+  }
+
+  public function deletePost(Post $post){
+    $post->delete();
+    Reminder::where('post_id',$post->id)->delete();
+    return redirect('/');
+  }
+
+  public function restorePost(Post $post){
+    $post->restore();
+    Reminder::onlyTrashed()->where('post_id',$post->id)->restore();
+    return redirect('/post/'.$post->slug);
   }
 }

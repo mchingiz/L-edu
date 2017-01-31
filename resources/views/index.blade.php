@@ -144,7 +144,7 @@
                   <img src="{{url('/assets/images/'.$vacancyPosts[5]->image)}}">
                 </div>
                 <h2>{{ $vacancyPosts[5]->title }}</h2>
-                <p>{{ $vacancyPosts[0]->body }}</p>
+                <p>{{ $vacancyPosts[5]->body }}</p>
                 <span>Deadline: </span><span class="date">{{ $vacancyPosts[5]->deadlineString }}</span>
               </div>
               @for($i=6;$i<10;$i++)
@@ -350,7 +350,7 @@
         </div>
         <div class="body col-md-12 col-xs-12 col-sm-12">
           <?php $i=0 ?>
-          @foreach($randomCompanies as $company)
+          @foreach($companies as $company)
             <?php $i++ ?>
             <div class="row">
               <div class=" img-box col-md-3 col-sm-3 col-xs-3">
@@ -358,12 +358,16 @@
               </div>
               <div class="col-md-9 col-xs-9 col-sm-9">
                 <a href="{{ url('/company/'.$company->slug.'/info') }}">{{ $company->user->name }}</a>
-                <form action="{{ url('/company/follow/'.$company->id) }}" method="post"> {{ csrf_field() }}
-                  <button type="submit" class="btn button-custom">Follow</button>
-                </form>
+                @if(Auth::guest())
+                  <a href="#" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+                @elseif(Auth::user()->user_type=="user" && !$company->isFollowed)
+                  <button id="follow" value="{{$company->id}}" class="btn button-custom button-follow" >Follow</button>
+                @elseif(Auth::user()->user_type=="user" && $company->isFollowed)
+                  <button id="unfollow" value="{{$company->id}}" class="btn button-custom button-unfollow" >Unfollow</button>
+                @endif
               </div>
             </div>
-            @if ($i != count($randomCompanies) )
+            @if ($i != count($companies) )
               <div class="border"></div>
             @endif
           @endforeach
@@ -385,7 +389,7 @@
                 <img src="{{ url('/assets/images/'.$post->image) }}">
               </div>
               <div class="col-md-9 col-sm-9 col-xs-9">
-                <a href="#" class="post-heading">{{ $post->title }}</a>
+                <a href="{{ url('/post/'.$post->slug) }}" class="post-heading">{{ $post->title }}</a>
                 <i class="material-icons">business</i>
                 <a href="#" class="company">{{ $post->company->user->name}}</a>
               </div>
@@ -401,4 +405,8 @@
 
  </div> <!--row-->
 </div> <!--content-->
+@endsection
+
+@section('script')
+  <script src="{{url('/assets/js/follow.js')}}"></script>
 @endsection

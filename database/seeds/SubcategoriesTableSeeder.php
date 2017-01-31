@@ -37,6 +37,7 @@ class SubcategoriesTableSeeder extends Seeder
       DB::table('subcategories')->insert([
           'id' => '4',
           'category_id' => '2',
+          'name' => 'Conference',
           'slug' => 'conference',
       ]);
 

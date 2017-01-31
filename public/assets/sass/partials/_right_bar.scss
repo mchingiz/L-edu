@@ -90,6 +90,17 @@
         color:lighten($heading-color,20%);
       }
     }
+    // .button-follow{
+    //   background: $primaryColor;
+    //   color:white;
+    // }
+    .button-unfollow{
+      border-color:#d9534f;
+      background-color: #d9534f;
+      &:hover{
+      background-color:  #c9302c
+      }
+    }
   }
 
   #rightBarPosts{

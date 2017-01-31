@@ -13,21 +13,12 @@
     <div id="background" style="background-image: url({{url('/assets/companyCoverPhotos/'.$company->cover_photo)}})"></div>
     <div class="info-bar">
       <div class="container">
-        <div class="col-md-6 
-        col-sm-8 col-xs-12">
-          <img src="/assets/companyProfilePictures/{{$company->logo}}">
-          <h1> {{$company->user->name}}<br>
-          <span> {{$company->followers->count()}} followers | {{$company->posts->count()}} posts</span>
-
-    <div id="background" style="background-image:url('/assets/companyCoverPhotos/{{$company->cover_photo}}')"></div>
-    <div class="info-bar">
-      <div class="container">
         <div class="col-md-6 col-sm-8 col-xs-12">
           <img src="{{url('/assets/companyProfilePictures/'.$company->logo)}}">
-          <h1>{{$company->user->name}}<br>
+          <h1> {{$company->user->name}}<br>
           <span> {{$company->followers->count()}} followers | {{\App\Post::where('approved', '1')->where('company_id',$company->id)->count()}} posts</span>
-          </h1>
         </div>
+
         <div class="buttons col-md-6 col-sm-4 col-xs-12">
           @if(Auth::guest())
           <a href="#" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
@@ -36,7 +27,7 @@
           @elseif(Auth::user()->user_type=="user" && $isFollowed!=null)
           <button id="unfollow" value="{{$company->id}}" class="button-custom button-unfollow" >Unfollow</button>
           @endif
-          <a class="button-custom" href="/company/{{$company->slug}}/info">Info</a>
+          @yield('tab')
       </div>
       </div>
     </div>

@@ -23,7 +23,7 @@
     </head>
     <body>
     <div class="main-wrapper">
-      @if(!(Request::url() === 'index'&& Auth::guest() ) )
+      @if(!(Request::url() === '' && Auth::guest() ) )
       <nav id="top-bar" class="navbar navbar-fixed-top">
         <div class="container">
           <div>
@@ -35,6 +35,8 @@
               <li style="margin-left:-15px;"><a href="#" >Name</a></li>
               <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
               <li><a href="{{ url('/reminders') }}">Reminders</a></li>
+              @elseif ( !Auth::guest() && ( Auth::user()->user_type=="admin" || Auth::user()->user_type=="moderator" ))
+              <li style="margin-left:-15px;"><a href="{{ url('/adminPanel') }}" >Admin Panel</a></li>
               @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">

@@ -24,6 +24,17 @@ Route::get('/company', function () {
 Route::get('/company/posts', function () {
     return view('companyposts');});
 
+Route::post('/user/login', 'UserController@LoginByAjax');
+
+
+// Delete
+Route::get('/account/delete', function () {
+    return view('delete');});
+Route::get('/delete', 'UserController@DeactivateAccount');
+
+// Test
+Route::get('/test/{test}', 'Test@test');
+Route::get('/test', 'Test@test');
 
 
 // Index
@@ -32,7 +43,7 @@ Route::get('/','HomeController@index');
 Route::get('/index', function(){
   return view('index');
 });
-Route::get('/test/{post}', 'Test@test');
+
 
 // Register
 Route::auth();

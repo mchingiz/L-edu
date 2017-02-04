@@ -5,7 +5,7 @@ $.ajaxSetup({
   }
 });
 
-///////////////////////Follow////////////////////////////////
+///////////////////////Login////////////////////////////////
 $('#login').on('click',function(e){
 e.preventDefault();
 
@@ -13,25 +13,23 @@ var formData = {
   email: $('#email').val(),
   password: $('#password').val(),
 }
-  $.ajax({
-    type: "POST",
-    url: "/login",
-    data: formData,
 
-    dataType:'json',
-    success: function (response) {
-      console.log(response)
-       if(response.success) {
-         location.reload();
-       }
-    },
-    error: function (jqXHR) {
-      var response = $.parseJSON(jqXHR.responseText);
-      if(response.message) {
-        alert(response.message);
-      }
-    }
-});
+$.ajax({
+      url: '/user/login',
+      type: 'POST',
+      // dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+          data: formData,
+          dataType:'json',
+          success: function(data){
+              location.reload();
+          },
+          error: function(data){
+            var errors = data.responseJSON;
+    
+            $("#login-overlay .text-danger").text(data.responseJSON.message)
+            $("#login-overlay .form-group").addClass("has-error")
+          }
+    })
 
 });
 

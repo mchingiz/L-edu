@@ -29,7 +29,7 @@ class ReminderController extends Controller
   }
 
   public function AddReminder($id,Request $request){
-
+    $request->datetime=$request->datetime.":00";
     $this->validate($request,[
       'datetime' => 'after:today'
     ]);

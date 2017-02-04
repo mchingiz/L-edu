@@ -23,16 +23,26 @@
     </head>
     <body>
     <div class="main-wrapper">
-      @if(!(Request::url() === '' && Auth::guest() ) )
+      @if(!(Request::is('index')&& Auth::guest() ) )
       <nav id="top-bar" class="navbar navbar-fixed-top">
         <div class="container">
           <div>
             <ul class="nav navbar-nav navbar-left">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
-              <li style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{url('account/delete')}}">Delete Account</a></li>
+                </ul>
+              </li>
               <li><a href="{{url('/add')}}">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
-              <li style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Name <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{url('account/delete')}}">Delete Account</a></li>
+                </ul>
+              </li>
               <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
               <li><a href="{{ url('/reminders') }}">Reminders</a></li>
               @elseif ( !Auth::guest() && ( Auth::user()->user_type=="admin" || Auth::user()->user_type=="moderator" ))

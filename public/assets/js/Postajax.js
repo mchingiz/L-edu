@@ -59,6 +59,7 @@ $('#reminder-form').on('click',"button",function(){
           $(".buttons").load(location.href + " .buttons>*","");
         },
         error: function (data) {
+            $("#reminder-form p.text-danger").remove();
             $("#reminder-form ").append("<p class='text-danger col-md-8 col-md-offset-2 text-left'>The datetime must be after today</p>")
             console.log('Error:', data);
         }
@@ -74,7 +75,7 @@ $('.buttons').on('click',"#delete-reminder",function(){
         url: url + '/deletereminder/' + reminder_id,
         success: function (data) {
           console.log(data);
-          $(".buttons").load(location.href + " .buttons");
+          $(".buttons").load(location.href + " .buttons>*","");
         },
         error: function (data) {
             console.log('Error:', data);

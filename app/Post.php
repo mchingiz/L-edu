@@ -35,4 +35,13 @@ class Post extends Model
     public function logs(){
       return $this->morphMany('App\Log','loggable');
     }
+
+    public function reminders(){
+      return $this->hasMany('App\Reminder');
+    }
+
+    public function savings(){
+      return $this->belongsToMany('App\Post', 'saved_posts', 'user_id', 'post_id');
+    }
+
 }

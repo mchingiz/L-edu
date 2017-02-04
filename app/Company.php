@@ -11,7 +11,9 @@ class Company extends Authenticatable
   protected $dates = ['deleted_at'];
     
   protected $fillable = [
-    'user_id','info','slug','logo', 'email','facebook','twitter','linkedin','instagram','phone1','phone2','fax','address','website','cover_photo'
+    'user_id','info','slug','logo', 'email','facebook','twitter','linkedin',
+    'instagram','phone1','phone2','fax','address','website','cover_photo',
+    'refused','moderator_id','refuse_reason'
   ];
     public function user(){
       return $this->belongsTo('App\User');

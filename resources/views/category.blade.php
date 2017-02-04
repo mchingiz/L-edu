@@ -13,7 +13,7 @@
   <div class="col-md-12" >
     <h2>
       @if( !empty($category->category))
-      <a href="{{url($category->category->menu->slug)}}"> {{$category->category->name}} </a> / 
+      <a href="{{url($category->category->menu->slug)}}"> {{$category->category->name}} </a> /
       @endif
       {{$category->name}}
       <span class="custom-badge">{{$category->posts->count()}}</span>
@@ -21,7 +21,7 @@
   </div>
 
 
-@foreach( $category->posts as $post)
+@foreach( $category->posts->reverse() as $post)
   <div class="col-md-4 col-xs-12 col-sm-6">
     <div class="post-item {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
       <div class="img-box">

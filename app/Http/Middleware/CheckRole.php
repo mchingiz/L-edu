@@ -37,7 +37,7 @@ class CheckRole
 
       $error = "Sorry, we can't let you see this page :(";
     }else{
-      $error = "Sorry, we would like to show you this page, but you need to log in :(";
+      $error = "Sorry, we would like to show you this page, but you should log in :(";
     }
 
     return view('errors.error',compact('error'));

@@ -45,6 +45,8 @@
               </li>
               <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
               <li><a href="{{ url('/reminders') }}">Reminders</a></li>
+              @elseif ( !Auth::guest() && ( Auth::user()->user_type=="admin" || Auth::user()->user_type=="moderator" ))
+              <li style="margin-left:-15px;"><a href="{{ url('/adminPanel') }}" >Admin Panel</a></li>
               @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">

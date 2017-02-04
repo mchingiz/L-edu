@@ -13,7 +13,7 @@
       <section class="category-section row" >
           <!--Heading part-->
           <div class="heading col-md-12">
-            <h3 class="pull-left">Featured News</h3>
+            <h3 class="pull-left">Latest Posts</h3>
             <a href="#" class="button-custom pull-right">View All</a>
             <div style="clear:both"></div>
           </div>
@@ -23,59 +23,28 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="/assets/images/image56.jpg">
+                  <img src="{{url('/assets/images/'.$latestPosts[0]->image)}}">
                 </div>
-                <h2>Lorem Ipsum doler sit amet</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Fusce auctor maximus sodales. Morbi libero est, tristique
-                  non posuere et, rutrum ac nunc.
-                </p>
-                <span>Deadline: </span><span class="date" >01.01.2016</span>
+                <h2>{{ $latestPosts[0]->title }}</h2>
+                <p>{{ $latestPosts[0]->body }}</p>
+                <span>Deadline: </span><span class="date" >{{ $latestPosts[0]->deadlineString }}</span>
               </div>
               <div class="border col-xs-12 hidden-sm hidden-md hidden-lg"></div>
             </div>
             <!-- Right Side -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
-              <div class="small-post row">
-                <div class="col-md-4 col-xs-4 col-sm-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=1;$i<5;$i++)
+                <div class="small-post row">
+                  <div class="col-md-4 col-xs-4 col-sm-4 img-box">
+                      <img src="{{url('/assets/images/'.$latestPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $latestPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $latestPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+                <div class="border col-md-12"></div>
+              @endfor
             </div> <!--col-md-6 -->
           </div> <!-- body -->
       </section>
@@ -92,88 +61,39 @@
           <div class="body col-md-12">
             <!-- Left side -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=0;$i<4;$i++)
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$eventPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $eventPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $eventPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+                @if ($i != 3)
+                  <div class="border col-md-12"></div>
+                @endif
+              @endfor
               <div class="border col-xs-12 hidden-sm hidden-md hidden-lg"></div>
             </div>
             <!-- Right Posts -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=4;$i<8;$i++)
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$eventPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $eventPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $eventPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+                @if ($i != 7)
+                  <div class="border col-md-12"></div>
+                @endif
+              @endfor
+              <div class="border col-xs-12 hidden-sm hidden-md hidden-lg"></div>
             </div>
           </div> <!-- body -->
       </section>
@@ -197,112 +117,48 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="/assets/images/image56.jpg">
+                  <img src="{{url('/assets/images/'.$vacancyPosts[0]->image)}}">
                 </div>
-                <h2>Lorem Ipsum doler sit amet</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Fusce auctor maximus sodales. Morbi libero est, tristique
-                  non posuere et, rutrum ac nunc.
-                </p>
-                <span>Deadline: </span><span class="date" >01.01.2016</span>
+                <h2>{{ $vacancyPosts[0]->title }}</h2>
+                <p>{{ $vacancyPosts[0]->body }}</p>
+                <span>Deadline: </span><span class="date">{{ $vacancyPosts[0]->deadlineString }}</span>
               </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=1;$i<5;$i++)
+                <div class="border col-md-12"></div>
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$vacancyPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $vacancyPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $vacancyPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+              @endfor
               <div class="border col-xs-12 hidden-sm hidden-md hidden-lg"></div>
             </div>
             <!-- Right Posts -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="/assets/images/image56.jpg">
+                  <img src="{{url('/assets/images/'.$vacancyPosts[5]->image)}}">
                 </div>
-                <h2>Lorem Ipsum doler sit amet</h2>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Fusce auctor maximus sodales. Morbi libero est, tristique
-                  non posuere et, rutrum ac nunc.
-                </p>
-                <span>Deadline: </span><span class="date" >01.01.2016</span>
+                <h2>{{ $vacancyPosts[5]->title }}</h2>
+                <p>{{ $vacancyPosts[5]->body }}</p>
+                <span>Deadline: </span><span class="date">{{ $vacancyPosts[5]->deadlineString }}</span>
               </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=6;$i<10;$i++)
+                <div class="border col-md-12"></div>
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$vacancyPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $vacancyPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $vacancyPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+              @endfor
             </div>
           </div> <!-- body -->
       </section>
@@ -312,7 +168,7 @@
       <section class="category-section row" >
           <!--Heading part-->
           <div class="heading col-md-12">
-            <h3 class="pull-left">Courses</h3>
+            <h3 class="pull-left">Scholarship</h3>
             <a href="#" class="button-custom pull-right">View All</a>
             <div style="clear:both"></div>
           </div>
@@ -322,79 +178,43 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="/assets/images/image56.jpg">
+                  <img src="{{url('/assets/images/'.$scholarshipPosts[0]->image)}}">
                 </div>
-                <h2>Lorem Ipsum doler sit amet</h2>
+                <h2>{{ $scholarshipPosts[0]->title }}</h2>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Fusce auctor maximus sodales. Morbi libero est, tristique
-                  non posuere et, rutrum ac nunc.
+                  {{ $scholarshipPosts[0]->body }}
                 </p>
-                <span>Deadline: </span><span class="date" >01.01.2016</span>
+                <span>Deadline: </span><span class="date" >{{ $scholarshipPosts[0]->deadlineString }}</span>
               </div>
               <div class="border col-md-12"></div>
               <div class="small-post row">
                 <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+                    <img src="{{url('/assets/images/'.$scholarshipPosts[1]->image)}}">
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
+                  <h2>{{ $scholarshipPosts[1]->title }}</h2>
+                  <span>Deadline: </span><span class="date">{{ $scholarshipPosts[1]->deadlineString }}</span>
                 </div>
               </div>
               <div class="border col-xs-12 hidden-sm hidden-md hidden-lg"></div>
             </div>
             <!-- Right Side -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=2;$i<7;$i++)
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$scholarshipPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $scholarshipPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $scholarshipPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+                @if ($i != 6)
+                  <div class="border col-md-12"></div>
+                @endif
+              @endfor
+
             </div> <!--col-md-6 -->
           </div> <!-- body -->
       </section>
@@ -415,88 +235,38 @@
           <div class="body col-md-12">
             <!-- Left side -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=0;$i<4;$i++)
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$grantPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $grantPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $grantPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+                @if ($i != 3)
+                  <div class="border col-md-12"></div>
+                @endif
+              @endfor
               <div class="border col-xs-12 hidden-sm hidden-md hidden-lg"></div>
             </div>
             <!-- Right Posts -->
             <div  class="col-md-6 col-sm-6 col-xs-12">
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
+              @for($i=4;$i<8;$i++)
+                <div class="small-post row">
+                  <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                      <img src="{{url('/assets/images/'.$grantPosts[$i]->image)}}">
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-8">
+                    <h2>{{ $grantPosts[$i]->title }}</h2>
+                    <span>Deadline: </span><span class="date">{{ $grantPosts[$i]->deadlineString }}</span>
+                  </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Postgraduate School in Economics 2017 in Minsk</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>Join Digital Communication Tech Camp and Conference in Warsaw, Poland</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>"How has the European Film Festival changed my stereotypes about European culture?"</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
-              <div class="border col-md-12"></div>
-              <div class="small-post row">
-                <div class="col-md-4 col-sm-4 col-xs-4 img-box">
-                    <img src="/assets/images/image56.jpg">
-                </div>
-                <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>І International Winter School ONPU, Ukraine</h2>
-                  <span>Deadline: </span><span class="date">01.01.2016</span>
-                </div>
-              </div>
+                @if ($i != 7)
+                  <div class="border col-md-12"></div>
+                @endif
+              @endfor
             </div>
           </div> <!-- body -->
       </section>
@@ -579,55 +349,28 @@
             <h3>Companies</h3>
         </div>
         <div class="body col-md-12 col-xs-12 col-sm-12">
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/azercell.jpg">
+          <?php $i=0 ?>
+          @foreach($companies as $company)
+            <?php $i++ ?>
+            <div class="row">
+              <div class=" img-box col-md-3 col-sm-3 col-xs-3">
+                <img src="{{ url('/assets/companyProfilePictures/'.$company->logo) }}">
+              </div>
+              <div class="col-md-9 col-xs-9 col-sm-9">
+                <a href="{{ url('/company/'.$company->slug.'/info') }}">{{ $company->user->name }}</a>
+                @if(Auth::guest())
+                  <a href="#" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+                @elseif(Auth::user()->user_type=="user" && !$company->isFollowed)
+                  <button id="follow" value="{{$company->id}}" class="btn button-custom button-follow" >Follow</button>
+                @elseif(Auth::user()->user_type=="user" && $company->isFollowed)
+                  <button id="unfollow" value="{{$company->id}}" class="btn button-custom button-unfollow" >Unfollow</button>
+                @endif
+              </div>
             </div>
-            <div class="col-md-9 col-xs-9 col-sm-9">
-              <a href="#">Azercell</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/azelab.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Azelab</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/nar.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Nar Mobile</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/code.png">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Code Academy</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/bbf.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#">Baku Business Factory</a>
-              <a href="#" class="button-custom">Follow</a>
-            </div>
-          </div>
+            @if ($i != count($companies) )
+              <div class="border"></div>
+            @endif
+          @endforeach
         </div>
       </section>
 
@@ -638,93 +381,23 @@
             <h3>Most Viewed News</h3>
         </div>
         <div class="body col-md-12 col-sm-12 col-xs-12">
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image7.png">
+          <?php $i=0 ?>
+          @foreach($mostViewed as $post)
+            <?php $i++ ?>
+            <div class="row">
+              <div class=" img-box col-md-3 col-sm-3 col-xs-3">
+                <img src="{{ url('/assets/images/'.$post->image) }}">
+              </div>
+              <div class="col-md-9 col-sm-9 col-xs-9">
+                <a href="{{ url('/post/'.$post->slug) }}" class="post-heading">{{ $post->title }}</a>
+                <i class="material-icons">business</i>
+                <a href="#" class="company">{{ $post->company->user->name}}</a>
+              </div>
             </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">The Graz International Summer School Seggau 2017</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Azercell</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">Internship with the United Nations in Almaty for graduate students!</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Azercell</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">"How has the European Film Festival changed my stereotypes about European culture?"</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">European Film Festival </a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image7.png">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">45 PhD Scholarships for International Students at University of Edinburgh in UK, 2017/2018</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">The University Of Edinburgh</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image1.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">Internship with the United Nations in Almaty for graduate students!</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Azercell</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">Join Baku 2017 Volunteering Program and Build a Successful Future!</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">Baku 2017</a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image56.jpg">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">"How has the European Film Festival changed my stereotypes about European culture?"</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">European Film Festival </a>
-            </div>
-          </div>
-          <div class="border"></div>
-          <div class="row">
-            <div class=" img-box col-md-3 col-sm-3 col-xs-3">
-              <img src="/assets/images/image7.png">
-            </div>
-            <div class="col-md-9 col-sm-9 col-xs-9">
-              <a href="#" class="post-heading">45 PhD Scholarships for International Students at University of Edinburgh in UK, 2017/2018</a>
-              <i class="material-icons">business</i>
-              <a href="#" class="company">The University Of Edinburgh</a>
-            </div>
-          </div>
+            @if ($i != count($mostViewed) )
+              <div class="border"></div>
+            @endif
+          @endforeach
         </div>
       </section>
       <div class="vertical-div"></div>
@@ -732,4 +405,8 @@
 
  </div> <!--row-->
 </div> <!--content-->
+@endsection
+
+@section('script')
+  <script src="{{url('/assets/js/follow.js')}}"></script>
 @endsection

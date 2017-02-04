@@ -472,6 +472,11 @@ i.material-icons {
   color: #263241; }
   #companies a:first-child:hover {
     color: #4c6481; }
+#companies .button-unfollow {
+  border-color: #d9534f;
+  background-color: #d9534f; }
+  #companies .button-unfollow:hover {
+    background-color: #c9302c; }
 
 #rightBarPosts .img-box {
   height: 65px;
@@ -697,9 +702,6 @@ i.material-icons {
       float: right; }
       #company-profile #company .info-bar .col-md-6 .button-custom i {
         padding: 0 3px; }
-    #company-profile #company .info-bar .col-md-6 .button-follow {
-      background: white;
-      color: #03A9F4; }
     #company-profile #company .info-bar .col-md-6 .button-unfollow {
       border-color: #d9534f;
       background-color: #d9534f; }

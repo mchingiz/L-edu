@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/index', function () {
-    return view('index');});
+// Route::get('/index', function () {
+//     return view('index');});
 Route::get('/post', function () {
     return view('post');});
 Route::get('/category', function () {
@@ -26,13 +26,24 @@ Route::get('/company/posts', function () {
 
 Route::post('/user/login', 'UserController@LoginByAjax');
 
-//Delete
+
+// Delete
 Route::get('/account/delete', function () {
     return view('delete');});
 Route::get('/delete', 'UserController@DeactivateAccount');
 
+// Test
 Route::get('/test/{test}', 'Test@test');
 Route::get('/test', 'Test@test');
+
+
+// Index
+Route::get('/','HomeController@index');
+
+Route::get('/index', function(){
+  return view('index');
+});
+
 
 // Register
 Route::auth();
@@ -51,6 +62,8 @@ Route::delete('/company/unfollow/{id}', 'CompanyController@Unfollow');
 Route::get('/post/{slug}', 'PostController@View');
 Route::get('/editPost/{post}', 'PostController@editPost');
 Route::post('/editPost/{post}', 'PostController@updatePost');
+Route::post('/deletePost/{post}', 'PostController@deletePost');
+Route::get('/restorePost/{post}', 'PostController@restorePost');
 Route::get('/add', 'PostController@addPost');
 Route::post('/add', 'PostController@storePost');
 

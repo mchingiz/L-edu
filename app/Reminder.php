@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Reminder extends Authenticatable
 {
     use SoftDeletes;
-    
 
     protected $fillable=['user_id','post_id','reminder_time'];
     protected $dates = ['reminder_time','delete_at'];

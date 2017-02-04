@@ -21,7 +21,7 @@ class CompanyController extends Controller
     $this->user = Auth::user();
     view()->share('user', $this->user);
 
-    $this->middleware('checkRole:company')->only('editProfile');
+    $this->middleware('checkRole:company')->only('EditProfile');
   }
 
   public function EditProfile(){
@@ -116,7 +116,7 @@ class CompanyController extends Controller
     ['user_id' => $this->user->id, 'company_id' => $id]
     );
 
-      return $id;
+    return $id;
   }
 
   public function Unfollow($id){

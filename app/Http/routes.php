@@ -36,6 +36,8 @@ Route::get('/test/{post}', 'Test@test');
 
 // Register
 Route::auth();
+Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
 Route::get('/register/company', 'Auth\AuthController@registerform');
 Route::get('/register/user', 'Auth\AuthController@registerform');
 

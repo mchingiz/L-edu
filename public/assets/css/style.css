@@ -102,6 +102,14 @@ i.material-icons {
   .alert .bold {
     font-weight: bold; }
 
+.pagination {
+  margin: 0 auto; }
+  .pagination a {
+    color: #03A9F4 !important; }
+  .pagination .active span {
+    background-color: #03A9F4 !important;
+    border-color: #03A9F4 !important; }
+
 #navbar {
   background: white;
   border-radius: 0;
@@ -123,6 +131,11 @@ i.material-icons {
       border-radius: 0;
       width: 67px;
       border-left: 1px solid gray; }
+    #navbar #full-nav-search .button-search {
+      background: none;
+      border: none !important; }
+      #navbar #full-nav-search .button-search:focus {
+        border: none; }
   #navbar .navbar-nav > li > a {
     transition: 0.3s ease;
     transition-property: color,border; }

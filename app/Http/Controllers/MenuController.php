@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Menu;
+use App\Post;
 use Auth;
 
 
@@ -26,8 +27,9 @@ class MenuController extends Controller
     $category=$menu->category;
     //Logging
     $this->log(1,$category->id,'categories');
-
-    return view('category',compact('category'));
+    $posts = Post::where('category_id', '=', $category->id)->paginate(15);
+    //return $posts;
+    return view('category',compact('category', 'posts'));
 
   }
 

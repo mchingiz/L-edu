@@ -26,7 +26,7 @@
         </div>
         <div class="buttons">
           @if(Auth::guest())
-          <a href="{{url('/login')}}" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
+          <button  class="login button-custom button-follow"><i class="fa fa-user-plus"></i>Follow </button>
           @elseif(Auth::user()->user_type=="user" && !Auth::user()->followings->contains($company->company->id) )
           <button id="follow" value="{{$company->company->id}}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>
           @elseif(Auth::user()->user_type=="user" && Auth::user()->followings->contains($company->company->id)  )
@@ -257,7 +257,53 @@
  </div> <!--row-->
 </div> <!--content-->
 @endsection
+@section('pop-up')
+@if( Auth::guest())
+<div id="login-overlay" class="col-md-4 col-md-offset-4">
+    <div class="col-md-10 col-md-offset-1">
+      <h1> Login to your account</h1>
+      <form class="form-horizontal">
+        {{ csrf_field() }}
+        <div class="form-group">
+              <div class="col-md-12">
+                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
+            </div>
+        </div>
 
+        <div class="form-group">
+              <div class="col-md-12">
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+              <label class="pull-left">
+                  <input type="checkbox" name="remember"> Remember Me
+                </label>
+                <a class="btn btn-link pull-right" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
+            </div>
+        </div>
+        <p class="text-danger" style="padding:10px 0"></p>
+        <div class="form-group">
+            <div class="col-md-12">
+                <button id="login" onclick="return false;" class="btn col-md-12 col-sm-12 col-xs-12 ">Log in</button>
+            </div>
+        </div>
+      </form>
+      <span> Do not you have account? <a href="{{url('/register')}}">Sign Up!</a> </span>
+
+      <span id="or" class="col-md-12"> or </span>
+      <button id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 "><i class=" fa fa-facebook"></i>Continue with Facebook</button>
+      <button id="google" class="btn col-md-12 col-sm-12 col-xs-12 "><i class="fa fa-google-plus"></i>Continue with Google</button>
+  </div>
+</div>
+@endif
+@endsection
 @section('script')
     <script src="{{url('/assets/js/follow2.js')}}"></script>
+    @if(Auth::guest())
+    <script src="{{url('/assets/js/login.js')}}"></script>
+    <script src="{{url('/assets/js/login_ajax.js')}}"></script>
+    @endif
 @endsection

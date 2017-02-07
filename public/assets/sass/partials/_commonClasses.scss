@@ -110,3 +110,16 @@ i.material-icons{
     font-weight: bold;
   }
 }
+
+.pagination{
+  margin:0 auto;
+  a{
+    color:$primaryColor !important;
+  }
+  .active{
+    span{
+      background-color: $primaryColor !important;
+      border-color:$primaryColor !important;
+    }
+  }
+}

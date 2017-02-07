@@ -680,6 +680,7 @@ i.material-icons {
     margin-top: 10px; }
 
 #company-profile #company #background {
+  background-size: cover;
   height: 250px;
   background-position: center; }
   @media screen and (max-width: 576px) {
@@ -876,6 +877,8 @@ i.material-icons {
     width: 80px; }
   #editProfile strong {
     color: #ef260f; }
+  #editProfile .coverCropper {
+    padding: 0 0 15px 5px; }
 
 #reminder-form, #success {
   position: fixed;

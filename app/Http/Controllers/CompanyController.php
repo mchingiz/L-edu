@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\uploadedFile;
+use Intervention\Image\Facades\Image;
 
 use App\Http\Requests;
+use Carbon\Carbon;
 use Auth;
 use App\Company;
 use DB;
+use File;
 use URL;
 
 use App\Http\Traits\LoggingTrait;
@@ -35,29 +39,52 @@ class CompanyController extends Controller
     $this->validate($request, [
         'name' => 'required|max:50',
         'logo'   =>  'mimes:jpeg,jpg,png',
+        'cover'   =>  'mimes:jpeg,jpg,png',
         'facebook'   => 'active_url',
         'instagram'   => 'active_url',
         'linkedin'   => 'active_url',
         'website'   => 'active_url'
     ]);
 
-    $user->update([
-      'name'=>$request->name
+    // Cover
+
+    if( $request->file('cover')){
+
+      $cover = $request->file('cover');
+      $targetLocation = base_path().'/public/assets/companyCoverPhotos/';
+      $targetName=microtime(true)*10000 . '.' . $cover->getClientOriginalExtension();
+      $x = $request->input('x');
+      $y = $request->input('y');
+      $w = $request->input('w');
+      $h = $request->input('h');
+      $cover = Image::make($cover->getRealPath())->crop($w,$h,$x,$y)->save($targetLocation.$targetName);
+      // $cover->move($targetLocation,$targetName); // for testing
+      $coverPath = $targetName;
+
+      if( $user->company->cover_photo != 'default_cover.jpg'){ // Deleting old photo
+        unlink( base_path().'/public/assets/companyCoverPhotos/'.$user->company->cover_photo );
+      }
+    }else{
+      $coverPath = $user->company->cover_path; // Company didn't change previous image
+    }
+
+
+    $company->update([
+      'name'=>$request->name,
+      'info' => $request->info,
+      'address' => $request->address,
+      'cover_photo' => $coverPath,
+      'fax' => $request->fax,
+      'phone1' => $request->phone,
+      'phone2' => $request->phone2,
+      'facebook' => $request->facebook,
+      'instagram' => $request->instagram,
+      'linkedin' => $request->linkedin,
+      'website' => $request->website,
+      'email' => $request->email,
     ]);
 
-     $company->update([
-        'info' => $request->info,
-        'address' => $request->address,
-        'fax' => $request->fax,
-        'phone1' => $request->phone,
-        'phone2' => $request->phone2,
-        'facebook' => $request->facebook,
-        'instagram' => $request->instagram,
-        'linkedin' => $request->linkedin,
-        'website' => $request->website,
-        'email' => $request->email,
-     ]);
-
+    $company->save();
 
     return redirect()->back();
   }

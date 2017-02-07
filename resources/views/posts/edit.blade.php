@@ -148,8 +148,8 @@
         <div class="row">
         </div>
         <div class="row">
-          <div class="cropFrame" style="width: 512px; height: 250px;display:block">
-            <img id="imagePreview" class="crop cropImage" alt="" src="{{url('assets/postPhotos/'.$post->image)}}" width="512" height="250" style="width: 512px; height: 250px; left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
+          <div class="cropFrame" style="width: 512px; height: 238px;display:block">
+            <img id="imagePreview" class="crop cropImage" alt="" src="{{url('assets/postPhotos/'.$post->image)}}" style="left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <div class="cropControls">
               <span class="cropText">Drag to move, scroll to zoom</span>
 

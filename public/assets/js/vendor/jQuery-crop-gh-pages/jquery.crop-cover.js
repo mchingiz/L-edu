@@ -79,8 +79,8 @@
 		prototype : {
 			percent : null
 			, options : {
-				width      : 512
-				, height   : 238
+				width      : 603
+				, height   : 100
 				, zoom     : 10
 				, stretch  : 1
 				, loading  : 'Loading...'

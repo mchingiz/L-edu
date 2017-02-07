@@ -14,6 +14,7 @@ use App\Post;
 use App\Log;
 use App\Company;
 use App\User;
+use App\Search;
 
 use App\Http\Traits\LoggingTrait;
 class SearchController extends Controller
@@ -45,6 +46,15 @@ class SearchController extends Controller
                     ['body', 'LIKE', '%'.$search_key.'%']
                     ])
     	->get();
+
+  if(Auth::check())
+  {
+   $search=Search::create([
+      'string'=> $search_key,
+    ]);
+
+   $this->log(2,$search->id,'searches');
+  }
 
     return view('search',compact ('search_key','posts','companies'));
 

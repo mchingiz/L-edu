@@ -20,8 +20,8 @@
     </h2>
   </div>
 
-
-@foreach( $category->posts->reverse() as $post)
+<div class="row">
+@foreach( $posts->reverse() as $post)
   <div class="col-md-4 col-xs-12 col-sm-6">
     <div class="post-item {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
       <div class="img-box">
@@ -44,7 +44,10 @@
     </div>
   </div>
   @endforeach
-
+  </div>
+  <div class="row text-center" style="margin:20px;">
+{{ $posts->links() }}
+  </div>
 </section>
 @endsection
 

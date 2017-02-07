@@ -83,12 +83,15 @@
           <div class="navbar-header">
             <a class="navbar-brand full-nav-only" href="#" style="color:black">Educive.com</a>
             <!-- Search bar in collapse -->
+            <form method="POST" action="/search">
+            {{csrf_field()}}
             <div id="collapse-search" class="input-group collapse-only">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input type="text" name="key" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
-                <button class="button-search"><i class="material-icons">search</i></button>
+                <button class="button-search" type="submit"><i class="material-icons">search</i></button>
               </span>
             </div>
+            </form>
           </div>
           <!-- Search form for full navbar -->
           <form id="full-nav-search" class="input-group full-nav-only pull-right" method="POST" action="/search">

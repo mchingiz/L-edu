@@ -21,9 +21,10 @@ $('.buttons').on('click',"#follow" ,function(){
     $.ajax({
         type: "POST",
         url: url + '/follow/' + company_id,
+        context: this,
         success: function (data) {
-          $(".buttons").empty()
-          .append('<button id="unfollow" value="'+data+'" class="button-custom button-unfollow" >Unfollow</button>');
+          $(this).parent(".buttons").empty()
+          .append('<button id="unfollow" value="'+data+'" class="btn button-custom button-unfollow" >Unfollow</button>');
         },
         error: function (data) {
             console.log('Error:', data);
@@ -34,15 +35,13 @@ $('.buttons').on('click',"#follow" ,function(){
 
 $('.buttons').on('click',"#unfollow" ,function(){
     var company_id = $(this).val();
-    console.log($(this))
-    console.log(" company " +company_id)
     $.ajax({
         type: "DELETE",
         url: url + '/unfollow/' + company_id,
+        context: this,
         success: function (data) {
-          console.log("Success"+data)
-          $(".buttons").empty()
-          .append('<button id="follow" value="'+data+'" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>')
+           $(this).parent(".buttons").empty()
+          .append('<button id="follow" value="'+data+'" class="btn button-custom button-follow" ></i>Follow</button>')
 
         },
         error: function (data) {

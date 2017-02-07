@@ -25,7 +25,15 @@
       width:67px;
       border-left:1px solid gray;
     }
+    .button-search{
+      background:none;
+      border:none !important;
 
+      &:focus{
+        border:none;
+      }
+
+    }
   }
 
   .navbar-nav{

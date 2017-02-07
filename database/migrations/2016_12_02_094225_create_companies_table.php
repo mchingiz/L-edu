@@ -33,6 +33,7 @@ class CreateCompaniesTable extends Migration
             $table->string('instagram')->nullable();
             $table->string('linkedin')->nullable();
             $table->string('website')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

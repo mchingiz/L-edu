@@ -23,16 +23,26 @@
     </head>
     <body>
     <div class="main-wrapper">
-      @if(!(Request::url() === '' && Auth::guest() ) )
+      @if(!(Request::is('index')&& Auth::guest() ) )
       <nav id="top-bar" class="navbar navbar-fixed-top">
         <div class="container">
           <div>
             <ul class="nav navbar-nav navbar-left">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
-              <li style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{url('account/delete')}}">Delete Account</a></li>
+                </ul>
+              </li>
               <li><a href="{{url('/add')}}">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
-              <li style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Name <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="{{url('account/delete')}}">Delete Account</a></li>
+                </ul>
+              </li>
               <li><a href="{{url('/savedposts')}}">Saved Posts</a></li>
               <li><a href="{{ url('/reminders') }}">Reminders</a></li>
               @elseif ( !Auth::guest() && ( Auth::user()->user_type=="admin" || Auth::user()->user_type=="moderator" ))
@@ -73,12 +83,15 @@
           <div class="navbar-header">
             <a class="navbar-brand full-nav-only" href="#" style="color:black">Educive.com</a>
             <!-- Search bar in collapse -->
+            <form method="POST" action="/search">
+            {{csrf_field()}}
             <div id="collapse-search" class="input-group collapse-only">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input type="text" name="key" class="form-control" placeholder="Search for...">
               <span class="input-group-btn">
-                <button class="button-search"><i class="material-icons">search</i></button>
+                <button class="button-search" type="submit"><i class="material-icons">search</i></button>
               </span>
             </div>
+            </form>
           </div>
           <!-- Search form for full navbar -->
           <form id="full-nav-search" class="input-group full-nav-only pull-right" method="POST" action="/search">

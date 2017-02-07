@@ -295,7 +295,7 @@
         });
 
           $('#datetimepicker4').datetimepicker({
-              format: 'YYYY-MM-DD HH:mm:ss'
+              format: 'YYYY-MM-DD HH:mm'
         });
 
       </script>
@@ -311,41 +311,27 @@
       <h1> Login to your account</h1>
       <form class="form-horizontal">
         {{ csrf_field() }}
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+        <div class="form-group">
               <div class="col-md-12">
                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
             </div>
         </div>
 
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+        <div class="form-group">
               <div class="col-md-12">
                 <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-12">
-
               <label class="pull-left">
                   <input type="checkbox" name="remember"> Remember Me
                 </label>
                 <a class="btn btn-link pull-right" href="{{ url('/password/reset') }}">Forgot Your Password?</a>
-
             </div>
         </div>
-
+        <p class="text-danger" style="padding:10px 0"></p>
         <div class="form-group">
             <div class="col-md-12">
                 <button id="login" onclick="return false;" class="btn col-md-12 col-sm-12 col-xs-12 ">Log in</button>

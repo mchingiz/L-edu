@@ -102,6 +102,14 @@ i.material-icons {
   .alert .bold {
     font-weight: bold; }
 
+.pagination {
+  margin: 0 auto; }
+  .pagination a {
+    color: #03A9F4 !important; }
+  .pagination .active span {
+    background-color: #03A9F4 !important;
+    border-color: #03A9F4 !important; }
+
 #navbar {
   background: white;
   border-radius: 0;
@@ -123,6 +131,11 @@ i.material-icons {
       border-radius: 0;
       width: 67px;
       border-left: 1px solid gray; }
+    #navbar #full-nav-search .button-search {
+      background: none;
+      border: none !important; }
+      #navbar #full-nav-search .button-search:focus {
+        border: none; }
   #navbar .navbar-nav > li > a {
     transition: 0.3s ease;
     transition-property: color,border; }
@@ -508,15 +521,19 @@ i.material-icons {
 #top-bar {
   background-color: #222222;
   margin: 0;
-  min-height: 35px; }
+  min-height: 35px;
+  z-index: 10000; }
   #top-bar a {
     padding: 5px 15px;
     font-size: 0.8em;
     font-weight: normal;
     color: #a2a2a2; }
-  #top-bar li a:hover {
-    background: #222222;
-    color: #eeeeee; }
+  #top-bar li a {
+    background: #222222 !important; }
+    #top-bar li a:hover, #top-bar li a:focus {
+      color: #eeeeee; }
+  #top-bar li ul {
+    background: #222222; }
   @media screen and (max-width: 995px) {
     #top-bar {
       display: none; } }
@@ -1060,6 +1077,20 @@ i.material-icons {
       position: absolute;
       left: 10px;
       top: 25px; }
+
+#delete div {
+  padding: 15px 30px;
+  background-color: #fdfdfe;
+  border: 1px solid #d8dde6;
+  border-radius: 3px; }
+  #delete div p {
+    margin: 10px 0; }
+  #delete div a {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    border-radius: 2px;
+    padding: 10px 15px;
+    color: white; }
 
 .testp {
   background-color: #4CAF50; }

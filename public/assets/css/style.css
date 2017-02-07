@@ -110,6 +110,25 @@ i.material-icons {
     background-color: #03A9F4 !important;
     border-color: #03A9F4 !important; }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+#main-wrapper {
+  box-sizing: border-box;
+  min-height: 100%;
+  padding: 0 0 210px;
+  position: relative; }
+
+#footer {
+  bottom: 0;
+  height: 210px;
+  left: 0;
+  position: absolute;
+  width: 100%; }
+
 #navbar {
   background: white;
   border-radius: 0;

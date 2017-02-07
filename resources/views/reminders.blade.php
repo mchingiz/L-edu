@@ -24,7 +24,9 @@
                    {{$reminder->reminder_time->format('H:i')}}</span>
                 </div>
                 <div class="img-box">
-                  <img src="/assets/postPhotos/{{$reminder->post->image}}">
+                  <a href="{{ url('/post/'.$reminder->post->slug) }}">
+                    <img src="{{ url('/assets/postPhotos/'.$reminder->post->image) }}">
+                  </a>
                 </div>
                 <div class="post-item-desc">
                   <a href="{{ url('/post/'.$reminder->post->slug) }}">{{$reminder->post->title}}</a>

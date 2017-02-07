@@ -22,10 +22,11 @@
     padding-top: $padding-vertical-in;
     padding-bottom: $padding-vertical-in;
 
-    h2{
+    a.post-title{
       font-weight: bold;
       color:$heading-color;
       text-align: justify;
+      display:block;
     }
     p{
       font-size:0.8em;
@@ -44,7 +45,7 @@
 
     .big-post{
       margin-bottom:15px;
-      h2{
+      a{
         margin:$padding-vertical-in 0;
         font-size: 1.1em;
       }
@@ -60,7 +61,7 @@
 
     .small-post{
       min-height: 80px;
-      h2{
+      a{
         margin:$padding-vertical-in/2 0;
         font-size:0.9em;
       }

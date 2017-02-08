@@ -39,7 +39,7 @@
               <li><a href="{{url('/add')}}">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Name <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{{url('account/delete')}}">Delete Account</a></li>
                 </ul>

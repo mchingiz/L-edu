@@ -32,7 +32,7 @@
           @elseif(Auth::user()->user_type=="user" && Auth::user()->followings->contains($company->company->id)  )
           <button id="unfollow" value="{{$company->company->id}}" class="button-custom button-unfollow" >Unfollow</button>
           @endif
-        </div>        
+        </div>
       </div>
       <div class="vertical-div"></div>
       @endforeach
@@ -42,10 +42,12 @@
       <div class="list-post col-md-12 col-xs-12 col-sm-12">
         <a class="category" href="#">Internship</a>
         <div class="img-box col-md-4 col-xs-12 col-sm-4">
-          <img src="/assets/images/image56.jpg">
+          <a href="{{ url('/post/'.$post->slug) }}">
+            <img src="{{ url('/assets/images/'.$post->image) }}">
+          </a>
         </div>
         <div class="post-info col-md-8 col-xs-12 col-sm-8">
-          <a href="#"><h1>{{$post->title}}</h1></a>
+          <a href="{{ url('/post/'.$post->slug) }}"><h1>{{$post->title}}</h1></a>
           <p>{{ substr( $post->body,0,strpos($post->body, ' ', 200) ) }}...</p>
           <ul class="list-unstyled list-inline">
             <li>

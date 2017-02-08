@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->boolean('status')->default(1);
             $table->string('user_type');
             $table->string('email')->unique();
+            $table->string('facebook_id')->nullable()->unique();
             $table->string('password');
             $table->softDeletes();
             $table->rememberToken();

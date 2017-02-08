@@ -23,9 +23,11 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="{{url('/assets/images/'.$latestPosts[0]->image)}}">
+                  <a href="{{url('post/'.$latestPosts[0]->slug)}}">
+                    <img src="{{url('/assets/images/'.$latestPosts[0]->image)}}">
+                  </a>
                 </div>
-                <h2>{{ $latestPosts[0]->title }}</h2>
+                <a class="post-title" href="{{url('post/'.$latestPosts[0]->slug)}}">{{ $latestPosts[0]->title }}</a>
                 <p>{{ $latestPosts[0]->body }}</p>
                 <span>Deadline: </span><span class="date" >{{ $latestPosts[0]->deadlineString }}</span>
               </div>
@@ -36,10 +38,12 @@
               @for($i=1;$i<5;$i++)
                 <div class="small-post row">
                   <div class="col-md-4 col-xs-4 col-sm-4 img-box">
+                    <a href="{{url('post/'.$latestPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$latestPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $latestPosts[$i]->title }}</h2>
+                    <a class="post-title"href="{{url('post/'.$latestPosts[$i]->slug)}}">{{ $latestPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $latestPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -64,10 +68,12 @@
               @for($i=0;$i<4;$i++)
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$eventPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$eventPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $eventPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$eventPosts[$i]->slug)}}">{{ $eventPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $eventPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -82,10 +88,12 @@
               @for($i=4;$i<8;$i++)
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$eventPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$eventPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $eventPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$eventPosts[$i]->slug)}}">{{ $eventPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $eventPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -117,9 +125,11 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="{{url('/assets/images/'.$vacancyPosts[0]->image)}}">
+                  <a href="{{url('post/'.$vacancyPosts[0]->slug)}}">
+                    <img src="{{url('/assets/images/'.$vacancyPosts[0]->image)}}">
+                  </a>
                 </div>
-                <h2>{{ $vacancyPosts[0]->title }}</h2>
+                <a class="post-title" href="{{url('post/'.$vacancyPosts[0]->slug)}}">{{ $vacancyPosts[0]->title }}</a>
                 <p>{{ $vacancyPosts[0]->body }}</p>
                 <span>Deadline: </span><span class="date">{{ $vacancyPosts[0]->deadlineString }}</span>
               </div>
@@ -127,10 +137,12 @@
                 <div class="border col-md-12"></div>
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$vacancyPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$vacancyPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $vacancyPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$vacancyPosts[$i]->slug)}}">{{ $vacancyPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $vacancyPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -141,9 +153,11 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="{{url('/assets/images/'.$vacancyPosts[5]->image)}}">
+                  <a href="{{url('post/'.$vacancyPosts[5]->slug)}}">
+                    <img src="{{url('/assets/images/'.$vacancyPosts[5]->image)}}">
+                  </a>
                 </div>
-                <h2>{{ $vacancyPosts[5]->title }}</h2>
+                <a class="post-title" href="{{url('post/'.$vacancyPosts[5]->slug)}}">{{ $vacancyPosts[5]->title }}</a>
                 <p>{{ $vacancyPosts[5]->body }}</p>
                 <span>Deadline: </span><span class="date">{{ $vacancyPosts[5]->deadlineString }}</span>
               </div>
@@ -151,10 +165,12 @@
                 <div class="border col-md-12"></div>
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$vacancyPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$vacancyPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $vacancyPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$vacancyPosts[$i]->slug)}}">{{ $vacancyPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $vacancyPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -178,9 +194,11 @@
             <div  class="col-md-6 col-sm-6 col-xs-12">
               <div class="big-post">
                 <div class="img-box">
-                  <img src="{{url('/assets/images/'.$scholarshipPosts[0]->image)}}">
+                  <a href="{{url('post/'.$scholarshipPosts[0]->slug)}}">
+                    <img src="{{url('/assets/images/'.$scholarshipPosts[0]->image)}}">
+                  </a>
                 </div>
-                <h2>{{ $scholarshipPosts[0]->title }}</h2>
+                <a class="post-title" href="{{url('post/'.$scholarshipPosts[0]->slug)}}">{{ $scholarshipPosts[0]->title }}</a>
                 <p>
                   {{ $scholarshipPosts[0]->body }}
                 </p>
@@ -189,10 +207,12 @@
               <div class="border col-md-12"></div>
               <div class="small-post row">
                 <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                  <a href="{{url('post/'.$scholarshipPosts[1]->slug)}}">
                     <img src="{{url('/assets/images/'.$scholarshipPosts[1]->image)}}">
+                  </a>
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-8">
-                  <h2>{{ $scholarshipPosts[1]->title }}</h2>
+                  <a class="post-title" href="{{url('post/'.$scholarshipPosts[1]->slug)}}">{{ $scholarshipPosts[1]->title }}</a>
                   <span>Deadline: </span><span class="date">{{ $scholarshipPosts[1]->deadlineString }}</span>
                 </div>
               </div>
@@ -203,10 +223,12 @@
               @for($i=2;$i<7;$i++)
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$scholarshipPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$scholarshipPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $scholarshipPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$scholarshipPosts[$i]->slug)}}">{{ $scholarshipPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $scholarshipPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -238,10 +260,12 @@
               @for($i=0;$i<4;$i++)
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$grantPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$grantPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $grantPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$grantPosts[$i]->slug)}}">{{ $grantPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $grantPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>
@@ -256,10 +280,12 @@
               @for($i=4;$i<8;$i++)
                 <div class="small-post row">
                   <div class="col-md-4 col-sm-4 col-xs-4 img-box">
+                    <a href="{{url('post/'.$grantPosts[$i]->slug)}}">
                       <img src="{{url('/assets/images/'.$grantPosts[$i]->image)}}">
+                    </a>
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-8">
-                    <h2>{{ $grantPosts[$i]->title }}</h2>
+                    <a class="post-title" href="{{url('post/'.$grantPosts[$i]->slug)}}">{{ $grantPosts[$i]->title }}</a>
                     <span>Deadline: </span><span class="date">{{ $grantPosts[$i]->deadlineString }}</span>
                   </div>
                 </div>

@@ -25,7 +25,9 @@
   <div class="col-md-4 col-xs-12 col-sm-6">
     <div class="post-item {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
       <div class="img-box">
-        <img src="/assets/postPhotos/{{$post->image}}">
+        <a href="{{ url('/post/'.$post->slug) }}">
+          <img src="{{ url('/assets/postPhotos/'.$post->image) }}">
+        </a>
       </div>
       <div class="post-item-desc">
         <a href="{{ url('/post/'.$post->slug) }}">{{$post->title}}</a>

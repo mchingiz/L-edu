@@ -396,10 +396,11 @@ body {
   .category-section .body, .right-bar .body {
     padding-top: 15px;
     padding-bottom: 15px; }
-    .category-section .body h2, .right-bar .body h2 {
+    .category-section .body a.post-title, .right-bar .body a.post-title {
       font-weight: bold;
       color: #263241;
-      text-align: justify; }
+      text-align: justify;
+      display: block; }
     .category-section .body p, .right-bar .body p {
       font-size: 0.8em;
       margin: 15px 0;
@@ -413,7 +414,7 @@ body {
       font-style: italic; }
     .category-section .body .big-post, .right-bar .body .big-post {
       margin-bottom: 15px; }
-      .category-section .body .big-post h2, .right-bar .body .big-post h2 {
+      .category-section .body .big-post a, .right-bar .body .big-post a {
         margin: 15px 0;
         font-size: 1.1em; }
       .category-section .body .big-post .img-box, .right-bar .body .big-post .img-box {
@@ -424,7 +425,7 @@ body {
           transition-duration: 0.4s; }
     .category-section .body .small-post, .right-bar .body .small-post {
       min-height: 80px; }
-      .category-section .body .small-post h2, .right-bar .body .small-post h2 {
+      .category-section .body .small-post a, .right-bar .body .small-post a {
         margin: 7.5px 0;
         font-size: 0.9em; }
       .category-section .body .small-post .img-box, .right-bar .body .small-post .img-box {
@@ -698,6 +699,7 @@ body {
     margin-top: 10px; }
 
 #company-profile #company #background {
+  background-size: cover;
   height: 250px;
   background-position: center; }
   @media screen and (max-width: 576px) {
@@ -853,14 +855,14 @@ body {
     height: auto;
     padding: 10px;
     box-shadow: none !important; }
-  #registerForm #form button, #loginForm #form button {
+  #registerForm #form a.social-login, #loginForm #form a.social-login {
     background-color: #34BF49;
     color: white;
     font-style: bold;
     font-size: 1.1em;
     padding: 6px 12px;
     margin-top: 15px; }
-    #registerForm #form button:hover, #loginForm #form button:hover {
+    #registerForm #form a.social-login:hover, #loginForm #form a.social-login:hover {
       background: #41cb56; }
   #registerForm #form #or, #loginForm #form #or {
     color: gray;
@@ -894,6 +896,8 @@ body {
     width: 80px; }
   #editProfile strong {
     color: #ef260f; }
+  #editProfile .coverCropper {
+    padding: 0 0 15px 5px; }
 
 #reminder-form, #success {
   position: fixed;

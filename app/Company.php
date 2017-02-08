@@ -7,9 +7,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Company extends Authenticatable
 {
   use SoftDeletes;
-  
+
   protected $dates = ['deleted_at'];
-    
+
   protected $fillable = [
     'user_id','info','slug','logo', 'email','facebook','twitter','linkedin',
     'instagram','phone1','phone2','fax','address','website','cover_photo',

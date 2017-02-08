@@ -90,6 +90,8 @@
     <script>window.jQuery || document.write('<script src="{{url('/assets/js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
     <script src="{{url('/assets/js/vendor/bootstrap.min.js')}}"></script>
     <script src="{{url('/assets/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{url('/assets/js/vendor/jQuery-crop-gh-pages/jquery.crop-cover.js')}}"></script>
+  	<script type="text/javascript" src="{{url('/assets/js/vendor/jQuery-crop-gh-pages/cropper.js')}}"></script>
     @yield('script')
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

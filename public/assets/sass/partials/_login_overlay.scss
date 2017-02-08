@@ -1,10 +1,11 @@
 #login-overlay{
-	position:fixed;
+	 position:fixed;
     background: white;
     box-shadow: 1px 1px 3px 0px darken($background-color,10%);
     top:100px;
     padding:20px 0;
     display:none;
+    z-index:3;
 
    
     a,label{

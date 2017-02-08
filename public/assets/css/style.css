@@ -15,7 +15,7 @@
 body {
   background-color: #F7F8FA; }
 
-a, p, h1, h2, h3, h4, h5, h6, span, label, button {
+a, p, h1, h2, h3, h4, h5, h6, span, label, button, textarea {
   font-family: 'Lato', sans-serif; }
 
 h3 {
@@ -128,6 +128,19 @@ body {
   left: 0;
   position: absolute;
   width: 100%; }
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  opacity: 0.5;
+  z-index: 2;
+  display: none; }
 
 #navbar {
   background: white;
@@ -927,19 +940,6 @@ body {
     vertical-align: sub;
     padding-right: 5px; }
 
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  filter: alpha(opacity=50);
-  -moz-opacity: 0.5;
-  opacity: 0.5;
-  z-index: 2;
-  display: none; }
-
 #savedposts #empty {
   background: white;
   padding: 30px; }
@@ -974,7 +974,8 @@ body {
   box-shadow: 1px 1px 3px 0px #d8dde6;
   top: 100px;
   padding: 20px 0;
-  display: none; }
+  display: none;
+  z-index: 3; }
   #login-overlay a, #login-overlay label {
     padding: 0;
     font-size: 0.9em; }
@@ -1088,7 +1089,8 @@ body {
       font-size: 1.2em;
       font-style: bold;
       color: black;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      display: inline-block; }
     #list .list-company .company-info span {
       font-size: 1em;
       transition: all 1s ease; }
@@ -1114,6 +1116,41 @@ body {
     border-radius: 2px;
     padding: 10px 15px;
     color: white; }
+
+#contact {
+  background: white;
+  padding: 30px 0;
+  box-shadow: 1px 1px 3px 0px #d8dde6; }
+  #contact h1 {
+    font-size: 2.5em;
+    font-weight: 300;
+    margin-bottom: 20px; }
+  #contact .border {
+    background: #03A9F4;
+    height: 1px;
+    width: 60px;
+    margin: 0 auto; }
+  #contact p {
+    letter-spacing: 1px;
+    line-height: 20px;
+    font-size: 1em;
+    padding: 30px 0;
+    text-align: justify; }
+  #contact form .input-group {
+    margin: 15px 0;
+    border: 1px solid lightgray; }
+    #contact form .input-group .input-group-addon {
+      background: white;
+      border: none; }
+    #contact form .input-group input, #contact form .input-group textarea {
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      width: 100%;
+      padding: 10px 10px 10px 0; }
+  #contact form .button-custom {
+    font-size: 1.1em;
+    padding: 5px 15px; }
 
 .testp {
   background-color: #4CAF50; }

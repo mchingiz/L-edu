@@ -279,6 +279,7 @@
 <div id="overlay"></div>
 @endsection
 @section('pop-up')
+
 @if(!Auth::guest() && Auth::user()->user_type=="user")
 <div  id="reminder-form" class="col-md-6 col-md-offset-3">
   <h1>Select date and time:</h1>
@@ -306,7 +307,7 @@
 </div>
 @endif
 @if( Auth::guest())
-<div id="login-overlay" class="col-md-4 col-md-offset-4">
+<div id="login-overlay" class="login col-md-4 col-md-offset-4">
     <div class="col-md-10 col-md-offset-1">
       <h1> Login to your account</h1>
       <form class="form-horizontal">

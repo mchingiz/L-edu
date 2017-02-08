@@ -171,6 +171,7 @@
       </footer>
 
     </div>
+    <div id="overlay"></div>
     @yield('pop-up')
 
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  -->

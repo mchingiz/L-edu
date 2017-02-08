@@ -1,7 +1,6 @@
 ////Overlay screen /Open close reminder form///////////////////
 $(document).ready(function(){
-   $(".main-wrapper").on('click',function(){
-
+   $("#overlay").on('click',function(){
     if(!$(event.target).hasClass("login")){
       $("#login-overlay").hide();
       $(".main-wrapper").css("opacity","1")

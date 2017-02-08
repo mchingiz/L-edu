@@ -10,7 +10,7 @@
 <div class="margin-top-div"></div>
 
 <div id="list" class="container">
-  <h1> Axtardiginiz soz: {{$search_key}}</h1>
+  <h1 id="key"> Axtardiginiz soz: {{$search_key}}</h1>
   <div class="row">
     <section id="left-side" class="col-md-8 col-xs-12 col-sm-12">
       @if(!collect($companies)->isEmpty() )
@@ -22,16 +22,16 @@
         </div>
         <div class="company-info col-md-10 col-xs-9 col-sm-10">
           <a href="{{url('/company/'.$company->company->slug.'/posts')}}"><h1>{{$company->name}}</h1></a>
-          <span>{{$company->company->followers->count()}} followers</span> |<span> {{$company->company->posts->count()}} posts</span>
-        </div>
-        <div class="buttons">
+          <div class="buttons pull-right">
           @if(Auth::guest())
-          <button  class="login button-custom button-follow"><i class="fa fa-user-plus"></i>Follow </button>
+          <button  class="login btn button-custom button-follow"><i class="fa fa-user-plus"></i>Follow </button>
           @elseif(Auth::user()->user_type=="user" && !Auth::user()->followings->contains($company->company->id) )
-          <button id="follow" value="{{$company->company->id}}" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>
+          <button id="follow" value="{{$company->company->id}}" class="btn button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</button>
           @elseif(Auth::user()->user_type=="user" && Auth::user()->followings->contains($company->company->id)  )
-          <button id="unfollow" value="{{$company->company->id}}" class="button-custom button-unfollow" >Unfollow</button>
+          <button id="unfollow" value="{{$company->company->id}}" class="btn button-custom button-unfollow" >Unfollow</button>
           @endif
+        </div>
+          <span>{{$company->company->followers->count()}} followers</span> |<span> {{$company->company->posts->count()}} posts</span>
         </div>
       </div>
       <div class="vertical-div"></div>

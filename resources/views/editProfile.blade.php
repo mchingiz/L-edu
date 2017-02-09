@@ -33,7 +33,8 @@
       <div class="form-group row">
         <label class="col-md-2 col-sm-2 col-xs-12 col-form-label ">Cover Photo</label>
         <div class="col-md-10 col-sm-10 col-xs-12">
-          <input type="file" id="cover" name="cover" class="form-control-file" onchange="showImage(event)" accept="image/*" aria-describedby="fileHelp">
+          <input type="file" id="cover" name="cover" class="form-control-file" onchange="showImage(event)" accept="image/*" aria-describedby="coverHelp">
+          <small id="coverHelp" class="form-text text-muted">If you don't want previous image to be changed, leave this field empty</small>
           @if($user->company->cover_photo != null)
             <input type="hidden" name="editOrAdd" value="edit">
           @else

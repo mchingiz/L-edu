@@ -62,7 +62,7 @@
 
           <span id="or"> or </span>
           <a href="{{ url('/auth/facebook') }}" id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 social-login"><i class=" fa fa-facebook"></i>Continue with Facebook</a>
-          <a href="{{ url('/auth/notWorkingYet') }}" id="google" class="btn col-md-12 col-sm-12 col-xs-12 social-login"><i class="fa fa-google-plus"></i>Continue with Google</a>
+          <a href="{{ url('/auth/google') }}" id="google" class="btn col-md-12 col-sm-12 col-xs-12 social-login"><i class="fa fa-google-plus"></i>Continue with Google</a>
         </div>
   </div>
 </div>

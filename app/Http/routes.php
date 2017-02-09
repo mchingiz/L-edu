@@ -47,8 +47,12 @@ Route::get('/index', function(){
 
 // Register
 Route::auth();
-Route::get('auth/facebook', 'Auth\AuthController@redirectToProvider');
-Route::get('auth/facebook/callback', 'Auth\AuthController@handleProviderCallback');
+    // Facebook
+    Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
+    Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
+    //Google
+    Route::get('auth/google', 'Auth\AuthController@redirectToGoogle');
+    Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
 Route::get('/register/company', 'Auth\AuthController@registerform');
 Route::get('/register/user', 'Auth\AuthController@registerform');
 

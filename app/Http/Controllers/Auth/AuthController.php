@@ -69,16 +69,11 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function redirectToProvider(){
+    public function redirectToFacebook(){
         return Socialite::driver('facebook')->redirect();
     }
 
-    /**
-     * Obtain the user information from GitHub.
-     *
-     * @return Response
-     */
-    public function handleProviderCallback(){
+    public function handleFacebookCallback(){
 
         try {
           $user = Socialite::driver('facebook')->user();
@@ -86,26 +81,53 @@ class AuthController extends Controller
           return redirect('/');
         }
 
-        $authUser = $this->findOrCreateUser($user);
+        $authUser = $this->findOrCreateUser($user,'facebook');
 
         Auth::login($authUser, true);
 
         return redirect('/');
     }
 
-    private function findOrCreateUser($facebookUser)
-    {
-        $authUser = User::where('facebook_id', $facebookUser->id)->first();
+    public function redirectToGoogle(){
+        return Socialite::driver('google')->redirect();
+    }
 
-        if ($authUser){
+    public function handleGoogleCallback(){
+
+        try {
+          $user = Socialite::driver('google')->user();
+        } catch (Exception $e) {
+          return redirect('/');
+        }
+
+        // dd($user->id);
+
+        $authUser = $this->findOrCreateUser($user,'google');
+
+        Auth::login($authUser, true);
+
+        return redirect('/');
+    }
+
+    private function findOrCreateUser($socialUser,$driverName)
+    {
+        $authUser = User::where($driverName.'_id', $socialUser->id)->first();
+
+        if ($authUser){ // Logged in before by using this provider
             return $authUser;
         }
 
-        return User::create([
-            'name' => $facebookUser->name,
-            'email' => $facebookUser->email,
-            'facebook_id' => $facebookUser->id,
-            'user_type' => 'user'
+        $userWithSameEmail = User::where('email', $socialUser->email)->first();
+
+        if($userWithSameEmail){ // Logged in before using another provider
+            return $userWithSameEmail;
+        }
+
+        return User::create([ // Not logged in, create new user
+            'name' => $socialUser->name,
+            'email' => $socialUser->email,
+            $driverName.'_id' => $socialUser->id,
+            'user_type' => 'user',
         ]);
     }
 

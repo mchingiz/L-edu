@@ -28,11 +28,13 @@ use App\Menu;
 
 use App\Http\Traits\LoggingTrait;
 use App\Http\Traits\SlugTrait;
+use App\Http\Traits\ViewCounterTrait;
 
 class PostController extends Controller
 {
   use LoggingTrait;
   use SlugTrait;
+  use ViewCounterTrait;
 
   private $user;
 
@@ -186,7 +188,7 @@ class PostController extends Controller
     $this->log(15,$post->id,'posts');
   }
 
-  public function View($slug){
+  public function View(Request $request,$slug){
 
     $post=Post::where('slug','=',$slug)->first();
     if($post == null){
@@ -227,9 +229,9 @@ class PostController extends Controller
 
     if(!empty($this->user) && $this->user->user_type=="user"){
       //Logging
-      if(URL::previous()!="http://localhost:8000/post/".$slug){
-        $this->log(1,$post->id,'posts');
-      }
+      // if(URL::previous()!="http://localhost:8000/post/".$slug){
+      //   $this->log(1,$post->id,'posts');
+      // }
 
       //Post saved or not
       $isSaved=Saved_post::where([
@@ -246,11 +248,13 @@ class PostController extends Controller
       ->first();
     }
 
-    if(URL::previous()!="http://localhost:8000/post/".$slug){
-      $post->update([
-        'view' => $post->view+1,
-      ]);
-    }
+    // if(URL::previous()!="http://localhost:8000/post/".$slug){
+    //   $post->update([
+    //     'view' => $post->view+1,
+    //   ]);
+    // }
+
+    $this->incrementView($request,$post);
 
     return view('post', compact('post','OtherPosts','isSaved','isReminderAdded'));
   }

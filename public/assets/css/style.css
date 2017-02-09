@@ -142,6 +142,12 @@ body {
   z-index: 2;
   display: none; }
 
+.hover-scale {
+  transition: all 0.7s ease; }
+  .hover-scale:hover {
+    transform: scale(1.01, 1.01);
+    box-shadow: 13px 11px 47px -15px #99a6bf !important; }
+
 #navbar {
   background: white;
   border-radius: 0;
@@ -1019,89 +1025,76 @@ body {
     #login-overlay #facebook i, #login-overlay #google i {
       margin-right: 10px; }
 
-#list .list-post {
+.list .list-post {
   padding: 0;
   position: relative;
   box-shadow: 1px 1px 3px 0px #d8dde6;
   background: white; }
-  #list .list-post .img-box {
-    padding: 0;
+  .list .list-post .img-box {
     overflow: hidden;
-    height: 185px; }
-    #list .list-post .img-box img {
-      width: 100%; }
-  #list .list-post .post-info {
-    min-height: 185px;
-    position: relative;
-    padding: 20px; }
-    #list .list-post .post-info h1 {
+    float: left;
+    padding: 0; }
+    .list .list-post .img-box img {
+      width: 258px;
+      height: 120px; }
+      @media screen and (max-width: 767px) {
+        .list .list-post .img-box img {
+          width: 344px;
+          height: 160px; } }
+  .list .list-post .post-info {
+    min-height: 120px; }
+    .list .list-post .post-info h1 {
       font-size: 1.1em;
-      font-style: bold;
-      color: black; }
-    #list .list-post .post-info ul {
-      margin: 20px 0 0;
-      position: absolute;
-      bottom: 20px; }
-      #list .list-post .post-info ul li {
-        opacity: .8;
-        padding-left: 0;
-        transition-duration: .4s; }
-        #list .list-post .post-info ul li i {
-          font-size: 0.9em; }
-        #list .list-post .post-info ul li span, #list .list-post .post-info ul li a {
-          font-size: 0.8em; }
-        #list .list-post .post-info ul li a {
-          text-decoration: none;
-          color: black; }
-          #list .list-post .post-info ul li a i {
-            margin-right: 4px; }
-    #list .list-post .post-info p {
-      line-height: 14px;
-      font-size: 0.85em;
-      text-align: justify;
-      color: black;
-      margin: 20px 0; }
-  #list .list-post .category {
-    color: white;
-    background: #03A9F4;
-    padding: 5px 10px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    font-size: 0.9em; }
-#list .list-company {
+      color: #262626;
+      padding: 20px 0;
+      transition: all 0.4s ease;
+      font-weight: bold; }
+      .list .list-post .post-info h1:hover {
+        color: #03A9F4; }
+    .list .list-post .post-info ul li {
+      opacity: .8;
+      padding-left: 0;
+      transition-duration: .4s; }
+      .list .list-post .post-info ul li i {
+        font-size: 0.9em; }
+      .list .list-post .post-info ul li span, .list .list-post .post-info ul li a {
+        font-size: 0.8em; }
+      .list .list-post .post-info ul li a {
+        text-decoration: none;
+        color: black;
+        transition: all 0.4s ease; }
+        .list .list-post .post-info ul li a i {
+          margin-right: 4px; }
+        .list .list-post .post-info ul li a:hover {
+          color: #03A9F4; }
+.list .list-company {
   padding: 0;
   position: relative;
   box-shadow: 1px 1px 3px 0px #d8dde6;
   background: white; }
-  #list .list-company .img-box {
-    padding: 0;
-    overflow: hidden;
-    height: 100px; }
-    #list .list-company .img-box img {
-      width: 100px; }
-  #list .list-company .company-info {
-    min-height: 100px;
+  .list .list-company img {
+    float: left;
+    padding-right: 10px;
+    height: 120px;
+    width: 120px; }
+  .list .list-company .company-info {
+    height: 120px;
+    float: left;
     position: relative;
     padding: 25px; }
-    #list .list-company .company-info h1 {
+    .list .list-company .company-info h1 {
       font-size: 1.2em;
-      font-style: bold;
-      color: black;
-      margin-bottom: 10px;
+      font-weight: bold;
+      color: #262626;
+      margin-bottom: 20px;
       display: inline-block; }
-    #list .list-company .company-info span {
-      font-size: 1em;
-      transition: all 1s ease; }
-      #list .list-company .company-info span:hover {
-        color: #0277BD; }
-    #list .list-company .company-info .follow {
-      background: white !important;
-      color: #03A9F4;
-      position: absolute;
-      left: 10px;
-      top: 25px; }
+    .list .list-company .company-info span {
+      clear: both;
+      font-size: 1em; }
+  .list .list-company .buttons {
+    position: absolute;
+    top: 25px;
+    right: 25px; }
 
 #delete div {
   padding: 15px 30px;
@@ -1151,6 +1144,15 @@ body {
   #contact form .button-custom {
     font-size: 1.1em;
     padding: 5px 15px; }
+
+#search #key {
+  background: white;
+  box-shadow: 1px 1px 3px 0px #d8dde6;
+  padding: 10px;
+  font-size: 1.1em;
+  font-style: italic; }
+  #search #key b {
+    font-weight: bold !important; }
 
 .testp {
   background-color: #4CAF50; }

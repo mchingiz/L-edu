@@ -28,7 +28,7 @@ class MenuController extends Controller
     //Logging
     $this->log(1,$category->id,'categories');
     $posts = Post::where('category_id', '=', $category->id)->paginate(15);
-    //return $posts;
+    
     return view('category',compact('category', 'posts'));
 
   }

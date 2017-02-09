@@ -13,6 +13,9 @@
 
 // Route::get('/index', function () {
 //     return view('index');});
+
+
+
 Route::get('/post', function () {
     return view('post');});
 Route::get('/category', function () {
@@ -43,6 +46,8 @@ Route::get('/','HomeController@index');
 Route::get('/index', function(){
   return view('index');
 });
+
+Route::get('/search', 'SearchController@View');
 
 
 // Register
@@ -105,9 +110,10 @@ Route::get('/{slug}', 'MenuController@View');
   Route::get('/{slug}/{subslug}', 'SubcategoryController@View');
 
 
-Route::post('/search', 'SearchController@View');
 
 
 
 
 Route::get('/home', 'HomeController@index');
+
+

@@ -96,7 +96,7 @@
             </form>
           </div>
           <!-- Search form for full navbar -->
-          <form id="full-nav-search" class="input-group full-nav-only pull-right" method="POST" action="/search">
+          <form id="full-nav-search" class="input-group full-nav-only pull-right" method="GET" action="/search">
              {{csrf_field()}}
             <input type="text" id="input-search" name="key" class="form-control  pull-right" placeholder="Search for...">
             <span class="input-group-btn">

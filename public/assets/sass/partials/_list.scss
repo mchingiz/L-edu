@@ -1,31 +1,38 @@
-#list{
+.list{
 	.list-post{
+
 		padding:0;
 		position:relative;
 		box-shadow: 1px 1px 3px 0px darken($background-color,10%);
-		background:white;
+		background:white;			
 		.img-box{
+			overflow:hidden;	
+			float:left;
 			padding:0;
-			overflow:hidden;
-			height:185px;
 			img{
-			width:100%;
+				width:258px;
+				height:120px;
+				@media screen and (max-width: 767px) {
+					width:344px;
+					height:160px;
+				}
 			}
 		}
 		.post-info{
-			min-height:185px;
-			position:relative;
-			padding: 20px;
+			min-height:120px;
 			h1{
 				font-size:1.1em;
-				font-style:bold;
-				color:black;
+				color:#262626;
+				padding:20px 0;
+				transition: all 0.4s ease;
+				font-weight:bold;
+				&:hover{
+					color:$primaryColor;
+				}
 
 			}
 			ul{
-				margin:20px 0 0;
-				position:absolute;
-				bottom:20px;
+								
 				li{
 			        opacity:.8;
 			        padding-left:0;
@@ -42,27 +49,15 @@
 			          }
 			          text-decoration: none;
 			          color:black;
+			          transition:all 0.4s ease;
+			          &:hover{
+			          	color: $primaryColor;
+			          }
 			        }
 			    }
 			}
-			p{
-				line-height:14px;
-				font-size:0.85em;
-				text-align:justify;
-				color:black;
-				margin:20px 0;
-			}
 		}
-		.category{
-			color:white;
-			background:$primaryColor;
-			padding:5px 10px;
-			position:absolute;
-			top:0;
-			left:0;
-			z-index:2;
-			font-size:0.9em;
-		}
+		
 	}
 
 	.list-company{
@@ -70,43 +65,41 @@
 		position:relative;
 		box-shadow: 1px 1px 3px 0px darken($background-color,10%);
 		background:white;
-		.img-box{
-			padding:0;
-			overflow:hidden;
-			height:100px;
-			img{
-			width:100px;
-			}
+		
+			
+		img{
+			float:left;
+			padding-right:10px;
+			height:120px;
+			width:120px;
 		}
 		.company-info{
-			min-height:100px;
+			height:120px;
+			float:left;
 			position:relative;
 			padding: 25px;
 			h1{
 				font-size:1.2em;
-				font-style:bold;
-				color:black;
-				margin-bottom:10px;
+				font-weight:bold;
+				color:#262626;
+				margin-bottom:20px;
 				display:inline-block;
 
 			}
 			span{
+				clear:both;
 				font-size:1em;
-				transition: all 1s ease;
-
-				&:hover{
-					color:$primaryColor2;
-				}
-
 			}
-			.follow{
-          		background: white !important;
-          		color:$primaryColor;
-          		position:absolute;
-          		left:10px;
-          		top:25px;
-        	}
 			
 		}
+		.buttons{
+			position:absolute;
+			top:25px;
+			right:25px;
+			
+		}
+		
 	}
+
+	
 }

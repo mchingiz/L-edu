@@ -27,6 +27,7 @@ class CreatePostsTable extends Migration
             $table->integer('category_id');
             $table->string('slug');
             $table->string('lang');
+            $table->boolean('recoverable')->default(true);
             $table->softDeletes();
             $table->DateTime('deadline')->nullable();
             $table->timestamps();

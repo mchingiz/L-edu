@@ -11,6 +11,7 @@ class Reminder extends Authenticatable
 
     protected $fillable=['user_id','post_id','reminder_time'];
     protected $dates = ['reminder_time','delete_at'];
+    
     public function user(){
       return $this->belongsTo('App\User');
     }

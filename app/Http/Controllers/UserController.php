@@ -15,7 +15,7 @@ class UserController extends Controller
 
   public function __construct(){
     $this->user = Auth::user();
-    
+
     $this->middleware('checkRole:admin,moderator')->only('userList','companyList','companyWaitList');
   }
   public function userList(){
@@ -39,12 +39,12 @@ class UserController extends Controller
     }
 
     if($this->user->user_type=="company"){
-      
+
       DeactivateCompany();
     }
-      
+
       return redirect('/index');
-    
+
   }
 
   private function DeactivateUser(){
@@ -53,8 +53,8 @@ class UserController extends Controller
 
   private function DeactivateCompany(){
     $company=$this->user->company;
-    $posts= $company->posts;
-      
+    $posts=$company->posts;
+
     foreach ($posts as $post)  {
       foreach ($post->reminders as $reminder) {
         $reminder->delete();
@@ -72,10 +72,10 @@ class UserController extends Controller
 
 
     public function LoginByAjax(Request $request)
-    {   
+    {
         $email = $request->email;
         $password = $request->password;
-        
+
         //validation: non-empty password and email
         $validator = Validator::make($request->all(), [
         'email' => 'required',
@@ -87,8 +87,8 @@ class UserController extends Controller
               'success' => false,
               'message' => "Email and password fields are required."
             ],422);
-            
-        } 
+
+        }
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
           return response([
@@ -102,7 +102,7 @@ class UserController extends Controller
               'message' => "Wrong username and password combination."
             ],422);
         }
-      
+
     }
 
 }

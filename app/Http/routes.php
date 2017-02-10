@@ -13,6 +13,9 @@
 
 // Route::get('/index', function () {
 //     return view('index');});
+
+
+
 Route::get('/post', function () {
     return view('post');});
 Route::get('/category', function () {
@@ -21,8 +24,8 @@ Route::get('/jobs', function () {
     return view('category');});
 Route::get('/company', function () {
     return view('company');});
-Route::get('/company/posts', function () {
-    return view('companyposts');});
+Route::get('/contactus', function () {
+    return view('contactus');});
 
 Route::post('/user/login', 'UserController@LoginByAjax');
 
@@ -43,6 +46,8 @@ Route::get('/','HomeController@index');
 Route::get('/index', function(){
   return view('index');
 });
+
+Route::get('/search', 'SearchController@View');
 
 
 // Register
@@ -109,9 +114,10 @@ Route::get('/{slug}', 'MenuController@View');
   Route::get('/{slug}/{subslug}', 'SubcategoryController@View');
 
 
-Route::post('/search', 'SearchController@View');
 
 
 
 
 Route::get('/home', 'HomeController@index');
+
+

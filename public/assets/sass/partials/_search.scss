@@ -1,0 +1,12 @@
+#search{
+	#key{
+		background:white;
+		box-shadow: 1px 1px 3px 0px darken($background-color,10%);
+		padding:10px;
+		font-size:1.1em;
+		font-style:italic;
+		b{
+			font-weight:bold !important;
+		}
+	}
+}

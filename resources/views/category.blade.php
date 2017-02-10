@@ -24,7 +24,7 @@
 @foreach( $posts->reverse() as $post)
 @if($post->approved==1)
   <div class="col-md-4 col-xs-12 col-sm-6">
-    <div class="post-item {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
+    <div class="post-item hover-scale {{$post->deadline->gt(Carbon\Carbon::now())  ? 'green-border-bottom' : 'red-border-bottom'}} ">
       <div class="img-box">
         <a href="{{ url('/post/'.$post->slug) }}">
           <img src="{{ url('/assets/postPhotos/'.$post->image) }}">

@@ -9,8 +9,18 @@
 <div  id="loginForm" class="container"  style="margin-top:80px">
     <div class="row">
         <div  id="form" class="col-md-4 col-sm-8 col-sm-offset-2 col-md-offset-4 col-xs-10 col-xs-offset-1">
-          <h1> Log in to Educive.com </h1>
-          <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if (session('warning'))
+                <div class="alert alert-warning">
+                    {{ session('warning') }}
+                </div>
+            @endif
+            <h1> Log in to Educive.com </h1>
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

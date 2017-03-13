@@ -22,6 +22,7 @@ class LoginController extends Controller
         $authSuccess = Auth::attempt($credentials, $request->has('remember'));
 
         if($authSuccess) {
+            $this->authenticated();
             $request->session()->regenerate();
             return response(['success' => true], Response::HTTP_OK);
         }
@@ -41,4 +42,6 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+
 }

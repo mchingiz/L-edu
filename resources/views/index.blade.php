@@ -419,7 +419,7 @@
               <div class="col-md-9 col-sm-9 col-xs-9">
                 <a href="{{ url('/post/'.$post->slug) }}" class="post-heading">{{ $post->title }}</a>
                 <i class="material-icons">business</i>
-                <a href="#" class="company">{{ $post->company->user->name}}</a>
+                <a href="#" class="company">{{ $post->company->user->name }}</a>
               </div>
             </div>
             @if ($i != count($mostViewed) )
@@ -479,9 +479,9 @@
 @endif
 @endsection
 @section('script')
-  <script src="{{url('/assets/js/follow2.js')}}"></script>
-  @if(Auth::guest())
-  <script src="{{url('/assets/js/login.js')}}"></script>
-  <script src="{{url('/assets/js/login_ajax.js')}}"></script>
-  @endif
+    <script src="{{url('/assets/js/follow2.js')}}"></script>
+        @if(Auth::guest())
+            <script src="{{url('/assets/js/login.js')}}"></script>
+            <script src="{{url('/assets/js/login_ajax.js')}}"></script>
+        @endif
 @endsection

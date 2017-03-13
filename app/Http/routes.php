@@ -38,6 +38,7 @@ Route::get('/delete', 'UserController@DeactivateAccount');
 // Test
 Route::get('/test/{test}', 'Test@test');
 Route::get('/test', 'Test@test');
+Route::get('send_test_email','Test@mail');
 
 
 // Index
@@ -60,6 +61,7 @@ Route::auth();
     Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
 Route::get('/register/company', 'Auth\AuthController@registerform');
 Route::get('/register/user', 'Auth\AuthController@registerform');
+Route::get('user/activation/{token}', 'Auth\AuthController@activateUser')->name('user.activate');;
 
 // company
 Route::get('/company/editprofile', 'CompanyController@EditProfile');
@@ -119,5 +121,3 @@ Route::get('/{slug}', 'MenuController@View');
 
 
 Route::get('/home', 'HomeController@index');
-
-

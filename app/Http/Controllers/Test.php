@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\User;
@@ -23,6 +25,12 @@ use URL;
 class Test extends Controller
 {
   public function test(Post $post){
-    
+
   }
+
+  public function mail(){
+        Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message){
+        	$message->to('memmedlicngz@gmail.com');
+        });
+    }
 }

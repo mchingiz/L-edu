@@ -21,7 +21,6 @@ use Socialite;
 class AuthController extends Controller
 {
     use SlugTrait;
-    protected $activationService;
 
     // use SlugTrait;
 
@@ -50,29 +49,12 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct(ActivationService $activationService)
+    public function __construct()
     {
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
-        $this->activationService = $activationService;
     }
 
-    // OVERRIDE (vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php)
-    public function register(Request $request){
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $request, $validator
-            );
-        }
-
-        $user = $this->create($request->all());
-        $user->activated = false;
-
-        $this->activationService->sendActivationMail($user);
-
-        return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
-    }
+   
 
     /**
      * Get a validator for an incoming registration request.
@@ -126,14 +108,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $validator = $this->validator($data);
-
-        if ($validator->fails()) {
-            $this->throwValidationException(
-                $data, $validator
-            );
-        }
-
+        
         if( URL::previous() == "http://localhost:8000/register/company"){
             $type="company";
         }
@@ -157,7 +132,6 @@ class AuthController extends Controller
           ]);
         }
 
-        $this->activationService->sendActivationMail($user);
 
         // return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
 
@@ -168,22 +142,7 @@ class AuthController extends Controller
       return view('auth/registerform');
     }
 
-    public function activateUser($token){
-        if ($user = $this->activationService->activateUser($token)) {
-            auth()->login($user);
-            return redirect($this->redirectPath());
-        }
-        abort(404);
-    }
 
-    public function authenticated(Request $request, User $user){
-        if (!$user->activated) {
-            $this->activationService->sendActivationMail($user);
-            auth()->logout();
-            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
-        }
-        return redirect()->intended($this->redirectPath());
-    }
     // Social Logins
 
     public function redirectToFacebook(){

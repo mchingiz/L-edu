@@ -86,6 +86,7 @@ class UserController extends Controller
         'password'=>'required'
         ]);
 
+        
         if ($validator->fails()) {
           return  back()
                 ->withInput($request->only('email', 'remember'))
@@ -187,20 +188,7 @@ class UserController extends Controller
     $company->restore();
 
     }
-  
-   public function authenticated(Request $request, User $user){
-        if (!$user->activated) {
-            $this->activationService->sendActivationMail($user);
-            auth()->logout();
-
-            return response([
-                'success' => false,
-                'message' => "You need to confirm your account. We have sent you an activation code, please check your email."
-            ],422);
-        }
-        // return redirect()->intended($this->redirectPath());
-    }
-
+ 
 
 
 

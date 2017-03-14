@@ -47,7 +47,8 @@ class UserController extends Controller
 
   }
 
-  private function DeactivateUser(){
+  private function DeactivateUser()
+  {
     $this->user->delete();
   }
 

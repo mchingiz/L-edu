@@ -17,7 +17,7 @@ use Socialite;
 
 class AuthController extends Controller
 {
-    // use SlugTrait;
+    use SlugTrait;
 
     /*
     |--------------------------------------------------------------------------

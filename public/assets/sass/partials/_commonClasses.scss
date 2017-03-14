@@ -85,7 +85,7 @@ i.material-icons{
   padding:0 !important
 }
 
-.big-post, .small-post, #rightBarPosts .row ,.post-item{
+/*.big-post, .small-post, #rightBarPosts .row ,.post-item{
   &:hover{
     .img-box{
        img{
@@ -95,7 +95,7 @@ i.material-icons{
       }
     }
   }
-}
+} */
 
 .margin-top-div{
   height:120px;
@@ -124,7 +124,7 @@ i.material-icons{
   }
 }
 
-
+//Force footer to the bottom
 html,
 body {
     height: 100%;
@@ -147,6 +147,7 @@ body {
     width: 100%;
 }
 
+
 //Overlay in Login Ajax
 #overlay {
     position: fixed;
@@ -163,9 +164,8 @@ body {
 }
 
 .hover-scale{
-  transition: all 0.7s ease;
+  transition: all 0.4s ease;
   &:hover{
-  transform: scale(1.01,1.01);
   box-shadow: 13px 11px 47px -15px darken($background-color,30%) !important;
   }
   

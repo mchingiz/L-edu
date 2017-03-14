@@ -19,10 +19,20 @@ use App\LogType;
 use App\Menu;
 use App\Search;
 use URL;
+use DB;
 
 class Test extends Controller
 {
-  public function test(Post $post){
-    
+  public function test(){
+  	DB::enableQueryLog();
+  	echo "<hr>";
+
+  	$user=DB::table('users')
+            ->join('companies', 'users.id', '=', 'companies.user_id')->inRandomOrder()->get();
+    var_dump(DB::getQueryLog());
+    echo "<hr>";
+
+  	var_dump($user);
+
   }
 }

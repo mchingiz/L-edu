@@ -7,7 +7,7 @@ $.ajaxSetup({
 });
 
 ///////////////////////Follow////////////////////////////////
-$('.buttons').on('click',"#follow" ,function(){
+$('.follow-buttons').on('click',"#follow" ,function(){
     var company_id = $(this).val();
     $.ajax({
         type: "POST",
@@ -23,7 +23,7 @@ $('.buttons').on('click',"#follow" ,function(){
     
 });
 
-$('.buttons').on('click',"#unfollow" ,function(){
+$('.follow-buttons').on('click',"#unfollow" ,function(){
     var company_id = $(this).val();
     console.log($(this))
     console.log(" company " +company_id)

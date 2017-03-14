@@ -19,7 +19,7 @@
         <script src="{{url('/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js')}}"></script>
     </head>
     <body>
-    <div class="main-wrapper">
+    <div id="main-wrapper">
       <div id="top-collapse" class="collapse-only container-fluid">
         <div class="container">
           <div class="row">

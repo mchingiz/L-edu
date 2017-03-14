@@ -188,7 +188,7 @@ class PostController extends Controller
     $this->log(15,$post->id,'posts');
   }
 
-  public function View(Request $request,$slug){
+  public function View($slug){
 
     $post=Post::where('slug','=',$slug)->first();
     if($post == null){
@@ -248,13 +248,12 @@ class PostController extends Controller
       ->first();
     }
 
-    // if(URL::previous()!="http://localhost:8000/post/".$slug){
+    // if(URL::previous()!=URL::current()){
+
     //   $post->update([
     //     'view' => $post->view+1,
     //   ]);
     // }
-
-    $this->incrementView($request,$post);
 
     return view('post', compact('post','OtherPosts','isSaved','isReminderAdded'));
   }
@@ -307,7 +306,10 @@ class PostController extends Controller
   }
 
   public function deletePost(Post $post){
+    $post->recoverable = 1;
+    $post->save();
     $post->delete();
+
     Reminder::where('post_id',$post->id)->delete();
     return redirect('/');
   }

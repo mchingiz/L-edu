@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <button type="submit" class="btn col-md-12 col-sm-12 col-xs-12 ">
+                                <button type="submit" class="btn col-md-12 col-sm-12 col-xs-12 login-button">
                                     Sign Up
                                 </button>
                             </div>
@@ -71,8 +71,8 @@
 
                     @if(Request::is('register/user'))
                     <span id="or"> or </span>
-                    <button id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 "><i class=" fa fa-facebook"></i>Continue with Facebook</button>
-                    <button id="google" class="btn col-md-12 col-sm-12 col-xs-12 "><i class="fa fa-google-plus"></i>Continue with Google</button>
+                    <button id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 login-button"><i class=" fa fa-facebook"></i>Continue with Facebook</button>
+                    <button id="google" class="btn col-md-12 col-sm-12 col-xs-12 login-button"><i class="fa fa-google-plus"></i>Continue with Google</button>
                     @endif
 
         </div>

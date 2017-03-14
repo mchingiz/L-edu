@@ -19,7 +19,7 @@
           <span> {{$company->followers->count()}} followers | {{\App\Post::where('approved', '1')->where('company_id',$company->id)->count()}} posts</span>
         </div>
 
-        <div class="buttons col-md-6 col-sm-4 col-xs-12">
+        <div class="follow-buttons col-md-6 col-sm-4 col-xs-12">
           @if(Auth::guest())
           <a href="#" id="login" class="button-custom button-follow" ><i class="fa fa-user-plus"></i>Follow</a>
           @elseif(Auth::user()->user_type=="user" && $isFollowed==null)

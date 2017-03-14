@@ -84,6 +84,7 @@ class UserController extends Controller
         'password'=>'required'
         ]);
 
+        
         if ($validator->fails()) {
           return  back()
                 ->withInput($request->only('email', 'remember'))

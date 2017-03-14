@@ -16,12 +16,12 @@ class LoginController extends Controller
         return 'email';
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $credentials = $request->only($this->username(), 'password');
         $authSuccess = Auth::attempt($credentials, $request->has('remember'));
 
         if($authSuccess) {
+            $this->authenticated();
             $request->session()->regenerate();
             return response(['success' => true], Response::HTTP_OK);
         }
@@ -41,4 +41,6 @@ class LoginController extends Controller
 
         return redirect('/');
     }
+
+
 }

@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js" lang=""> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
@@ -34,8 +34,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" style="margin-left:-15px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{url('/company/editprofile')}}">Edit Profile</a></li>
                   <li><a href="{{url('account/delete')}}">Delete Account</a></li>
-                  <li><a href="{{url('/company/editprofile')}}">Edit Profile</a></li>
                 </ul>
               </li>
               <li><a href="{{url('/add')}}">Add Post</a></li>

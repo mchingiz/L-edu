@@ -23,6 +23,17 @@ else if( $(".cropFrame").css("display") == "none" ){
   page = "add"; // It is 'add post' page
 }
 
+// if(page=="edit"){
+//     console.log('in if');
+//     $("#cropRow").on('DOMMouseScroll mousewheel', function(e) {
+//         e.preventDefault();
+//         e.stopImmediatePropagation();
+//         console.log('event');
+//         // $(".cropFrameHelper").text("Can't scroll");
+//         // return false;
+//     })
+// }
+
 
 //********** IMAGE PREVIEW **********
   var showImage = function(event) {

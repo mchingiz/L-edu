@@ -16,8 +16,8 @@
 
 
 
-Route::get('/post', function () {
-    return view('post');});
+Route::get('/saved', function () {
+    return view('saved');});
 Route::get('/category', function () {
     return view('category');});
 Route::get('/jobs', function () {
@@ -28,6 +28,7 @@ Route::get('/contactus', function () {
     return view('contactus');});
 
 Route::post('/user/login', 'UserController@LoginByAjax');
+Route::post('/logina', 'UserController@Login');
 
 
 // Delete
@@ -52,7 +53,21 @@ Route::get('/search', 'SearchController@View');
 
 
 // Register
-Route::auth();
+//Route::auth();
+ // Authentication Routes...
+Route::get('login', 'Auth\AuthController@showLoginForm');
+Route::post('login', 'Auth\AuthController@login')->name('login');
+Route::get('logout', 'Auth\AuthController@logout');
+
+        // Registration Routes...
+Route::get('register', 'Auth\AuthController@showRegistrationForm');
+Route::post('register', 'Auth\AuthController@register');
+
+        // Password Reset Routes...
+Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\PasswordController@reset');
+//////////////////////////////////////////////////////////////////////////////
     // Facebook
     Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
     Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');

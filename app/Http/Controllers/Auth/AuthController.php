@@ -20,7 +20,7 @@ use Socialite;
 
 class AuthController extends Controller
 {
-
+    use SlugTrait;
     protected $activationService;
 
     // use SlugTrait;

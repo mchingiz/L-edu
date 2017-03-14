@@ -6,7 +6,8 @@
 @endsection
 
 @section('content')
-<div  id="loginForm" class="container"  style="margin-top:80px">
+
+<div  id="loginForm" class="container" style="margin-top: 80px" >
     <div class="row">
         <div  id="form" class="col-md-4 col-sm-8 col-sm-offset-2 col-md-offset-4 col-xs-10 col-xs-offset-1">
             @if (session('status'))
@@ -62,7 +63,7 @@
 
             <div class="form-group">
               <div class="col-md-12">
-                <button type="submit" class="btn col-md-12 col-sm-12 col-xs-12 ">
+                <button type="submit" class="btn col-md-12 col-sm-12 col-xs-12 login-button ">
                   Log in
                 </button>
               </div>
@@ -71,8 +72,8 @@
 
 
           <span id="or"> or </span>
-          <a href="{{ url('/auth/facebook') }}" id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 social-login"><i class=" fa fa-facebook"></i>Continue with Facebook</a>
-          <a href="{{ url('/auth/google') }}" id="google" class="btn col-md-12 col-sm-12 col-xs-12 social-login"><i class="fa fa-google-plus"></i>Continue with Google</a>
+          <a href="{{ url('/auth/facebook') }}" id="facebook" class="btn col-md-12 col-sm-12 col-xs-12 login-button"><i class=" fa fa-facebook"></i>Continue with Facebook</a>
+          <a href="{{ url('/auth/google') }}" id="google" class="btn col-md-12 col-sm-12 col-xs-12 login-button"><i class="fa fa-google-plus"></i>Continue with Google</a>
         </div>
   </div>
 </div>

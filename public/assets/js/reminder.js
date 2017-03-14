@@ -1,6 +1,6 @@
 ////Overlay screen /Open close reminder form///////////////////
 $(document).ready(function(){
-  $(".main-wrapper").on('click',function(){
+  $("#overlay").on('click',function(){
 
     console.log( event.target.id)
     if(event.target.id!="add-reminder"){

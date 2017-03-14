@@ -7,16 +7,19 @@
     }
   }
   a{
-    display:block;
     color:$heading-color;
+    h4{
+      margin:0;
+      padding:0;
+    }
   }
   p{
     margin:0;
   }
   .button-custom{
+    border:none;
     color:white;
-    margin-bottom:10px;
-    display:block;
+    margin:20px 0;
     text-align: center;
   }
 

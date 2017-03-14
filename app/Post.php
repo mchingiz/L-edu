@@ -9,7 +9,7 @@ class Post extends Model
   use SoftDeletes;
 
   protected $fillable=['company_id','title','body','image','refused','refuse_reason',
-    'moderator_id','view','slug','category_id','subcategory_id','deadline'];
+    'moderator_id','view','slug','category_id','subcategory_id','deadline','recoverable'];
   protected $dates = ['created_at', 'updated_at','deadline','deleted_at'];
 
     public function company(){

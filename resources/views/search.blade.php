@@ -24,7 +24,7 @@
           <a  href="{{url('/company/'.$company->company->slug.'/posts')}}"><h1>{{$company->name}}</h1></a><br>
           <span>{{$company->company->followers->count()}} followers | {{$company->company->posts->count()}} posts</span>
         </div>
-        <div class="buttons">
+        <div class="follow-buttons">
           @if(Auth::guest())
           <button  class="login btn button-custom button-follow"><i class="fa fa-user-plus"></i>Follow </button>
           @elseif(Auth::user()->user_type=="user" && !Auth::user()->followings->contains($company->company->id) )

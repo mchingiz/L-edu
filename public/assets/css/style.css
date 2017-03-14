@@ -86,11 +86,17 @@ i.material-icons {
 .no-padding {
   padding: 0 !important; }
 
-.big-post:hover .img-box img, .small-post:hover .img-box img, #rightBarPosts .row:hover .img-box img, .post-item:hover .img-box img {
-  -moz-transform: scale(1.1);
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1); }
-
+/*.big-post, .small-post, #rightBarPosts .row ,.post-item{
+  &:hover{
+    .img-box{
+       img{
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+      }
+    }
+  }
+} */
 .margin-top-div {
   height: 120px; }
   @media screen and (max-width: 995px) {
@@ -143,9 +149,8 @@ body {
   display: none; }
 
 .hover-scale {
-  transition: all 0.7s ease; }
+  transition: all 0.4s ease; }
   .hover-scale:hover {
-    transform: scale(1.01, 1.01);
     box-shadow: 13px 11px 47px -15px #99a6bf !important; }
 
 #navbar {
@@ -473,15 +478,15 @@ body {
       border-bottom: 2px solid #03A9F4;
       padding-bottom: 15px; }
 
-#login form input {
+#login-form form input {
   padding: 7px 10px;
   margin: 7.5px 0;
   border: 1px solid #F7F8FA; }
-#login span, #login a {
+#login-form span, #login-form a {
   margin-top: 10px;
   display: inline-block;
   font-size: 0.9em; }
-#login label {
+#login-form label {
   font-size: 0.9em; }
 
 .advertisement-md-4 {
@@ -680,14 +685,16 @@ body {
   #author .img-box img {
     width: 100%; }
 #author a {
-  display: block;
   color: #263241; }
+  #author a h4 {
+    margin: 0;
+    padding: 0; }
 #author p {
   margin: 0; }
 #author .button-custom {
+  border: none;
   color: white;
-  margin-bottom: 10px;
-  display: block;
+  margin: 20px 0;
   text-align: center; }
 
 #company-posts h2 {
@@ -874,14 +881,14 @@ body {
     height: auto;
     padding: 10px;
     box-shadow: none !important; }
-  #registerForm #form a.social-login, #loginForm #form a.social-login {
+  #registerForm #form .login-button, #loginForm #form .login-button {
     background-color: #34BF49;
     color: white;
     font-style: bold;
     font-size: 1.1em;
     padding: 6px 12px;
     margin-top: 15px; }
-    #registerForm #form a.social-login:hover, #loginForm #form a.social-login:hover {
+    #registerForm #form .login-button:hover, #loginForm #form .login-button:hover {
       background: #41cb56; }
   #registerForm #form #or, #loginForm #form #or {
     color: gray;
@@ -1049,8 +1056,6 @@ body {
       padding: 20px 0;
       transition: all 0.4s ease;
       font-weight: bold; }
-      .list .list-post .post-info h1:hover {
-        color: #03A9F4; }
     .list .list-post .post-info ul li {
       opacity: .8;
       padding-left: 0;
@@ -1067,6 +1072,8 @@ body {
           margin-right: 4px; }
         .list .list-post .post-info ul li a:hover {
           color: #03A9F4; }
+  .list .list-post:hover h1 {
+    color: #03A9F4; }
 .list .list-company {
   padding: 0;
   position: relative;

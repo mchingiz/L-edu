@@ -26,9 +26,6 @@
 				padding:20px 0;
 				transition: all 0.4s ease;
 				font-weight:bold;
-				&:hover{
-					color:$primaryColor;
-				}
 
 			}
 			ul{
@@ -55,6 +52,12 @@
 			          }
 			        }
 			    }
+			}
+		}
+		&:hover{
+			h1{
+				color:$primaryColor;
+
 			}
 		}
 		

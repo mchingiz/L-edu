@@ -24,14 +24,15 @@
     </head>
     <body>
     <div id="main-wrapper">
-      @if(!(Request::is('index')&& Auth::guest() ) )
+      @if(!(Request::is('/')&& Auth::guest() ) )
       <nav id="top-bar" class="navbar navbar-fixed-top">
         <div class="container">
           <div>
+          <!--Top navbar for user actions -> Full screen-->
             <ul class="nav navbar-nav navbar-left">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" style="margin-left:-15px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{url('/company/editprofile')}}">Edit Profile</a></li>
                   <li><a href="{{url('account/delete')}}">Delete Account</a></li>
@@ -40,7 +41,7 @@
               <li><a href="{{url('/add')}}">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
+                <a href="#" style="margin-left:-15px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{{url('account/delete')}}">Delete Account</a></li>
                 </ul>
@@ -80,7 +81,7 @@
         </div>
         </div>
       </div>
-      <nav id="navbar" class="navbar navbar-fixed-top {{(Request::is('index')&& Auth::guest() )  ? '' : 'top-margin'}}">
+      <nav id="navbar" class="navbar navbar-fixed-top {{(Request::is('/')&& Auth::guest() )  ? '' : 'top-margin'}}">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand full-nav-only" href="#" style="color:black">Educive.com</a>
@@ -104,12 +105,13 @@
             </span>
           </form>
           <div>
+
             <ul class="nav navbar-nav navbar-right">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
-              <li class="collapse-only" ><a href="#" >Name</a></li>
+              <li class="collapse-only" ><a href="{{url('company/post')}}" >{{Auth::user()->name}}</a></li>
               <li class="collapse-only" ><a href="#">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
-              <li class="collapse-only"  style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="collapse-only"  style="margin-left:-15px;"><a href="#" >{{Auth::user()->name}}</a></li>
               <li class="collapse-only" ><a href="{{ url('/savedposts') }}">Saved Posts</a></li>
               <li class="collapse-only" ><a href="{{ url('/reminders') }}">Reminders</a></li>
               @endif

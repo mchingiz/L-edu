@@ -302,7 +302,7 @@
 
       <div class="vertical-div hidden-xs hidden-sm row"></div>
       @if (Auth::guest())
-      <section id="login" class="right-bar row hidden-xs hidden-sm">
+      <section id="login-form" class="right-bar row hidden-xs hidden-sm">
         <div class="heading col-md-12">
             <h3>Login</h3>
         </div>
@@ -386,7 +386,7 @@
               </div>
               <div class="col-md-9 col-xs-9 col-sm-9">
                 <a href="{{ url('/company/'.$company->slug.'/info') }}">{{ $company->user->name }}</a>
-                <div class="buttons">
+                <div class="follow-buttons">
                 @if(Auth::guest())
                   <button  value="{{$company->id}}" class="login btn button-custom button-follow" >Follow</button>
                 @elseif(Auth::user()->user_type=="user" && !$company->isFollowed)

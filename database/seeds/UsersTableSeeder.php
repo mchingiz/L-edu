@@ -18,6 +18,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Chingiz',
           'email' => 'chingiz@gmail.com',
           'user_type' => 'user',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -26,6 +27,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Senem',
           'email' => 'senem@gmail.com',
           'user_type' => 'user',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -34,6 +36,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Mehdi',
           'email' => 'moderator@gmail.com',
           'user_type' => 'moderator',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -42,6 +45,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Nigar',
           'email' => 'admin@gmail.com',
           'user_type' => 'admin',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -50,6 +54,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Code Academy',
           'email' => 'code@gmail.com',
           'user_type' => 'company',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -58,6 +63,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'BBF',
           'email' => 'bbf@gmail.com',
           'user_type' => 'company',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -66,6 +72,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Azercell',
           'email' => 'azercell@gmail.com',
           'user_type' => 'company',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
 
@@ -74,6 +81,7 @@ class UsersTableSeeder extends Seeder
           'name' => 'Ulvi',
           'email' => 'user@gmail.com',
           'user_type' => 'user',
+          'activated' => true,
           'password' => bcrypt('qwerty'),
       ]);
     }

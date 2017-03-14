@@ -10,6 +10,9 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use URL;
 
+use Illuminate\Http\Request;
+use App\ActivationService;
+
 use App\Http\Traits\SlugTrait;
 
 use Auth;
@@ -17,6 +20,8 @@ use Socialite;
 
 class AuthController extends Controller
 {
+    use SlugTrait;
+
     // use SlugTrait;
 
     /*
@@ -49,6 +54,8 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+   
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -69,6 +76,75 @@ class AuthController extends Controller
      *
      * @return Response
      */
+
+    private function findOrCreateUser($socialUser,$driverName)
+    {
+        $authUser = User::where($driverName.'_id', $socialUser->id)->first();
+
+        if ($authUser){ // Logged in before by using this provider
+            return $authUser;
+        }
+
+        $userWithSameEmail = User::where('email', $socialUser->email)->first();
+
+        if($userWithSameEmail){ // Logged in before using another provider
+            return $userWithSameEmail;
+        }
+
+        return User::create([ // Not logged in, create new user
+            'name' => $socialUser->name,
+            'email' => $socialUser->email,
+            $driverName.'_id' => $socialUser->id,
+            'user_type' => 'user',
+            'activated' => true
+        ]);
+    }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create(array $data)
+    {
+        
+        if( URL::previous() == "http://localhost:8000/register/company"){
+            $type="company";
+        }
+        if(URL::previous() =="http://localhost:8000/register/user"){
+            $type="user";
+        }
+
+        $user=User::create([
+              'name' => $data['name'],
+              'email' => $data['email'],
+              'user_type'=> $type,
+              'password' => bcrypt($data['password']),
+            ]);
+
+        if($type=="company"){
+          Company::create([
+            'user_id' => $user->id,
+            'slug' => $this->slugCreator($data['name'],'company'),
+            'logo'=>'default.png',
+            'cover_photo'=>'default1.jpg'
+          ]);
+        }
+
+
+        // return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
+
+        return $user;
+    }
+
+    public function registerForm(){
+      return view('auth/registerform');
+    }
+
+
+    // Social Logins
+
     public function redirectToFacebook(){
         return Socialite::driver('facebook')->redirect();
     }
@@ -108,65 +184,4 @@ class AuthController extends Controller
 
         return redirect('/');
     }
-
-    private function findOrCreateUser($socialUser,$driverName)
-    {
-        $authUser = User::where($driverName.'_id', $socialUser->id)->first();
-
-        if ($authUser){ // Logged in before by using this provider
-            return $authUser;
-        }
-
-        $userWithSameEmail = User::where('email', $socialUser->email)->first();
-
-        if($userWithSameEmail){ // Logged in before using another provider
-            return $userWithSameEmail;
-        }
-
-        return User::create([ // Not logged in, create new user
-            'name' => $socialUser->name,
-            'email' => $socialUser->email,
-            $driverName.'_id' => $socialUser->id,
-            'user_type' => 'user',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-      if( URL::previous() == "http://localhost:8000/register/company"){
-        $type="company";
-      }
-      if(URL::previous() =="http://localhost:8000/register/user"){
-        $type="user";
-      }
-
-        $user=User::create([
-              'name' => $data['name'],
-              'email' => $data['email'],
-              'user_type'=> $type,
-              'password' => bcrypt($data['password']),
-            ]);
-        if($type=="company"){
-          Company::create([
-            'user_id' => $user->id,
-            'slug' => $this->slugCreator($data['name'],'company'),
-            'logo'=>'default.png',
-            'cover_photo'=>'default1.jpg'
-          ]);
-        }
-
-        return $user;
-    }
-
-    public function registerForm(){
-      return view('auth/registerform');
-    }
-
-
 }

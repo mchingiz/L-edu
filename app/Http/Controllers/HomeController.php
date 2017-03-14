@@ -35,7 +35,7 @@ class HomeController extends Controller
     {
       //Companies
       $allCompanies = Company::where('approved',1)->get();
-      if( Company::where('approved',1)->count() > 5 ){
+      if( $allCompanies->count() > 5 ){
         $companies = $allCompanies->random(5);
       }else{
         $companies = $allCompanies;

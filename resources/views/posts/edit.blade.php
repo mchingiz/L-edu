@@ -145,9 +145,7 @@
       </div>
 
       <div class="col-md-6">
-        <div class="row">
-        </div>
-        <div class="row">
+        <div class="row" id="cropRow">
           <div class="cropFrame" style="width: 512px; height: 238px;display:block">
             <img id="imagePreview" class="crop cropImage" alt="" src="{{url('assets/postPhotos/'.$post->image)}}" style="left: 0px; top: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
             <div class="cropControls">
@@ -155,6 +153,7 @@
 
             </div>
           </div>
+          <span id="cropFrameHelper"></span>
 
         </div>
       </div>

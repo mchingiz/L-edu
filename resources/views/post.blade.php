@@ -197,7 +197,15 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-12 text-center">
             <a href="#"><h4>{{$post->company->user->name}}</h4></a>
-            <a class="button-custom col-md-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 col-md-offset-4" href="#">Follow</a>
+            <div class="follow-buttons text-center">
+              @if(Auth::guest())
+              <button class="login button-custom col-md-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 col-md-offset-4" >Follow</a>
+              @elseif(Auth::user()->user_type=="user" && !Auth::user()->followings->contains($post->company->id) )
+              <button id="follow" value="{{$company->id}}" class="button-custom col-md-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 col-md-offset-4" >Follow</button>
+              @elseif(Auth::user()->user_type=="user" && Auth::user()->followings->contains($post->company->id)  )
+              <button id="unfollow" value="{{$company->id}}" class="button-custom col-md-4 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3 col-md-offset-4" >Unfollow</button>
+              @endif
+          </div>
             <div class="row" style="clear:both">
               <p>{{$post->company->info}}</p>
             </div>
@@ -279,6 +287,7 @@
 <div id="overlay"></div>
 @endsection
 @section('pop-up')
+
 @if(!Auth::guest() && Auth::user()->user_type=="user")
 <div  id="reminder-form" class="col-md-6 col-md-offset-3">
   <h1>Select date and time:</h1>
@@ -306,7 +315,7 @@
 </div>
 @endif
 @if( Auth::guest())
-<div id="login-overlay" class="col-md-4 col-md-offset-4">
+<div id="login-overlay" class="login col-md-4 col-md-offset-4">
     <div class="col-md-10 col-md-offset-1">
       <h1> Login to your account</h1>
       <form class="form-horizontal">
@@ -350,4 +359,5 @@
 @section('script')
   <script src="{{url('/assets/js/vendor/moment.js')}}"></script>
   <script src="{{url('/assets/js/refuse.js')}}"></script>
+  <script src="{{url('/assets/js/follow.js')}}"></script>
 @endsection

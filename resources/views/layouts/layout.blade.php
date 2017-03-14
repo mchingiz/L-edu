@@ -2,7 +2,8 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -22,24 +23,25 @@
         @yield('head')
     </head>
     <body>
-    <div class="main-wrapper">
-      @if(!(Request::is('index')&& Auth::guest() ) )
+    <div id="main-wrapper">
+      @if(!(Request::is('/')&& Auth::guest() ) )
       <nav id="top-bar" class="navbar navbar-fixed-top">
         <div class="container">
           <div>
+          <!--Top navbar for user actions -> Full screen-->
             <ul class="nav navbar-nav navbar-left">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" style="margin-left:-15px;" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
+                    <li><a href="{{url('/company/editprofile')}}">Edit Profile</a></li>
                   <li><a href="{{url('account/delete')}}">Delete Account</a></li>
-                  <li><a href="{{url('/company/editprofile')}}">Edit Profile</a></li>
                 </ul>
               </li>
               <li><a href="{{url('/add')}}">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Name <span class="caret"></span></a>
+                <a href="#" style="margin-left:-15px;" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="{{url('account/delete')}}">Delete Account</a></li>
                 </ul>
@@ -79,7 +81,7 @@
         </div>
         </div>
       </div>
-      <nav id="navbar" class="navbar navbar-fixed-top {{(Request::is('index')&& Auth::guest() )  ? '' : 'top-margin'}}">
+      <nav id="navbar" class="navbar navbar-fixed-top {{(Request::is('/')&& Auth::guest() )  ? '' : 'top-margin'}}">
         <div class="container">
           <div class="navbar-header">
             <a class="navbar-brand full-nav-only" href="#" style="color:black">Educive.com</a>
@@ -95,7 +97,7 @@
             </form>
           </div>
           <!-- Search form for full navbar -->
-          <form id="full-nav-search" class="input-group full-nav-only pull-right" method="POST" action="/search">
+          <form id="full-nav-search" class="input-group full-nav-only pull-right" method="GET" action="/search">
              {{csrf_field()}}
             <input type="text" id="input-search" name="key" class="form-control  pull-right" placeholder="Search for...">
             <span class="input-group-btn">
@@ -103,12 +105,13 @@
             </span>
           </form>
           <div>
+
             <ul class="nav navbar-nav navbar-right">
               @if ( !Auth::guest() && Auth::user()->user_type=="company")
-              <li class="collapse-only" ><a href="#" >Name</a></li>
+              <li class="collapse-only" ><a href="{{url('company/post')}}" >{{Auth::user()->name}}</a></li>
               <li class="collapse-only" ><a href="#">Add Post</a></li>
               @elseif ( !Auth::guest() && Auth::user()->user_type=="user")
-              <li class="collapse-only"  style="margin-left:-15px;"><a href="#" >Name</a></li>
+              <li class="collapse-only"  style="margin-left:-15px;"><a href="#" >{{Auth::user()->name}}</a></li>
               <li class="collapse-only" ><a href="{{ url('/savedposts') }}">Saved Posts</a></li>
               <li class="collapse-only" ><a href="{{ url('/reminders') }}">Reminders</a></li>
               @endif
@@ -170,6 +173,7 @@
       </footer>
 
     </div>
+    <div id="overlay"></div>
     @yield('pop-up')
 
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>  -->

@@ -13,18 +13,22 @@
 
 // Route::get('/index', function () {
 //     return view('index');});
-Route::get('/post', function () {
-    return view('post');});
+
+
+
+Route::get('/saved', function () {
+    return view('saved');});
 Route::get('/category', function () {
     return view('category');});
 Route::get('/jobs', function () {
     return view('category');});
 Route::get('/company', function () {
     return view('company');});
-Route::get('/company/posts', function () {
-    return view('companyposts');});
+Route::get('/contactus', function () {
+    return view('contactus');});
 
 Route::post('/user/login', 'UserController@LoginByAjax');
+Route::post('/logina', 'UserController@Login');
 
 
 // Delete
@@ -35,6 +39,7 @@ Route::get('/delete', 'UserController@DeactivateAccount');
 // Test
 Route::get('/test/{test}', 'Test@test');
 Route::get('/test', 'Test@test');
+Route::get('send_test_email','Test@mail');
 
 
 // Index
@@ -44,9 +49,25 @@ Route::get('/index', function(){
   return view('index');
 });
 
+Route::get('/search', 'SearchController@View');
+
 
 // Register
-Route::auth();
+//Route::auth();
+ // Authentication Routes...
+Route::get('login', 'Auth\AuthController@showLoginForm');
+Route::post('login', 'Auth\AuthController@login')->name('login');
+Route::get('logout', 'Auth\AuthController@logout');
+
+        // Registration Routes...
+Route::get('register', 'Auth\AuthController@showRegistrationForm');
+Route::post('register', 'Auth\AuthController@register');
+
+        // Password Reset Routes...
+Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
+Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
+Route::post('password/reset', 'Auth\PasswordController@reset');
+//////////////////////////////////////////////////////////////////////////////
     // Facebook
     Route::get('auth/facebook', 'Auth\AuthController@redirectToFacebook');
     Route::get('auth/facebook/callback', 'Auth\AuthController@handleFacebookCallback');
@@ -55,6 +76,7 @@ Route::auth();
     Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
 Route::get('/register/company', 'Auth\AuthController@registerform');
 Route::get('/register/user', 'Auth\AuthController@registerform');
+Route::get('/user/activation/{token}', 'Auth\AuthController@activateUser')->name('user.activate');;
 
 // company
 Route::get('/company/editprofile', 'CompanyController@EditProfile');
@@ -109,7 +131,6 @@ Route::get('/{slug}', 'MenuController@View');
   Route::get('/{slug}/{subslug}', 'SubcategoryController@View');
 
 
-Route::post('/search', 'SearchController@View');
 
 
 

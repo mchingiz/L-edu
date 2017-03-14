@@ -18,13 +18,13 @@
       @foreach($results as $result)
         @if( !empty( $result->name))
         <?php $company=$result ?>
-        <div class="list-company hover-scale col-md-12 col-xs-12 col-sm-12">
+        <div class="list-company col-md-12 col-xs-12 col-sm-12">
         <img src="/assets/companyProfilePictures/azercell.jpg">
         <div class="company-info">
           <a  href="{{url('/company/'.$company->company->slug.'/posts')}}"><h1>{{$company->name}}</h1></a><br>
           <span>{{$company->company->followers->count()}} followers | {{$company->company->posts->count()}} posts</span>
         </div>
-        <div class="follow-buttons">
+        <div class="buttons">
           @if(Auth::guest())
           <button  class="login btn button-custom button-follow"><i class="fa fa-user-plus"></i>Follow </button>
           @elseif(Auth::user()->user_type=="user" && !Auth::user()->followings->contains($company->company->id) )
@@ -37,13 +37,16 @@
       <div class="vertical-div"></div>
         @else
         <?php $post=$result ?>
-      <div class="list-post hover-scale col-md-12 col-xs-12 col-sm-12">
-        <a class="img-box col-md-4 col-sm-5 col-xs-12" href="{{ url('/post/'.$post->slug) }}">
-          <img src="{{ url('/assets/images/'.$post->image) }}">
-        </a>
-        <div class="post-info col-md-8 col-sm-7 col-xs-12">
+        <div class="list-post col-md-12 col-xs-12 col-sm-12">
+        <a class="category" href="#">Internship</a>
+        <div class="img-box col-md-4 col-xs-12 col-sm-4">
+          <a href="{{ url('/post/'.$post->slug) }}">
+            <img src="{{ url('/assets/images/'.$post->image) }}">
+          </a>
+        </div>
+        <div class="post-info col-md-8 col-xs-12 col-sm-8">
           <a href="{{ url('/post/'.$post->slug) }}"><h1>{{$post->title}}</h1></a>
-          <!-- <p>{{ substr( $post->body,0,strpos($post->body, ' ', 200) ) }}...</p> -->
+          <p>{{ substr( $post->body,0,strpos($post->body, ' ', 200) ) }}...</p>
           <ul class="list-unstyled list-inline">
             <li>
               <i class="material-icons">date_range</i>
@@ -51,16 +54,6 @@
             </li>
             <li>
               <a href="#"><i class="material-icons">business</i>{{$post->company->user->name}}</a>
-            </li>
-            <li>
-              <i class="material-icons">remove_red_eye</i> <span>{{ $post->view}}</span>
-            </li>
-            <li>
-              <i class="material-icons">folder_open</i><a href="#">{{$post->category->name}}</a>
-              @if($post->subcategory_id != '0')
-                  /
-                  <a href="{{$post->subcategory->link}}"> {{$post->subcategory->name}} </a>
-                @endif
             </li>
           </ul>
         </div>

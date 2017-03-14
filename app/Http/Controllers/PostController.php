@@ -254,6 +254,7 @@ class PostController extends Controller
     //     'view' => $post->view+1,
     //   ]);
     // }
+    // $this->incrementView($request,$post);
 
     return view('post', compact('post','OtherPosts','isSaved','isReminderAdded'));
   }

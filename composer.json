@@ -8,6 +8,7 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "intervention/image": "^2.3",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
         "laravel/socialite": "2.0.20"
     },
     "require-dev": {

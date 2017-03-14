@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ActivationService;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Lang;
@@ -186,8 +188,22 @@ class UserController extends Controller
     $company->restore();
 
     }
+  
+   public function authenticated(Request $request, User $user){
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+
+            return response([
+                'success' => false,
+                'message' => "You need to confirm your account. We have sent you an activation code, please check your email."
+            ],422);
+        }
+        // return redirect()->intended($this->redirectPath());
+    }
 
 
 
 
+   
 }

@@ -307,27 +307,29 @@
             <h3>Login</h3>
         </div>
         <div class="body col-md-12">
-          <form role="form" method="POST" action="{{ url('/logina') }}">
-            {{ csrf_field() }}
-            <input id="email" type="email" class="col-md-12" name="email" value="{{ old('email') }}">
-            @if ($errors->has('email'))
-                <span class="help-block">
+            <form role="form" method="POST" action="{{ url('/login') }}"> {{ csrf_field() }}
+                <input id="email" type="email" class="col-md-12" name="email" value="{{ old('email') }}">
+                @if ($errors->has('email'))
+                    <span class="help-block">
                     <strong>{{ $errors->first('email') }}</strong>
-                </span>
-            @endif
-            <input id="password" type="password" class="col-md-12" name="password">
+                    </span>
+                @endif
 
-            @if ($errors->has('password'))
-                <span class="help-block">
+                <input id="password" type="password" class="col-md-12" name="password">
+                @if ($errors->has('password'))
+                    <span class="help-block">
                     <strong>{{ $errors->first('password') }}</strong>
-                </span>
-            @endif
-            <label>
-                <input type="checkbox" name="remember"> Remember Me
-            </label>
-            <a href="{{ url('/password/reset') }}" class="pull-right"> Forgot Password?  </a>
-            <input class="col-md-12 button-custom" type="submit" value="Login">
-          </form>
+                    </span>
+                @endif
+
+                <label>
+                    <input type="checkbox" name="remember"> Remember Me
+                </label>
+
+                <a href="{{ url('/password/reset') }}" class="pull-right"> Forgot Password?  </a>
+                
+                <input class="col-md-12 button-custom" type="submit" value="Login">
+            </form>
 
           <div class="border"></div>
           <span >Don't  have an account? </span> <a href="{{ url('/register') }}">Sign Up!</a>
@@ -419,7 +421,7 @@
               <div class="col-md-9 col-sm-9 col-xs-9">
                 <a href="{{ url('/post/'.$post->slug) }}" class="post-heading">{{ $post->title }}</a>
                 <i class="material-icons">business</i>
-                <a href="#" class="company">{{ $post->company->user->name}}</a>
+                <a href="#" class="company">{{ $post->company->user->name }}</a>
               </div>
             </div>
             @if ($i != count($mostViewed) )
@@ -479,9 +481,9 @@
 @endif
 @endsection
 @section('script')
-  <script src="{{url('/assets/js/follow2.js')}}"></script>
-  @if(Auth::guest())
-  <script src="{{url('/assets/js/login.js')}}"></script>
-  <script src="{{url('/assets/js/login_ajax.js')}}"></script>
-  @endif
+    <script src="{{url('/assets/js/follow2.js')}}"></script>
+        @if(Auth::guest())
+            <script src="{{url('/assets/js/login.js')}}"></script>
+            <script src="{{url('/assets/js/login_ajax.js')}}"></script>
+        @endif
 @endsection

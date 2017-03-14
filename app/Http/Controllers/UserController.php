@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\ActivationService;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use App\Http\Requests;
@@ -91,9 +93,10 @@ class UserController extends Controller
         }
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-          return response([
-              'success' => true,
-              ]);
+            // $this->authenticated();
+            return response([
+                'success' => true,
+            ]);
         }
         //If Auth attempt fails:
         else {
@@ -103,6 +106,19 @@ class UserController extends Controller
             ],422);
         }
 
+    }
+
+    public function authenticated(Request $request, User $user){
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+
+            return response([
+                'success' => false,
+                'message' => "You need to confirm your account. We have sent you an activation code, please check your email."
+            ],422);
+        }
+        // return redirect()->intended($this->redirectPath());
     }
 
 }

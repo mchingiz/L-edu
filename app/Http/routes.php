@@ -61,7 +61,7 @@ Route::auth();
     Route::get('auth/google/callback', 'Auth\AuthController@handleGoogleCallback');
 Route::get('/register/company', 'Auth\AuthController@registerform');
 Route::get('/register/user', 'Auth\AuthController@registerform');
-Route::get('user/activation/{token}', 'Auth\AuthController@activateUser')->name('user.activate');;
+Route::get('/user/activation/{token}', 'Auth\AuthController@activateUser')->name('user.activate');;
 
 // company
 Route::get('/company/editprofile', 'CompanyController@EditProfile');

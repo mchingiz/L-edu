@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Mail;
+
 use App\User;
 use App\Company;
 use Validator;
@@ -9,6 +11,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use URL;
+
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Facades\Hash;
+use App\Http\Requests;
+use DB;
+use Illuminate\Support\Facades\Input;
 
 use Illuminate\Http\Request;
 use App\ActivationService;
@@ -54,7 +63,7 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-   
+
 
     /**
      * Get a validator for an incoming registration request.
@@ -70,12 +79,6 @@ class AuthController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
     }
-
-    /**
-     * Redirect the user to the GitHub authentication page.
-     *
-     * @return Response
-     */
 
     private function findOrCreateUser($socialUser,$driverName)
     {
@@ -108,7 +111,7 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        
+
         if( URL::previous() == "http://localhost:8000/register/company"){
             $type="company";
         }
@@ -139,7 +142,130 @@ class AuthController extends Controller
     }
 
     public function registerForm(){
-      return view('auth/registerform');
+        return view('auth/registerform');
+    }
+
+    // Overriding default register function
+    // vendor/laravel/framework/src/Illuminate/Foundation/Auth/RegistersUsers.php
+    public function register(Request $request){
+        $validator = $this->validator($request->all());
+
+        Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message){
+        	$message->to('memmedlicngz@gmail.com');
+        });
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $this->activationService->sendActivationMail($user);
+
+        // Auth::guard($this->getGuard())->login($this->create($request->all()));
+
+        return redirect('/login')->with('status', 'We sent you an activation code. Check your email.');
+    }
+
+
+    public function Login(Request $request){
+        $email = $request->email;
+        $password = $request->password;
+        $remember = $request->remember;
+
+        //Validation
+        //validation: non-empty password and email
+        $validator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password'=>'required'
+        ]);
+
+
+        if ($validator->fails()) {
+            return  back()
+                ->withInput($request->only('email', 'remember'))
+                ->withErrors([
+                    'email' => 'Email and password fields are required.',
+                ]);
+
+        }
+
+    $attempt=$this->LoginAttempt($email,$password,$remember);
+
+
+    if(! $attempt)
+    {
+        return  back()
+                ->withInput($request->only('email', 'remember'))
+                ->withErrors([
+                    'email' => 'Wrong username and password combination.',
+                ]);
+    }
+
+    return redirect('/'); // true
+  }
+
+  public function LoginAttempt($email,$password, $remember){
+    $user= User::withTrashed()
+             ->where([
+                    ['email', '=', $email],
+                    ])
+              ->first();
+      if(!empty($user) && Hash::check($password, $user->password) && !empty($user->deleted_at)){
+         $user->restore();
+
+         if($user->user_type=="company"){
+            $this->ActivateCompany($user);
+         }
+      }
+
+      return $attempt = Auth::attempt(['email' => $email, 'password' => $password], $remember);
+
+  }
+
+
+    public function LoginByAjax(Request $request)
+    {
+        $email = $request->email;
+        $password = $request->password;
+        $remember=$request->remember;
+
+        //validation: non-empty password and email
+        $validator = Validator::make($request->all(), [
+        'email' => 'required',
+        'password'=>'required'
+        ]);
+
+        if ($validator->fails()) {
+          return response([
+              'success' => false,
+              'message' => "Email and password fields are required."
+            ],422);
+
+        }
+        $attempt=$this->LoginAttempt($email,$password,$request);
+
+        if (!$attempt) {
+          return response([
+              'success' => false,
+              'message' => "Wrong username and password combination."
+            ],422);
+
+        }
+
+        return response([
+          'success' => true,
+        ]);
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+        }
+        return redirect()->intended($this->redirectPath());
     }
 
 

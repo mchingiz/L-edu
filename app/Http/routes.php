@@ -27,8 +27,8 @@ Route::get('/company', function () {
 Route::get('/contactus', function () {
     return view('contactus');});
 
-Route::post('/user/login', 'UserController@LoginByAjax');
-Route::post('/logina', 'UserController@Login');
+Route::post('/user/login', 'Auth\AuthController@LoginByAjax');
+Route::post('/logina', 'Auth\AuthController@Login');
 
 
 // Delete
@@ -56,7 +56,7 @@ Route::get('/search', 'SearchController@View');
 //Route::auth();
  // Authentication Routes...
 Route::get('login', 'Auth\AuthController@showLoginForm');
-Route::post('login', 'Auth\AuthController@login')->name('login');
+Route::post('login', 'Auth\AuthController@login');
 Route::get('logout', 'Auth\AuthController@logout');
 
         // Registration Routes...

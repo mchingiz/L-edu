@@ -72,100 +72,8 @@ class UserController extends Controller
 
     $company->delete();
     $this->user->delete();
-    
-  }
-
-  public function Login(Request $request){
-      $email = $request->email;
-      $password=$request->password;
-      $remember=$require->remember;
-
-      //Validation
-      //validation: non-empty password and email
-        $validator = Validator::make($request->all(), [
-        'email' => 'required',
-        'password'=>'required'
-        ]);
-
-        
-        if ($validator->fails()) {
-          return  back()
-                ->withInput($request->only('email', 'remember'))
-                ->withErrors([
-                    'email' => 'Email and password fields are required.',
-                ]);
-
-        }
-
-    $attempt=$this->LoginAttempt($email,$password);
-      
-
-    if(! $attempt)
-    {   
-        return  back()
-                ->withInput($request->only('email', 'remember'))
-                ->withErrors([
-                    'email' => 'Wrong username and password combination.',
-                ]);
-    }
-
-    return redirect('/'); // true
-  }
-
-  public function LoginAttempt($email,$password, $remember){
-    $user= User::withTrashed()
-             ->where([
-                        ['email', '=', $email],
-                        ])
-              ->first();
-      if(!empty($user) && Hash::check($password, $user->password) && !empty($user->deleted_at)){
-         $user->restore();
-
-         if($user->user_type=="company"){
-            $this->ActivateCompany($user);
-         }
-      }
-      
-      return $attempt = Auth::attempt(['email' => $email, 'password' => $password], $remember);
 
   }
-
-
-    public function LoginByAjax(Request $request)
-    {
-        $email = $request->email;
-        $password = $request->password;
-        $remember=$require->remember;
-
-        //validation: non-empty password and email
-        $validator = Validator::make($request->all(), [
-        'email' => 'required',
-        'password'=>'required'
-        ]);
-
-        if ($validator->fails()) {
-          return response([
-              'success' => false,
-              'message' => "Email and password fields are required."
-            ],422);
-
-        }
-        $attempt=$this->LoginAttempt($email,$password);
-
-        if (!$attempt) {
-          return response([
-              'success' => false,
-              'message' => "Wrong username and password combination."
-            ],422);
-
-        }
-        
-        return response([
-          'success' => true,
-        ]);
-        
-
-    }
 
     public function ActivateCompany(User $user){
       $company=Company::withTrashed()->where('user_id','=',$user->id)->first();
@@ -181,17 +89,16 @@ class UserController extends Controller
       foreach ($reminders as $reminder) {
         $reminder->restore();
       }
-        
+
         $post->restore();
-      
+
     }
 
     $company->restore();
 
     }
- 
 
 
 
-   
+
 }

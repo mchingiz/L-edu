@@ -307,7 +307,7 @@
             <h3>Login</h3>
         </div>
         <div class="body col-md-12">
-            <form role="form" method="POST" action="{{ url('/login') }}"> {{ csrf_field() }}
+            <form role="form" method="POST" action="{{ url('/logina') }}"> {{ csrf_field() }}
                 <input id="email" type="email" class="col-md-12" name="email" value="{{ old('email') }}">
                 @if ($errors->has('email'))
                     <span class="help-block">
@@ -327,7 +327,7 @@
                 </label>
 
                 <a href="{{ url('/password/reset') }}" class="pull-right"> Forgot Password?  </a>
-                
+
                 <input class="col-md-12 button-custom" type="submit" value="Login">
             </form>
 

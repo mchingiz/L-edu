@@ -21,7 +21,7 @@
                 </div>
             @endif
             <h1> Log in to Educive.com </h1>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/logina') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

@@ -40,7 +40,7 @@ class ActivationService
         $activation = $this->activationRepo->getActivationByToken($token);
 
         if ($activation === null) {
-            return null;
+            return 'Not valid token. Use the latest e-mail you have recieved.';
         }
 
         $user = User::find($activation->user_id);
@@ -52,7 +52,6 @@ class ActivationService
         $this->activationRepo->deleteActivation($token);
 
         return $user;
-
     }
 
     private function shouldSend($user){

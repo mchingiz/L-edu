@@ -285,6 +285,12 @@ class AuthController extends Controller
         ]);
     }
 
+    public function activateUser($token){
+        return $user = $this->activationService->activateUser($token);
+        Auth::login($user);
+        return redirect('/');
+    }
+
     // Social Logins
 
     public function redirectToFacebook(){

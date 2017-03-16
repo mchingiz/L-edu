@@ -22,7 +22,6 @@ class ActivationService
     }
 
     public function sendActivationMail(User $user){
-
         if ($user->activated || !$this->shouldSend($user)) {
             return;
         }
@@ -33,7 +32,7 @@ class ActivationService
         $message = sprintf('Activate account <a href="%s">%s</a>', $link, $link);
 
         Mail::raw($message, function (Message $m) use ($user) {
-        $m->to($user->email)->subject('Activation mail');
+            $m->to($user->email)->subject('Activation mail');
         });
     }
 

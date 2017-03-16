@@ -30,8 +30,7 @@ use Socialite;
 class AuthController extends Controller
 {
     use SlugTrait;
-
-    // use SlugTrait;
+    protected $activationService;
 
     /*
     |--------------------------------------------------------------------------
@@ -58,9 +57,16 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+
+    // public function __construct()
+    // {
+    //     $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+    // }
+
+    //Overrided function
+    public function __construct(ActivationService $activationService){
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
+        $this->activationService = $activationService;
     }
 
 
@@ -160,6 +166,8 @@ class AuthController extends Controller
             );
         }
 
+        $user = $this->create($request->all());
+
         $this->activationService->sendActivationMail($user);
 
         // Auth::guard($this->getGuard())->login($this->create($request->all()));
@@ -190,8 +198,8 @@ class AuthController extends Controller
 
         }
 
-    $attempt=$this->LoginAttempt($email,$password,$remember);
 
+    $attempt=$this->LoginAttempt($email,$password,$remember);
 
     if(! $attempt)
     {
@@ -202,8 +210,25 @@ class AuthController extends Controller
                 ]);
     }
 
-    return redirect('/'); // true
+    return $this->activatedOrNot($request,Auth::user());
+
+    // return redirect('/'); // true
   }
+
+    public function activatedOrNot(Request $request, User $user){
+        // return 'activatedOrNot';
+
+        if (!$user->activated) {
+            $this->activationService->sendActivationMail($user);
+            auth()->logout();
+            return redirect('/login')->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
+        }
+
+        // return redirect()->intended($this->redirectPath());
+        // return 'activated';
+
+        return redirect('/');
+    }
 
   public function LoginAttempt($email,$password, $remember){
     $user= User::withTrashed()
@@ -253,21 +278,12 @@ class AuthController extends Controller
 
         }
 
+        return $this->activatedOrNot($request,Auth::user());
+
         return response([
           'success' => true,
         ]);
     }
-
-    public function authenticated(Request $request, $user)
-    {
-        if (!$user->activated) {
-            $this->activationService->sendActivationMail($user);
-            auth()->logout();
-            return back()->with('warning', 'You need to confirm your account. We have sent you an activation code, please check your email.');
-        }
-        return redirect()->intended($this->redirectPath());
-    }
-
 
     // Social Logins
 

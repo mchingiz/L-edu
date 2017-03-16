@@ -35,13 +35,13 @@ class Test extends Controller
     echo "<hr>";
 
   	var_dump($user);
-  public function test(Post $post){
-
   }
 
   public function mail(){
         Mail::raw('Sending emails with Mailgun and Laravel is easy!', function($message){
         	$message->to('memmedlicngz@gmail.com');
         });
+
+        return 'sent';
     }
 }
